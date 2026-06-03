@@ -11,6 +11,8 @@ import EventDetail from './pages/EventDetail'
 import Faqs from './pages/Faqs'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
+import WhatsAppWidget from './Components/WhatsAppWidget'
+import waIcon from './assets/whatsapp.png'
 import './App.css'
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
+      <WhatsAppWidget phone="+254759924543" message="Hi — I saw your site and have a question." iconSrc={waIcon} />
     </>
   )
 }

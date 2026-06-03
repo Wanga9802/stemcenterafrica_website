@@ -101,7 +101,7 @@ const events = [
   },
   {
     id: 'moringa-school-graduation',
-    title: 'STEM AFRICA July 2026 Graduation',
+    title: 'Stem Africa July 2026 Graduation',
     location: 'The A.S.K. Dome Jamhuri Grounds',
     startDate: '2026-07-29',
     endDate: '2026-07-29',
@@ -132,7 +132,7 @@ const events = [
     imageUrl:
       'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80',
     registerUrl: 'https://lu.ma/moringa-graduation-2026',
-    requiresRegistration: true,
+    requiresRegistration: false,
 
     qrCodes: [
       {

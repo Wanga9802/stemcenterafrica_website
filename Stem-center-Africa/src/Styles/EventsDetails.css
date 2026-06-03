@@ -4,13 +4,41 @@
 
 /* ── Hero ──────────────────────────────────────────────────── */
 .ed-hero {
-  background: #0f1f3d;
+  position: relative;
+  overflow: hidden;
+  background: #1a0a14;
   color: #fff;
-  padding: 3.5rem 0 3rem;
+  padding: 5rem 2.125rem 4.5rem;
   text-align: center;
 }
 
+.ed-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.065) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ed-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(233, 30, 140, 0.10) 0%, transparent 65%),
+    radial-gradient(ellipse, rgba(233, 30, 140, 0.22) 0%, transparent 68%);
+  background-position: top right, 25% 40%;
+  background-size: 340px 340px, 680px 380px;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .ed-hero-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,9 +53,10 @@
   justify-content: center;
   background: #fff;
   color: #0f1f3d;
-  border-radius: 10px;
-  padding: 0.55rem 1.1rem;
+  border-radius: 0;
+  padding: 0.8rem 1.625rem;
   min-width: 64px;
+  min-height: 80px;
   font-family: 'DM Sans', sans-serif;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
   line-height: 1;
@@ -49,36 +78,39 @@
 
 .ed-hero-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-size: 30px;
   font-weight: 800;
   margin: 0;
   max-width: 720px;
   line-height: 1.2;
+  
 }
 
 .ed-hero-excerpt {
-  font-size: 1rem;
+  font-size: 18px;
   line-height: 1.75;
   opacity: 0.85;
-  max-width: 680px;
+  -webkit-line-clamp: 2;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
   margin: 0;
 }
 
 .ed-hero-meta {
-  font-size: 1rem;
+  font-size: 20px;
   font-family: 'DM Sans', sans-serif;
-  font-weight: 700;
+  font-weight: bolder;
   letter-spacing: 0.01em;
-  margin: 0;
+  margin-top: 30px;
 }
 
 /* Scroll chevron button */
 .ed-hero-chevron {
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  border: 2px solid rgb(255, 253, 253);
   border-radius: 50%;
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,7 +133,7 @@
 
 .ed-grid {
   display: grid;
-  gap: 2rem;
+  gap: 4rem;
   grid-template-columns: minmax(260px, 340px) 1fr;
   align-items: start;
 }
@@ -114,10 +146,10 @@
 
 /* ── Shared box ────────────────────────────────────────────── */
 .ed-box {
-  background: #fff;
+  background: transparent;
   border-radius: 14px;
-  padding: 1.75rem;
-  box-shadow: 0 8px 32px rgba(10, 20, 40, 0.08);
+  padding: 1.75rem 0;
+  box-shadow: none;
 }
 
 .ed-box-title {
@@ -139,6 +171,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  padding-left: 3.5rem;
 }
 
 /* Join Us text details */
@@ -173,7 +206,7 @@
 /* Register button */
 .ed-btn-primary {
   display: inline-block;
-  padding: 0.7rem 1.6rem;
+  padding: 0.7rem 2.225rem;
   border-radius: 999px;
   background: #ff2d78;
   color: #fff;
@@ -196,7 +229,7 @@
   gap: 1rem;
   background: #f3f4f6;
   border-radius: 10px;
-  padding: 0.9rem 1rem;
+  padding: 0.9rem 1.625rem;
 }
 
 .ed-mini-badge {
@@ -302,13 +335,14 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  padding-right: 3.5rem;
 }
 
 /* Event image — top of right column */
 .ed-event-image {
   width: 100%;
   min-height: 280px;
-  border-radius: 14px;
+  border-radius: 14px 14px 0 0;
   background-size: cover;
   background-position: center;
   box-shadow: 0 8px 32px rgba(10, 20, 40, 0.1);
@@ -342,7 +376,7 @@
   background: #f8f9fb;
   border-left: 3px solid #ff2d78;
   border-radius: 0 8px 8px 0;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1.625rem;
   margin: 0.5rem 0;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.95rem;
@@ -373,7 +407,7 @@
 .ed-desc-stat-item {
   background: #f3f4f6;
   border-radius: 6px;
-  padding: 0.35rem 0.75rem;
+  padding: 0.35rem 1.375rem;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
@@ -383,7 +417,7 @@
 /* Bullet list */
 .ed-desc-list {
   margin: 0.5rem 0;
-  padding-left: 1.35rem;
+  padding-left: 1.975rem;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.95rem;
   color: #374151;
@@ -406,7 +440,7 @@
   background: #0f1f3d;
   color: #fff;
   border-radius: 999px;
-  padding: 0.25rem 0.7rem;
+  padding: 0.25rem 1.325rem;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
