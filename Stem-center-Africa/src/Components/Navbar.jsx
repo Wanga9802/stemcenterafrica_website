@@ -269,9 +269,9 @@ function Navbar() {
                 </NavLink>
               </li>
 
-              {/* Corporate */}
+              {/* Services */}
               <li className="nav-item">
-                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/corporate">Corporate</NavLink>
+                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/services">Services</NavLink>
               </li>
 
               {/* Community */}
@@ -449,9 +449,9 @@ function Navbar() {
               </div>
             </li>
 
-            {/* Corporate */}
+            {/* Services */}
             <li className="nav-item">
-              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/corporate" onClick={closeMobileMenu}>Corporate</NavLink>
+              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/services" onClick={closeMobileMenu}>Services</NavLink>
             </li>
 
             {/* Community accordion */}

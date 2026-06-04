@@ -138,9 +138,38 @@
   align-items: start;
 }
 
-@media (max-width: 900px) {
+/* Keep two-column layout for tablet; collapse to single column on small phones */
+@media (max-width: 680px) {
   .ed-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .ed-left {
+    padding-left: 0 !important;
+  }
+  .ed-right {
+    padding-right: 0 !important;
+  }
+}
+
+/* Medium screens (tablet landscape) — tighten spacing and paddings so left box sits neatly beside image */
+@media (min-width: 681px) and (max-width: 1024px) {
+  .ed-grid {
+    /* narrow the left column further so the right column is more prominent */
+    grid-template-columns: 240px 1fr;
+    gap: 1rem;
+  }
+  .ed-left {
+    padding-left: 0;
+  }
+
+  .ed-right {
+    padding-right: 0;
+  }
+
+  /* Reduce hero horizontal padding on tablets for tighter layout */
+  .ed-hero {
+    padding: 3rem 0.75rem 2.5rem;
   }
 }
 
@@ -154,9 +183,9 @@
 
 .ed-box-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #0f1f3d;
+  font-size: 30px;
+  font-weight: 900;
+  color: #101F3C;
   margin: 0 0 1.1rem;
 }
 
@@ -184,29 +213,32 @@
 
 .ed-join-daterange {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  color: #374151;
+  font-size: 17px;
+  color: #101F3C;
   margin: 0;
+  font-weight: 400;
 }
 
 .ed-join-time {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  color: #374151;
+  font-size: 17px;
+  color: #101F3C;
+  font-weight: 400;
   margin: 0;
 }
 
 .ed-join-location {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  color: #374151;
+  font-size: 17px;
+  color: #101F3C;
+  font-weight: 400;
   margin: 0;
 }
 
 /* Register button */
 .ed-btn-primary {
   display: inline-block;
-  padding: 0.7rem 2.225rem;
+  padding: 0.5rem 1.25rem;
   border-radius: 999px;
   background: #ff2d78;
   color: #fff;
@@ -227,10 +259,11 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: #f3f4f6;
+  background: #e1e1e1;
   border-radius: 10px;
   padding: 0.9rem 1.625rem;
 }
+
 
 .ed-mini-badge {
   flex-shrink: 0;
@@ -240,15 +273,15 @@
   justify-content: center;
   background: #ff2d78;
   color: #fff;
-  border-radius: 8px;
-  width: 48px;
-  height: 52px;
+  border-radius: 0;
+  width: 50px;
+  height: 70px;
   font-family: 'DM Sans', sans-serif;
   line-height: 1;
 }
 
 .ed-mini-badge-day {
-  font-size: 1.15rem;
+  font-size: 24px;
   font-weight: 800;
   display: block;
 }
@@ -262,8 +295,8 @@
 
 .ed-mini-dates {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
-  color: #374151;
+  font-size: 19px;
+  color: #101F3C;
   line-height: 1.5;
 }
 
@@ -272,12 +305,12 @@
 }
 
 .ed-mini-dash {
-  color: #9ca3af;
+  color: #101f3c;
 }
 
 .ed-mini-time {
-  color: #0f1f3d;
-  font-weight: 600;
+  color: #101F3C;
+  font-weight: 400;
 }
 
 /* ── QR code box ───────────────────────────────────────────── */
@@ -310,11 +343,11 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: #ff2d78;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .ed-qr-link-row:hover {
-  text-decoration: underline;
+  color: #1a0a14;
 }
 
 .ed-qr-image {
@@ -355,8 +388,8 @@
 
 .ed-desc-paragraph {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.97rem;
-  color: #374151;
+  font-size: 16px;
+  color: #101F3C;
   line-height: 1.8;
   margin: 0 0 0.85rem;
 }
@@ -476,4 +509,19 @@
   color: #9ca3af;
   margin: 0.5rem 0 0;
   letter-spacing: 0.02em;
+}
+
+/* Ensure zero horizontal padding on tablet screens so columns align flush */
+@media (min-width: 681px) and (max-width: 1024px) {
+  .ed-left { padding-left: 0 !important; }
+  .ed-right { padding-right: 0 !important; }
+  .ed-hero { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+}
+
+/* Remove horizontal padding on the ed-body container for tablet view */
+@media (min-width: 681px) and (max-width: 1024px) {
+  .ed-body.container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
