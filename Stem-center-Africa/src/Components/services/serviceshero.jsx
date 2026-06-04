@@ -1,5 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import '../../Styles/ServiceHero.css'
+import graphIcon from "../../assets/graph.png";
+import customerSatisfactionIcon from "../../assets/customer-satisfaction.png";
+import awardIcon from "../../assets/award.png";
 
 /* ── DATA ─────────────────────────────────────────────────────────────── */
 const IMAGES = [
@@ -35,7 +38,6 @@ const SOLUTIONS = [
       "Fee Payment & Billing",
       "School Management System",
       "Online Classes & LMS",
-      
     ],
   },
   {
@@ -44,7 +46,7 @@ const SOLUTIONS = [
     tagColor: "#34d399",
     items: [
       "Point-of-Sale (POS) Systems",
-      "eCommerce Storefronts",
+      "Ecommerce Storefronts",
       "Inventory Management",
       "Mobile Payment Integration",
     ],
@@ -108,9 +110,6 @@ function ImageCarousel() {
 
       {/* badge */}
       <span className="sh-img-badge">{slide.badge}</span>
-
-   
-
     </div>
   );
 }
@@ -146,7 +145,7 @@ function SolutionsCarousel() {
       </ul>
 
       {/* CTA */}
-      <button className="sh-sol-cta">Request a Demo →</button>
+      <button className="sh-sol-cta">Request a Demo</button>
 
       {/* tab indicators */}
       <div className="sh-sol-tabs">
@@ -183,7 +182,7 @@ export default function ServicesHero() {
 
           <h1 className="sh-title">
             Smart Solutions for<br />
-            <span className="sh-title__accent">African Businesses</span>
+            <span className="sh-title__accent">Business Growth</span>
           </h1>
 
           <p className="sh-desc">
@@ -208,16 +207,6 @@ export default function ServicesHero() {
               View All Services
             </button>
           </div>
-
-          {/* stats row */}
-          <div className="sh-stats">
-            {[["50+", "Projects Delivered"], ["12+", "Industries Served"], ["98%", "Client Satisfaction"]].map(([val, lbl], i) => (
-              <div key={i} className="sh-stat">
-                <span className="sh-stat__val">{val}</span>
-                <span className="sh-stat__lbl">{lbl}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* ── RIGHT ─────────────────────────────────────────── */}
@@ -226,6 +215,28 @@ export default function ServicesHero() {
           <SolutionsCarousel />
         </div>
       </div>
+
+      {/* ── STATS BAR — half in / half out ────────────────── */}
+      <div className="sh-statsbar-wrap">
+        <div className="sh-statsbar">
+          <div className="sh-statsbar__item">
+            <img className="sh-statsbar__icon" src={graphIcon} alt="" aria-hidden="true" />
+            <div className="sh-statsbar__val">200+</div>
+            <div className="sh-statsbar__lbl">Projects Delivered</div>
+          </div>
+          <div className="sh-statsbar__item">
+            <img className="sh-statsbar__icon" src={customerSatisfactionIcon} alt="" aria-hidden="true" />
+            <div className="sh-statsbar__val">98%</div>
+            <div className="sh-statsbar__lbl">Client Satisfaction</div>
+          </div>
+          <div className="sh-statsbar__item">
+            <img className="sh-statsbar__icon" src={awardIcon} alt="" aria-hidden="true" />
+            <div className="sh-statsbar__val">7+</div>
+            <div className="sh-statsbar__lbl">Years of Excellence</div>
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 }
