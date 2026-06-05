@@ -72,7 +72,7 @@
 
 @media (max-width: 575px) {
   .sh-marquee__item { flex: 0 0 260px; min-width: 200px; padding: 16px; }
-  .sh-marquee__track { animation-duration: 24s; }
+  .sh-marquee__track { animation-duration: 30s; }
   .sh-marquee-wrap { padding: 1rem; }
 }
 
