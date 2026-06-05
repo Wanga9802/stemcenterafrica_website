@@ -1,8 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
 import '../../Styles/ServiceHero.css'
-import graphIcon from "../../assets/graph.png";
-import customerSatisfactionIcon from "../../assets/customer-satisfaction.png";
-import awardIcon from "../../assets/award.png";
 
 /* ── DATA ─────────────────────────────────────────────────────────────── */
 const IMAGES = [
@@ -215,28 +212,6 @@ export default function ServicesHero() {
           <SolutionsCarousel />
         </div>
       </div>
-
-      {/* ── STATS BAR — half in / half out ────────────────── */}
-      <div className="sh-statsbar-wrap">
-        <div className="sh-statsbar">
-          <div className="sh-statsbar__item">
-            <img className="sh-statsbar__icon" src={graphIcon} alt="" aria-hidden="true" />
-            <div className="sh-statsbar__val">200+</div>
-            <div className="sh-statsbar__lbl">Projects Delivered</div>
-          </div>
-          <div className="sh-statsbar__item">
-            <img className="sh-statsbar__icon" src={customerSatisfactionIcon} alt="" aria-hidden="true" />
-            <div className="sh-statsbar__val">98%</div>
-            <div className="sh-statsbar__lbl">Client Satisfaction</div>
-          </div>
-          <div className="sh-statsbar__item">
-            <img className="sh-statsbar__icon" src={awardIcon} alt="" aria-hidden="true" />
-            <div className="sh-statsbar__val">7+</div>
-            <div className="sh-statsbar__lbl">Years of Excellence</div>
-          </div>
-        </div>
-      </div>
-
     </section>
   );
 }

@@ -1,0 +1,86 @@
+/* StatsMarquee.css — styles for the sliding stats marquee */
+
+.sh-marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  padding: 1.25rem 2.5rem;
+  display: block;
+}
+
+.sh-marquee {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sh-marquee__track {
+  display: flex;
+  gap: 28px;
+  align-items: stretch;
+  /* long enough animation; duplicated items make the loop seamless */
+  animation: sh-marquee-left 18s linear infinite;
+}
+
+.sh-marquee__item {
+  flex: 0 0 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 18px;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  min-width: 260px;
+}
+
+.sh-marquee__item .sh-statsbar__icon {
+  background: transparent;
+  margin-bottom: 6px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: contain;
+  padding: 8px;
+  display: block;
+}
+
+.sh-marquee__item .sh-statsbar__val {
+  font-family: var(--sh-ff-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: #FF4D9E;
+  line-height: 1;
+  margin-top: 6px;
+}
+
+.sh-marquee__item .sh-statsbar__lbl {
+  font-family: var(--sh-ff-body);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #101F3C;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* responsive tweaks */
+@media (max-width: 991px) {
+  .sh-marquee__item { flex: 0 0 300px; min-width: 220px; }
+  .sh-marquee__track { gap: 18px; animation-duration: 20s; }
+}
+
+@media (max-width: 575px) {
+  .sh-marquee__item { flex: 0 0 260px; min-width: 200px; padding: 16px; }
+  .sh-marquee__track { animation-duration: 24s; }
+  .sh-marquee-wrap { padding: 1rem; }
+}
+
+.sh-marquee__track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes sh-marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

@@ -1,4 +1,5 @@
 import ServicesHero from "../Components/services/serviceshero";
+import StatsMarquee from "../Components/services/StatsMarquee";
 
 
 
@@ -13,7 +14,7 @@ function Corporate() {
 <>
 
 <ServicesHero />
-
+<StatsMarquee />
 </>
 
   );

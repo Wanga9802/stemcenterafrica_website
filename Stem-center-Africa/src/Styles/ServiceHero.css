@@ -26,7 +26,7 @@
   position: relative;
   overflow: visible;
   background: var(--sh-bg);
-  padding: 3rem 2.5rem 0;
+  padding: 3rem 2.5rem 6.5rem;
   font-family: var(--sh-ff-body);
 }
 
@@ -113,6 +113,15 @@
   margin-bottom: 0.6rem;
   width: fit-content;
   box-shadow: 0 16px 32px rgba(232, 0, 106, 0.12);
+}
+
+.sh-badge__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sh-pink2);
+  box-shadow: 0 0 10px rgba(255, 77, 158, 0.55);
+  animation: sh-pulse 2.2s ease-in-out infinite;
 }
 .sh-badge__dot {
   width: 8px;
@@ -537,130 +546,56 @@
   font-weight: 700;
 }
 
-/* ══════════════════════════════════════════════════════════════════════
-   STATS BAR  —  half inside / half outside hero
-══════════════════════════════════════════════════════════════════════ */
-.sh-statsbar-wrap {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  /* sits at the very bottom of the hero flow */
-  padding: 0 2.5rem 0;
-}
-
-.sh-statsbar {
-  background: #ffffff;
-  border-radius: 0;
-  display: flex;
-  align-items: stretch;
-  /* push half of itself below the hero's bottom edge */
-  transform: translateY(50%);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22), 0 4px 16px rgba(232, 0, 106, 0.08);
-  overflow: hidden;
-  width: 100%;
-  max-width: 860px;
-}
-
-.sh-statsbar__item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 26px;
-  gap: 5px;
-  position: relative;
-  transition: background 0.2s;
-}
-
-.sh-statsbar__item:hover {
-  background: rgba(232, 0, 106, 0.03);
-}
-
-.sh-statsbar__icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: block;
-  object-fit: contain;
-  padding: 8px;
-  margin-bottom: 6px;
-}
-
-/* vertical divider between items */
-.sh-statsbar__item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 22%;
-  height: 56%;
-  width: 1px;
-  background: #101F3C;
-
-}
-
-.sh-statsbar__val {
-  font-family: var(--sh-ff-display);
-  font-size: 25px;
-  font-weight: 700;
-  color: #FF4D9E;
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-
-.sh-statsbar__lbl {
-  font-family: var(--sh-ff-body);
-  font-size: 11.5px;
-  font-weight: 600;
-  color: #101F3C;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-/* ── Responsive ──────────────────────────────────────────────────────── */
+/* ── Responsive: stack hero columns on smaller screens ─────────────── */
 @media (max-width: 991px) {
-  .sh-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+  .sh-inner { grid-template-columns: 1fr; gap: 40px; }
   .sh-desc { max-width: 100%; }
-  .sh-statsbar { max-width: 600px; }
+
+  .sh-right {
+    justify-self: stretch;
+    max-width: none;
+    width: 100%;
+    height: auto;
+    order: 2;
+    align-self: start;
+    position: relative;
+  }
+  .sh-left { order: 1; }
+  .sh-img-card { position: relative; height: 320px; width: 100%; }
+  /* keep solution card overlaying the image (absolute inside .sh-right) */
+  .sh-sol-card {
+    position: absolute;
+    bottom: 20px;
+    right: 18px;
+    left: auto;
+    width: calc(68% - 32px);
+    max-width: 420px;
+    margin: 0;
+    transform: none;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  }
 }
 
 @media (max-width: 575px) {
-  .sh-hero  { padding: 4rem 1.25rem 0; }
+  .sh-hero { padding: 2rem 1.25rem 2rem; }
   .sh-perks { grid-template-columns: 1fr; }
   .sh-stats { gap: 20px; }
-  .sh-right { height: 340px; }
-  .sh-img-card { height: 100%; width: 100%; }
-  .sh-sol-card { width: calc(85% - 10px); padding: 16px 18px 14px; bottom: 16px; right: 16px; }
+  .sh-right { height: auto; max-width: none; width: 100%; }
+  .sh-img-card { position: relative; height: 320px; width: 100%; }
+  .sh-sol-card {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: calc(85% - 24px);
+    max-width: 360px;
+    padding: 12px 14px 12px;
+    margin: 0;
+  }
   .sh-sol-title { font-size: 16px; }
   .sh-sol-item { font-size: 13px; }
   .sh-title { font-size: 1.9rem; }
   .sh-badge { padding: 5px 10px; font-size: 0.7rem; }
   .sh-ctas { flex-direction: column; align-items: stretch; }
   .sh-cta { width: 100%; justify-content: center; }
-
-  .sh-statsbar-wrap { padding: 2rem 1.25rem 0; }
-  .sh-statsbar {
-    flex-direction: column;
-    max-width: 92%;
-  }
-  .sh-statsbar__item { padding: 22px 24px; }
-  .sh-statsbar__icon {
-    width: 38px;
-    height: 38px;
-    font-size: 16px;
-  }
-  .sh-statsbar__item:not(:last-child)::after {
-    top: auto;
-    bottom: 0;
-    right: 12%;
-    width: 76%;
-    height: 1px;
-  }
-  .sh-statsbar__val { font-size: 1.75rem; }
 }
+
