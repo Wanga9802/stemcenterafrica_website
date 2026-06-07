@@ -1,0 +1,233 @@
+/* ─── Import DM Sans ─────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap");
+
+/* ─── Variables ──────────────────────────────────────────────── */
+:root {
+  --bg-section: #f7f8ff;
+  --card-bg: #ffffff;
+  --card-border: #e8eaf0;
+  --text-eyebrow: #3d52d5;
+  --text-title: #0d1340;
+  --text-accent: #0d1340;
+  --text-body: #4a5068;
+  --text-feature: #2d3452;
+  --check-color: #22c55e;
+  --btn-bg: #ff4d9e;
+  --btn-hover-bg: #800000;
+  --btn-text: #ffffff;
+  --badge-bg: #eef0ff;
+  --badge-text: #3d52d5;
+  --font: "DM Sans", sans-serif;
+  --shadow-card: 0 2px 16px 0 rgba(61, 82, 213, 0.07);
+  --shadow-card-hover: 0 8px 32px 0 rgba(61, 82, 213, 0.13);
+  --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Section ────────────────────────────────────────────────── */
+.service-listing {
+  background-color: var(--bg-section);
+  padding: 96px 24px 112px;
+  font-family: var(--font);
+}
+
+/* ─── Header ─────────────────────────────────────────────────── */
+.service-listing__header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 64px;
+}
+
+.service-listing__eyebrow {
+  display: inline-block;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #FF4D9E;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.service-listing__title {
+  font-family: var(--font);
+  font-size: 41px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #101F3C;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.service-listing__title--accent {
+  color: var(--text-accent);
+}
+
+.service-listing__subtitle {
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─── Grid ───────────────────────────────────────────────────── */
+.service-listing__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─── Card ───────────────────────────────────────────────────── */
+.service-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 10px;
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition), transform var(--transition),
+    border-color var(--transition);
+  cursor: default;
+}
+
+
+
+/* Icon Badge */
+.service-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: transparent;
+  border-radius: 0;
+  margin-bottom: 22px;
+  flex-shrink: 0;
+}
+
+.service-card__icon img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+/* Card Title */
+.service-card__title {
+  font-family: var(--font);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-title);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+
+/* Card Description */
+.service-card__description {
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-body);
+  line-height: 1.65;
+  margin: 0 0 22px;
+}
+
+/* Feature List */
+.service-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.service-card__feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-feature);
+}
+
+.service-card__check {
+  color: #FF4D9E;
+  font-size: 15px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* CTA Button */
+.service-card__btn {
+  display: inline-block;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  padding: 14px 22px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background var(--transition), transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.service-card__btn:hover {
+  background: var(--btn-hover-bg);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(128, 0, 0, 0.25);
+}
+
+.service-card__btn:active {
+  transform: translateY(0);
+}
+
+/* ─── Tablet: 2 per row ──────────────────────────────────────── */
+@media (max-width: 1024px) and (min-width: 641px) {
+  .service-listing__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .service-listing {
+    padding: 72px 32px 88px;
+  }
+}
+
+/* ─── Mobile: 1 per row ──────────────────────────────────────── */
+@media (max-width: 640px) {
+  .service-listing {
+    padding: 56px 16px 72px;
+  }
+
+  .service-listing__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .service-listing__title {
+    font-size: 28px;
+  }
+
+  .service-listing__subtitle {
+    font-size: 15px;
+  }
+
+  .service-card {
+    padding: 28px 22px 26px;
+  }
+}
