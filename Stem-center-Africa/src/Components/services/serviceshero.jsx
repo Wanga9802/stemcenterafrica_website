@@ -112,7 +112,7 @@ function ImageCarousel({ images = IMAGES }) {
 }
 
 /* ── SOLUTIONS CAROUSEL CARD ─────────────────────────────────────────── */
-function SolutionsCarousel({ solutions = SOLUTIONS }) {
+function SolutionsCarousel({ solutions = SOLUTIONS, onSolutionsCta = () => {} }) {
   const { idx, setIdx } = useCarousel(solutions.length, 3800);
   const sol = solutions[idx];
 
@@ -142,7 +142,7 @@ function SolutionsCarousel({ solutions = SOLUTIONS }) {
       </ul>
 
       {/* CTA */}
-      <button className="sh-sol-cta">Request a Demo</button>
+      <button className="sh-sol-cta" onClick={onSolutionsCta}>View Packages</button>
 
       {/* tab indicators */}
       <div className="sh-sol-tabs">
@@ -180,6 +180,7 @@ export function ServiceHero({
   onSecondaryClick,
   images = IMAGES,
   solutions = SOLUTIONS,
+  onSolutionsCta = () => {},
 }) {
   return (
     <section className="sh-hero" aria-label="Services hero">
@@ -232,7 +233,7 @@ export function ServiceHero({
         {/* ── RIGHT ─────────────────────────────────────────── */}
         <div className="sh-right">
           <ImageCarousel images={images} />
-          <SolutionsCarousel solutions={solutions} />
+          <SolutionsCarousel solutions={solutions} onSolutionsCta={onSolutionsCta} />
         </div>
       </div>
     </section>
