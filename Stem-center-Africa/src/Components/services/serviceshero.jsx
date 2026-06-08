@@ -87,13 +87,13 @@ function useCarousel(length, interval = 4000) {
 }
 
 /* ── IMAGE CAROUSEL CARD ─────────────────────────────────────────────── */
-function ImageCarousel() {
-  const { idx, next, prev, setIdx } = useCarousel(IMAGES.length, 4500);
-  const slide = IMAGES[idx];
+function ImageCarousel({ images = IMAGES }) {
+  const { idx, next, prev, setIdx } = useCarousel(images.length, 4500);
+  const slide = images[idx];
 
   return (
     <div className="sh-img-card">
-      {IMAGES.map((img, i) => (
+      {images.map((img, i) => (
         <div
           key={i}
           className={`sh-img-slide ${i === idx ? "sh-img-slide--active" : ""}`}
@@ -112,9 +112,9 @@ function ImageCarousel() {
 }
 
 /* ── SOLUTIONS CAROUSEL CARD ─────────────────────────────────────────── */
-function SolutionsCarousel() {
-  const { idx, setIdx } = useCarousel(SOLUTIONS.length, 3800);
-  const sol = SOLUTIONS[idx];
+function SolutionsCarousel({ solutions = SOLUTIONS }) {
+  const { idx, setIdx } = useCarousel(solutions.length, 3800);
+  const sol = solutions[idx];
 
   return (
     <div className="sh-sol-card">
@@ -146,7 +146,7 @@ function SolutionsCarousel() {
 
       {/* tab indicators */}
       <div className="sh-sol-tabs">
-        {SOLUTIONS.map((s, i) => (
+        {solutions.map((s, i) => (
           <button
             key={i}
             className={`sh-sol-tab ${i === idx ? "sh-sol-tab--active" : ""}`}
@@ -162,7 +162,25 @@ function SolutionsCarousel() {
 }
 
 /* ── MAIN COMPONENT ──────────────────────────────────────────────────── */
-export default function ServicesHero() {
+export function ServiceHero({
+  badge = 'Trusted Technology Partner',
+  title = 'Smart Solutions for',
+  accent = 'Business Growth',
+  description =
+    'From custom websites and POS systems to school management platforms and digital commerce — we build the technology that moves your organisation forward.',
+  perks = [
+    'Schools & Universities',
+    'Retail & Commerce',
+    'Startups & NGOs',
+    'Government Agencies',
+  ],
+  primaryCta = 'Request a Solution →',
+  secondaryCta = 'View All Services',
+  onPrimaryClick,
+  onSecondaryClick,
+  images = IMAGES,
+  solutions = SOLUTIONS,
+}) {
   return (
     <section className="sh-hero" aria-label="Services hero">
       {/* background layers */}
@@ -174,22 +192,19 @@ export default function ServicesHero() {
         <div className="sh-left">
           <span className="sh-badge">
             <span className="sh-badge__dot" />
-            Trusted Technology Partner
+            {badge}
           </span>
 
           <h1 className="sh-title">
-            Smart Solutions for<br />
-            <span className="sh-title__accent">Business Growth</span>
+            {title}
+            <br />
+            <span className="sh-title__accent">{accent}</span>
           </h1>
 
-          <p className="sh-desc">
-            From custom websites and POS systems to school management platforms
-            and digital commerce — we build the technology that moves your
-            organisation forward.
-          </p>
+          <p className="sh-desc">{description}</p>
 
           <ul className="sh-perks">
-            {["Schools & Universities", "Retail & Commerce", "Startups & NGOs", "Government Agencies"].map((p, i) => (
+            {perks.map((p, i) => (
               <li key={i} className="sh-perk">
                 <span className="sh-perk__check">✓</span> {p}
               </li>
@@ -197,21 +212,33 @@ export default function ServicesHero() {
           </ul>
 
           <div className="sh-ctas">
-            <button className="sh-cta sh-cta--primary">
-              Request a Solution →
+            <button
+              type="button"
+              className="sh-cta sh-cta--primary"
+              onClick={onPrimaryClick}
+            >
+              {primaryCta}
             </button>
-            <button className="sh-cta sh-cta--outline">
-              View All Services
+            <button
+              type="button"
+              className="sh-cta sh-cta--outline"
+              onClick={onSecondaryClick}
+            >
+              {secondaryCta}
             </button>
           </div>
         </div>
 
         {/* ── RIGHT ─────────────────────────────────────────── */}
         <div className="sh-right">
-          <ImageCarousel />
-          <SolutionsCarousel />
+          <ImageCarousel images={images} />
+          <SolutionsCarousel solutions={solutions} />
         </div>
       </div>
     </section>
   );
+}
+
+export default function ServicesHero(props) {
+  return <ServiceHero {...props} />;
 }

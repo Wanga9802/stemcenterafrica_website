@@ -10,17 +10,21 @@ import CallToAction from "../Components/services/Calltoaction";
 
 
 function Corporate() {
+  const scrollToServices = () => {
+    const target = document.getElementById('our-services');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-
-<>
-
-<ServicesHero />
-<StatsMarquee />
-<ServiceListing />
-<OurProcess />
-<CallToAction />
-</>
-
+    <>
+      <ServicesHero onSecondaryClick={scrollToServices} />
+      <StatsMarquee />
+      <ServiceListing />
+      <OurProcess />
+      <CallToAction />
+    </>
   );
 }
 

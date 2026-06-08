@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import About from './pages/Aboutus'
 import Courses from './pages/Courses'
 import Services from './pages/Corporate'
+import ServiceDetail from './pages/ServiceDetail'
 import Community from './pages/Community'
 import Blog from './pages/Blog'
 import BlogPostPage from './Components/Blog/BlogPostPage'
@@ -24,6 +25,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/courses/*" element={<Courses />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/corporate" element={<Services />} />
         <Route path="/community" element={<Community />} />
         <Route path="/blog" element={<Blog />} />

@@ -1,68 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import '../../Styles/ServiceListing.css';
-import webIcon from '../../assets/web.png';
-import softwareIcon from '../../assets/software.png';
-import bookingIcon from '../../assets/online-booking.png';
-import automationIcon from '../../assets/automation.png';
-import mobileIcon from '../../assets/mobile.png';
-import marketingIcon from '../../assets/marketing.png';
+import { SERVICES } from '../../data/servicesData';
 
-const services = [
-  {
-    id: "01",
-    title: "Website Development",
-    icon: webIcon,
-    description:
-      "Professional websites, ecommerce stores, landing pages, and portals built to convert visitors into customers.",
-    features: ["Responsive design", "Basic SEO", "Modern custom design"],
-  },
-  {
-    id: "02",
-    title: "Software Development",
-    icon: softwareIcon,
-    description:
-      "Custom software solutions tailored to your business workflows — from internal tools to full-scale platforms.",
-    features: ["Custom dashboards", "API integrations", "Scalable architecture"],
-  },
-  {
-    id: "03",
-    title: "Booking Systems",
-    icon: bookingIcon,
-    description:
-      "Booking platforms with calendars, M-Pesa payments, reminders, staff schedules, and client portals.",
-    features: ["Online bookings", "M-Pesa payments", "Client portals"],
-  },
-  {
-    id: "04",
-    title: "AI Automation",
-    icon: automationIcon,
-    description:
-      "AI workflows, customer support automation, reporting, and task systems that reduce manual work.",
-    features: ["AI workflows", "Smart reporting", "Customer automation"],
-  },
-  {
-    id: "05",
-    title: "Mobile Development",
-    icon: mobileIcon,
-    description:
-      "Native and cross-platform mobile apps for Android and iOS that deliver seamless user experiences.",
-    features: ["Android & iOS", "Offline support", "Push notifications"],
-  },
-  {
-    id: "06",
-    title: "Digital Marketing",
-    icon: marketingIcon,
-    description:
-      "Data-driven campaigns across social media, search, and email to grow your brand and drive revenue.",
-    features: ["Social media ads", "SEO & content", "Email campaigns"],
-  },
-];
 
 export default function ServiceListing() {
   const [hovered, setHovered] = useState(null);
+  const navigate = useNavigate();
 
   return (
-    <section className="service-listing">
+    <section id="our-services" className="service-listing">
       <div className="service-listing__header">
         <span className="service-listing__eyebrow">OUR SERVICES</span>
         <h2 className="service-listing__title">
@@ -75,9 +22,8 @@ export default function ServiceListing() {
         </p>
       </div>
 
-
       <div className="service-listing__grid">
-        {services.map((service) => (
+        {SERVICES.map((service) => (
           <div
             key={service.id}
             className={`service-card ${hovered === service.id ? "service-card--hovered" : ""}`}
@@ -97,7 +43,13 @@ export default function ServiceListing() {
                 </li>
               ))}
             </ul>
-            <button className="service-card__btn">EXPLORE SERVICE</button>
+            <button
+              className="service-card__btn"
+              type="button"
+              onClick={() => navigate(`/services/${service.slug}`)}
+            >
+              EXPLORE SERVICE
+            </button>
           </div>
         ))}
       </div>
