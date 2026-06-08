@@ -57,12 +57,12 @@
 /* Top accent bar — full-width gradient line */
 .cta-card__topbar {
   height: 3px;
-  background: linear-gradient(to right, transparent 0%, var(--cta-accent-deep) 35%, var(--cta-accent) 65%, transparent 100%);
+  background: linear-gradient(to right, transparent 0%, rgba(233, 30, 140, 0.15) 15%, #E91E8C 65%, transparent 100%);
 }
 
 /* ── Card Content ─────────────────────────────────────────── */
 .cta-card__content {
-  padding: 50px 72px 56px;
+  padding: 50px 72px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
