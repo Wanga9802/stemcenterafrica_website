@@ -4,6 +4,7 @@ import About from './pages/Aboutus'
 import Courses from './pages/Courses'
 import Services from './pages/Corporate'
 import ServiceDetail from './pages/ServiceDetail'
+import ServiceForm from './pages/ServiceForm'
 import Community from './pages/Community'
 import Blog from './pages/Blog'
 import BlogPostPage from './Components/Blog/BlogPostPage'
@@ -26,6 +27,7 @@ function App() {
         <Route path="/courses/*" element={<Courses />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
+        <Route path="/service-request" element={<ServiceForm />} />
         <Route path="/corporate" element={<Services />} />
         <Route path="/community" element={<Community />} />
         <Route path="/blog" element={<Blog />} />

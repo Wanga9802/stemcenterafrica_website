@@ -23,7 +23,13 @@ function Corporate() {
       <StatsMarquee />
       <ServiceListing />
       <OurProcess />
-      <CallToAction />
+      <CallToAction
+        badgeText="Ready to get started?"
+        titlePrefix="Turn Your Idea Into a Powerful Digital Solution."
+        titleAccent=""
+        description="From websites to full AI automation — we scope, price, and deliver with precision."
+        buttonText="start conversion"
+      />
     </>
   );
 }

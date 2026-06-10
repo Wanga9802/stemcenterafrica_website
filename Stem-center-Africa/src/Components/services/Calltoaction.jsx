@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from 'react-router-dom';
 import '../../Styles/CallToAction.css';
 
 export default function CallToAction({
@@ -8,8 +9,10 @@ export default function CallToAction({
   titleSuffix = "package",
   titleAccent = "Starts With One Conversation.",
   description = "Whether you need a website, a booking system, a mobile app, or full AI automation — we scope it, price it fairly, and build it right.",
+  showDescription = true,
   buttonText = "Request a Solution",
-  serviceName = "solution"
+  serviceName = "solution",
+  buttonLink = null,
 }) {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -65,7 +68,7 @@ export default function CallToAction({
             </h2>
 
             {/* Subtitle (conditionally rendered) */}
-            {description && (
+            {showDescription && description && (
               <p className="cta-card__subtitle">
                 {description}
               </p>
@@ -73,15 +76,22 @@ export default function CallToAction({
 
             {/* Actions */}
             <div className="cta-card__actions">
-              <a
-                href={whatsappUrl}
-                className="cta-btn cta-btn--primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="cta-btn__icon"></span>
-                {buttonText}
-              </a>
+              {buttonLink ? (
+                <Link to={buttonLink} className="cta-btn cta-btn--primary">
+                  <span className="cta-btn__icon"></span>
+                  {buttonText}
+                </Link>
+              ) : (
+                <a
+                  href={whatsappUrl}
+                  className="cta-btn cta-btn--primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="cta-btn__icon"></span>
+                  {buttonText}
+                </a>
+              )}
             </div>
 
           </div>

@@ -184,7 +184,7 @@ function ServiceDetail() {
                   className={`sd-package-button ${
                     pkg.isRecommended ? 'primary' : 'secondary'
                   }`}
-                  onClick={() => setSelectedPackageKey(pkg.key)}
+                  onClick={() => navigate(`/service-request?service=${service.slug}&package=${pkg.key}`)}
                 >
                   {pkg.isRecommended ? 'CHOOSE THIS PLAN' : 'START NOW'}
                 </button>
@@ -371,7 +371,9 @@ function ServiceDetail() {
         serviceTitle={service.title}
         titleSuffix={detailConfig.ctaSuffix}
         buttonText="Book Consultation"
+        showDescription={false}
         serviceName={service.title}
+        buttonLink={`/service-request?service=${service.slug}&package=${selectedPackage.key}`}
       />
     </>
   );
