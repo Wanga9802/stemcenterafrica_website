@@ -460,3 +460,136 @@ export const SERVICE_HERO_CONFIG = {
     ],
   },
 }
+// Service Detail Page Configuration
+export const SERVICE_DETAIL_CONFIG = {
+  'website-development': {
+    enableMonthlyPricing: true,
+    customizeDescription: 'Build the exact website package your business needs with step-by-step choices, mobile payment modules, and premium business features.',
+    ctaPrefix: 'Ready to get started with the right',
+    ctaSuffix: 'package',
+    packages: [
+      { key: 'basic', label: 'BASIC', price: 20000, tier: 'Starter', description: 'A clean starter package for small businesses that need a credible online presence.', features: ['Up to 5 pages', 'Professional responsive design', 'Basic SEO setup', 'WhatsApp and direct contact', 'SSL certificate setup', 'Launch support'] },
+      { key: 'business', label: 'BUSINESS', price: 30000, tier: 'Digital Growth', description: 'A stronger business website for companies ready to attract and convert customers.', features: ['Up to 10 pages', 'Professional responsive design', 'Domain and hosting included', 'Business email setup', 'Google Maps and social links', 'SEO basics and analytics setup'], isRecommended: true },
+      { key: 'advanced', label: 'ADVANCED', price: 70000, tier: 'Performance & Conversion', description: 'For professional businesses that need advanced structure, SEO, and integrations.', features: ['Up to 20 pages', 'Advanced SEO and speed optimization', 'Conversion-focused page structure', 'Integrations based on your needs', 'Analytics and tracking setup', 'Priority launch support'] },
+      { key: 'ecommerce', label: 'FULL E-COMMERCE PRO', price: 199999, tier: 'Online store', description: 'Recommended for ecommerce businesses that need a complete online shop or store.', features: ['30–40 pages', 'Hosting included', 'Professionally customized', 'Free domain + emails', 'Full advanced booking system features', 'Social media integration', 'Free SSL certificate', 'Premium support', 'Fully SEO optimized', 'M-Pesa integration & Visa', 'Store training', 'Live chat system integration', 'Google Maps integration', 'Mobile responsive website'] },
+      { key: 'corporate', label: 'CORPORATE PRO WEBSITE', price: 250000, tier: 'Corporate presence', description: 'Recommended for enterprises and corporate organizations.', features: ['40–50 pages website', 'Priority enterprise support', 'Professionally customized', 'Free domain + emails', 'Fully SEO customized to your business', 'Free hosting business plan', 'Mobile responsive website', 'Priority support', 'Custom dashboards', 'Full booking + payment system', 'Client portal & admin dashboard', 'Multiple staff logins'] },
+    ],
+    modules: [
+      { key: 'mpesa', label: 'M-PESA INTEGRATION', price: 15000, description: 'STK Push payment integration for sales, bookings, and orders.' },
+      { key: 'card', label: 'CARD / ONLINE PAYMENT GATEWAY', price: 32500, description: 'Stripe, PayPal, Visa, Mastercard, or online card payment integration.' },
+    ],
+    features: [
+      { key: 'booking', label: 'BOOKING SYSTEM', price: 32500, description: 'Fast online booking for hotels, agencies, and services.' },
+      { key: 'dashboard', label: 'MANAGEMENT DASHBOARD', price: 65000, description: 'Dashboard to manage customers, content, or orders.' },
+      { key: 'clientPortal', label: 'CLIENT PORTAL', price: 52000, description: 'Custom client area for requests, services, or tracking.' },
+      { key: 'billing', label: 'BILLING & QUOTES', price: 39000, description: 'Quotes and invoices that reduce administrative work.' },
+      { key: 'chat', label: 'DIRECT CHAT / ADVANCED WHATSAPP', price: 13000, description: 'Instant communication to improve conversion.' },
+      { key: 'maps', label: 'GOOGLE MAPS & LOCATION', price: 10400, description: 'Precise location for offices, shops, and agencies.' },
+    ],
+  },
+  'software-development': {
+    enableMonthlyPricing: false,
+    customizeDescription: 'Build the exact software package your business needs with step-by-step choices and advanced feature selection.',
+    ctaPrefix: 'Ready to get started with the right',
+    ctaSuffix: 'package',
+    packages: [
+      { key: 'basic', label: 'BASIC', price: 50000, tier: 'Starter', description: 'A solid foundation for businesses starting with custom software.' },
+      { key: 'business', label: 'BUSINESS', price: 100000, tier: 'Professional', description: 'Advanced features with integration and user management.', isRecommended: true },
+      { key: 'advanced', label: 'ADVANCED', price: 200000, tier: 'Enterprise', description: 'Complete platform with API integrations and custom dashboards.' },
+    ],
+    modules: [
+      { key: 'apiIntegration', label: 'THIRD-PARTY API INTEGRATION', price: 25000, description: 'Connect your software with external systems and services.' },
+      { key: 'aiFeatures', label: 'AI-POWERED FEATURES', price: 75000, description: 'Add machine learning and AI capabilities to your software.' },
+    ],
+    features: [
+      { key: 'dashboard', label: 'ADVANCED DASHBOARD', price: 40000, description: 'Custom analytics and reporting dashboards.' },
+      { key: 'userManagement', label: 'ROLE-BASED USER MANAGEMENT', price: 30000, description: 'Control access with roles, permissions, and hierarchies.' },
+      { key: 'reporting', label: 'AUTOMATED REPORTING', price: 35000, description: 'Generate and schedule reports automatically.' },
+      { key: 'notifications', label: 'NOTIFICATION SYSTEM', price: 20000, description: 'Email, SMS, and in-app notifications.' },
+    ],
+  },
+  'booking-systems': {
+    enableMonthlyPricing: false,
+    customizeDescription: 'Create the perfect booking system with online scheduling, payments, and client management tools.',
+    ctaPrefix: 'Ready to get started with the right',
+    ctaSuffix: 'package',
+    packages: [
+      { key: 'basic', label: 'BASIC', price: 35000, tier: 'Starter', description: 'Simple online booking with calendar management.' },
+      { key: 'business', label: 'BUSINESS', price: 65000, tier: 'Professional', description: 'Booking + staff scheduling and client notifications.', isRecommended: true },
+      { key: 'advanced', label: 'ADVANCED', price: 120000, tier: 'Premium', description: 'Complete booking platform with advanced features.' },
+    ],
+    modules: [
+      { key: 'mpesa', label: 'M-PESA PAYMENT GATEWAY', price: 15000, description: 'Accept M-Pesa mobile payments.' },
+      { key: 'cardPayment', label: 'CARD PAYMENT INTEGRATION', price: 25000, description: 'Accept credit and debit card payments.' },
+    ],
+    features: [
+      { key: 'staffPortal', label: 'STAFF PORTAL', price: 20000, description: 'Staff dashboard for managing appointments.' },
+      { key: 'clientPortal', label: 'CLIENT PORTAL', price: 25000, description: 'Clients can view and manage their bookings.' },
+      { key: 'reminders', label: 'AUTOMATED REMINDERS', price: 15000, description: 'SMS and email reminders for appointments.' },
+      { key: 'reviews', label: 'RATINGS & REVIEWS', price: 10000, description: 'Client feedback and rating system.' },
+    ],
+  },
+  'ai-automation': {
+    enableMonthlyPricing: false,
+    customizeDescription: 'Automate your business with AI workflows, customer support automation, and intelligent task management.',
+    ctaPrefix: 'Ready to get started with the right',
+    ctaSuffix: 'package',
+    packages: [
+      { key: 'basic', label: 'BASIC', price: 60000, tier: 'Starter', description: 'AI automation for simple workflows and tasks.' },
+      { key: 'business', label: 'BUSINESS', price: 120000, tier: 'Professional', description: 'Customer support automation and workflow optimization.', isRecommended: true },
+      { key: 'advanced', label: 'ADVANCED', price: 200000, tier: 'Enterprise', description: 'Full AI platform with predictive analytics.' },
+    ],
+    modules: [
+      { key: 'chatbot', label: 'AI CHATBOT', price: 40000, description: 'Intelligent chatbot for customer interactions.' },
+      { key: 'voiceAI', label: 'VOICE AI ASSISTANT', price: 60000, description: 'Voice-based AI for customer service.' },
+    ],
+    features: [
+      { key: 'workflows', label: 'CUSTOM AI WORKFLOWS', price: 45000, description: 'Build custom automation workflows.' },
+      { key: 'analytics', label: 'PREDICTIVE ANALYTICS', price: 50000, description: 'AI-powered insights and forecasting.' },
+      { key: 'integration', label: 'SYSTEM INTEGRATION', price: 35000, description: 'Integrate with existing business systems.' },
+      { key: 'reporting', label: 'AUTOMATED REPORTING', price: 25000, description: 'Generate AI-powered reports.' },
+    ],
+  },
+  'mobile-development': {
+    enableMonthlyPricing: false,
+    customizeDescription: 'Build a custom mobile app with native performance, offline support, and App Store-ready features.',
+    ctaPrefix: 'Ready to get started with the right',
+    ctaSuffix: 'package',
+    packages: [
+      { key: 'basic', label: 'BASIC', price: 80000, tier: 'Starter', description: 'Simple cross-platform mobile app with core features.' },
+      { key: 'business', label: 'BUSINESS', price: 150000, tier: 'Professional', description: 'Advanced app with backend APIs and push notifications.', isRecommended: true },
+      { key: 'advanced', label: 'ADVANCED', price: 250000, tier: 'Enterprise', description: 'Full-featured native app with advanced integrations.' },
+    ],
+    modules: [
+      { key: 'appStore', label: 'APP STORE DEPLOYMENT', price: 20000, description: 'Deploy to iOS App Store and Google Play.' },
+      { key: 'pushNotifications', label: 'PUSH NOTIFICATIONS', price: 15000, description: 'Real-time push notifications for users.' },
+    ],
+    features: [
+      { key: 'offlineMode', label: 'OFFLINE DATA SYNC', price: 30000, description: 'Work offline with automatic sync when online.' },
+      { key: 'nativePerformance', label: 'NATIVE PERFORMANCE OPTIMIZATION', price: 40000, description: 'Optimize for speed and responsiveness.' },
+      { key: 'analytics', label: 'IN-APP ANALYTICS', price: 20000, description: 'Track user behavior and app performance.' },
+      { key: 'paymentGateway', label: 'IN-APP PAYMENTS', price: 25000, description: 'Integrated payment processing in-app.' },
+    ],
+  },
+  'digital-marketing': {
+    enableMonthlyPricing: false,
+    customizeDescription: 'Launch a targeted marketing campaign with social media ads, SEO, and performance tracking.',
+    ctaPrefix: 'Ready to get started with the right',
+    ctaSuffix: 'package',
+    packages: [
+      { key: 'basic', label: 'STARTER', price: 25000, tier: 'Starter', description: 'Social media setup and basic content strategy.' },
+      { key: 'business', label: 'GROWTH', price: 50000, tier: 'Professional', description: 'Ads, SEO, and content marketing included.', isRecommended: true },
+      { key: 'advanced', label: 'ACCELERATOR', price: 100000, tier: 'Premium', description: 'Full-service campaign with daily optimization.' },
+    ],
+    modules: [
+      { key: 'seoAudit', label: 'SEO AUDIT & OPTIMIZATION', price: 15000, description: 'In-depth SEO audit and optimization plan.' },
+      { key: 'contentCreation', label: 'CONTENT CREATION', price: 20000, description: 'Professional content writing and design.' },
+    ],
+    features: [
+      { key: 'socialAds', label: 'SOCIAL MEDIA ADS', price: 30000, description: 'Facebook, Instagram, and LinkedIn campaigns.' },
+      { key: 'searchAds', label: 'GOOGLE SEARCH ADS', price: 25000, description: 'Pay-per-click search advertising.' },
+      { key: 'emailMarketing', label: 'EMAIL MARKETING SETUP', price: 15000, description: 'Email automation and campaigns.' },
+      { key: 'analytics', label: 'CAMPAIGN ANALYTICS', price: 12000, description: 'Detailed performance tracking and reports.' },
+    ],
+  },
+}

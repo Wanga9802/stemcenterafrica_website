@@ -53,6 +53,8 @@ export default function ServiceListing() {
           </div>
         ))}
       </div>
+
+      {/* Removed website pricing cards from listing per request */}
     </section>
   );
 }

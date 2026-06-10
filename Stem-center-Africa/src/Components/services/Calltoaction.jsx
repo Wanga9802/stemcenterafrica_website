@@ -1,7 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import '../../Styles/CallToAction.css';
 
-export default function CallToAction() {
+export default function CallToAction({
+  badgeText = "Ready to build something great?",
+  titlePrefix = "Ready to get started with the right",
+  serviceTitle = null,
+  titleSuffix = "package",
+  titleAccent = "Starts With One Conversation.",
+  description = "Whether you need a website, a booking system, a mobile app, or full AI automation — we scope it, price it fairly, and build it right.",
+  buttonText = "Request a Solution",
+  serviceName = "solution"
+}) {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -14,6 +23,10 @@ export default function CallToAction() {
     if (currentSection) sectionObs.observe(currentSection);
     return () => { if (currentSection) sectionObs.unobserve(currentSection); };
   }, []);
+
+  // Generate WhatsApp message
+  const whatsappMessage = `Hi, I'd like to inquire about your ${serviceName} services`;
+  const whatsappUrl = `https://wa.me/254759924543?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <section className="cta-section" ref={sectionRef}>
@@ -32,39 +45,44 @@ export default function CallToAction() {
             {/* Badge */}
             <div className="cta-card__badge">
               <span className="cta-card__badge-dot" />
-              Ready to build something great?
+              {badgeText}
             </div>
 
             {/* Heading */}
             <h2 className="cta-card__title">
-              Your Next Digital Product{" "}
-              <span className="cta-card__title--accent">
-                Starts With One Conversation.
-              </span>
+              {titlePrefix}{" "}
+              {serviceTitle ? (
+                <span style={{ color: '#E91E8C' }}>
+                  {serviceTitle} {titleSuffix}
+                </span>
+              ) : (
+                titleAccent && (
+                  <span className="cta-card__title--accent">
+                    {titleAccent}
+                  </span>
+                )
+              )}
             </h2>
 
-            {/* Subtitle */}
-            <p className="cta-card__subtitle">
-              Whether you need a website, a booking system, a mobile app, or full
-              AI automation — we scope it, price it fairly, and build it right.
-            </p>
-
-         
+            {/* Subtitle (conditionally rendered) */}
+            {description && (
+              <p className="cta-card__subtitle">
+                {description}
+              </p>
+            )}
 
             {/* Actions */}
             <div className="cta-card__actions">
               <a
-                href="https://wa.me/254759924543?text=Hi%2C%20I%27d%20like%20to%20request%20a%20solution"
+                href={whatsappUrl}
                 className="cta-btn cta-btn--primary"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <span className="cta-btn__icon"></span>
-                Request a Solution
+                {buttonText}
               </a>
             </div>
-
-           
 
           </div>
         </div>

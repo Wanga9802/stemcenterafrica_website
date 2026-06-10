@@ -231,3 +231,122 @@
     padding: 28px 22px 26px;
   }
 }
+
+/* ─── Price Cards (Website packages) ───────────────────────── */
+.service-listing__pricing {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  padding-top: 24px;
+}
+
+.service-listing__pricing-title {
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 800;
+  color: #101F3C;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 18px;
+  text-align: center;
+}
+
+.price-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.price-card--promo {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 10px;
+  padding: 28px 28px 28px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.price-card__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--badge-text);
+  background: var(--badge-bg);
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px !important;
+}
+
+.price-card__title-big {
+  font-size: 28px;
+  font-weight: 900;
+  color: #101F3C;
+  margin: 0 0 6px !important;
+  text-transform: uppercase;
+}
+
+.price-card__desc {
+  color: var(--text-body);
+  margin: 0 0 6px !important;
+}
+
+.price-card__price {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1843c8;
+  margin: 0 0 12px !important;
+}
+
+.price-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-feature);
+  flex-grow: 1;
+}
+
+.price-card__list li::before {
+  content: "\2713";
+  color: var(--check-color);
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+.price-card__cta {
+  margin-top: 0;
+}
+
+.price-card__btn {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: #101F3C;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.price-card__btn:hover {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-color: transparent;
+}
+
+@media (max-width: 1024px) and (min-width: 641px) {
+  .price-cards__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .price-cards__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
