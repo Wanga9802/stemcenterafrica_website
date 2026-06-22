@@ -1,11 +1,7 @@
-/* ─────────────────────────────────────────────
-   ServiceForm.css  –  STEM Center Africa Theme
-   Dark maroon/burgundy + hot-pink accent
-   Fonts: Syne (display) · DM Sans (body)
-───────────────────────────────────────────── */
+
 
 /* ── Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 /* ── Design tokens ── */
 :root {
@@ -24,23 +20,28 @@
   --sf-input-bg:     rgba(255,255,255,0.04);
   --sf-input-focus:  rgba(255, 77, 158, 0.18);
 
-  --sf-radius-card:  28px;
-  --sf-radius-input: 14px;
+  --sf-radius-card:  9px;
+  --sf-radius-input: 9px;
   --sf-radius-pill:  999px;
 
-  --ff-display: 'Syne', sans-serif;
+  --ff-display: 'DM Sans', sans-serif;
   --ff-body:    'DM Sans', sans-serif;
 }
 
 /* ── Page shell ── */
 .sf-page {
   position: relative;
-  background: var(--sf-bg);
   color: var(--sf-text);
   min-height: 100vh;
   padding: 2.5rem 1.5rem 5rem;
   font-family: var(--ff-body);
   overflow-x: hidden;
+  background: linear-gradient(180deg, #15030c 0%, #0f060b 45%, #090508 100%);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255, 77, 158, 0.14), transparent 24%),
+    radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.05), transparent 20%),
+    linear-gradient(180deg, #15030c 0%, #0f060b 45%, #090508 100%);
+  background-blend-mode: screen, screen, normal;
 }
 
 /* dot-grid atmosphere layer */
@@ -49,8 +50,10 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  opacity: 0.55;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 28px 28px;
+  filter: blur(0.5px);
 }
 
 .sf-shell {
@@ -128,13 +131,14 @@
 
 /* ── Package card (right column of hero) ── */
 .sf-hero__pkg-card {
-  background: var(--sf-surface);
-  border: 1px solid var(--sf-border-hot);
+  background: rgba(29, 12, 26, 0.96);
+  border: 1px solid rgba(255, 77, 158, 0.2);
   border-radius: var(--sf-radius-card);
   padding: 1.75rem;
-  box-shadow: 0 0 60px rgba(255, 77, 158, 0.08);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
   position: sticky;
   top: 1.5rem;
+  backdrop-filter: blur(8px);
 }
 
 .sf-hero__pkg-label {
@@ -213,16 +217,21 @@
   border-radius: 18px;
   padding: 1rem 1.5rem;
   margin-bottom: 1.75rem;
-  overflow-x: auto;
+  overflow: hidden;
   scrollbar-width: none;
 }
 .sf-step-rail::-webkit-scrollbar { display: none; }
+
+.sf-step-rail__track {
+  display: flex;
+  gap: 0;
+  align-items: center;
+}
 
 .sf-step-rail__item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  flex: 1;
   min-width: max-content;
   padding-right: 1rem;
 }
@@ -263,15 +272,20 @@
 }
 
 .sf-card {
-  background: var(--sf-surface);
-  border: 1px solid var(--sf-border);
+  background: #ffffff;
+  border: 1px solid rgba(16, 31, 60, 0.12);
   border-radius: var(--sf-radius-card);
   padding: 2rem;
-  transition: border-color 0.25s;
+  box-shadow: 0 22px 80px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.sf-card:hover {
+  transform: translateY(-1px);
 }
 
 .sf-card:focus-within {
-  border-color: var(--sf-border-hot);
+  border-color: rgba(16, 31, 60, 0.18);
 }
 
 .sf-card__head {
@@ -285,7 +299,7 @@
   flex-shrink: 0;
   width: 48px;
   height: 48px;
-  border-radius: 14px;
+  border-radius: 4 sf-fieldspx;
   background: var(--sf-pink-dim);
   border: 1px solid var(--sf-border-hot);
   color: var(--sf-pink);
@@ -301,15 +315,23 @@
   font-family: var(--ff-display);
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--sf-text);
+  color: #101F3C;
   margin: 0 0 0.3rem;
 }
 
 .sf-card__sub {
   font-size: 0.9rem;
-  color: var(--sf-muted);
+  color: #101F3C;
   margin: 0;
   line-height: 1.6;
+}
+
+.sf-field__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #101F3C;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
 /* ── Grid layout ── */
@@ -339,15 +361,17 @@
 .sf-field__label {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--sf-text);
+  color: #101F3C;
   letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
 .sf-input {
-  background: var(--sf-input-bg);
-  border: 1px solid var(--sf-border);
-  border-radius: var(--sf-radius-input);
-  color: var(--sf-text);
+  background: #F4EFF3;
+  border: 1px solid rgba(16, 31, 60, 0.14);
+  border-radius: 0px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  color: #101F3C;
   font-family: var(--ff-body);
   font-size: 0.95rem;
   outline: none;
@@ -356,11 +380,13 @@
   width: 100%;
 }
 
-.sf-input::placeholder { color: rgba(245,238,243,0.28); }
+.sf-input::placeholder {
+  color: rgba(16, 31, 60, 0.38);
+}
 
 .sf-input:focus {
-  border-color: var(--sf-pink);
-  background: var(--sf-input-focus);
+  border-color: #FF4D9E;
+  background: #fff;
   box-shadow: 0 0 0 4px rgba(255, 77, 158, 0.1);
 }
 
@@ -488,19 +514,35 @@
   color: var(--sf-pink);
 }
 
+.sf-submit-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
 /* ── Buttons ── */
 .sf-btn {
   border: none;
-  border-radius: var(--sf-radius-pill);
+  border-radius: 5px;
   cursor: pointer;
   font-family: var(--ff-body);
   font-size: 0.95rem;
   font-weight: 700;
-  padding: 0.9rem 2rem;
+  padding: 0.55rem 1.2rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
 }
 
+.sf-btn__icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
 .sf-btn:hover  { transform: translateY(-1px); }
 .sf-btn:active { transform: translateY(0); }
 
@@ -512,6 +554,27 @@
 
 .sf-btn--primary:hover {
   box-shadow: 0 10px 32px rgba(255, 77, 158, 0.52);
+}
+
+.sf-btn--secondary {
+  background: #ffffff;
+  color: #101F3C;
+  border: 1px solid rgba(16, 31, 60, 0.16);
+  box-shadow: 0 10px 30px rgba(16, 31, 60, 0.05);
+}
+
+.sf-btn--secondary:hover {
+  background: #f2edf2;
+}
+
+.sf-btn--tertiary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.sf-btn--tertiary:hover {
+  background: rgba(255, 77, 158, 0.14);
 }
 
 .sf-btn--ghost {
@@ -566,6 +629,29 @@
   .sf-hero__pkg-card {
     position: static;
   }
+
+  .sf-step-rail__track {
+    animation: stepMarquee 15s linear infinite;
+  }
+}
+
+@media (max-width: 640px) {
+  .sf-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-hero__pkg-card {
+    position: static;
+  }
+
+  .sf-step-rail__track {
+    animation: stepMarquee 12s linear infinite;
+  }
+}
+
+@keyframes stepMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @media (max-width: 640px) {
@@ -587,11 +673,18 @@
 
   .sf-submit-bar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     padding: 1.4rem;
   }
 
-  .sf-submit-bar .sf-btn--primary {
+  .sf-submit-bar__actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .sf-submit-bar .sf-btn {
     width: 100%;
     text-align: center;
   }

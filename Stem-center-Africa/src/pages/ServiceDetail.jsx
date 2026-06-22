@@ -28,12 +28,19 @@ function ServiceDetail() {
   const heroConfig = SERVICE_HERO_CONFIG[serviceId] || {};
   const detailConfig = SERVICE_DETAIL_CONFIG[serviceId];
 
+  const packageList = useMemo(() => {
+    if (pricingMode === 'monthly' && detailConfig?.enableMonthlyPricing) {
+      return detailConfig.monthlyPackages || detailConfig.packages || [];
+    }
+    return detailConfig?.packages || [];
+  }, [detailConfig, pricingMode]);
+
   // Initialize selected package to the recommended one if not set
   const initialPackage = useMemo(() => {
     if (selectedPackageKey) return selectedPackageKey;
-    const recommended = detailConfig?.packages.find((p) => p.isRecommended);
-    return recommended?.key || detailConfig?.packages[2]?.key || detailConfig?.packages[0]?.key;
-  }, [selectedPackageKey, detailConfig]);
+    const recommended = packageList.find((p) => p.isRecommended);
+    return recommended?.key || packageList[2]?.key || packageList[0]?.key;
+  }, [selectedPackageKey, packageList]);
 
   // Set initial package if needed
   useMemo(() => {
@@ -43,8 +50,8 @@ function ServiceDetail() {
   }, [initialPackage, selectedPackageKey]);
 
   const selectedPackage = useMemo(
-    () => detailConfig?.packages.find((p) => p.key === selectedPackageKey) || detailConfig?.packages[0],
-    [selectedPackageKey, detailConfig],
+    () => packageList.find((p) => p.key === selectedPackageKey) || packageList[0],
+    [selectedPackageKey, packageList],
   );
 
   const selectedModules = useMemo(
@@ -65,7 +72,7 @@ function ServiceDetail() {
   );
 
   const packagePrice = pricingMode === 'monthly' && detailConfig?.enableMonthlyPricing
-    ? Math.round(selectedPackage.price / 10)
+    ? selectedPackage.monthlyPrice
     : selectedPackage.price;
 
   const estimatedTotal = packagePrice + addonsTotal;
@@ -147,7 +154,7 @@ function ServiceDetail() {
 
           {/* Package Cards */}
           <div className="sd-packages-grid">
-            {detailConfig.packages.map((pkg) => (
+            {packageList.map((pkg) => (
               <div
                 key={pkg.key}
                 className={`sd-package-card ${pkg.isRecommended ? 'recommended' : ''}`}
@@ -156,19 +163,36 @@ function ServiceDetail() {
                   <div className="sd-package-recommended-badge">RECOMMENDED</div>
                 )}
                 <div>
-                  <div className="sd-package-tier-badge">{pkg.tier}</div>
+                  {pkg.tier && (
+                    <div className="sd-package-tier-badge">{pkg.tier}</div>
+                  )}
                   <h3 className="sd-package-name">{pkg.label}</h3>
-                  <p className="sd-package-description">{pkg.description}</p>
-                  <div className="sd-package-price-section">
-                    <div className="sd-package-price">
-                      {pricingMode === 'monthly' && detailConfig.enableMonthlyPricing
-                        ? `KSH ${Math.round(pkg.price / 10).toLocaleString()}`
-                        : `KSH ${pkg.price.toLocaleString()}`}
-                      {pricingMode === 'monthly' && detailConfig.enableMonthlyPricing && (
-                        <span className="sd-package-price-monthly">/mo</span>
+                  {pricingMode === 'oneTime' && pkg.description && (
+                    <p className="sd-package-description">{pkg.description}</p>
+                  )}
+                  {pricingMode === 'monthly' && detailConfig.enableMonthlyPricing ? (
+                    <div className="sd-package-price-section--monthly">
+                      <div className="sd-package-price--monthly-large">
+                        ${(pkg.monthlyPrice / 100).toFixed(0)}
+                        <span className="sd-package-mo">/MO</span>
+                      </div>
+                      <div className="sd-package-kes-badge">KES {Math.round((pkg.monthlyPrice / 100) * 130).toLocaleString()}/mo</div>
+                      <div className="sd-package-setup-fee--monthly">
+                        ${Math.round(pkg.setupFee / 100)} / KES {pkg.setupFee.toLocaleString()} one-time setup fee
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="sd-package-price-section">
+                      <div className="sd-package-price">
+                        KSH {pkg.price.toLocaleString()}
+                      </div>
+                      {pkg.retainerFee && (
+                        <div className="sd-package-retainer-fee">
+                          Retainer fee: KES {pkg.retainerFee.toLocaleString()} / mo.
+                        </div>
                       )}
                     </div>
-                  </div>
+                  )}
                   {pkg.features?.length > 0 && (
                     <ul className="sd-package-features">
                       {pkg.features.map((feature, idx) => (
@@ -186,7 +210,11 @@ function ServiceDetail() {
                   }`}
                   onClick={() => navigate(`/service-request?service=${service.slug}&package=${pkg.key}`)}
                 >
-                  {pkg.isRecommended ? 'CHOOSE THIS PLAN' : 'START NOW'}
+                  {pricingMode === 'monthly'
+                    ? 'CHOOSE MONTHLY PLAN'
+                    : service?.slug === 'digital-marketing'
+                    ? 'MANAGE MY SOCIALS'
+                    : 'START APP PROJECT'}
                 </button>
               </div>
             ))}
@@ -212,7 +240,7 @@ function ServiceDetail() {
                   <h3 className="sd-step-title">Select main package</h3>
                 </div>
                 <div className="sd-packages-selector-grid">
-                  {detailConfig.packages.map((pkg) => (
+                  {packageList.map((pkg) => (
                     <button
                       key={pkg.key}
                       type="button"
@@ -225,13 +253,15 @@ function ServiceDetail() {
                       <div className="sd-package-option-price">
                         KSH{' '}
                         {pricingMode === 'monthly' && detailConfig.enableMonthlyPricing
-                          ? Math.round(pkg.price / 10).toLocaleString()
+                          ? pkg.monthlyPrice.toLocaleString()
                           : pkg.price.toLocaleString()}
                         {pricingMode === 'monthly' && detailConfig.enableMonthlyPricing
                           ? ' /mo'
                           : ''}
                       </div>
-                      <div className="sd-package-option-details">{pkg.description}</div>
+                      {pricingMode === 'oneTime' && pkg.description && (
+                        <div className="sd-package-option-details">{pkg.description}</div>
+                      )}
                     </button>
                   ))}
                 </div>

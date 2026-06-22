@@ -169,6 +169,47 @@
   font-weight: 400;
 }
 
+/* Monthly Pricing Layout */
+.sd-package-price-section--monthly {
+  margin: 1rem 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.sd-package-price--monthly-large {
+  font-size: 32px;
+  font-weight: 900;
+  color: #FF4D9E;
+  font-family: var(--font-family);
+  letter-spacing: -1px;
+}
+
+.sd-package-mo {
+  font-size: 24px;
+  margin-left: 0.3rem;
+  font-weight: 700;
+}
+
+.sd-package-kes-badge {
+  display: inline-block;
+  background: #e0e7ff;
+  color: var(--color-primary);
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-top: 0.8rem;
+  font-family: var(--font-family);
+}
+
+.sd-package-setup-fee--monthly {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #7c8593;
+  font-weight: 500;
+}
+
+/* One-Time Pricing Layout */
 .sd-package-price-section {
   margin: 0 0;
   padding-bottom: 0.2rem;
@@ -182,9 +223,30 @@
   font-family: var(--font-family);
 }
 
+.sd-package-retainer-fee {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  background: #eef2ff;
+  color: #1e40af;
+  padding: 0.65rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  max-width: fit-content;
+}
+
 .sd-package-price-monthly {
   font-size: 0.85rem;
   color: var(--color-text-muted);
+  margin-left: 0.4rem;
+}
+
+.sd-package-setup-fee {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  color: #475569;
+  font-weight: 600;
 }
 
 .sd-package-features {

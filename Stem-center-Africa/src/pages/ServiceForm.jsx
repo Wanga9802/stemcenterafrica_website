@@ -1,6 +1,9 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { SERVICES, SERVICE_DETAIL_CONFIG } from '../data/servicesData';
+import sendIcon from '../assets/send.png';
+import mailIcon from '../assets/mail.png';
+import communicationIcon from '../assets/communication.png';
 import '../Styles/ServiceForm.css';
 
 export default function ServiceForm() {
@@ -45,13 +48,14 @@ export default function ServiceForm() {
   const [websiteIssue, setWebsiteIssue]           = useState('');
   const [selectedAddons, setSelectedAddons]       = useState({});
   const [timeline, setTimeline]                   = useState('Immediately');
-  const [budget, setBudget]                       = useState('Select');
+  const [budget, setBudget]                       = useState('');
   const [city, setCity]                           = useState('');
   const [contactChannel, setContactChannel]       = useState('WhatsApp');
   const [fullName, setFullName]                   = useState('');
   const [whatsapp, setWhatsapp]                   = useState('');
   const [email, setEmail]                         = useState('');
   const [submitted, setSubmitted]                 = useState(false);
+  const formRef = useRef(null);
 
   const addons = useMemo(
     () => [...(detailConfig.modules || []), ...(detailConfig.features || [])],
@@ -62,11 +66,112 @@ export default function ServiceForm() {
     setSelectedAddons((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
+  const createEmailBody = () => {
+    const subject = `Service inquiry: ${service.title} - ${selectedPackage?.label}`;
+    const body = [
+      `Hello,`,
+      '',
+      `I would like to request a quote for the ${selectedPackage?.label} package (${service.title}).`,
+      '',
+      `Business name: ${businessName}`,
+      `Industry / sector: ${industry}`,
+      `Description: ${businessDescription}`,
+      `Needs: ${needs}`,
+      `Main goal: ${mainGoal}`,
+      `Has website: ${hasWebsite}`,
+      `Website link: ${websiteLink}`,
+      `Website issue: ${websiteIssue}`,
+      `Timeline: ${timeline}`,
+      `Budget: ${budget}`,
+      `City: ${city}`,
+      `Preferred contact channel: ${contactChannel}`,
+      `WhatsApp: ${whatsapp}`,
+      `Email: ${email}`,
+      '',
+      `Thanks,`,
+    ].join('\n');
+
+    // Use Gmail web compose URL so users signed into Gmail get a direct compose window
+    const to = 'info@stemcenter-africa.com';
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    return gmailUrl;
+  };
+
+  const getSelectedAddonsText = () => {
+    const selected = addons.filter((addon) => selectedAddons[addon.key]);
+    if (!selected.length) return 'None';
+    return selected.map((addon) => `${addon.label} (KSH ${addon.price.toLocaleString()})`).join(', ');
+  };
+
+  const createWhatsAppBody = () => {
+    const selectedPackagePrice = selectedPackage?.price ? `KSH ${selectedPackage.price.toLocaleString()}` : 'N/A';
+    return [
+      `Hi,`,
+      '',
+      `I would like to request a quote for the ${selectedPackage?.label} package (${selectedPackagePrice}) for the ${service.title} service.`,
+      '',
+      `01 - Business Information`,
+      `Company name: ${businessName}`,
+      `Industry / sector: ${industry}`,
+      `Business description: ${businessDescription}`,
+      '',
+      `02 - Your Need`,
+      `Needs: ${needs}`,
+      `Main goal: ${mainGoal}`,
+      `Has website: ${hasWebsite}`,
+      `Website link: ${websiteLink || 'N/A'}`,
+      `Website issue: ${websiteIssue || 'N/A'}`,
+      '',
+      `03 - Add-ons`,
+      `Selected add-ons: ${getSelectedAddonsText()}`,
+      '',
+      `04 - Timeline & Budget`,
+      `Timeline: ${timeline}`,
+      `Budget: ${budget}`,
+      '',
+      `05 - Location & Communication`,
+      `City: ${city}`,
+      `Preferred channel: ${contactChannel}`,
+      '',
+      `06 - Contact`,
+      `Full name: ${fullName}`,
+      `WhatsApp number: ${whatsapp}`,
+      `Email address: ${email}`,
+      '',
+      `Thanks,`,
+    ].join('\n');
+  };
+
+  const createWhatsAppLink = () => `https://wa.me/254759924543?text=${encodeURIComponent(createWhatsAppBody())}`;
+
+  const validateForm = () => {
+    if (!formRef.current) return false;
+    return formRef.current.reportValidity();
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!validateForm()) return;
+    window.open(createWhatsAppLink(), '_blank');
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const handleEmailSend = (event) => {
+    event.preventDefault();
+    if (!validateForm()) return;
+    setSubmitted(true);
+    // Open Gmail compose in a new tab (falls back to mail client if user isn't signed into Gmail)
+    try {
+      window.open(createEmailBody(), '_blank');
+    } catch (e) {
+      window.location.href = createEmailBody();
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const waMessage = encodeURIComponent(`Hi, I would like to discuss a quote for the ${selectedPackage?.label} package.`);
+  const whatsappLink = `https://wa.me/254759924543?text=${waMessage}`;
 
   const steps = [
     { num: '01', title: 'Business' },
@@ -130,12 +235,14 @@ export default function ServiceForm() {
 
         {/* ── step rail ── */}
         <div className="sf-step-rail" aria-label="Form sections">
-          {steps.map((s) => (
-            <div key={s.num} className="sf-step-rail__item">
-              <span className="sf-step-rail__num">{s.num}</span>
-              <span className="sf-step-rail__lbl">{s.title}</span>
-            </div>
-          ))}
+          <div className="sf-step-rail__track">
+            {steps.map((s) => (
+              <div key={s.num} className="sf-step-rail__item">
+                <span className="sf-step-rail__num">{s.num}</span>
+                <span className="sf-step-rail__lbl">{s.title}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {submitted ? (
@@ -154,7 +261,7 @@ export default function ServiceForm() {
             </button>
           </div>
         ) : (
-          <form className="sf-form" onSubmit={handleSubmit} noValidate>
+          <form className="sf-form" onSubmit={handleSubmit} noValidate ref={formRef}>
 
             {/* ── 01 Business ── */}
             <section className="sf-card">
@@ -173,6 +280,7 @@ export default function ServiceForm() {
                     value={businessName}
                     onChange={(e) => setBusinessName(e.target.value)}
                     placeholder="Your business name"
+                    required
                   />
                 </label>
                 <label className="sf-field">
@@ -182,6 +290,7 @@ export default function ServiceForm() {
                     value={industry}
                     onChange={(e) => setIndustry(e.target.value)}
                     placeholder="Hotel, clinic, school, shop…"
+                    required
                   />
                 </label>
               </div>
@@ -193,6 +302,7 @@ export default function ServiceForm() {
                   onChange={(e) => setBusinessDescription(e.target.value)}
                   placeholder="Briefly describe your business."
                   rows={4}
+                  required
                 />
               </label>
             </section>
@@ -214,12 +324,13 @@ export default function ServiceForm() {
                   onChange={(e) => setNeeds(e.target.value)}
                   placeholder="Website, booking system, mobile app, software, automation, marketing…"
                   rows={4}
+                  required
                 />
               </label>
               <div className="sf-grid-2">
                 <label className="sf-field">
                   <span className="sf-field__label">Main goal</span>
-                  <select className="sf-input sf-input--select" value={mainGoal} onChange={(e) => setMainGoal(e.target.value)}>
+                  <select className="sf-input sf-input--select" value={mainGoal} onChange={(e) => setMainGoal(e.target.value)} required>
                     <option value="">Select a goal</option>
                     <option>Launch a new platform</option>
                     <option>Improve an existing system</option>
@@ -229,7 +340,7 @@ export default function ServiceForm() {
                 </label>
                 <label className="sf-field">
                   <span className="sf-field__label">Do you already have a website?</span>
-                  <select className="sf-input sf-input--select" value={hasWebsite} onChange={(e) => setHasWebsite(e.target.value)}>
+                  <select className="sf-input sf-input--select" value={hasWebsite} onChange={(e) => setHasWebsite(e.target.value)} required>
                     <option>No</option>
                     <option>Yes</option>
                   </select>
@@ -244,6 +355,7 @@ export default function ServiceForm() {
                       value={websiteLink}
                       onChange={(e) => setWebsiteLink(e.target.value)}
                       placeholder="https://example.com"
+                      required={hasWebsite === 'Yes'}
                     />
                   </label>
                   <label className="sf-field sf-field--full">
@@ -254,6 +366,7 @@ export default function ServiceForm() {
                       onChange={(e) => setWebsiteIssue(e.target.value)}
                       placeholder="What needs fixing or improving?"
                       rows={3}
+                      required={hasWebsite === 'Yes'}
                     />
                   </label>
                 </>
@@ -316,12 +429,12 @@ export default function ServiceForm() {
                 </label>
                 <label className="sf-field">
                   <span className="sf-field__label">Estimated budget</span>
-                  <select className="sf-input sf-input--select" value={budget} onChange={(e) => setBudget(e.target.value)}>
-                    <option>Select</option>
-                    <option>KSH 50,000 – 150,000</option>
-                    <option>KSH 150,000 – 350,000</option>
-                    <option>KSH 350,000 – 700,000</option>
-                    <option>KSH 700,000+</option>
+                  <select className="sf-input sf-input--select" value={budget} onChange={(e) => setBudget(e.target.value)} required>
+                    <option value="">Select</option>
+                    <option value="50-150">KSH 50,000 – 150,000</option>
+                    <option value="150-350">KSH 150,000 – 350,000</option>
+                    <option value="350-700">KSH 350,000 – 700,000</option>
+                    <option value="700+">KSH 700,000+</option>
                   </select>
                 </label>
               </div>
@@ -344,11 +457,12 @@ export default function ServiceForm() {
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="Nairobi, Mombasa, Kisumu…"
+                    required
                   />
                 </label>
                 <label className="sf-field">
                   <span className="sf-field__label">Preferred channel</span>
-                  <select className="sf-input sf-input--select" value={contactChannel} onChange={(e) => setContactChannel(e.target.value)}>
+                  <select className="sf-input sf-input--select" value={contactChannel} onChange={(e) => setContactChannel(e.target.value)} required>
                     <option>WhatsApp</option>
                     <option>Email</option>
                     <option>Phone call</option>
@@ -374,6 +488,7 @@ export default function ServiceForm() {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="Your name"
+                    required
                   />
                 </label>
                 <label className="sf-field">
@@ -383,6 +498,7 @@ export default function ServiceForm() {
                     value={whatsapp}
                     onChange={(e) => setWhatsapp(e.target.value)}
                     placeholder="+254 700 000 000"
+                    required
                   />
                 </label>
               </div>
@@ -394,6 +510,7 @@ export default function ServiceForm() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
                   type="email"
+                  required
                 />
               </label>
             </section>
@@ -406,9 +523,20 @@ export default function ServiceForm() {
                   We'll prepare a tailored proposal for <strong>{selectedPackage?.label}</strong> within 24 hours.
                 </p>
               </div>
-              <button type="submit" className="sf-btn sf-btn--primary">
-                Send Request →
-              </button>
+              <div className="sf-submit-bar__actions">
+                <button type="submit" className="sf-btn sf-btn--primary">
+                  <img src={sendIcon} alt="Send icon" className="sf-btn__icon" />
+                  Click to Send
+                </button>
+                <button type="button" className="sf-btn sf-btn--secondary" onClick={handleEmailSend}>
+                  <img src={mailIcon} alt="Email icon" className="sf-btn__icon" />
+                  Send by email instead
+                </button>
+                <a href={whatsappLink} target="_blank" rel="noreferrer" className="sf-btn sf-btn--tertiary">
+                  <img src={communicationIcon} alt="Communication icon" className="sf-btn__icon" />
+                  Talk to Us Now
+                </a>
+              </div>
             </div>
 
           </form>
