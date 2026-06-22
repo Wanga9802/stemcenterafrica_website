@@ -66,37 +66,6 @@ export default function ServiceForm() {
     setSelectedAddons((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const createEmailBody = () => {
-    const subject = `Service inquiry: ${service.title} - ${selectedPackage?.label}`;
-    const body = [
-      `Hello,`,
-      '',
-      `I would like to request a quote for the ${selectedPackage?.label} package (${service.title}).`,
-      '',
-      `Business name: ${businessName}`,
-      `Industry / sector: ${industry}`,
-      `Description: ${businessDescription}`,
-      `Needs: ${needs}`,
-      `Main goal: ${mainGoal}`,
-      `Has website: ${hasWebsite}`,
-      `Website link: ${websiteLink}`,
-      `Website issue: ${websiteIssue}`,
-      `Timeline: ${timeline}`,
-      `Budget: ${budget}`,
-      `City: ${city}`,
-      `Preferred contact channel: ${contactChannel}`,
-      `WhatsApp: ${whatsapp}`,
-      `Email: ${email}`,
-      '',
-      `Thanks,`,
-    ].join('\n');
-
-    // Use Gmail web compose URL so users signed into Gmail get a direct compose window
-    const to = 'info@stemcenter-africa.com';
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    return gmailUrl;
-  };
-
   const getSelectedAddonsText = () => {
     const selected = addons.filter((addon) => selectedAddons[addon.key]);
     if (!selected.length) return 'None';
@@ -144,6 +113,28 @@ export default function ServiceForm() {
 
   const createWhatsAppLink = () => `https://wa.me/254759924543?text=${encodeURIComponent(createWhatsAppBody())}`;
 
+  const createEmailPayload = () => ({
+    serviceTitle: service.title,
+    selectedPackageLabel: selectedPackage?.label,
+    selectedPackagePrice: selectedPackage?.price ? `KSH ${selectedPackage.price.toLocaleString()}` : 'N/A',
+    businessName,
+    industry,
+    businessDescription,
+    needs,
+    mainGoal,
+    hasWebsite,
+    websiteLink,
+    websiteIssue,
+    selectedAddonsText: getSelectedAddonsText(),
+    timeline,
+    budget,
+    city,
+    contactChannel,
+    fullName,
+    whatsapp,
+    email,
+  });
+
   const validateForm = () => {
     if (!formRef.current) return false;
     return formRef.current.reportValidity();
@@ -157,17 +148,30 @@ export default function ServiceForm() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleEmailSend = (event) => {
+  const handleEmailSend = async (event) => {
     event.preventDefault();
     if (!validateForm()) return;
-    setSubmitted(true);
-    // Open Gmail compose in a new tab (falls back to mail client if user isn't signed into Gmail)
+
+    const payload = createEmailPayload();
+
     try {
-      window.open(createEmailBody(), '_blank');
-    } catch (e) {
-      window.location.href = createEmailBody();
+      const response = await fetch('/api/send-quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send request');
+      }
+
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      console.error('Email send failed', error);
+      alert('Could not submit your request. Please try again or use WhatsApp.');
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const waMessage = encodeURIComponent(`Hi, I would like to discuss a quote for the ${selectedPackage?.label} package.`);
