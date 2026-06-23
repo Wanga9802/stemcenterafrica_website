@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/Aboutus'
 import Courses from './pages/Courses'
@@ -16,6 +16,7 @@ import Footer from './Components/Footer'
 import WhatsAppWidget from './Components/WhatsAppWidget'
 import waIcon from './assets/whatsapp.png'
 import './App.css'
+// Admin UI removed per user request
 
 function App() {
   return (
@@ -34,7 +35,12 @@ function App() {
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:eventId" element={<EventDetail />} />
+        {/* Block any /admin path and redirect to home */}
+        <Route path="/admin" element={<Navigate to="/" replace />} />
         <Route path="/faqs" element={<Faqs />} />
+
+        
+
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
