@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import '../../Styles/ImpactHighlights.css';
+import { supabase } from '../../lib/supabaseClient';
 import iosAppImage from '../../assets/iOS app development.jpg';
 import roboticsImage from '../../assets/Robotics.jpg';
 import arduinoImage from '../../assets/ARDUINO.jpg';
@@ -7,7 +8,7 @@ import computerImage from '../../assets/computers.jpg';
 import pythonImage from '../../assets/python.jpg';
 import scratchImage from '../../assets/scratch.jpg';
  
-const programs = [
+const DEFAULT_PROGRAMS = [
   {
     id: 1,
     title: "STEM Expo/Challenge 2025",
@@ -45,8 +46,21 @@ const programs = [
     image: scratchImage,
   },
 ];
- 
-const n = programs.length;
+
+function getHighlightImage(imagePath) {
+  if (!imagePath) return ''
+  if (imagePath.startsWith('http') || imagePath.startsWith('/assets')) return imagePath
+  return supabase.storage.from('impact-highlights-images').getPublicUrl(imagePath).data.publicUrl
+}
+
+function normalizeHighlight(highlight) {
+  return {
+    id: highlight.id,
+    title: highlight.title || 'Impact Highlight',
+    description: highlight.summary || highlight.content || '',
+    image: getHighlightImage(highlight.image_path),
+  }
+}
  
 /*
  * Clone-based infinite carousel strategy:
@@ -69,8 +83,10 @@ export default function Impact() {
   // trackIndex: position within the EXTENDED list (0 = clone-last, 1..n = real, n+1 = clone-first)
   const [trackIndex, setTrackIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [programs, setPrograms] = useState(DEFAULT_PROGRAMS);
   const touchStartX = useRef(null);
   const transitionTimeout = useRef(null);
+  const n = programs.length;
  
   // The real active dot index (0-based)
   const dotIndex = trackIndex === 0 ? n - 1
@@ -83,6 +99,34 @@ export default function Impact() {
     ...programs,        // real cards
     programs[0],        // clone of first
   ];
+
+  useEffect(() => {
+    async function loadImpactHighlights() {
+      try {
+        const { data, error } = await supabase
+          .from('impact_highlights')
+          .select('id, title, summary, content, image_path, is_published, sort_order, created_at')
+          .order('sort_order', { ascending: true })
+          .order('created_at', { ascending: false })
+
+        if (error) throw error
+
+        const rows = data || []
+        const publishedRows = rows.filter(item => item.is_published)
+        const visibleRows = publishedRows.length > 0 ? publishedRows : rows
+        const livePrograms = visibleRows.map(normalizeHighlight).filter(item => item.title && item.description && item.image)
+
+        if (livePrograms.length > 0) {
+          setPrograms(livePrograms)
+          setTrackIndex(1)
+        }
+      } catch (error) {
+        console.error('Failed to load impact highlights:', error)
+      }
+    }
+
+    loadImpactHighlights()
+  }, [])
  
   const moveTo = (newTrackIndex, withTransition = true) => {
     setIsTransitioning(withTransition);

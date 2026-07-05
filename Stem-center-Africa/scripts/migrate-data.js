@@ -23,186 +23,105 @@ const supabase = createClient(supabaseUrl, supabaseServiceKey)
 // Import data files
 import { BLOG_POSTS } from '../src/data/blogPosts.js'
 import events from '../src/data/eventsData.js'
+import { teamData as TEAM_DATA } from '../src/data/teamData.js'
 
-// Services data (without image imports)
-const SERVICES = [
+// ========== STORIES DATA ==========
+const STORIES = [
   {
-    id: '01',
-    slug: 'website-development',
-    title: 'Website Development',
-    description:
-      'Professional websites, ecommerce stores, landing pages, and portals built to convert visitors into customers.',
-    features: ['Responsive design', 'Basic SEO', 'Modern custom design'],
+    title: 'Filled Our Biggest Class Yet – 225 Students',
+    content:
+      'More than 225 students enrolled for the February Software Development class in 2020. We were so excited to begin this journey with them.',
+    story_date: '2020-02-03',
+    image_url: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80',
   },
   {
-    id: '02',
-    slug: 'software-development',
-    title: 'Software Development',
-    description:
-      'Custom software solutions tailored to your business workflows — from internal tools to full-scale platforms.',
-    features: ['Custom dashboards', 'API integrations', 'Scalable architecture'],
+    title: 'Launched Our Data Science Course',
+    content:
+      'We launched our very first masterclass on Supervised Learning, then shortly followed that up with a full Data Science Course launch at Metta Nairobi. Both were a huge success.',
+    story_date: '2019-09-04',
+    image_url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
   },
   {
-    id: '03',
-    slug: 'booking-systems',
-    title: 'Booking Systems',
-    description:
-      'Booking platforms with calendars, M-Pesa payments, reminders, staff schedules, and client portals.',
-    features: ['Online bookings', 'M-Pesa payments', 'Client portals'],
+    title: 'Opened Our Doors to the First Cohort',
+    content:
+      'We welcomed our very first cohort of students — four passionate learners ready to reshape their futures through technology. A humble but historic beginning.',
+    story_date: '2018-03-12',
+    image_url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80',
   },
   {
-    id: '04',
-    slug: 'ai-automation',
-    title: 'AI Automation',
-    description:
-      'AI workflows, customer support automation, reporting, and task systems that reduce manual work.',
-    features: ['AI workflows', 'Smart reporting', 'Customer automation'],
-  },
-  {
-    id: '05',
-    slug: 'mobile-development',
-    title: 'Mobile Development',
-    description:
-      'Native and cross-platform mobile apps for Android and iOS that deliver seamless user experiences.',
-    features: ['Android & iOS', 'Offline support', 'Push notifications'],
-  },
-  {
-    id: '06',
-    slug: 'digital-marketing',
-    title: 'Digital Marketing',
-    description:
-      'Data-driven campaigns across social media, search, and email to grow your brand and drive revenue.',
-    features: ['Social media ads', 'SEO & content', 'Email campaigns'],
+    title: 'Launched Cybersecurity & DevOps Programs',
+    content:
+      'Responding to market demand, we expanded our curriculum with Cybersecurity and DevOps Engineering tracks, empowering even more students to find their niche in tech.',
+    story_date: '2021-06-20',
+    image_url: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80',
   },
 ]
 
-// ========== TEAM DATA ==========
-const teamData = {
-  board: [
-    {
-      name: 'Sebastian McKinlay',
-      role: 'Board Chairman',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'Audrey Cheng',
-      role: 'Board Member, Co-founder',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'Snehar Shah',
-      role: 'Board Member',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'Karen Serem Waithaka',
-      role: 'Board Member',
-      image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80',
-      profile: '#',
-    },
-  ],
-  executive: [
-    {
-      name: 'James Mwangi',
-      role: 'Chief Executive Officer',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'Amina Hassan',
-      role: 'Chief Operating Officer',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'David Ochieng',
-      role: 'Head of Engineering',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'Lydia Kamau',
-      role: 'Head of Academics',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80',
-      profile: '#',
-    },
-  ],
-}
+// ========== AWARDS DATA ==========
+const AWARDS = [
+  {
+    label: 'Moringa listed among the most promising EdTech startups from Sub-Saharan Africa by HolonIQ',
+    image_url: '/assets/python.jpg',
+  },
+  {
+    label: 'Higher Education Tech Leader 2021',
+    image_url: '/assets/scratch.jpg',
+  },
+  {
+    label: 'Moringa Named as World Technology Pioneers in 2021',
+    image_url: '/assets/Robotics.jpg',
+  },
+  {
+    label: 'Most Preferred Corporate Training Institution 2021',
+    image_url: '/assets/ARDUINO.jpg',
+  },
+  {
+    label: 'Best Tech Education Provider — East Africa 2022',
+    image_url: '/assets/ARDUINO.jpg',
+  },
+  {
+    label: 'Top Cybersecurity Training Institution 2023',
+    image_url: '/assets/ARDUINO.jpg',
+  },
+]
 
-// ========== FAQ DATA ==========
-const allFaqs = [
+// ========== IMPACT HIGHLIGHTS DATA ==========
+const IMPACT_HIGHLIGHTS = [
   {
-    question: 'Q: What is STEM Center Africa?',
-    answer:
-      'STEM Center Africa is a nonprofit organization based at Edenview Academy in Oyugis, Kenya. We offer mathematics, science, technology, and engineering programs to inspire the next generation of innovators.',
+    title: 'STEM Expo/Challenge 2025',
+    description:
+      'On December 10, 2025, we hosted a STEM Competition and STEM Fair, during which students showcased their innovation projects and competed in a range of STEM activities. 357 students participated, and 114 parents and guests attended.',
+    image_url: '/assets/iOS%20app%20development.jpg',
   },
   {
-    question: 'Q: Who can join your programs?',
-    answer:
-      'Our programs are open to learners of all ages — from primary school students to young adults. We believe every curious mind deserves access to quality STEM education.',
+    title: 'Robotics & Embedded Systems',
+    description:
+      'Build intelligent robots and embedded systems with hands-on projects using microcontrollers, sensors, and motor control.',
+    image_url: '/assets/Robotics.jpg',
   },
   {
-    question: 'Q: Do you offer remote learning?',
-    answer:
-      'Yes! We offer both in-person and remote learning options to ensure our programs are accessible to students regardless of their location.',
+    title: 'Arduino & IoT Development',
+    description:
+      'Learn to build interactive electronic projects with Arduino and explore the world of Internet of Things (IoT).',
+    image_url: '/assets/ARDUINO.jpg',
   },
   {
-    question: 'Q: How can I support STEM Center Africa?',
-    answer:
-      'You can support us by donating, partnering with us as an organization, or volunteering your time and expertise. Visit our Donate page to learn more.',
+    title: 'Introduction to Basic Computer Skills',
+    description:
+      'Build confidence with everyday software: master Word, Excel, PowerPoint, email, and basic digital navigation for school, office, and career success',
+    image_url: '/assets/computers.jpg',
   },
   {
-    question: 'Q: Will students receive a certificate upon completion?',
-    answer:
-      'Yes. Students who complete our programs receive a certificate of participation recognizing their achievement and the skills they have gained.',
+    title: 'Python Programming Bootcamp',
+    description:
+      'A practical Python bootcamp for beginners: write clean code, automate workflows, and build real-world projects using Python\'s most popular tools and frameworks.',
+    image_url: '/assets/python.jpg',
   },
   {
-    question: 'Q: How do I enroll my child?',
-    answer:
-      'You can reach out to us directly through our Contact page or visit Edenview Academy in Oyugis, Kenya. Our team will guide you through the enrollment process.',
-  },
-  {
-    question: 'Q: What age groups do you support?',
-    answer:
-      'We support learners from primary school through high school and young adults, tailoring our programs to each age group\'s learning needs.',
-  },
-  {
-    question: 'Q: Are your programs free or paid?',
-    answer:
-      'Some of our community outreach programs are free, while specialized courses and camps may have a fee to cover materials and facilitation. Please contact us for current pricing.',
-  },
-  {
-    question: 'Q: Can parents get involved?',
-    answer:
-      'Absolutely. Parents can volunteer, attend community events, and help support student learning alongside our team.',
-  },
-  {
-    question: 'Q: What topics do you teach?',
-    answer:
-      'We teach mathematics, science, coding, robotics, engineering, and technology skills with hands-on activities and real-world problem solving.',
-  },
-  {
-    question: 'Q: Do you offer scholarships?',
-    answer:
-      'We offer need-based scholarship opportunities for eligible learners. Reach out to our team for application details and availability.',
-  },
-  {
-    question: 'Q: How long is each program?',
-    answer:
-      'Program lengths vary from short-term workshops to multi-week courses. We share details for each program on the course page.',
-  },
-  {
-    question: 'Q: Can schools partner with you?',
-    answer:
-      'Yes, we partner with local schools and community groups to bring STEM learning directly into classrooms and extracurricular clubs.',
-  },
-  {
-    question: 'Q: Where are your learning centers located?',
-    answer:
-      'Our main programs run from Edenview Academy in Oyugis, Kenya, and we also deliver remote and outreach programs to nearby communities.',
+    title: 'Scratch Programming for Kids',
+    description:
+      'Introduce young learners to programming concepts through fun, interactive projects. Develop problem-solving skills and creativity while building their own games and animations.',
+    image_url: '/assets/scratch.jpg',
   },
 ]
 
@@ -219,10 +138,10 @@ async function migrateBangs() {
       author_image: blog.authorImage,
       date: blog.date,
       image: blog.image,
-      content: blog.content, // Already an array, will be stored as JSONB
+      content: blog.content,
     }))
 
-    const { error } = await supabase.from('blogs').insert(blogsData)
+    const { error } = await supabase.from('blogs').upsert(blogsData, { onConflict: 'slug' })
     if (error) throw error
     console.log(`✅ Migrated ${blogsData.length} blogs`)
   } catch (error) {
@@ -249,7 +168,7 @@ async function migrateEvents() {
       qr_codes: event.qrCodes,
     }))
 
-    const { error } = await supabase.from('events').insert(eventsData)
+    const { error } = await supabase.from('events').upsert(eventsData, { onConflict: 'event_id' })
     if (error) throw error
     console.log(`✅ Migrated ${eventsData.length} events`)
   } catch (error) {
@@ -261,38 +180,225 @@ async function migrateEvents() {
 async function migrateFaqs() {
   console.log('❓ Migrating FAQs...')
   try {
+    const allFaqs = [
+      {
+        question: 'Q: What is STEM Center Africa?',
+        answer:
+          'STEM Center Africa is a nonprofit organization based at Edenview Academy in Oyugis, Kenya. We offer mathematics, science, technology, and engineering programs to inspire the next generation of innovators.',
+      },
+      {
+        question: 'Q: Who can join your programs?',
+        answer:
+          'Our programs are open to learners of all ages — from primary school students to young adults. We believe every curious mind deserves access to quality STEM education.',
+      },
+      {
+        question: 'Q: Do you offer remote learning?',
+        answer:
+          'Yes! We offer both in-person and remote learning options to ensure our programs are accessible to students regardless of their location.',
+      },
+      {
+        question: 'Q: How can I support STEM Center Africa?',
+        answer:
+          'You can support us by donating, partnering with us as an organization, or volunteering your time and expertise. Visit our Donate page to learn more.',
+      },
+      {
+        question: 'Q: Will students receive a certificate upon completion?',
+        answer:
+          'Yes. Students who complete our programs receive a certificate of participation recognizing their achievement and the skills they have gained.',
+      },
+      {
+        question: 'Q: How do I enroll my child?',
+        answer:
+          'You can reach out to us directly through our Contact page or visit Edenview Academy in Oyugis, Kenya. Our team will guide you through the enrollment process.',
+      },
+      {
+        question: 'Q: What age groups do you support?',
+        answer:
+          'We support learners from primary school through high school and young adults, tailoring our programs to each age group\'s learning needs.',
+      },
+      {
+        question: 'Q: Are your programs free or paid?',
+        answer:
+          'Some of our community outreach programs are free, while specialized courses and camps may have a fee to cover materials and facilitation. Please contact us for current pricing.',
+      },
+      {
+        question: 'Q: Can parents get involved?',
+        answer:
+          'Absolutely. Parents can volunteer, attend community events, and help support student learning alongside our team.',
+      },
+      {
+        question: 'Q: What topics do you teach?',
+        answer:
+          'We teach mathematics, science, coding, robotics, engineering, and technology skills with hands-on activities and real-world problem solving.',
+      },
+      {
+        question: 'Q: Do you offer scholarships?',
+        answer:
+          'We offer need-based scholarship opportunities for eligible learners. Reach out to our team for application details and availability.',
+      },
+      {
+        question: 'Q: How long is each program?',
+        answer:
+          'Program lengths vary from short-term workshops to multi-week courses. We share details for each program on the course page.',
+      },
+      {
+        question: 'Q: Can schools partner with you?',
+        answer:
+          'Yes, we partner with local schools and community groups to bring STEM learning directly into classrooms and extracurricular clubs.',
+      },
+      {
+        question: 'Q: Where are your learning centers located?',
+        answer:
+          'Our main programs run from Edenview Academy in Oyugis, Kenya, and we also deliver remote and outreach programs to nearby communities.',
+      },
+    ]
+
     const faqsData = allFaqs.map((faq, index) => ({
       question: faq.question,
       answer: faq.answer,
       order: index,
     }))
 
-    const { error } = await supabase.from('faqs').insert(faqsData)
+    const { data: existingFaqs, error: fetchError } = await supabase
+      .from('faqs')
+      .select('question, answer, order')
+
+    if (fetchError) throw fetchError
+
+    const existingSet = new Set(
+      existingFaqs.map((faq) => `${faq.question}||${faq.answer}||${faq.order}`)
+    )
+
+    const newFaqs = faqsData.filter(
+      (faq) => !existingSet.has(`${faq.question}||${faq.answer}||${faq.order}`)
+    )
+
+    if (newFaqs.length === 0) {
+      console.log('✅ No new FAQs to migrate')
+      return
+    }
+
+    const { error } = await supabase.from('faqs').insert(newFaqs)
     if (error) throw error
-    console.log(`✅ Migrated ${faqsData.length} FAQs`)
+    console.log(`✅ Migrated ${newFaqs.length} new FAQs`)
   } catch (error) {
     console.error('❌ Error migrating FAQs:', error.message)
   }
 }
 
-// ========== MIGRATE SERVICES ==========
-async function migrateServices() {
-  console.log('🛠️  Migrating services...')
+// ========== MIGRATE AWARDS ==========
+async function migrateAwards() {
+  console.log('🏆 Migrating awards...')
   try {
-    const servicesData = SERVICES.map((service) => ({
-      service_id: service.id,
-      slug: service.slug,
-      title: service.title,
-      icon: null, // icon is an imported image, store as null or store URL
-      description: service.description,
-      features: service.features,
+    const awardsData = AWARDS.map((award) => ({
+      title: award.label,
+      image_path: award.image_url,
     }))
 
-    const { error } = await supabase.from('services').insert(servicesData)
+    const { data: existingAwards, error: fetchError } = await supabase
+      .from('awards')
+      .select('id, title')
+
+    if (fetchError) throw fetchError
+
+    const titleMap = new Map()
+    const duplicateIds = []
+
+    existingAwards.forEach((item) => {
+      if (titleMap.has(item.title)) {
+        duplicateIds.push(item.id)
+      } else {
+        titleMap.set(item.title, item.id)
+      }
+    })
+
+    if (duplicateIds.length > 0) {
+      const { error: deleteError } = await supabase
+        .from('awards')
+        .delete()
+        .in('id', duplicateIds)
+
+      if (deleteError) throw deleteError
+      console.log(`🧹 Removed ${duplicateIds.length} duplicate awards`)
+    }
+
+    const upsertData = awardsData.map((item) => {
+      const id = titleMap.get(item.title)
+      return id ? { id, ...item } : item
+    })
+
+    const { error } = await supabase
+      .from('awards')
+      .upsert(upsertData, { onConflict: 'id' })
+
     if (error) throw error
-    console.log(`✅ Migrated ${servicesData.length} services`)
+    console.log(`✅ Migrated ${upsertData.length} awards`)
   } catch (error) {
-    console.error('❌ Error migrating services:', error.message)
+    console.error('❌ Error migrating awards:', error.message)
+    if (error.message.includes('permission denied')) {
+      console.error('🔧 Supabase needs service_role privileges on public.awards or the table Data API must be enabled.')
+    }
+  }
+}
+
+// ========== MIGRATE IMPACT HIGHLIGHTS ==========
+async function migrateImpactHighlights() {
+  console.log('🌟 Migrating impact highlights...')
+  try {
+    const impactData = IMPACT_HIGHLIGHTS.map((item) => ({
+      title: item.title,
+      content: item.description,
+      image_path: item.image_url,
+    }))
+
+    const { data: existingHighlights, error: fetchError } = await supabase
+      .from('impact_highlights')
+      .select('id, title')
+
+    if (fetchError) throw fetchError
+
+    const titleMap = new Map()
+    const duplicateIds = []
+
+    existingHighlights.forEach((item) => {
+      if (titleMap.has(item.title)) {
+        duplicateIds.push(item.id)
+      } else {
+        titleMap.set(item.title, item.id)
+      }
+    })
+
+    if (duplicateIds.length > 0) {
+      const { error: deleteError } = await supabase
+        .from('impact_highlights')
+        .delete()
+        .in('id', duplicateIds)
+
+      if (deleteError) throw deleteError
+      console.log(`🧹 Removed ${duplicateIds.length} duplicate impact highlights`)
+    }
+
+    const upsertData = impactData.map((item) => {
+      const id = titleMap.get(item.title)
+      return id ? { id, ...item } : item
+    })
+
+    if (upsertData.length === 0) {
+      console.log('✅ No impact highlights to migrate')
+      return
+    }
+
+    const { error } = await supabase
+      .from('impact_highlights')
+      .upsert(upsertData, { onConflict: 'id' })
+
+    if (error) throw error
+    console.log(`✅ Migrated ${upsertData.length} impact highlights`)
+  } catch (error) {
+    console.error('❌ Error migrating impact highlights:', error.message)
+    if (error.message.includes('permission denied')) {
+      console.error('🔧 Supabase needs service_role privileges on public.impact_highlights or the table Data API must be enabled.')
+    }
   }
 }
 
@@ -302,35 +408,104 @@ async function migrateTeamMembers() {
   try {
     const teamMembersData = []
 
-    // Board members
-    teamData.board.forEach((member, index) => {
+    TEAM_DATA.board.forEach((member, index) => {
       teamMembersData.push({
         name: member.name,
         role: member.role,
+        slug: member.slug || '',
         category: 'board',
         image: member.image,
-        profile: member.profile,
+        profile: Array.isArray(member.bio) ? member.bio.join('\n\n') : member.profile || '',
         order: index,
       })
     })
 
-    // Executive members
-    teamData.executive.forEach((member, index) => {
+    TEAM_DATA.executive.forEach((member, index) => {
       teamMembersData.push({
         name: member.name,
         role: member.role,
+        slug: member.slug || '',
         category: 'executive',
         image: member.image,
-        profile: member.profile,
+        profile: Array.isArray(member.bio) ? member.bio.join('\n\n') : member.profile || '',
         order: index,
       })
     })
 
-    const { error } = await supabase.from('team_members').insert(teamMembersData)
+    const { data: existingMembers, error: fetchError } = await supabase
+      .from('team_members')
+      .select('id, name, role, category')
+
+    if (fetchError) throw fetchError
+
+    const existingMap = new Map(
+      existingMembers.map((member) => [
+        `${member.name}||${member.role}||${member.category}`,
+        member.id,
+      ])
+    )
+
+    const updateTeamMembers = []
+    const newTeamMembers = []
+
+    teamMembersData.forEach((member) => {
+      const key = `${member.name}||${member.role}||${member.category}`
+      const existingId = existingMap.get(key)
+      if (existingId) {
+        updateTeamMembers.push({ id: existingId, ...member })
+      } else {
+        newTeamMembers.push(member)
+      }
+    })
+
+    if (updateTeamMembers.length > 0) {
+      for (const member of updateTeamMembers) {
+        const { id, ...payload } = member
+        const { error: updateError } = await supabase
+          .from('team_members')
+          .update(payload)
+          .eq('id', id)
+        if (updateError) throw updateError
+      }
+      console.log(`✅ Updated ${updateTeamMembers.length} existing team members`)
+    }
+
+    if (newTeamMembers.length === 0) {
+      console.log('✅ No new team members to migrate')
+      return
+    }
+
+    const { error } = await supabase.from('team_members').insert(newTeamMembers)
     if (error) throw error
-    console.log(`✅ Migrated ${teamMembersData.length} team members`)
+    console.log(`✅ Migrated ${newTeamMembers.length} new team members`)
   } catch (error) {
     console.error('❌ Error migrating team members:', error.message)
+  }
+}
+
+// ========== MIGRATE STORIES ==========
+async function migrateStories() {
+  console.log('📖 Migrating stories...')
+  try {
+    const { data: existing, error: fetchError } = await supabase
+      .from('stories')
+      .select('title')
+
+    if (fetchError) throw fetchError
+
+    const existingTitles = new Set(existing.map((s) => s.title))
+    const newStories = STORIES.filter((s) => !existingTitles.has(s.title))
+
+    if (newStories.length === 0) {
+      console.log('✅ No new stories to migrate')
+      return
+    }
+
+    const { error } = await supabase.from('stories').insert(newStories)
+    if (error) throw error
+    console.log(`✅ Migrated ${newStories.length} stories`)
+  } catch (error) {
+    console.error('❌ Error migrating stories:', error.message)
   }
 }
 
@@ -341,8 +516,10 @@ async function runMigrations() {
   await migrateBangs()
   await migrateEvents()
   await migrateFaqs()
-  await migrateServices()
+  await migrateAwards()
+  await migrateImpactHighlights()
   await migrateTeamMembers()
+  await migrateStories()
 
   console.log('\n✨ Migration complete!\n')
 }

@@ -1,0 +1,346 @@
+/* ─── Settings Page ─────────────────────────────────────────────── */
+.asp-page {
+  font-family: 'DM Sans', sans-serif;
+  color: #101F3C;
+}
+
+.asp-header {
+  margin-bottom: 24px;
+}
+
+.asp-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #101F3C;
+  margin: 0 0 4px;
+}
+
+.asp-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ─── Grid rows/columns ─────────────────────────────────────────── */
+.asp-body-row {
+  margin: 0 -12px;
+}
+
+/* ─── Card ──────────────────────────────────────────────────────── */
+.asp-card {
+  background: #ffffff;
+  border: 1px solid #e2e5ec;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.asp-card-header {
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e5ec;
+}
+
+.asp-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #101F3C;
+  margin: 0 0 4px;
+}
+
+.asp-card-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ─── Form ──────────────────────────────────────────────────────── */
+.asp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.asp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.asp-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #101F3C;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.asp-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  background: #f7f8fa;
+  border: 1px solid #e2e5ec;
+  border-radius: 5px;
+  color: #101F3C;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.asp-input::placeholder { color: #9aa1b1; }
+
+.asp-input:focus {
+  border-color: #E91E8C;
+  box-shadow: 0 0 0 2px rgba(233, 30, 140, 0.15);
+}
+
+.asp-input--readonly {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.asp-help-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: #6b7280;
+  font-style: italic;
+  margin: 0;
+}
+
+.asp-form-actions {
+  padding-top: 4px;
+}
+
+/* ─── Avatar upload area ────────────────────────────────────────── */
+.asp-avatar-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #f7f8fa;
+  border: 1px dashed #e2e5ec;
+  border-radius: 5px;
+}
+
+.asp-avatar-preview {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #E91E8C;
+  background: #eef0f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.asp-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.asp-avatar-initials {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #E91E8C;
+}
+
+.asp-avatar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.asp-avatar-hint {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────────── */
+.asp-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s, background 0.15s, transform 0.1s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.asp-btn:active { transform: scale(0.98); }
+.asp-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.asp-btn-primary {
+  background: #E91E8C;
+  color: #ffffff;
+  width: 100%;
+}
+
+.asp-btn-primary:hover:not(:disabled) { background: #c4176e; }
+
+.asp-btn-outline {
+  background: #ffffff;
+  color: #E91E8C;
+  border: 1.5px solid #E91E8C;
+}
+
+.asp-btn-outline:hover { background: rgba(233, 30, 140, 0.06); }
+
+.asp-btn-ghost {
+  background: transparent;
+  color: #6b7280;
+  border: 1.5px solid #e2e5ec;
+}
+
+.asp-btn-ghost:hover { background: #f7f8fa; }
+
+.asp-btn-danger {
+  color: #e53935;
+  border-color: rgba(229, 57, 53, 0.3);
+}
+
+.asp-btn-danger:hover { background: rgba(229, 57, 53, 0.06); }
+
+/* ─── Screen-reader only ────────────────────────────────────────── */
+.asp-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─── Password strength ─────────────────────────────────────────── */
+.asp-password-strength {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: -6px;
+}
+
+.asp-strength-bar {
+  height: 4px;
+  background: #e2e5ec;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.asp-strength-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease, background-color 0.3s;
+}
+
+.asp-strength--weak .asp-strength-fill   { background: #e53935; }
+.asp-strength--fair .asp-strength-fill   { background: #ff9800; }
+.asp-strength--good .asp-strength-fill   { background: #4caf50; }
+.asp-strength--strong .asp-strength-fill { background: #00c853; }
+
+.asp-strength-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.asp-strength-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.asp-strength--weak   .asp-strength-label { color: #e53935; }
+.asp-strength--fair   .asp-strength-label { color: #ff9800; }
+.asp-strength--good   .asp-strength-label { color: #4caf50; }
+.asp-strength--strong .asp-strength-label { color: #00c853; }
+
+.asp-strength-checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.asp-strength-checks li {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.asp-check--pass { color: #4caf50; }
+.asp-check--fail { color: #9aa1b1; }
+
+.asp-check-icon {
+  font-size: 11px;
+  width: 12px;
+  text-align: center;
+}
+
+/* ─── Toast notification ─────────────────────────────────────────── */
+.asp-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  animation: asp-slide-in 0.2s ease;
+}
+
+.asp-toast--success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.asp-toast--error {
+  background: #fdecea;
+  color: #c62828;
+  border: 1px solid #f5c6c2;
+}
+
+@keyframes asp-slide-in {
+  from { opacity: 0; transform: translateX(1rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .asp-avatar-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

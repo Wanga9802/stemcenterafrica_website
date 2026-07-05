@@ -1,10 +1,61 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../Styles/Blogcategory.css';
-import { BLOG_POSTS } from '../../data/blogPosts';
-
-const posts = BLOG_POSTS;
+import { supabase } from '../../lib/supabaseClient';
 
 export default function BlogCategoryCards() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  async function fetchPosts() {
+    try {
+      const { data, error } = await supabase
+        .from('blogs')
+        .select('slug, category, title, subtitle, image, status, created_at')
+        .eq('status', 'published')
+        .order('created_at', { ascending: false })
+        .limit(20);
+
+      if (error) throw error;
+
+      setPosts(
+        (data || []).map((post) => ({
+          slug: post.slug,
+          category: post.category,
+          title: post.title,
+          subtitle: post.subtitle,
+          image: post.image,
+          tag: post.status ? post.status.charAt(0).toUpperCase() + post.status.slice(1) : '',
+        }))
+      );
+    } catch (error) {
+      console.error('Failed to fetch blog posts from Supabase:', error);
+      setPosts([]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  if (loading) {
+    return (
+      <section className="blog-section">
+        <p className="blog-empty-message">Loading blog posts…</p>
+      </section>
+    );
+  }
+
+  if (posts.length === 0) {
+    return (
+      <section className="blog-section">
+        <p className="blog-empty-message">No published blog posts are available right now.</p>
+      </section>
+    );
+  }
+
   return (
     <section className="blog-section">
       <div className="blog-cards-grid">

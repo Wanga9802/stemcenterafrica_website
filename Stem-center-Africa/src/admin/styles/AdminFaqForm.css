@@ -1,0 +1,293 @@
+.admin-faq-form-page {
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+  color: #101F3C;
+}
+
+/* ── Toast ───────────────────────────────────────────────────────────────── */
+.admin-faq-form-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  padding: 14px 18px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.admin-faq-form-toast--success { background: #2e7d32; }
+.admin-faq-form-toast--error { background: #c62828; }
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.admin-faq-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.admin-faq-form-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-faq-form-back-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+  border: 1.5px solid #e2e5ec;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #101F3C;
+  flex-shrink: 0;
+  transition: border-color 0.15s;
+}
+
+.admin-faq-form-back-btn:hover { border-color: #E91E8C; }
+
+.admin-faq-form-breadcrumb {
+  margin: 0 0 3px;
+  font-size: 12px;
+  color: #6b7280;
+  letter-spacing: 0.3px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.admin-faq-form-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #101F3C;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.admin-faq-form-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-faq-form-cancel-btn,
+.admin-faq-form-save-btn {
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, opacity 0.15s;
+}
+
+.admin-faq-form-cancel-btn {
+  background: #fff;
+  color: #101F3C;
+  border: 1.5px solid #e2e5ec;
+}
+
+.admin-faq-form-cancel-btn:hover { border-color: #E91E8C; color: #E91E8C; }
+
+.admin-faq-form-save-btn {
+  background: #E91E8C;
+  color: #fff;
+  border: none;
+}
+
+.admin-faq-form-save-btn:hover:not(:disabled) { background: #c4176e; }
+.admin-faq-form-save-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.admin-faq-form-card {
+  background: #ffffff;
+  border: 1px solid #e2e5ec;
+  border-radius: 5px;
+  padding: 24px;
+}
+
+.admin-faq-form-field {
+  margin-bottom: 18px;
+}
+
+.admin-faq-form-field--last {
+  margin-bottom: 0;
+}
+
+.admin-faq-form-field--small {
+  max-width: 260px;
+}
+
+.admin-faq-form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #101F3C;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.admin-faq-form-input,
+.admin-faq-form-textarea {
+  width: 100%;
+  padding: 0 14px;
+  height: 42px;
+  border-radius: 5px;
+  border: 1px solid #e2e5ec;
+  background: #f7f8fa;
+  color: #101F3C;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+
+.admin-faq-form-textarea {
+  height: auto;
+  padding: 10px 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.admin-faq-form-input:focus,
+.admin-faq-form-textarea:focus {
+  outline: none;
+  border-color: #E91E8C;
+  box-shadow: 0 0 0 2px rgba(233, 30, 140, 0.15);
+}
+
+.admin-faq-form-input::placeholder,
+.admin-faq-form-textarea::placeholder { color: #9aa1b1; }
+
+.admin-faq-form-input--error {
+  border-color: #e53935;
+}
+
+.admin-faq-form-error {
+  display: block;
+  margin-top: 4px;
+  color: #e53935;
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.admin-faq-form-help-text {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px;
+  color: #6b7280;
+  font-style: italic;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Delete row ──────────────────────────────────────────────────────────── */
+.admin-faq-form-delete-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.admin-faq-form-delete-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: none;
+  color: #e53935;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s;
+}
+
+.admin-faq-form-delete-btn:hover { background: rgba(229, 57, 53, 0.08); }
+
+/* ── Delete Modal ────────────────────────────────────────────────────────── */
+.admin-faq-form-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 31, 60, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+.admin-faq-form-modal {
+  background: #ffffff;
+  border: 1px solid #e2e5ec;
+  padding: 32px;
+  border-radius: 5px;
+  width: min(400px, 90%);
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.admin-faq-form-modal-icon { margin-bottom: 12px; }
+
+.admin-faq-form-modal-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #101F3C;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.admin-faq-form-modal-text {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: #101F3C;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.admin-faq-form-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.admin-faq-form-modal-cancel,
+.admin-faq-form-modal-delete {
+  padding: 6px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.admin-faq-form-modal-cancel {
+  background: transparent;
+  border: 1.5px solid #e2e5ec;
+  color: #101F3C;
+}
+
+.admin-faq-form-modal-delete {
+  background: #e53935;
+  color: #fff;
+}
+
+.admin-faq-form-modal-delete:hover { background: #d32f2f; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .admin-faq-form-header { flex-direction: column; align-items: flex-start; }
+  .admin-faq-form-actions { width: 100%; flex-direction: column; }
+  .admin-faq-form-cancel-btn, .admin-faq-form-save-btn { width: 100%; }
+  .admin-faq-form-field--small { max-width: 100%; }
+}

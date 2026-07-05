@@ -1,0 +1,436 @@
+/* ── AdminFaq.css ────────────────────────────────────────────────────────── */
+
+.af-page {
+  position: relative;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.af-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.af-page-title {
+  margin: 0 0 2px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #101F3C;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.af-page-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #101F3C;
+  max-width: 680px;
+}
+
+.af-create-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 22px;
+  background: #E91E8C;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s;
+}
+
+.af-create-btn:hover { background: #c4176e; }
+
+.af-create-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* ── Error / Empty cell ─────────────────────────────────────────────────── */
+.af-fetch-error {
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #c62828;
+  margin-bottom: 16px;
+}
+
+.af-empty-cell {
+  padding: 60px 20px;
+  text-align: center;
+  color: #888;
+  font-size: 13px;
+}
+
+/* ── Bulk Bar ────────────────────────────────────────────────────────────── */
+.af-bulk-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #fff3e0;
+  border: 1px solid #ffe0b2;
+  border-radius: 0;
+  margin-bottom: 14px;
+}
+
+.af-bulk-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e65100;
+}
+
+.af-bulk-delete-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.af-bulk-delete-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ── Filters ─────────────────────────────────────────────────────────────── */
+.af-filters-card {
+  background: #ffffff;
+  border-radius: 0;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.af-filters-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.af-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.af-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #999;
+  pointer-events: none;
+}
+
+.af-search-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px 0 38px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 0;
+  font-size: 14px;
+  color: #1a1a1a;
+  font-family: 'DM Sans', sans-serif;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+
+.af-search-input:focus {
+  outline: none;
+  border-color: #e91e8e56;
+}
+
+/* ── Table Card ──────────────────────────────────────────────────────────── */
+.af-table-card {
+  background: #fff;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.af-overflow-wrapper {
+  overflow-x: auto;
+}
+
+.af-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.af-table-head-row {
+  background: #101f3cd6;
+}
+
+.af-th {
+  padding: 14px 12px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+
+.af-th-checkbox { width: 40px; }
+.af-th-actions  { width: 90px; }
+
+/* ── Table Rows ──────────────────────────────────────────────────────────── */
+.af-row-even { background: #ffffff; }
+.af-row-odd  { background: #fdf5fb; }
+.af-row:hover { background: #fce4f3; }
+
+.af-td {
+  padding: 12px;
+  font-size: 13px;
+  color: #333;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.af-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: #E91E8C;
+  cursor: pointer;
+}
+
+.af-question-cell {
+  max-width: 260px;
+  font-weight: 600;
+  color: #1a0a14;
+  line-height: 1.4;
+}
+
+.af-answer-cell {
+  max-width: 320px;
+  color: #666;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.af-order-text {
+  font-size: 12px;
+  color: #888;
+  font-weight: 600;
+}
+
+/* ── Actions ─────────────────────────────────────────────────────────────── */
+.af-actions-cell {
+  display: flex;
+  gap: 6px;
+}
+
+.af-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  border: 1.5px solid #e0e0e0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  transition: all 0.15s;
+}
+
+.af-action-btn:hover {
+  border-color: #E91E8C;
+  background: rgba(233, 30, 140, 0.1);
+  color: #E91E8C;
+}
+
+.af-action-btn--danger {
+  color: #e53935;
+}
+
+.af-action-btn--danger:hover {
+  border-color: #e53935;
+  background: rgba(229, 57, 53, 0.1);
+  color: #e53935;
+}
+
+/* ── Skeleton ────────────────────────────────────────────────────────────── */
+.af-skeleton {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: af-shimmer 1.2s infinite;
+}
+
+@keyframes af-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Pagination ──────────────────────────────────────────────────────────── */
+.af-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-top: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.af-pagination-info {
+  font-size: 14px;
+  color: #101F3C;
+}
+
+.af-pagination-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.af-page-btn {
+  padding: 4px 13px;
+  border: 1.5px solid #101F3C;
+  border-radius: 0;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #101F3C;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.af-page-btn:hover:not(:disabled) { border-color: #E91E8C; color: #E91E8C; }
+.af-page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.af-page-indicator {
+  font-size: 13px;
+  font-weight: 600;
+  color: #101F3C;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* ── Toast ───────────────────────────────────────────────────────────────── */
+.af-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  font-family: 'DM Sans', sans-serif;
+  animation: af-slide-in 0.2s ease;
+}
+
+.af-toast--success { background: #2e7d32; }
+.af-toast--error   { background: #c62828; }
+
+@keyframes af-slide-in {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Delete Modal ────────────────────────────────────────────────────────── */
+.af-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.af-modal {
+  background: #fff;
+  border-radius: 0;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.af-modal-icon { margin-bottom: 12px; }
+
+.af-modal-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a0a14;
+  font-family: 'Syne', sans-serif;
+}
+
+.af-modal-text {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: #666;
+}
+
+.af-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.af-modal-cancel {
+  padding: 10px 24px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #666;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.af-modal-delete {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 0;
+  background: #e53935;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.af-modal-delete:hover { background: #d32f2f; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .af-header { flex-direction: column; align-items: flex-start; }
+  .af-create-btn { width: 100%; justify-content: center; }
+  .af-filters-row { flex-direction: column; }
+  .af-search-wrap { width: 100%; }
+}

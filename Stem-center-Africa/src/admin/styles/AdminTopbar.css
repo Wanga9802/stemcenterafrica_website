@@ -1,0 +1,156 @@
+.admin-topbar {
+  height: 64px;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admin-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.admin-topbar-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a0a14;
+  font-family: 'Syne', 'DM Sans', sans-serif;
+}
+
+.admin-topbar-hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1a0a14;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-topbar-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.admin-topbar-notif-btn {
+  position: relative;
+}
+
+.admin-topbar-notif-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  min-width: 12px;
+  height: 12px;
+  padding: 0 3px;
+  background: #E91E8C;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Avatar area ───────────────────────────────────────────────── */
+.admin-topbar-avatar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.admin-topbar-avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e91e8c;
+  flex-shrink: 0;
+}
+
+/* Shows when no avatar photo is uploaded */
+.admin-topbar-avatar-initials {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #1a0a14;
+  border: 2px solid #e91e8c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #e91e8c;
+  flex-shrink: 0;
+}
+
+/* Name + role text beside the circle */
+.admin-topbar-avatar-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.admin-topbar-avatar-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a0a14;
+  white-space: nowrap;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-topbar-avatar-role {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  color: #7a5a6a;
+  white-space: nowrap;
+}
+
+/* ─── Hamburger ─────────────────────────────────────────────────── */
+.admin-hamburger {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .admin-hamburger {
+    display: flex !important;
+  }
+}
+
+/* Hide name/role on small screens — show circle only */
+@media (max-width: 640px) {
+  .admin-topbar-avatar-info {
+    display: none;
+  }
+}

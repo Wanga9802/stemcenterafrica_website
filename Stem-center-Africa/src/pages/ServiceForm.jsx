@@ -148,30 +148,51 @@ export default function ServiceForm() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleEmailSend = async (event) => {
+  const handleEmailSend = (event) => {
     event.preventDefault();
     if (!validateForm()) return;
 
     const payload = createEmailPayload();
+    const subject = `Quote request: ${payload.selectedPackageLabel} (${payload.serviceTitle})`;
+    const body = [
+      `Service: ${payload.serviceTitle}`,
+      `Package: ${payload.selectedPackageLabel} (${payload.selectedPackagePrice})`,
+      '',
+      '01 - Business Information',
+      `Company name: ${payload.businessName}`,
+      `Industry / sector: ${payload.industry}`,
+      `Business description: ${payload.businessDescription}`,
+      '',
+      '02 - Your Need',
+      `Needs: ${payload.needs}`,
+      `Main goal: ${payload.mainGoal}`,
+      `Has website: ${payload.hasWebsite}`,
+      `Website link: ${payload.websiteLink || 'N/A'}`,
+      `Website issue: ${payload.websiteIssue || 'N/A'}`,
+      '',
+      '03 - Add-ons',
+      `Selected add-ons: ${payload.selectedAddonsText}`,
+      '',
+      '04 - Timeline & Budget',
+      `Timeline: ${payload.timeline}`,
+      `Budget: ${payload.budget}`,
+      '',
+      '05 - Location & Communication',
+      `City: ${payload.city}`,
+      `Preferred channel: ${payload.contactChannel}`,
+      '',
+      '06 - Contact',
+      `Full name: ${payload.fullName}`,
+      `WhatsApp number: ${payload.whatsapp}`,
+      `Email address: ${payload.email}`,
+      '',
+      'Thanks,',
+    ].join('\n');
 
-    try {
-      const response = await fetch('/api/send-quote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to send request');
-      }
-
-      setSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (error) {
-      console.error('Email send failed', error);
-      alert('Could not submit your request. Please try again or use WhatsApp.');
-    }
+    const mailtoLink = `mailto:info@stemcenter-africa.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+    setSubmitted(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const waMessage = encodeURIComponent(`Hi, I would like to discuss a quote for the ${selectedPackage?.label} package.`);

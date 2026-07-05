@@ -1,82 +1,55 @@
-import React, { useState } from 'react';
-import '../../Styles/Team.css';
-
-const teamData = {
-  board: [
-    {
-      name: 'Sebastian McKinlay',
-      role: 'Board Chairman',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'Audrey Cheng',
-      role: 'Board Member, Co-founder',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'Snehar Shah',
-      role: 'Board Member',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'Karen Serem Waithaka',
-      role: 'Board Member',
-      image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80',
-      profile: '#',
-    },
-  ],
-  executive: [
-    {
-      name: 'James Mwangi',
-      role: 'Chief Executive Officer',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'Amina Hassan',
-      role: 'Chief Operating Officer',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'David Ochieng',
-      role: 'Head of Engineering',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80',
-      profile: '#',
-    },
-    {
-      name: 'Lydia Kamau',
-      role: 'Head of Academics',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80',
-      profile: '#',
-    },
-  ],
-};
+﻿import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { supabase } from '../../lib/supabaseClient'
+import '../../Styles/Team.css'
 
 export default function Team() {
-  const [activeTab, setActiveTab] = useState('board');
-  const members = teamData[activeTab];
+  const [activeTab, setActiveTab] = useState('board')
+  const [members, setMembers] = useState({ board: [], executive: [] })
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchTeamMembers() {
+      setLoading(true)
+      const { data, error } = await supabase
+        .from('team_members')
+        .select('name, role, category, slug, image, profile, order')
+        .order('order', { ascending: true })
+        .order('name', { ascending: true })
+
+      if (error) {
+        console.error('Failed to load team members:', error)
+        setMembers({ board: [], executive: [] })
+      } else {
+        const grouped = { board: [], executive: [] }
+        data.forEach((member) => {
+          const category = member.category === 'executive' ? 'executive' : 'board'
+          grouped[category].push(member)
+        })
+        setMembers(grouped)
+      }
+      setLoading(false)
+    }
+
+    fetchTeamMembers()
+  }, [])
+
+  const activeMembers = members[activeTab] || []
 
   return (
     <section className="team-section">
-      {/* Decorative background lines */}
       <div className="team-bg-lines" aria-hidden="true">
         <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,300 Q200,100 500,300 T1100,300" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2"/>
-          <path d="M-100,350 Q200,150 500,350 T1100,350" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2"/>
-          <path d="M-100,250 Q200,50 500,250 T1100,250" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2"/>
-          <path d="M-100,400 Q200,200 500,400 T1100,400" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1.5"/>
-          <path d="M-100,200 Q200,0 500,200 T1100,200" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1.5"/>
-          <path d="M50,600 Q150,300 300,200 Q450,100 500,0" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="60" strokeLinecap="round" opacity="0.3"/>
+          <path d="M-100,300 Q200,100 500,300 T1100,300" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2" />
+          <path d="M-100,350 Q200,150 500,350 T1100,350" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2" />
+          <path d="M-100,250 Q200,50 500,250 T1100,250" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2" />
+          <path d="M-100,400 Q200,200 500,400 T1100,400" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1.5" />
+          <path d="M-100,200 Q200,0 500,200 T1100,200" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1.5" />
+          <path d="M50,600 Q150,300 300,200 Q450,100 500,0" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="60" strokeLinecap="round" opacity="0.3" />
         </svg>
       </div>
 
       <div className="container team-container">
-
-        {/* ── Heading ── */}
         <div className="row">
           <div className="col-12 text-center">
             <h2 className="team-heading">Meet the Team</h2>
@@ -90,7 +63,6 @@ export default function Team() {
           </div>
         </div>
 
-        {/* ── Tab buttons ── */}
         <div className="row justify-content-center">
           <div className="col-auto">
             <div className="team-tabs">
@@ -110,31 +82,33 @@ export default function Team() {
           </div>
         </div>
 
-        {/* ── Cards ── */}
         <div className="row justify-content-center team-cards-row">
-          {members.map((member, index) => (
-            <div key={index} className="col-12 col-sm-6 col-lg-3 team-card-col">
-              <div className="team-card">
-                <div className="team-card-img-wrap">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="team-card-img"
-                  />
-                </div>
-                <div className="team-card-body">
-                  <p className="team-card-name">{member.name}</p>
-                  <p className="team-card-role">{member.role}</p>
-                  <a href={member.profile} className="team-card-link">
-                    See full profile →
-                  </a>
+          {loading ? (
+            <div className="col-12 text-center">Loading team members...</div>
+          ) : (
+            activeMembers.map((member, index) => (
+              <div key={index} className="col-12 col-sm-6 col-lg-3 team-card-col">
+                <div className="team-card">
+                  <div className="team-card-img-wrap">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="team-card-img"
+                    />
+                  </div>
+                  <div className="team-card-body">
+                    <p className="team-card-name">{member.name}</p>
+                    <p className="team-card-role">{member.role}</p>
+                    <Link to={`/team/${member.slug}`} className="team-card-link">
+                      See full profile →
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
-
       </div>
     </section>
-  );
+  )
 }

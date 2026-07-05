@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '../lib/supabaseClient';
 import '../Styles/Faqsection.css';
 import faqBannerImg from '../assets/faqs.jpg';
 
@@ -88,17 +89,48 @@ function chunkArray(arr, size) {
 }
 
 export default function FaqSection({ faqs, bannerImage, bannerTitle }) {
-  const source     = faqs        || allFaqs;
-  const pages      = chunkArray(source, PAGE_SIZE);   // [[...], [...], ...]
-  const imgSrc     = bannerImage || faqBannerImg;
-  const heroTitle  = bannerTitle || 'FAQs';
+  const [source, setSource] = useState(faqs || allFaqs)
+  const [page, setPage] = useState(0)
+  const [openIndex, setOpenIndex] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const [page, setPage]           = useState(0);   // current page index
-  const [openIndex, setOpenIndex] = useState(null); // open accordion item
+  const imgSrc = bannerImage || faqBannerImg
+  const heroTitle = bannerTitle || 'FAQs'
 
-  const currentItems = pages[page] ?? [];
-  const isFirst      = page === 0;
-  const isLast       = page === pages.length - 1;
+  useEffect(() => {
+    if (faqs) return
+
+    async function loadFaqs() {
+      setLoading(true)
+      setError('')
+
+      const { data, error: fetchError } = await supabase
+        .from('faqs')
+        .select('id, question, answer, order')
+        .order('order', { ascending: true })
+        .order('created_at', { ascending: true })
+
+      if (fetchError) {
+        console.error('Failed to load FAQs:', fetchError)
+        setError('Unable to load FAQs right now.')
+        setSource(allFaqs)
+      } else if (data?.length) {
+        setSource(data)
+      } else {
+        setSource(allFaqs)
+      }
+
+      setLoading(false)
+    }
+
+    loadFaqs()
+  }, [faqs])
+
+  const pages = chunkArray(source, PAGE_SIZE)
+  const currentItems = pages[page] ?? []
+  const isFirst = page === 0
+  const isLast = page === pages.length - 1
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -137,25 +169,33 @@ export default function FaqSection({ faqs, bannerImage, bannerTitle }) {
       <section className="faq-section" aria-label="Frequently asked questions">
         <div className="container faq-container mt-4 mb-5 py-5">
           <div className="faq-list">
-            {currentItems.map((item, index) => (
-              <div
-                key={index}
-                className={`faq-item${openIndex === index ? ' open' : ''}`}
-              >
-                <button
-                  className="faq-question"
-                  onClick={() => toggle(index)}
-                  aria-expanded={openIndex === index}
+            {loading ? (
+              <p className="faq-loading">Loading FAQs…</p>
+            ) : error ? (
+              <p className="faq-error">{error}</p>
+            ) : currentItems.length === 0 ? (
+              <p className="faq-empty">No FAQs available right now.</p>
+            ) : (
+              currentItems.map((item, index) => (
+                <div
+                  key={item.id ?? index}
+                  className={`faq-item${openIndex === index ? ' open' : ''}`}
                 >
-                  <span className="faq-question-text">{item.question}</span>
-                  <span className="faq-toggle" aria-hidden="true">+</span>
-                </button>
+                  <button
+                    className="faq-question"
+                    onClick={() => toggle(index)}
+                    aria-expanded={openIndex === index}
+                  >
+                    <span className="faq-question-text">{item.question}</span>
+                    <span className="faq-toggle" aria-hidden="true">+</span>
+                  </button>
 
-                <div className="faq-answer" aria-hidden={openIndex !== index}>
-                  <div className="faq-answer-inner">{item.answer}</div>
+                  <div className="faq-answer" aria-hidden={openIndex !== index}>
+                    <div className="faq-answer-inner">{item.answer}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
 
           {/* ── Pagination ── */}

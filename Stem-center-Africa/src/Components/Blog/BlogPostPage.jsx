@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { BLOG_POSTS } from '../../data/blogPosts';
+import { supabase } from '../../lib/supabaseClient';
 import '../../Styles/BlogPostPage.css';
 
 const SOCIAL_LINKS = [
@@ -56,7 +57,61 @@ const SOCIAL_LINKS = [
 
 export default function BlogPostPage() {
   const { slug } = useParams();
-  const post = BLOG_POSTS.find((item) => item.slug === slug);
+  const [post, setPost] = useState(null);
+  const [recentPosts, setRecentPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchPost();
+  }, [slug]);
+
+  async function fetchPost() {
+    try {
+      const { data: postData, error: postError } = await supabase
+        .from('blogs')
+        .select('slug, category, title, subtitle, author, author_image, date, image, content')
+        .eq('slug', slug)
+        .single();
+
+      if (postError) throw postError;
+      if (!postData) {
+        setPost(null);
+        setRecentPosts([]);
+        return;
+      }
+
+      setPost({
+        ...postData,
+        authorImage: postData.author_image,
+      });
+
+      const { data: recentData, error: recentError } = await supabase
+        .from('blogs')
+        .select('slug, title, image')
+        .neq('slug', slug)
+        .order('created_at', { ascending: false })
+        .limit(4);
+
+      if (recentError) throw recentError;
+      setRecentPosts(recentData || []);
+    } catch (error) {
+      console.error('Failed to load blog post from Supabase:', error);
+      setPost(null);
+      setRecentPosts([]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  if (loading) {
+    return (
+      <main className="post-page post-page--loading">
+        <div className="post-page__not-found">
+          <h1>Loading…</h1>
+        </div>
+      </main>
+    );
+  }
 
   if (!post) {
     return (
@@ -72,7 +127,7 @@ export default function BlogPostPage() {
     );
   }
 
-  const recentPosts = BLOG_POSTS.filter((item) => item.slug !== slug).slice(0, 4);
+  const authorAvatarSrc = post.author_image || post.authorImage;
 
   return (
     <main className="post-page">
@@ -85,7 +140,7 @@ export default function BlogPostPage() {
           <div className="post-hero__author-block">
             <img
               className="post-hero__avatar"
-              src={post.authorImage}
+              src={authorAvatarSrc}
               alt={`Avatar of ${post.author}`}
             />
             <div className="post-hero__author-text">

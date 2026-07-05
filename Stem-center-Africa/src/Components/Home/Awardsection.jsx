@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import '../../Styles/Awardsection.css';
+import { supabase } from '../../lib/supabaseClient'
 import pythonImg from '../../assets/python.jpg'
 import scratchImg from '../../assets/scratch.jpg'
 import roboticsImg from '../../assets/Robotics.jpg'
 import arduinoImg from '../../assets/ARDUINO.jpg'
 
-const awards = [
+const DEFAULT_AWARDS = [
   {
     id: 1,
     image: pythonImg,
@@ -38,6 +39,14 @@ const awards = [
   },
 ];
 
+function normalizeAward(award) {
+  return {
+    id: award.id ?? award.label,
+    image: award.image_path || award.image || award.image_url || '',
+    label: award.title || award.label || '',
+  }
+}
+
 function AwardCard({ award, style }) {
   return (
     <div className="award-item" style={style}>
@@ -56,6 +65,8 @@ function AwardCard({ award, style }) {
 export default function AwardsSection() {
   // Mobile carousel state
   const [activeIndex, setActiveIndex] = useState(0);
+  const [awards, setAwards] = useState(DEFAULT_AWARDS);
+  const [loading, setLoading] = useState(true);
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
 
@@ -67,7 +78,42 @@ export default function AwardsSection() {
     }, autoScrollDelay);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [awards.length]);
+
+  useEffect(() => {
+    async function loadAwards() {
+      setLoading(true)
+      try {
+        const { data, error } = await supabase
+          .from('awards')
+          .select('id, title, image_path, created_at')
+          .order('created_at', { ascending: false })
+
+        if (error) {
+          console.error('Failed to load awards:', error)
+          setAwards(DEFAULT_AWARDS)
+          setLoading(false)
+          return
+        }
+
+        if (!data || data.length === 0) {
+          setAwards(DEFAULT_AWARDS)
+          setLoading(false)
+          return
+        }
+
+        const liveAwards = data.map(normalizeAward).filter(a => a.label && a.image)
+        setAwards(liveAwards.length > 0 ? liveAwards : DEFAULT_AWARDS)
+      } catch (e) {
+        console.error('Error loading awards:', e)
+        setAwards(DEFAULT_AWARDS)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadAwards()
+  }, [])
 
   const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
   const handleTouchMove  = (e) => { touchEndX.current  = e.touches[0].clientX; };
@@ -110,7 +156,10 @@ export default function AwardsSection() {
             </div>
           </div>
 
-          {/* Mobile: one-at-a-time carousel */}
+          {loading && awards.length === 0 && (
+            <div className="awards-loading-message">Loading awards…</div>
+          )}
+
           <div
             className="awards-mobile-carousel"
             onTouchStart={handleTouchStart}
