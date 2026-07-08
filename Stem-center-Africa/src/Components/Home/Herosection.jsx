@@ -81,7 +81,7 @@ const HeroSection = () => {
                       <i className="bi bi-person-circle sc-trust__icon"></i>
                      </div>
                      <div className="col-8 d-flex flex-column">
-                        <p className="sc-trust__text strong mb-0">200+</p>
+                        <p className="sc-trust__text strong mb-0">18712+</p>
                         <span className="sc-trust__text mt-0">students</span>
                      </div>
                   </div>
@@ -103,7 +103,7 @@ const HeroSection = () => {
                        <i className="bi bi-universal-access-circle sc-trust__icon"></i>
                      </div>
                      <div className="col-8 d-flex flex-column">
-                           <p className="sc-trust__text strong mb-0">7+</p>
+                           <p className="sc-trust__text strong mb-0">10+</p>
                            <span className="sc-trust__text mt-0">partners</span>
                      </div>
                   </div>

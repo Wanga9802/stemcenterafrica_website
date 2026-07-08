@@ -4,25 +4,25 @@ const contactDetails = [
   {
     icon: "bi bi-geo-alt-fill",
     label: "Address",
-    value: "123 Innovation Drive, Westlands",
-    sub: "Nairobi, Kenya",
+    value: "PO BOX 40222,Oyugis,kenya",
+    sub: null,
   },
   {
     icon: "bi bi-alarm",
     label: "Open Hours",
-    value: "Mon – Fri: 8am – 6pm",
-    sub: "Sat: 9am – 2pm",
+    value: "sun – Thur: 8am – 6pm",
+    sub: null,
   },
   {
     icon: "bi bi-telephone-fill",
     label: "Contact",
-    value: "+254 700 000 000",
+    value: "+17325068913/+254790753694",
     sub: null,
   },
   {
     icon: "bi bi-envelope",
     label: "Email",
-    value: "hello@stemcenterafrica.com",
+    value: "info@stemcenter-africa.com",
     sub: null,
   },
 ];
@@ -62,7 +62,7 @@ export default function MapSection() {
     <>
      
 
-      <section className="map-section" ref={sectionRef} aria-labelledby="map-heading">
+      <section id="map-section" className="map-section" ref={sectionRef} aria-labelledby="map-heading">
         <div className="map-inner">
           <div className="map-header">
             <div data-animate>

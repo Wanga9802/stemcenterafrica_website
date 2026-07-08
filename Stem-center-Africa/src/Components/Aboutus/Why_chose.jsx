@@ -9,22 +9,22 @@ import excellence from '../../assets/excellence.png';
 const defaultReasons = [
   {
     image: relationship,
-    title: '10 Yrs of Deep Employer Relationships',
+    title: 'Global competency',
    
   },
   {
     image: excellence,
-    title: 'Proven Excellence in delivering market - centric Tech Education',
-   
-  },
-  {
-    image: graduate,
-    title: '12000+ Alumni Community',
+    title: 'Proven Excellence in delivering Hands on skills',
    
   },
   {
     image: acredit,
-    title: 'TVETA Accreditation',
+    title: 'Empowering girls in STEM',
+   
+  },
+  {
+    image: graduate,
+    title: 'National STEM Honor society Accreditation',
    
   },
 ];

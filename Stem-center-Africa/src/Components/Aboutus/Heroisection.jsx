@@ -1,12 +1,13 @@
 import '../../Styles/Heroisection.css';
 import React from 'react';
+import storo from '../../assets/storyour.jpg';
 
 const defaultStory = {
   title: 'Our Story',
   paragraphs: [
     "STEM Center Africa, founded in 2017, is a nonprofit based at Edenview Academy in Oyugis, Kenya. We offer mathematics, science, technology, and engineering programs that aim to inspire the next generation of mathematicians, scientists, and engineers and excite learners of all ages about the power and beauty of STEM education. We promote creativity, critical thinking, and problem-solving skills that we believe will help spur the economic growth of not only African countries but the world at large.",
   ],
-  imageSrc: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80',
+  imageSrc: storo,
   imageAlt: 'Students working on computers at STEM Center Africa',
 };
 

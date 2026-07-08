@@ -16,8 +16,8 @@ function Us() {
     },
     {
       title: "Our Mission",
-      subtitle: "To develop the tech talent the world needs",
-      description: "We are dedicated to building talent and creating opportunities through tech. As a learning accelerator, we equip high-potential job seekers with in-demand skills, bridging the gap in Africa's job market. Our commitment goes beyond education."
+      subtitle: "To promote STEM education through innovation",
+      description: "To inspire the next generation of mathematicians, scientists, and engineers and excite learners of all ages about the power and beauty of STEM education. We aim to promote creative and critical thinkers and problem-solvers who we believe will help spur the economic growth of not only African countries but the world at large."
     }
   ];
 

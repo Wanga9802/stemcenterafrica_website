@@ -3,6 +3,22 @@ import { Link } from 'react-router-dom';
 import '../../Styles/Blogcategory.css';
 import { supabase } from '../../lib/supabaseClient';
 
+const CATEGORY_ID_MAP = {
+  Python: 'python',
+  Scratch: 'scratch',
+  'Basic Computer': 'basic-comp',
+  'Web Development': 'web-dev',
+  Tinkering: 'tinkering',
+  'Arduino & IoT Development': 'arduino-iot',
+  'Community Stories': 'community',
+  'Career Readiness': 'career',
+};
+
+function getCategoryId(category) {
+  if (!category) return null;
+  return CATEGORY_ID_MAP[category] || category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
 export default function BlogCategoryCards() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -56,14 +72,21 @@ export default function BlogCategoryCards() {
     );
   }
 
+  const renderedCategoryIds = new Set();
+
   return (
     <section className="blog-section">
       <div className="blog-cards-grid">
-        {posts.map((post) => (
-          <article key={post.slug} className="blog-card">
-            <div className="blog-card__image-wrap">
-              <img className="blog-card__img" src={post.image} alt={post.title} />
-            </div>
+        {posts.map((post) => {
+          const categoryId = getCategoryId(post.category);
+          const articleId = categoryId && !renderedCategoryIds.has(categoryId) ? categoryId : undefined;
+          if (articleId) renderedCategoryIds.add(categoryId);
+
+          return (
+            <article key={post.slug} id={articleId} className="blog-card">
+              <div className="blog-card__image-wrap">
+                <img className="blog-card__img" src={post.image} alt={post.title} />
+              </div>
 
             <div className="blog-card__body">
               <p className="blog-card__category">{post.category}</p>
@@ -78,7 +101,8 @@ export default function BlogCategoryCards() {
               </div>
             </div>
           </article>
-        ))}
+        );
+      })}
       </div>
     </section>
   );

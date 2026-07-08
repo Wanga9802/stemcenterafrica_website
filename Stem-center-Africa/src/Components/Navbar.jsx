@@ -129,6 +129,9 @@ function Navbar() {
     return () => { if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current); };
   }, []);
 
+  const isCoursesActive = location.pathname.startsWith('/courses');
+  const isAboutActive = ['/about', '/faqs'].includes(location.pathname);
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -246,12 +249,13 @@ function Navbar() {
                 onMouseEnter={() => openDropdown('courses')}
                 onMouseLeave={closeDropdownDelayed}
               >
-                <NavLink
-                  className={({ isActive }) => `nav-link dropdown-trigger${isActive ? ' active' : ''}${activeDropdown === 'courses' ? ' open' : ''}`}
-                  to="/courses"
+                <button
+                  type="button"
+                  className={`nav-link dropdown-trigger${isCoursesActive ? ' active' : ''}${activeDropdown === 'courses' ? ' open' : ''}`}
+                  onClick={() => openDropdown('courses')}
                 >
                   Courses
-                </NavLink>
+                </button>
               </li>
 
               {/* About */}
@@ -260,13 +264,14 @@ function Navbar() {
                 onMouseEnter={() => openDropdown('about')}
                 onMouseLeave={closeDropdownDelayed}
               >
-                <NavLink
+                <button
                   ref={aboutLinkRef}
-                  className={({ isActive }) => `nav-link dropdown-trigger${isActive ? ' active' : ''}${activeDropdown === 'about' ? ' open' : ''}`}
-                  to="/about"
+                  type="button"
+                  className={`nav-link dropdown-trigger${isAboutActive ? ' active' : ''}${activeDropdown === 'about' ? ' open' : ''}`}
+                  onClick={() => openDropdown('about')}
                 >
                   About
-                </NavLink>
+                </button>
               </li>
 
               {/* Services */}
@@ -280,13 +285,14 @@ function Navbar() {
                 onMouseEnter={() => openDropdown('community')}
                 onMouseLeave={closeDropdownDelayed}
               >
-                <NavLink
+                <button
                   ref={communityLinkRef}
-                  className={({ isActive }) => `nav-link dropdown-trigger${isActive ? ' active' : ''}${activeDropdown === 'community' ? ' open' : ''}`}
-                  to="/community"
+                  type="button"
+                  className={`nav-link dropdown-trigger${activeDropdown === 'community' ? ' open' : ''}`}
+                  onClick={() => openDropdown('community')}
                 >
                   Community
-                </NavLink>
+                </button>
               </li>
 
               {/* Search */}

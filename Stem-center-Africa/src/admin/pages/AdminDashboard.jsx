@@ -49,10 +49,10 @@ export default function AdminDashboard() {
   }
 
   const statCards = [
-    { label: 'TOTAL BLOG POSTS', value: stats.blogs, trend: '+8%', trendUp: true },
-    { label: 'TOTAL EVENTS', value: stats.events, trend: '+5%', trendUp: true },
-    { label: 'TEAM MEMBERS', value: stats.team, trend: null },
-    { label: 'SUBSCRIBERS', value: stats.subscribers, trend: null },
+    { label: 'TOTAL BLOG POSTS', value: stats.blogs, trend: null, borderClass: 'dashboard-stat-card-blog' },
+    { label: 'TOTAL EVENTS', value: stats.events, trend: null, borderClass: 'dashboard-stat-card-event' },
+    { label: 'TEAM MEMBERS', value: stats.team, trend: null, borderClass: 'dashboard-stat-card-team' },
+    { label: 'SUBSCRIBERS', value: stats.subscribers, trend: null, borderClass: 'dashboard-stat-card-subscribers' },
   ]
 
   const chartData = [
@@ -67,21 +67,9 @@ export default function AdminDashboard() {
 
   return (
     <div className="dashboard-page">
-      <div className="dashboard-quick-actions">
-        <button onClick={() => navigate('/admin/blogs/new')} className="dashboard-btn dashboard-btn-primary">
-          <PlusIcon /> Add Blog
-        </button>
-        <button onClick={() => navigate('/admin/events/new')} className="dashboard-btn dashboard-btn-outline">
-          <PlusIcon /> Add Event
-        </button>
-        <button onClick={() => navigate('/admin/team/new')} className="dashboard-btn dashboard-btn-outline">
-          <PlusIcon /> Add Team Member
-        </button>
-      </div>
-
       <div className="dashboard-stats-grid">
         {statCards.map((card) => (
-          <div key={card.label} className="dashboard-stat-card">
+          <div key={card.label} className={`dashboard-stat-card ${card.borderClass}`}>
             {loading ? (
               <div className="dashboard-skeleton" />
             ) : (
@@ -101,7 +89,7 @@ export default function AdminDashboard() {
         ))}
       </div>
 
-      <div className="dashboard-card">
+      <div className="dashboard-card shadow-lg">
         <h2 className="dashboard-card-title">Monthly Engagement Overview</h2>
         <div className="dashboard-chart-wrap">
           {chartData.map((d, i) => (
@@ -121,7 +109,7 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      <div className="dashboard-card">
+      <div className="dashboard-card shadow-lg">
         <div className="dashboard-table-header">
           <h2 className="dashboard-card-title">Recent Subscribers</h2>
           <button onClick={() => navigate('/admin/community')} className="dashboard-view-all-btn">

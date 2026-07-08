@@ -11,6 +11,7 @@
   flex-direction: column;
   background: #F0F2F7;
   flex: 1;
+  min-width: 0;
 }
 
 .admin-layout-content {
@@ -19,6 +20,7 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  min-width: 0;   
 }
 
 .admin-layout-mobile-overlay {

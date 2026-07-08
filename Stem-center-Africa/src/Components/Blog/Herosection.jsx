@@ -3,7 +3,7 @@ import '../../Styles/Bloghero.css'
 
 // ── Categories ─────────────────────────────────────────────────────────────
 const CATEGORIES = [
-  { id: "python",       label: "Python" },
+  { id: "robotics-ai",  label: "Robotics & AI" },
   { id: "scratch",      label: "Scratch" },
   { id: "basic-comp",   label: "Basic Computer" },
   { id: "web-dev",      label: "Web Development" },
@@ -40,15 +40,16 @@ export default function BlogHero({ onCategoryChange, defaultCategory = null }) {
 
         <div className="bh-cat-grid" role="group" aria-label="Blog categories">
           {CATEGORIES.map((cat) => (
-            <button
+            <a
               key={cat.id}
+              href={`#${cat.id}`}
               className={`bh-cat-btn${active === cat.id ? " bh-cat-btn--active" : ""}`}
               onClick={() => handleSelect(cat.id)}
-              aria-pressed={active === cat.id}
+              aria-current={active === cat.id ? 'true' : undefined}
             >
               <span>{cat.label}</span>
               <span className="bh-cat-btn__arrow" aria-hidden="true">→</span>
-            </button>
+            </a>
           ))}
         </div>
 

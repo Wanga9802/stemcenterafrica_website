@@ -23,7 +23,7 @@ const stats = [
   {
     id: 4,
     icon: "bi bi-patch-check-fill",
-    value: "7+",
+    value: "10+",
     label: "Partners & Collaborators",
   },
 ];

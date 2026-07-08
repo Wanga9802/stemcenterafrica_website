@@ -160,7 +160,7 @@ const DEFAULT_CARDS_PER_PAGE = 3;
             {/* Ongoing Intakes */}
           <div className="ep-intakes">
             <p className="ep-intakes-label">Ongoing Intakes All Year Round</p>
-            <a href="#" className="ep-book-btn">Book a Call</a>
+            <a href="#map-section" className="ep-book-btn">Book a Call</a>
           </div>
         
         </div>

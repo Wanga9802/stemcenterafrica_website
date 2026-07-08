@@ -57,7 +57,7 @@ export default function AdminLogin() {
     if (resetError) {
       setSubmitError(resetError.message || 'Unable to send reset email.')
     } else {
-      setStatusMessage('If that email is registered, a password reset link has been sent.')
+      setStatusMessage('An email reset link has been sent to your inbox.')
     }
   }
 

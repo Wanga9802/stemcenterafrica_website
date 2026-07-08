@@ -101,6 +101,35 @@
   inset: 0;
   background: linear-gradient(to top, rgba(15,15,15,0.82) 0%, rgba(15,15,15,0.10) 55%, transparent 100%);
   border-radius: inherit; /* keep overlay rounded */
+  z-index: 1;
+}
+
+/* iframe that replaces thumbnail when playing */
+.alumnii-card-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 4;
+}
+
+.alumnii-video-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 6;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ── Play button overlay (centered on thumbnail) ── */
@@ -109,8 +138,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   background: #ea580c;
   border: none;
   border-radius: 50%;
@@ -134,8 +163,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 84px; /* larger play button for bigger thumbnail */
-  height: 84px;
+  width: 48px; /* reduced play button size */
+  height: 48px;
   background: #ea580c;
   border: none;
   border-radius: 50%;
@@ -144,10 +173,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 18px rgba(234,88,12,0.35);
+  box-shadow: 0 4px 12px rgba(234,88,12,0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.alumnii-play-button svg { width: 36px; height: 36px; }
+.alumnii-play-button svg { width: 20px; height: 20px; }
 
 /* Hide the carousel on desktop by default (show only at mobile breakpoints) */
 .alumnii-carousel-track {
