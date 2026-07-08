@@ -53,7 +53,6 @@ function App() {
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/service-request" element={<ServiceForm />} />
         <Route path="/corporate" element={<Services />} />
-        <Route path="/community" element={<Community />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/events" element={<Events />} />
