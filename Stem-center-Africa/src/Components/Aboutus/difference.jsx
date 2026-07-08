@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import '../../Styles/Difference.css';
-import iosAppImage from '../../assets/mitchi.jpg';
+import iosAppImage from '../../assets/mitchi.JPG';
 import roboticsImage from '../../assets/inclusive.jpg';
-import arduinoImage from '../../assets/problem.jpg';
-import computerImage from '../../assets/refresh.jpg';
+import arduinoImage from '../../assets/problem.JPG';
+import computerImage from '../../assets/refresh.JPG';
 
 const programs = [
   {
