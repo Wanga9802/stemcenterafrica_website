@@ -1,5 +1,5 @@
 import '../../Styles/Projects.css';
-import projects from '../../data/projects';
+import projects from '../../data/Projects';
 
 export default function ProjectsShowcase() {
   const featuredProjects = projects.slice(0, 4);
