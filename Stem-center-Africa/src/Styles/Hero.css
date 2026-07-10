@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* ── HERO WRAPPER ── */
+.ihh-hero,
+.ihh-hero * {
+  font-family: 'DM Sans', sans-serif;
+}
+.ihh-hero {
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #1a0010;
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+/* ── FULL-BLEED BACKGROUND PHOTO ── */
+.ihh-hero__bg-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  filter: brightness(0.58) saturate(1.05);
+  background: #130109;
+}
+
+.ihh-hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform: scale(1.03);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  opacity: 0.98;
+}
+
+.ihh-hero:hover .ihh-hero__photo {
+  transform: scale(1.05);
+}
+
+/* Dark overlay across the entire photo for text legibility */
+.ihh-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(26, 0, 16, 0.60) 0%, rgba(26, 0, 16, 0.52) 45%, rgba(26, 0, 16, 0.40) 100%),
+    linear-gradient(180deg, rgba(26, 0, 16, 0.24) 0%, rgba(26, 0, 16, 0.08) 30%, rgba(26, 0, 16, 0.08) 70%, rgba(26, 0, 16, 0.40) 100%);
+  pointer-events: none;
+}
+
+/* ── CONTENT LAYER ── */
+.ihh-hero__content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+/* ── BREADCRUMB ── */
+.ihh-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.ihh-breadcrumb a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ihh-breadcrumb a:hover {
+  color: #ff4d9e;
+}
+
+.ihh-breadcrumb__sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.ihh-breadcrumb__current {
+  color: #ff4d9e;
+}
+
+/* ── BADGE ── */
+.ihh-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 77, 158, 0.4);
+  color: #ff4d9e;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.ihh-badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff4d9e;
+  box-shadow: 0 0 10px rgba(255, 77, 158, 0.7);
+}
+
+/* ── HEADLINE ── */
+.ihh-hero__headline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+}
+
+.ihh-hero__headline em {
+  font-style: normal;
+  color: #ff4d9e;
+}
+
+/* ── SUBHEADLINE ── */
+.ihh-hero__sub {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 540px;
+  margin-bottom: 28px;
+}
+
+
+/* ── QUICK STATS ── */
+.ihh-stats {
+  display: flex;
+  gap: 48px;
+}
+
+.ihh-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ihh-stat__value-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ihh-stat__icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.ihh-stat__value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.ihh-stat__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 767px) {
+  .ihh-hero {
+    min-height: 320px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .ihh-hero__overlay {
+    background:
+      linear-gradient(90deg, rgba(26, 0, 16, 0.60) 0%, rgba(26, 0, 16, 0.52) 45%, rgba(26, 0, 16, 0.40) 100%),
+      linear-gradient(180deg, rgba(26, 0, 16, 0.24) 0%, rgba(26, 0, 16, 0.08) 30%, rgba(26, 0, 16, 0.08) 70%, rgba(26, 0, 16, 0.40) 100%);
+  }
+
+  .ihh-hero__headline {
+    font-size: 2rem;
+  }
+
+  .ihh-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ihh-btn-primary, .ihh-btn-secondary {
+    justify-content: center;
+  }
+
+  .ihh-stats {
+    gap: 32px;
+  }
+}

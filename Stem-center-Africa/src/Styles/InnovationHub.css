@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* ── SECTION WRAPPER ── */
+.ih-section {
+  background: linear-gradient(160deg, #1a0010 0%, #2a0018 50%, #1f0015 100%);
+  padding: 50px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle grid texture matching hero/stats sections */
+.ih-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+.ih-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── LEFT: TEXT COLUMN ── */
+.ih-section,
+.ih-section * {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.ih-eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ff4d9e;
+  margin-bottom: 10px;
+}
+
+.ih-heading {
+   font-family: 'DM Sans', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.ih-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  max-width: 420px;
+  margin: 0 0 28px;
+}
+
+.ih-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  background: #E91E8C;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(233, 30, 140, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.ih-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(233, 30, 140, 0.55);
+  filter: brightness(1.05);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── RIGHT: CAPABILITY GRID ── */
+.ih-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.ih-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 77, 158, 0.18);
+  border-radius: 0;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+/* base left accent (transparent by default) */
+.ih-card {
+  border-left: 2px solid transparent;
+}
+
+.ih-card:hover {
+  border-color: #E91E8C;
+  background: rgba(233, 30, 140, 0.06);
+  transform: translateY(-3px);
+}
+
+.ih-icon-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ih-icon-badge i {
+  font-size: 1.4rem;
+  color: #ff4d9e;
+}
+
+.ih-badge-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+}
+
+.ih-card__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}
+
+/* per-card accent colors to match icons */
+.ih-card--c1 { border-left-color: #00E6C2; } /* Robotics & Embedded (teal) */
+.ih-card--c2 { border-left-color: #FF4D9E; } /* AI & ML (pink) */
+.ih-card--c3 { border-left-color: #3EA1FF; } /* Software & App (blue) */
+.ih-card--c4 { border-left-color: #3EA1FF; } /* Research & Prototyping (blue) */
+.ih-card--c5 { border-left-color: #A66BFF; } /* 3D Printing (purple) */
+.ih-card--c6 { border-left-color: #00D1A9; } /* Community Partnerships (turquoise) */
+
+/* ── RESPONSIVE ── */
+@media (max-width: 991px) {
+  .ih-heading {
+    font-size: 2rem;
+  }
+
+  .ih-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .ih-section {
+    padding: 56px 16px;
+  }
+
+  .ih-heading {
+    font-size: 1.8rem;
+  }
+
+  .ih-text {
+    max-width: 100%;
+  }
+
+  .ih-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .ih-card {
+    padding: 18px 12px;
+  }
+
+  .ih-icon-badge {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ih-icon-badge i {
+    font-size: 1.2rem;
+  }
+
+  .ih-card__label {
+    font-size: 0.78rem;
+  }
+}

@@ -1,26 +1,25 @@
-
-// STEMCenter Africa — Hero Section
-// Stack: React + Bootstrap 5
-
 import '../../Styles/Herosection.css';
-import Logopic from '../../assets/stemlogo_3.jpg';
-
-
-// ─── Component ─────────────────────────────────────────
+import HeroPhoto from '../../assets/storyour.jpg'; 
 
 const HeroSection = () => {
 
- 
-
   return (
-    
-    
-    <section className="sc-hero" aria-label="Hero section">
 
-      
+    <section className="sc-hero" aria-label="Hero section">
 
       {/* ── Background layers ── */}
       <div className="sc-hero__bg" aria-hidden="true" />
+
+      {/* ── Full-bleed photo (spans entire section) ── */}
+      <div className="sc-hero__photo-panel sc-anim sc-anim--right">
+        <img
+          src={HeroPhoto}
+          alt="Students engaged in hands-on STEM learning"
+          className="sc-hero__photo"
+        />
+      </div>
+      <div className="sc-hero__photo-overlay" aria-hidden="true" />
+
       <div className="sc-hero__grid" aria-hidden="true" />
       <div className="sc-hero__orb sc-hero__orb--1" aria-hidden="true" />
       <div className="sc-hero__orb sc-hero__orb--2" aria-hidden="true" />
@@ -47,95 +46,26 @@ const HeroSection = () => {
 
             {/* Subheadline */}
             <p className="sc-hero__sub sc-anim sc-anim--delay-3">
-             Building a future where every African child has access to World-class STEM
-             education, mentorship and opportunities to solve tommorow's challenges.
+STEM Center Africa equips young people across Kenya with hands-on skills in robotics, coding, AI, engineering, mathematics, 
+electronics, and design thinking through innovation centers, mobile outreach, and school partnerships.
             </p>
 
             {/* ── CTA Buttons ── */}
-            {/*
-              COLOR RATIONALE:
-              • Primary (Amber/Gold) — Maximum contrast on dark green background.
-                Warm gold pops against cool dark tones, signals ihmportance.
-              • Secondary (White outline) — Neutral, non-competing.
-                Provides choice without fighting for attention.
-            */}
             <div className="sc-cta-group sc-anim sc-anim--delay-4 mb-2">
               <a href="#programs" className="sc-btn-primary">
-                Explore Our Programs
-                <span className="sc-btn-icon">→</span>
+                Enroll a student
               </a>
               <a href="#donate" className="sc-btn-secondary">
-                 Donate Now
-                <span className="sc-btn-icon">→</span>
+                 partner with us
               </a>
             </div>
 
-            {/* ── Trust Indicators ── */}
-         
-
-            
-            <div className="row d-flex flex-row mt-0 g-2 setu-setu">
-               <div className="col-4 card bg-transparent toto-toto">
-                  <div className="row d-flex flex-row">
-                     <div className="col-4 text-center">
-                      <i className="bi bi-person-circle sc-trust__icon"></i>
-                     </div>
-                     <div className="col-8 d-flex flex-column">
-                        <p className="sc-trust__text strong mb-0">18712+</p>
-                        <span className="sc-trust__text mt-0">students</span>
-                     </div>
-                  </div>
-               </div>
-                <div className="col-4 card bg-transparent toto-toto">
-                  <div className="row d-flex flex-row">
-                     <div className="col-4 text-center">
-                        <i className="bi bi-p-circle-fill sc-trust__icon"></i>
-                     </div>
-                     <div className="col-8 d-flex flex-column">
-                       <p className="sc-trust__text strong mb-0">15+</p>
-                        <span className="sc-trust__text mt-0">programs</span>
-                     </div>
-                  </div>
-               </div>
-               <div className="col-4 card bg-transparent toto-toto">
-                  <div className="row d-flex flex-row">
-                     <div className="col-4 text-center">
-                       <i className="bi bi-universal-access-circle sc-trust__icon"></i>
-                     </div>
-                     <div className="col-8 d-flex flex-column">
-                           <p className="sc-trust__text strong mb-0">10+</p>
-                           <span className="sc-trust__text mt-0">partners</span>
-                     </div>
-                  </div>
-               </div>
-               
-
-               
-
-            </div>
-
-          </div>
 
 
-          {/* ── RIGHT: Illustration Column ── */}
-          <div className="col-md-5"> 
-            <div className="sc-hero__visual sc-anim sc-anim--right">
-
-              {/* Glow rings */}
-              <div className="sc-visual__ring" aria-hidden="true" />
-              <div className="sc-visual__ring sc-visual__ring--2" aria-hidden="true" />
-               <div className="sc-visual__ring sc-visual__ring--3" aria-hidden="true" />
-
-              {/* Main image */}
-              <img src={Logopic} alt="STEM Education Illustration" className='sc-hero__img' />
-             
-            </div>
           </div>
 
         </div>
       </div>
-
-    
 
     </section>
   );

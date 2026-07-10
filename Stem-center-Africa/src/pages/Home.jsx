@@ -9,6 +9,8 @@ import Joinus from "../Components/Home/Joinus";
 import AlumniSuccessStories from "../Components/Home/Alumnisucces";
 import MapSection from "../Components/Home/Mapsection";
 import AwardsSection from "../Components/Home/Awardsection";
+import Projects from "../Components/Home/Projects";
+import InnovationHub from "../Components/Home/Innovationhub";
 
 function Home() {
 
@@ -16,8 +18,10 @@ function Home() {
 
     <>
       <HeroSection />
-      <ExplorePrograms />
       <StatsBar />
+      <ExplorePrograms />
+      <Projects />
+      <InnovationHub />
       <Partners />
       <AlumniSuccessStories />
       <AwardsSection />

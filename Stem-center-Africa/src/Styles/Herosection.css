@@ -49,12 +49,76 @@
     linear-gradient(160deg, #1a0010 0%, #2a0018 50%, #1f0015 100%);
 }
 
+/* ── FULL-BLEED PHOTO (spans entire hero) ── */
+.sc-hero__photo-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.sc-hero__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Gradient overlay: solid dark on the left, fading to reveal photo on the right */
+.sc-hero__photo-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      var(--sc-dark) 0%,
+      var(--sc-dark) 30%,
+      rgba(26, 0, 16, 0.88) 42%,
+      rgba(26, 0, 16, 0.55) 52%,
+      rgba(26, 0, 16, 0.15) 62%,
+      transparent 72%
+    ),
+    linear-gradient(180deg, rgba(26, 0, 16, 0.25) 0%, transparent 20%, transparent 80%, rgba(26, 0, 16, 0.35) 100%);
+}
+
+@media (max-width: 991px) {
+  .sc-hero__photo-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        var(--sc-dark) 0%,
+        var(--sc-dark) 38%,
+        rgba(26, 0, 16, 0.85) 50%,
+        rgba(26, 0, 16, 0.4) 62%,
+        transparent 78%
+      ),
+      linear-gradient(180deg, rgba(26, 0, 16, 0.25) 0%, transparent 20%, transparent 80%, rgba(26, 0, 16, 0.35) 100%);
+  }
+}
+
+@media (max-width: 767px) {
+  .sc-hero__photo-panel {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    margin-top: 1rem;
+  }
+  .sc-hero__photo-overlay {
+    display: none;
+  }
+}
+
 /* Floating orbs */
 .sc-hero__orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
   animation: orbFloat 8s ease-in-out infinite;
+  z-index: 3;
 }
 .sc-hero__orb--1 {
   width: 360px; height: 360px;
@@ -89,7 +153,7 @@
     linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
   background-size: 50px 50px;
-  z-index: 1;
+  z-index: 3;
 }
 
 /* ── CONTENT LAYER ── */
@@ -136,7 +200,7 @@
 /* ── HEADLINE ── */
 .sc-hero__headline {
   font-family: var(--sc-ff-display);
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 700;
   line-height: 1.1;
   color: var(--sc-headline);
@@ -147,7 +211,7 @@
 
 .sc-hero__headline em {
   font-style: normal;
-  font-size: 48px;
+  font-size: 40px;
   color: var(--sc-headline-highlight);
   position: relative;
   display: inline-block;
@@ -189,14 +253,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 15px 30px;
+  padding: 10px 25px;
   background: linear-gradient(135deg, #E8006A, #b0004f);
   color: #ffffff;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   font-family: var(--sc-ff-body);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: none;
   box-shadow: 0 4px 20px rgba(232, 0, 106, 0.35);
@@ -229,11 +293,11 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 28px;
+  padding: 10px 25px;
   background: transparent;
   color: #ffffff;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
+  border-radius: 5px;
   font-family: var(--sc-ff-body);
   font-size: 15px;
   font-weight: 600;
@@ -309,122 +373,6 @@
   }
 }
 
-/* ── ILLUSTRATION PANEL ── */
-.sc-hero__visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Glow ring behind illustration */
-.sc-visual__ring {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(232, 0, 106, 0.15) 0%, transparent 65%);
-  border: 1px solid #E8006A;
-  animation: ringPulse 4s ease-in-out infinite;
-}
-
-.sc-visual__ring--2 {
-  width: 360px;
-  height: 360px;
-  background: transparent;
-  border: 1px dashed #E8006A;
-  animation: ringRotate 20s linear infinite;
-}
-
-.sc-visual__ring--3 {
-  width: 280px;
-  height: 280px;
-  background: transparent;
-  border: 2px dashed rgba(232, 0, 106, 0.886);
-}
-
-@media (max-width: 991px) {
-  .sc-visual__ring { width: 320px; height: 320px; }
-  .sc-visual__ring--2 { width: 240px; height: 240px; }
-}
-
-@keyframes ringPulse {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50%       { transform: scale(1.04); opacity: 1; }
-}
-@keyframes ringRotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* SVG Illustration card */
-.sc-illustration {
-  position: relative;
-  z-index: 5;
-  width: 100%;
-  max-width: 480px;
-}
-
-/* Main hero image */
-.sc-hero__img {
-  width: 85%;
-  height: auto;
-  border-radius: 50%;
-  mix-blend-mode: soft-light;
-  opacity: 0.9;
-  position: relative;
-  z-index: 5;
-}
-
-/* Floating stat cards on illustration */
-.sc-float-card {
-  position: absolute;
-  background: rgba(42, 0, 24, 0.90);
-  border: 1px solid rgba(232, 0, 106, 0.25);
-  border-radius: 12px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 10;
-  animation: floatCard 6s ease-in-out infinite;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-}
-.sc-float-card:nth-child(2) { animation-delay: -2s; }
-.sc-float-card:nth-child(3) { animation-delay: -4s; }
-
-.sc-float-card--a { top: 8%; left: -6%; }
-.sc-float-card--b { bottom: 12%; right: -4%; }
-.sc-float-card--c { top: 50%; left: -10%; }
-
-@keyframes floatCard {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-10px); }
-}
-
-.sc-float-card__icon {
-  width: 36px; height: 36px;
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 17px;
-  background: rgba(232, 0, 106, 0.2);
-  flex-shrink: 0;
-}
-
-.sc-float-card__val {
-  font-family: var(--sc-ff-display);
-  font-size: 18px;
-  font-weight: 900;
-  color: #ffffff;
-  line-height: 1;
-}
-
-.sc-float-card__label {
-  font-size: 11px;
-  color: var(--sc-text-muted);
-  margin-top: 2px;
-}
-
 /* ── SCROLL HINT ── */
 .sc-scroll-hint {
   position: absolute;
@@ -485,19 +433,6 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 991px) {
   .sc-hero__content { padding: 8px 0 !important; }
-  .sc-hero__visual { margin-top: 1rem; }
-  .sc-float-card--a { top: 0; left: 0; }
-  .sc-float-card--b { bottom: 0; right: 0; }
-  .sc-float-card--c { display: none; }
-  .sc-visual__ring { width: 320px; height: 320px; }
-  .sc-visual__ring--2 { width: 240px; height: 240px; }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .sc-hero__img {
-    transform: translateY(-20px);
-    width: 80%;
-  }
 }
 
 @media (max-width: 576px) {
@@ -521,34 +456,6 @@
     padding-bottom: 12px !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
-  }
-
-  .sc-hero .col-md-5 {
-    position: relative;
-    inset: auto;
-    width: 100% !important;
-    max-width: 100% !important;
-    z-index: 10;
-    pointer-events: auto;
-  }
-
-  .sc-hero__visual {
-    width: 100%;
-    opacity: 1;
-    margin-top: 1rem;
-    justify-content: center;
-  }
-
-  .sc-visual__ring   { width: 220px; height: 220px; }
-  .sc-visual__ring--2 { width: 165px; height: 165px; }
-  .sc-visual__ring--3 { width: 120px; height: 120px; }
-
-  .sc-hero__img {
-    width: 65% !important;
-    max-width: 65% !important;
-    transform: none !important;
-    opacity: 0.9;
-    mix-blend-mode: soft-light;
   }
 
   .sc-hero .col-md-7 {

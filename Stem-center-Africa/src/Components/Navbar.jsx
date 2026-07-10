@@ -279,6 +279,11 @@ function Navbar() {
                 <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/services">Services</NavLink>
               </li>
 
+              {/* Innovation Hub */}
+              <li className="nav-item">
+                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/innovationhub">Innovation Hub</NavLink>
+              </li>
+
               {/* Community */}
               <li
                 className="nav-item"
@@ -458,6 +463,11 @@ function Navbar() {
             {/* Services */}
             <li className="nav-item">
               <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/services" onClick={closeMobileMenu}>Services</NavLink>
+            </li>
+
+            {/* Innovation Hub */}
+            <li className="nav-item">
+              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/innovationhub" onClick={closeMobileMenu}>Innovation Hub</NavLink>
             </li>
 
             {/* Community accordion */}

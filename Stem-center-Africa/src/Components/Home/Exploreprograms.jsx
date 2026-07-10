@@ -101,7 +101,7 @@ const DEFAULT_CARDS_PER_PAGE = 3;
               Explore Our <span>Programs</span>
             </h2>
             <p className="ep-subtitle">
-              World-class bootcamps designed to equip African youth with the skills to thrive in the global tech economy.
+              Hands on learning , Real-World Impact.
             </p>
           </div>
  

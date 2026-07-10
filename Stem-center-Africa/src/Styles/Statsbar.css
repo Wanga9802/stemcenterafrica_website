@@ -1,12 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500&display=swap');
 
+/* ── WRAPPER: creates the "floating card" overlap effect ── */
+.sb-wrap {
+  position: relative;
+  z-index: 20;
+  padding: 0 24px;
+  margin-top: -25px; 
+}
+
 .sb-section {
-  background: linear-gradient(160deg, #1a0010 0%, #2a0018 50%, #1f0015 100%);
-  border-top: 1px solid rgba(255, 45, 120, 0.2);
-  border-bottom: 1px solid rgba(255, 45, 120, 0.2);
+  background: #ffffff;
+  border-radius: 0;
   padding: 36px 24px;
   position: relative;
   overflow: hidden;
+  max-width: 1160px;
+  margin: 0 auto;
 }
 
 /* subtle grid texture matching hero */
@@ -19,6 +28,7 @@
     linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
+  border-radius: inherit;
 }
 
 .sb-container {
@@ -71,7 +81,7 @@
   position: absolute;
   width: 14px;
   height: 14px;
-  border-color: #ffffff;
+  border-color: #101F3C;
   border-style: solid;
 }
 
@@ -112,7 +122,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 0.82rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.65);
+  color: #101F3C;
   line-height: 1.35;
   max-width: 130px;
 }
@@ -129,9 +139,21 @@
 }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 991px) {
+  .sb-wrap {
+    margin-top: -30px;
+  }
+}
+
 @media (max-width: 768px) {
+  .sb-wrap {
+    margin-top: -20px;
+    padding: 0 16px;
+  }
+
   .sb-section {
     padding: 24px 16px;
+    border-radius: 0;
   }
 
   .sb-container {
@@ -170,6 +192,9 @@
 }
 
 @media (max-width: 400px) {
+  .sb-wrap {
+    margin-top: -12px;
+  }
   .sb-container {
     grid-template-columns: 1fr;
   }
