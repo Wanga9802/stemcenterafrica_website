@@ -1,4 +1,4 @@
-import '../../Styles/Projects.css';
+import '../../Styles/projects.css';
 import projects from '../../data/Projects';
 
 export default function ProjectsShowcase() {

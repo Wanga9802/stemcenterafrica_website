@@ -1,5 +1,5 @@
 import '../../Styles/Hero.css';
-import HubPhoto from '../../assets/elias.jpeg';
+import HubPhoto from '../../assets/Elias.jpeg';
 import CycleIcon from '../../assets/cycle.png';
 import SignalIcon from '../../assets/signal.png';
 
