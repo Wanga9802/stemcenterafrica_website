@@ -1,5 +1,5 @@
 import '../../Styles/Explore.css';
-import programs from '../../data/programs';
+import programs from '../../data/Programs.js';
 
 // Controls which 8 programs show on the homepage, and in what order
 const FEATURED_SLUGS = [
