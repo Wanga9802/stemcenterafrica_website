@@ -1,14 +1,12 @@
-/* ============================
-   PARTNERS SECTION
-   ============================== */
- 
+
+
 .partners-section {
   background-color: #ffffff;
   padding: 60px 80px;
   border-top: 1px solid #f0f0f0;
   border-bottom: 1px solid #f0f0f0;
 }
- 
+
 .partners-heading {
   text-align: center;
   font-size: 22px;
@@ -18,16 +16,16 @@
   margin: 0 0 2.5rem 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
- 
+
 .partners-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 60px;
-  flex-wrap: nowrap;
+  gap: 40px 60px;
 }
- 
+
 .partner-card {
   display: flex;
   align-items: center;
@@ -38,15 +36,18 @@
   border: 1px solid transparent;
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
   text-decoration: none;
-  flex-shrink: 0;
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  width: calc(33.333% - 40px); /* caps at 3 per row on desktop */
+  max-width: 220px;
 }
- 
+
 .partner-card:hover {
   border-color: #e8e8e8;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
   transform: translateY(-3px);
 }
- 
+
 .partner-logo {
   height: 70px;
   width: auto;
@@ -55,17 +56,17 @@
   filter: grayscale(20%);
   transition: filter 0.25s ease;
 }
- 
+
 .partner-card:hover .partner-logo {
   filter: grayscale(0%);
 }
- 
-/* Divider between partners */
-.partner-card + .partner-card {
+
+/* Divider between partners — skip the first card of each row (every 3n+1) */
+.partner-card:not(:nth-child(3n+1)) {
   position: relative;
 }
- 
-.partner-card + .partner-card::before {
+
+.partner-card:not(:nth-child(3n+1))::before {
   content: '';
   position: absolute;
   left: -30px;
@@ -75,59 +76,64 @@
   width: 1px;
   background: #e8e8e8;
 }
- 
+
 /* ============================
    RESPONSIVE
    ============================== */
- 
+
+@media (max-width: 991px) {
+  .partner-card {
+    width: calc(50% - 16px); /* 2 per row on tablet */
+    max-width: 180px;
+  }
+
+  /* On tablet, dividers should skip every 2n+1 instead of 3n+1 */
+  .partner-card:not(:nth-child(3n+1))::before {
+    display: none;
+  }
+
+  .partner-card:not(:nth-child(2n+1))::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 36px;
+    width: 1px;
+    background: #e8e8e8;
+  }
+}
+
 @media (max-width: 768px) {
   .partners-section {
     padding: 40px 24px;
   }
- 
+
   .partners-container {
     gap: 24px 16px;
-    flex-wrap: wrap;
-    justify-content: center;
   }
- 
+
   .partner-card {
-    /* 2 per row: each takes ~45% of container width */
     width: calc(50% - 16px);
     max-width: 160px;
-    box-sizing: border-box;
   }
- 
-  /* Third card (last-child when 3 items) sits centered alone */
-  .partner-card:last-child:nth-child(odd) {
-    width: 100%;
-    max-width: 160px;
-  }
- 
-  .partner-card + .partner-card::before {
-    display: none;
-  }
- 
+
   .partner-logo {
     height: 50px;
     max-width: 130px;
   }
 }
- 
+
 @media (max-width: 480px) {
   .partners-container {
     gap: 20px 12px;
   }
- 
+
   .partner-card {
     width: calc(50% - 12px);
     max-width: 150px;
   }
- 
-  .partner-card:last-child:nth-child(odd) {
-    max-width: 150px;
-  }
- 
+
   .partner-logo {
     height: 40px;
     max-width: 110px;

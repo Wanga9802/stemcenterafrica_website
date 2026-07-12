@@ -85,8 +85,8 @@ export default function MapSection() {
             </div>
 
             <div className="info-cards">
-              {contactDetails.map((item, i) => (
-                <div className="info-card" key={i} data-animate>
+              {contactDetails.map((item) => (
+                <div className="info-card" key={item.label} data-animate>
                   <div className="info-icon" aria-hidden="true">
                     {typeof item.icon === 'string' && item.icon.startsWith('bi') ? (
                       <i className={item.icon} aria-hidden="true" />
@@ -109,7 +109,7 @@ export default function MapSection() {
                 rel="noopener noreferrer"
                 data-animate
               >
-                <i class="bi bi-compass-fill"></i> Get Directions
+                <i className="bi bi-compass-fill"></i> Get Directions
               </a>
             </div>
           </div>

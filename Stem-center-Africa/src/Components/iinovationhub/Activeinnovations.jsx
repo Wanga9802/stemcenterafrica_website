@@ -12,9 +12,6 @@ function ActiveInnovations() {
         <div className="active-innovations__header">
           <span className="active-innovations__eyebrow">Active Innovations</span>
           <h2 className="active-innovations__title">Real projects, built by our team</h2>
-          <p className="active-innovations__subtitle">
-            Click into any project to see the problem it solves, how it works, and the impact so far.
-          </p>
         </div>
 
         {active.length > 0 ? (

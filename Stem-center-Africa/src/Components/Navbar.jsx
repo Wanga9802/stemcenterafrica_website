@@ -3,55 +3,70 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import Logopicc from '../assets/stem_africa.jpg';
 
-// ── Courses mega-menu data ──────────────────────────────────────────
 const COURSES = [
   {
-    id: 'software-engineering',
-    label: 'Software Engineering',
-    title: 'Software Engineering',
-    description: 'Build real-world software products from scratch. Beginner to advanced level training available.',
+    id: 'computing-software',
+    label: 'Computing & Software',
+    title: 'Computing & Software Development',
+    description: 'From foundational computer skills to full web development, build the technical fluency to create in the digital world.',
     offerings: [
-      { name: 'Intro to Software Engineering', meta: 'Full-time Remote, Part-time Remote', to: '/courses/software-engineering/intro' },
-      { name: 'Full-Stack Bootcamp', meta: 'Full-time Remote, Part-time Remote', to: '/courses/software-engineering/fullstack' },
+      { name: 'Computer Basics', meta: 'Ages 8+, All Levels', to: '/programs/basics' },
+      { name: 'Web Development', meta: 'Beginner to Advanced', to: '/programs/web-development' },
+      { name: 'Python Programming', meta: 'Beginner to Advanced', to: '/programs/python-programming' },
+      { name: 'Scratch', meta: 'Ages 8-14, Beginner', to: '/programs/scratch' },
     ],
   },
   {
-    id: 'data-courses',
-    label: 'Data Courses',
-    title: 'Data Courses',
-    description: 'Master data analysis, visualisation, and engineering with hands-on projects and expert mentors.',
+    id: 'robotics-embedded',
+    label: 'Robotics & Embedded Systems',
+    title: 'Robotics & Embedded Systems',
+    description: 'Design, build, and program intelligent machines through hands-on work with circuits, microcontrollers, and flight systems.',
     offerings: [
-      { name: 'Data Analysis Fundamentals', meta: 'Full-time Remote, Part-time Remote', to: '/courses/data/analysis' },
-      { name: 'Data Engineering Bootcamp', meta: 'Full-time Remote, Part-time Remote', to: '/courses/data/engineering' },
+      { name: 'Robotics', meta: 'Beginner to Advanced', to: '/programs/robotics' },
+      { name: 'Arduino', meta: 'Beginner to Intermediate', to: '/programs/arduino' },
+      { name: 'Electricity & Electronics', meta: 'Beginner to Advanced', to: '/programs/electricity-and-electronics' },
+      { name: 'Drone Technology', meta: 'Intermediate to Advanced', to: '/programs/drone-technology' },
     ],
   },
   {
-    id: 'cyber-security',
-    label: 'Cyber Security',
-    title: 'Cyber Security',
-    description: 'Your journey to becoming a cybersecurity expert starts here, beginner to advance level training available.',
+    id: 'design-fabrication',
+    label: 'Design & Fabrication',
+    title: 'Design & Fabrication',
+    description: 'Turn ideas into physical objects through 3D modelling, printing, and hands-on maker projects.',
     offerings: [
-      { name: 'Introduction to Cybersecurity', meta: 'Full-time Remote, Part-time Remote', to: '/courses/cyber/intro' },
-      { name: 'Cybersecurity Bootcamp', meta: 'Full-time Remote, Part-time Remote', to: '/courses/cyber/bootcamp' },
+      { name: '3D Designing', meta: 'Beginner to Advanced', to: '/programs/3d-designing' },
+      { name: 'DIY', meta: 'All Levels', to: '/programs/diy' },
     ],
   },
   {
-    id: 'ai',
-    label: 'AI',
-    title: 'Artificial Intelligence',
-    description: 'Explore machine learning, deep learning, and AI applications through practical, project-based learning.',
+    id: 'data-ai',
+    label: 'Data, AI & Emerging Tech',
+    title: 'Data, AI & Emerging Tech',
+    description: 'Explore the technologies shaping the future, from data analysis to artificial intelligence and machine learning.',
     offerings: [
-      { name: 'AI Foundations', meta: 'Full-time Remote, Part-time Remote', to: '/courses/ai/foundations' },
-      { name: 'Machine Learning Bootcamp', meta: 'Full-time Remote, Part-time Remote', to: '/courses/ai/ml-bootcamp' },
+      { name: 'Artificial Intelligence', meta: 'Intermediate to Advanced', to: '/programs/ai' },
+      { name: 'Data Science', meta: 'Intermediate to Advanced', to: '/programs/data-science' },
     ],
   },
   {
-    id: 'dpo',
-    label: 'DPO',
-    title: 'Data Protection Officer',
-    description: 'Become a certified Data Protection Officer and lead privacy compliance in your organisation.',
+    id: 'science-exploration',
+    label: 'Science & Exploration',
+    title: 'Science & Exploration',
+    description: 'Strengthen critical thinking and scientific curiosity through mathematics, experiments, and exploring space science.',
     offerings: [
-      { name: 'DPO Certification Programme', meta: 'Full-time Remote, Part-time Remote', to: '/courses/dpo/certification' },
+      { name: 'Science Experiments', meta: 'All Ages, Hands-on', to: '/programs/science-experiments' },
+      { name: 'Space Science', meta: 'Intermediate, All Ages', to: '/programs/space-science' },
+      { name: 'Mathematics', meta: 'All Levels', to: '/programs/mathematics' },
+    ],
+  },
+  {
+    id: 'creativity-life-skills',
+    label: 'Creativity & Life Skills',
+    title: 'Creativity & Life Skills',
+    description: 'Build the communication, creative-thinking, and mentorship skills that complement technical learning and prepare students and educators alike for real-world impact.',
+    offerings: [
+      { name: 'Creativity & Communication', meta: 'All Ages, All Levels', to: '/programs/creativity-and-communication' },
+      { name: 'Teacher Training', meta: 'Educators, All Levels', to: '/programs/teacher-training' },
     ],
   },
 ];
@@ -254,7 +269,7 @@ function Navbar() {
                   className={`nav-link dropdown-trigger${isCoursesActive ? ' active' : ''}${activeDropdown === 'courses' ? ' open' : ''}`}
                   onClick={() => openDropdown('courses')}
                 >
-                  Courses
+                  Programs
                 </button>
               </li>
 
@@ -439,7 +454,7 @@ function Navbar() {
                 className={`nav-link offcanvas-link offcanvas-link-button${mobileCoursesOpen ? ' active' : ''}`}
                 onClick={openMobileCourses}
               >
-                Courses
+                Programs
               </button>
             </li>
 
@@ -497,7 +512,7 @@ function Navbar() {
           className="mobile-courses-overlay"
           role="dialog"
           aria-modal="true"
-          aria-label="Courses menu"
+          aria-label="Programs menu"
           onClick={() => setMobileCoursesOpen(false)}
         >
           <div className="mobile-courses-card" onClick={(e) => e.stopPropagation()}>

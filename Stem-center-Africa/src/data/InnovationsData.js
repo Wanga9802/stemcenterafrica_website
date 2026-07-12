@@ -56,7 +56,7 @@ works, and what's next.`,
     cover_image_url: RoboAfricaImage,
     gallery_urls: [],
     impact_metrics: [
-      { label: "Prototypes built", value: "1" },
+      { label: "Prototypes built", value: "1 " },
     ],
     partners: [],
     tags: [],

@@ -16,11 +16,7 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 }
 
-.innovation-card:hover,
-.innovation-card:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.16);
-}
+
 
 .innovation-card:focus-visible {
   outline: 2px solid var(--card-accent);

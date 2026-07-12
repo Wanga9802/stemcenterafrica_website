@@ -2,6 +2,8 @@ import '../../Styles/Partners.css'
 import snapsImage from '../../assets/Snaps logo.avif'
 import MoringaImage from '../../assets/moringaschool.jpg'
 import GenderImage from '../../assets/Genderscan.png'
+import awsImage from '../../assets/aws.png'
+import montImage from '../../assets/mont.png'
 
 function Partners(){
 
@@ -26,6 +28,20 @@ const partners = [
     alt: 'GenderScan',
     link: 'https://www.genderscan.org/',
     name: 'GenderScan',
+  },
+  {
+    id: 4,
+    image: awsImage,
+    alt: 'AWS',
+    link: 'https://aws.amazon.com',
+    name: 'AWS',
+  },
+  {
+    id: 5,
+    image: montImage,
+    alt: 'Mont',
+    link: '#',
+    name: 'Mont',
   },
 ];    
 
@@ -68,7 +84,3 @@ return(
 }
 
 export default Partners;
-
-
-
-
