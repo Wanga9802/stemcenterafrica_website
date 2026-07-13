@@ -6,7 +6,7 @@ const FEATURED_SLUGS = [
   "mathematics",
   "robotics",
   "3d-designing",
-  "computer-basics",
+  "ai",
   "electronics",
   "teacher-training",
   "drone-technology",

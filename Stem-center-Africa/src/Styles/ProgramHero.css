@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+.ph-hero {
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #1a0010;
+  font-family: 'DM Sans', sans-serif;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.ph-hero__bg-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.ph-hero__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.ph-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(26, 0, 16, 0.92) 0%, rgba(26, 0, 16, 0.75) 45%, rgba(26, 0, 16, 0.55) 100%),
+    linear-gradient(180deg, rgba(26, 0, 16, 0.3) 0%, transparent 30%, transparent 70%, rgba(26, 0, 16, 0.5) 100%);
+}
+
+.ph-hero__content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.ph-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-bottom: 24px;
+}
+
+.ph-breadcrumb a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ph-breadcrumb a:hover {
+  color: #ff4d9e;
+}
+
+.ph-breadcrumb__sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.ph-breadcrumb__current {
+  color: #ff4d9e;
+}
+
+.ph-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 77, 158, 0.4);
+  color: #ff4d9e;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.ph-badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff4d9e;
+  box-shadow: 0 0 10px rgba(255, 77, 158, 0.7);
+}
+
+.ph-hero__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+}
+
+.ph-hero__sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 540px;
+  margin-bottom: 28px;
+}
+
+.ph-cta-group {
+  display: flex;
+  gap: 14px;
+}
+
+.ph-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: #ff4d9e;
+  border: 1.5px solid #ff4d9e;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ph-btn-primary:hover {
+  background: #ff4d9e;
+  color: #1a0010;
+  text-decoration: none;
+}
+
+.ph-btn-icon {
+  transition: transform 0.2s ease;
+}
+
+.ph-btn-primary:hover .ph-btn-icon {
+  transform: translateX(3px);
+}
+
+@media (max-width: 767px) {
+  .ph-hero {
+    min-height: auto;
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  .ph-hero__overlay {
+    background:
+      linear-gradient(90deg, rgba(26, 0, 16, 0.92) 0%, rgba(26, 0, 16, 0.85) 100%),
+      linear-gradient(180deg, rgba(26, 0, 16, 0.3) 0%, transparent 30%, transparent 70%, rgba(26, 0, 16, 0.6) 100%);
+  }
+
+  .ph-hero__title {
+    font-size: 2rem;
+  }
+
+  .ph-btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+}

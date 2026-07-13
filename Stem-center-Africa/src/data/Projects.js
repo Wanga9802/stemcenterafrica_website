@@ -2,10 +2,12 @@ import lineImg from "../assets/line.jpg";
 import roboafricaImg from "../assets/roboafrica.jpg";
 import gemlaImg from "../assets/gemla.png";
 import scratchImg from "../assets/scra.png";
+
 const projects = [
   {
     id: 1,
     slug: "line-following-robot",
+    programSlug: "robotics",
     image: lineImg,
     tag: "Robotics",
     title: "Line Following Robot",
@@ -17,6 +19,7 @@ const projects = [
   {
     id: 2,
     slug: "solarbot-africa",
+    programSlug: "robotics",
     image: roboafricaImg,
     tag: "Innovation",
     title: "RoboAfrica",
@@ -28,6 +31,7 @@ const projects = [
   {
     id: 3,
     slug: "GEMLA",
+    programSlug: "ai",
     image: gemlaImg,
     tag: "Innovation",
     title: "GEMLA AI",
@@ -39,6 +43,7 @@ const projects = [
   {
     id: 4,
     slug: "scratch-game-development",
+    programSlug: "scratch",
     image: scratchImg,
     tag: "Coding",
     title: "Scratch Game Development",
@@ -50,6 +55,7 @@ const projects = [
   {
     id: 5,
     slug: "drone-demonstration",
+    programSlug: "drone-technology",
     image: "/assets/projects/drone-demonstration.jpg",
     tag: "Drones",
     title: "Drone Demonstration",

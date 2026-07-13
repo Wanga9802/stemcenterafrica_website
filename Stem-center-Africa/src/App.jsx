@@ -12,6 +12,7 @@ import EventDetail from './pages/EventDetail'
 import Faqs from './pages/Faqs'
 import TeamProfile from './pages/TeamProfile'
 import InnovationHubPage from './pages/innovationhub'
+import ProgramDetail from './pages/ProgramDetail'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
 import WhatsAppWidget from './Components/WhatsAppWidget'
@@ -54,6 +55,7 @@ function App() {
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/service-request" element={<ServiceForm />} />
         <Route path="/innovationhub" element={<InnovationHubPage />} />
+        <Route path="/programs/:slug" element={<ProgramDetail />} />
         <Route path="/corporate" element={<Services />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
