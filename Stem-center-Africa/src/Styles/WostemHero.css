@@ -1,0 +1,182 @@
+.wostem-hero {
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 40px;
+}
+
+.wostem-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.wostem-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.2s ease, transform 6s ease;
+}
+.wostem-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.wostem-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(26,10,20,0.88) 0%, rgba(26,10,20,0.55) 45%, rgba(26,10,20,0.35) 100%),
+    linear-gradient(to top, rgba(26,10,20,0.5), transparent 40%);
+}
+
+.wostem-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 100px 0 90px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.wostem-hero-content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.wostem-spark {
+  font-size: 15px;
+}
+
+.wostem-title {
+  font-family: DM Sans, sans-serif;
+  font-weight: 800;
+  font-size: 46px;
+  line-height: 1;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+.wostem-title-accent {
+  color: #E91E8C;
+}
+
+.wostem-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #ffffff;
+  margin: 0 0 22px;
+}
+
+.wostem-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.wostem-btn-primary {
+  background: #E91E8C;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 26px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.wostem-btn-primary:hover {
+  background: #ff2fa0;
+  transform: translateY(-1px);
+}
+
+.wostem-btn-ghost {
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.wostem-btn-ghost:hover {
+  border-color: #E91E8C;
+  color: #E91E8C;
+}
+
+.wostem-carousel-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+.wostem-carousel-arrow {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.wostem-carousel-arrow:hover {
+  background: rgba(233,30,140,0.5);
+}
+
+.wostem-dots {
+  display: flex;
+  gap: 8px;
+}
+.wostem-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.wostem-dot.active {
+  background: #E91E8C;
+  transform: scale(1.25);
+}
+
+@media (max-width: 900px) {
+  .wostem-hero {
+    padding: 0 24px;
+    min-height: 560px;
+  }
+  .wostem-title {
+    font-size: 32px;
+  }
+  .wostem-hero-content {
+    padding: 80px 0 70px;
+    max-width: 100%;
+  }
+  .wostem-hero-scrim {
+    background:
+      linear-gradient(180deg, rgba(26,10,20,0.35) 0%, rgba(26,10,20,0.85) 55%, rgba(26,10,20,0.92) 100%);
+  }
+}

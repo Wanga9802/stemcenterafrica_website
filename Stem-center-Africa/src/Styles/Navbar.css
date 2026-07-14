@@ -122,13 +122,13 @@
 .mega-dropdown-about .container,
 .mega-dropdown-community .container {
   max-width: 100%;
-  padding-left: 0.75rem;
+  padding-left: 0;
   padding-right: 0.75rem;
 }
 
 .mega-dropdown-about .mega-links-row,
 .mega-dropdown-community .mega-links-row {
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem 0;
 }
 
 .mega-links-row {

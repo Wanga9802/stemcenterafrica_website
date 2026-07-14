@@ -11,6 +11,8 @@ import Events from './pages/Events'
 import EventDetail from './pages/EventDetail'
 import Faqs from './pages/Faqs'
 import TeamProfile from './pages/TeamProfile'
+import TeamPage from './pages/Team'
+import WoStem from './pages/WoStem'
 import InnovationHubPage from './pages/innovationhub'
 import ProgramDetail from './pages/ProgramDetail'
 import Navbar from './Components/Navbar'
@@ -55,12 +57,14 @@ function App() {
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/service-request" element={<ServiceForm />} />
         <Route path="/innovationhub" element={<InnovationHubPage />} />
+        <Route path="/wostem" element={<WoStem />} />
         <Route path="/programs/:slug" element={<ProgramDetail />} />
         <Route path="/corporate" element={<Services />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:eventId" element={<EventDetail />} />
+        <Route path="/team" element={<TeamPage />} />
         <Route path="/team/:slug" element={<TeamProfile />} />
         <Route path="/faqs" element={<Faqs />} />
 

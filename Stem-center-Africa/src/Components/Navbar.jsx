@@ -10,7 +10,7 @@ const COURSES = [
     title: 'Computing & Software Development',
     description: 'From foundational computer skills to full web development, build the technical fluency to create in the digital world.',
     offerings: [
-      { name: 'Computer Basics', meta: 'Ages 8+, All Levels', to: '/programs/basics' },
+      { name: 'Computer Basics', meta: 'Ages 8+, All Levels', to: '/programs/computer-basics' },
       { name: 'Web Development', meta: 'Beginner to Advanced', to: '/programs/web-development' },
       { name: 'Python Programming', meta: 'Beginner to Advanced', to: '/programs/python-programming' },
       { name: 'Scratch', meta: 'Ages 8-14, Beginner', to: '/programs/scratch' },
@@ -24,7 +24,7 @@ const COURSES = [
     offerings: [
       { name: 'Robotics', meta: 'Beginner to Advanced', to: '/programs/robotics' },
       { name: 'Arduino', meta: 'Beginner to Intermediate', to: '/programs/arduino' },
-      { name: 'Electricity & Electronics', meta: 'Beginner to Advanced', to: '/programs/electricity-and-electronics' },
+      { name: 'Electricity & Electronics', meta: 'Beginner to Advanced', to: '/programs/electronics' },
       { name: 'Drone Technology', meta: 'Intermediate to Advanced', to: '/programs/drone-technology' },
     ],
   },
@@ -85,6 +85,7 @@ function Navbar() {
   const searchInputRef  = useRef(null);
   const aboutLinkRef    = useRef(null);
   const communityLinkRef = useRef(null);
+  const programsLinkRef = useRef(null);
   const searchWrapperRef = useRef(null);
   const navRef          = useRef(null);
   const hoverTimeoutRef = useRef(null);
@@ -113,14 +114,14 @@ function Navbar() {
 
   useEffect(() => {
     const updateDropdownBounds = () => {
-      if (!navRef.current || !aboutLinkRef.current || !communityLinkRef.current || !searchWrapperRef.current) return;
+      if (!navRef.current || !aboutLinkRef.current || !communityLinkRef.current || !programsLinkRef.current) return;
       const navRect = navRef.current.getBoundingClientRect();
       const aboutRect = aboutLinkRef.current.getBoundingClientRect();
       const communityRect = communityLinkRef.current.getBoundingClientRect();
-      const searchRect = searchWrapperRef.current.getBoundingClientRect();
+      const programsRect = programsLinkRef.current.getBoundingClientRect();
       setDropdownBounds({
         aboutLeft: aboutRect.left - navRect.left,
-        aboutRight: Math.max(16, navRect.right - searchRect.left + 12),
+        aboutRight: navRect.right - programsRect.right,
         communityLeft: communityRect.left - navRect.left,
       });
     };
@@ -258,22 +259,7 @@ function Navbar() {
                 <NavLink end className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/">Home</NavLink>
               </li>
 
-              {/* Courses */}
-              <li
-                className="nav-item"
-                onMouseEnter={() => openDropdown('courses')}
-                onMouseLeave={closeDropdownDelayed}
-              >
-                <button
-                  type="button"
-                  className={`nav-link dropdown-trigger${isCoursesActive ? ' active' : ''}${activeDropdown === 'courses' ? ' open' : ''}`}
-                  onClick={() => openDropdown('courses')}
-                >
-                  Programs
-                </button>
-              </li>
-
-              {/* About */}
+             {/* About */}
               <li
                 className="nav-item"
                 onMouseEnter={() => openDropdown('about')}
@@ -289,14 +275,36 @@ function Navbar() {
                 </button>
               </li>
 
-              {/* Services */}
+              {/* programs*/}
+
+              <li
+                className="nav-item"
+                onMouseEnter={() => openDropdown('courses')}
+                onMouseLeave={closeDropdownDelayed}
+              >
+                <button
+                  ref={programsLinkRef}
+                  type="button"
+                  className={`nav-link dropdown-trigger${isCoursesActive ? ' active' : ''}${activeDropdown === 'courses' ? ' open' : ''}`}
+                  onClick={() => openDropdown('courses')}
+                >
+                  Programs
+                </button>
+              </li>
+
+              {/* WoStem */}
               <li className="nav-item">
-                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/services">Services</NavLink>
+                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/wostem">WoSTEM</NavLink>
               </li>
 
               {/* Innovation Hub */}
               <li className="nav-item">
                 <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/innovationhub">Innovation Hub</NavLink>
+              </li>
+
+              {/* Services */}
+              <li className="nav-item">
+                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/services">Services</NavLink>
               </li>
 
               {/* Community */}
@@ -402,8 +410,9 @@ function Navbar() {
           style={{ left: dropdownBounds.aboutLeft, right: dropdownBounds.aboutRight }}
         >
           <div className="container">
-            <div className="mega-links-row">
+              <div className="mega-links-row">
               <NavLink className="mega-link" to="/about">About Us</NavLink>
+              <NavLink className="mega-link" to="/team">Team</NavLink>
               <NavLink className="mega-link" to="/faqs">FAQs</NavLink>
             </div>
           </div>
@@ -469,8 +478,9 @@ function Navbar() {
                   <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
-              <div className={`offcanvas-accordion-body${mobileExpanded === 'about' ? ' open' : ''}`}>
+                <div className={`offcanvas-accordion-body${mobileExpanded === 'about' ? ' open' : ''}`}>
                 <NavLink className={({ isActive }) => `nav-link offcanvas-link offcanvas-sub-link${isActive ? ' active' : ''}`} to="/about" onClick={closeMobileMenu}>About Us</NavLink>
+                <NavLink className={({ isActive }) => `nav-link offcanvas-link offcanvas-sub-link${isActive ? ' active' : ''}`} to="/team" onClick={closeMobileMenu}>Team</NavLink>
                 <NavLink className={({ isActive }) => `nav-link offcanvas-link offcanvas-sub-link${isActive ? ' active' : ''}`} to="/faqs" onClick={closeMobileMenu}>FAQs</NavLink>
               </div>
             </li>
