@@ -1,8 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
-import ProgramHero from '../Components/programs/ProgramHero';
+import ProgramHero from '../Components/programs/programHero';
 import ProgramOverview from '../Components/programs/ProgramOverview';
 import ProgramProjects from '../Components/programs/ProgramProjects';
-import programs from '../data/programs';
+import programs from '../data/Programs';
 
 export default function ProgramDetail() {
   const { slug } = useParams();
