@@ -38,6 +38,7 @@ import AdminImpactHighlights from './admin/pages/AdminImpactHighlights'
 import AdminImpactHighlightsForm from './admin/pages/AdminImpactHighlightsForm'
 import AdminSettings from './admin/pages/settings/SettingsPage'
 import AdminCommunity from './admin/pages/Admincommunity'
+import ImpactHighlights from './pages/ImpactHighlights'
 import ResetPassword from './admin/pages/Resetpassword'
 import waIcon from './assets/whatsapp.png'
 import './App.css'
@@ -67,6 +68,7 @@ function App() {
         <Route path="/team" element={<TeamPage />} />
         <Route path="/team/:slug" element={<TeamProfile />} />
         <Route path="/faqs" element={<Faqs />} />
+        <Route path="/impact-highlights" element={<ImpactHighlights />} />
 
         <Route path="/Admin" element={<Navigate to="/admin" replace />} />
         <Route path="/admin/login" element={<AdminLogin />} />

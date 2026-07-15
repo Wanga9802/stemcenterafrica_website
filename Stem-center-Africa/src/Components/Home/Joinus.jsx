@@ -87,7 +87,7 @@ function Joinus() {
   }
 
   return (
-    <section className='join-section'>
+    <section id="joinus" className='join-section'>
       <div className="join-container">
 
         {/* ── Intro heading block── */}

@@ -112,6 +112,23 @@ function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Listen for program-open requests from other components (e.g., homepage "Explore All Programs")
+  useEffect(() => {
+    const openProgramsHandler = (e) => {
+      const mobile = e?.detail?.mobile;
+      if (mobile) {
+        // open mobile menu and show programs
+        setMobileMenuOpen(true);
+        setMobileCoursesOpen(true);
+      } else {
+        openDropdown('courses');
+      }
+    };
+
+    window.addEventListener('openProgramsDropdown', openProgramsHandler);
+    return () => window.removeEventListener('openProgramsDropdown', openProgramsHandler);
+  }, []);
+
   useEffect(() => {
     const updateDropdownBounds = () => {
       if (!navRef.current || !aboutLinkRef.current || !communityLinkRef.current || !programsLinkRef.current) return;
@@ -146,7 +163,7 @@ function Navbar() {
   }, []);
 
   const isCoursesActive = location.pathname.startsWith('/courses');
-  const isAboutActive = ['/about', '/faqs'].includes(location.pathname);
+  const isAboutActive = ['/about', '/faqs', '/impact-highlights'].includes(location.pathname);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -412,6 +429,7 @@ function Navbar() {
           <div className="container">
               <div className="mega-links-row">
               <NavLink className="mega-link" to="/about">About Us</NavLink>
+              <NavLink className="mega-link" to="/impact-highlights">Impact highlights</NavLink>
               <NavLink className="mega-link" to="/team">Team</NavLink>
               <NavLink className="mega-link" to="/faqs">FAQs</NavLink>
             </div>

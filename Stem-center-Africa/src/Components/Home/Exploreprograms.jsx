@@ -51,9 +51,17 @@ export default function ExplorePrograms() {
 
         {/* Explore All Programs Link */}
         <div className="ep-all-btn-wrap">
-          <a href="/programs" className="ep-all-btn">
+          <button
+            type="button"
+            className="ep-all-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              const mobile = window.innerWidth < 992;
+              window.dispatchEvent(new CustomEvent('openProgramsDropdown', { detail: { mobile } }));
+            }}
+          >
             Explore All Programs
-          </a>
+          </button>
         </div>
 
       </div>

@@ -62,22 +62,7 @@ function normalizeHighlight(highlight) {
   }
 }
  
-/*
- * Clone-based infinite carousel strategy:
- *
- * We build an extended list:
- *   [clone of LAST] [card 0] [card 1] ... [card n-1] [clone of FIRST]
- *
- * The real cards live at indices 1..n in this list.
- * trackIndex starts at 1 (pointing at real card 0).
- *
- * When the user navigates:
- *   - Into the clone-of-LAST  (trackIndex = 0)  → silently jump to real LAST  (trackIndex = n)
- *   - Into the clone-of-FIRST (trackIndex = n+1) → silently jump to real FIRST (trackIndex = 1)
- *
- * The silent jump happens AFTER the CSS transition ends, so the user never
- * sees a flash — it looks perfectly seamless.
- */
+
  
 export default function Impact() {
   // trackIndex: position within the EXTENDED list (0 = clone-last, 1..n = real, n+1 = clone-first)
@@ -236,12 +221,7 @@ export default function Impact() {
             />
           ))}
         </div>
- 
-        {/* Intakes */}
-        <div className="eli-intakes">
-          <p className="eli-intakes-label">We are Nurturing Africa's Tech Talent</p>
-          <a href="#" className="eli-book-btn">Explore courses</a>
-        </div>
+
  
       </div>
     </section>
