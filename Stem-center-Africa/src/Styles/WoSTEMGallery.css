@@ -1,0 +1,49 @@
+/* WoSTEMGallery.css */
+.wostem-gallery {
+  padding: 3rem 2rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.wostem-gallery-frame {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid #E91E8C;
+}
+
+.wostem-gallery-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.wostem-gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.wostem-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: #555;
+  cursor: pointer;
+  padding: 0;
+}
+
+.wostem-dot.active {
+  background-color: #FF4D9E;
+}
+
+.wostem-gallery-caption {
+  font-family: "Syne", sans-serif;
+  color: #FF4D9E;
+  margin-top: 1rem;
+  font-weight: 600;
+}

@@ -1,0 +1,55 @@
+/* WoSTEMIntro.css */
+.wostem-intro {
+  padding: 3rem 2rem;
+  background-color: #ffffff;
+  color: #fff;
+  text-align: center;
+}
+
+.wostem-intro-title {
+  font-family: "Syne", sans-serif;
+  color: #FF4D9E;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.wostem-intro-description {
+  font-family: "DM Sans", sans-serif;
+  color: #101F3C;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.wostem-intro-subheading {
+  font-family: DM Sans, sans-serif;
+   color: #FF4D9E;
+  font-size: 1.2rem;
+  margin-bottom: 1.25rem;
+}
+
+.wostem-focus-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.wostem-focus-pill {
+  background-color: #220d1a;
+  border: 1px solid #E91E8C;
+  color: #FF4D9E;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+}
+
+.wostem-intro-note {
+  font-family: "DM Sans", sans-serif;
+  color: #101F3C;
+  max-width: 650px;
+  margin: 0 auto;
+  font-style: italic;
+}

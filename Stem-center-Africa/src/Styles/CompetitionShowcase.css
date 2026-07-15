@@ -1,0 +1,103 @@
+/* CompetitionShowcase.css */
+.competition-showcase {
+  padding: 3rem 2rem;
+  background-color: #ffffff;
+  color: #000;
+}
+
+.competition-showcase h2 {
+  font-family: DM Sans, sans-serif;
+  color: #FF4D9E;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.competition-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-pill {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  min-width: 120px;
+  border-left: #FF4D9E  2px solid;
+}
+
+.stat-value {
+  display: block;
+  font-family: "Syne", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #101F3C;
+}
+
+.stat-label {
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  color: #101F3C;
+}
+
+.competition-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.competition-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.competition-highlights li {
+  font-family: "DM Sans", sans-serif;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.competition-highlights .project-title {
+  color: #FF4D9E;
+  font-style: italic;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.secondary-video {
+  margin-top: 1rem;
+}
+
+.secondary-video summary {
+  cursor: pointer;
+  color: #E91E8C;
+  font-family: "Syne", sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  list-style: none;
+}
+
+.secondary-video summary::-webkit-details-marker {
+  display: none;
+}
+
+.secondary-video summary::before {
+  content: "▶ ";
+  font-size: 0.75rem;
+}
+
+.secondary-video[open] summary::before {
+  content: "▼ ";
+}
+
+@media (max-width: 768px) {
+  .competition-grid {
+    grid-template-columns: 1fr;
+  }
+}
