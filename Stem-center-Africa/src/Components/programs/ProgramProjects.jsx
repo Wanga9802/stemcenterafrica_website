@@ -1,4 +1,4 @@
-import '../../Styles/Programprojects.css';
+import '../../Styles/ProgramProjects.css';
 import projects from '../../data/Projects';
 
 const ProgramProjects = ({ programSlug, programTitle }) => {
