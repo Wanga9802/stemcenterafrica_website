@@ -474,17 +474,6 @@ function Navbar() {
               <NavLink end className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/" onClick={closeMobileMenu}>Home</NavLink>
             </li>
 
-            {/* Courses */}
-            <li className="nav-item">
-              <button
-                type="button"
-                className={`nav-link offcanvas-link offcanvas-link-button${mobileCoursesOpen ? ' active' : ''}`}
-                onClick={openMobileCourses}
-              >
-                Programs
-              </button>
-            </li>
-
             {/* About accordion */}
             <li className="nav-item">
               <button
@@ -498,9 +487,31 @@ function Navbar() {
               </button>
                 <div className={`offcanvas-accordion-body${mobileExpanded === 'about' ? ' open' : ''}`}>
                 <NavLink className={({ isActive }) => `nav-link offcanvas-link offcanvas-sub-link${isActive ? ' active' : ''}`} to="/about" onClick={closeMobileMenu}>About Us</NavLink>
+                <NavLink className={({ isActive }) => `nav-link offcanvas-link offcanvas-sub-link${isActive ? ' active' : ''}`} to="/impact-highlights" onClick={closeMobileMenu}>Impact highlights</NavLink>
                 <NavLink className={({ isActive }) => `nav-link offcanvas-link offcanvas-sub-link${isActive ? ' active' : ''}`} to="/team" onClick={closeMobileMenu}>Team</NavLink>
                 <NavLink className={({ isActive }) => `nav-link offcanvas-link offcanvas-sub-link${isActive ? ' active' : ''}`} to="/faqs" onClick={closeMobileMenu}>FAQs</NavLink>
               </div>
+            </li>
+
+            {/* Courses */}
+            <li className="nav-item">
+              <button
+                type="button"
+                className={`nav-link offcanvas-link offcanvas-link-button${mobileCoursesOpen ? ' active' : ''}`}
+                onClick={openMobileCourses}
+              >
+                Programs
+              </button>
+            </li>
+
+            {/* WoSTEM */}
+            <li className="nav-item">
+              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/wostem" onClick={closeMobileMenu}>WoSTEM</NavLink>
+            </li>
+
+            {/* Innovation Hub */}
+            <li className="nav-item">
+              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/innovationhub" onClick={closeMobileMenu}>Innovation Hub</NavLink>
             </li>
 
             {/* Services */}
@@ -511,6 +522,11 @@ function Navbar() {
             {/* Innovation Hub */}
             <li className="nav-item">
               <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/innovationhub" onClick={closeMobileMenu}>Innovation Hub</NavLink>
+            </li>
+
+            {/* Services */}
+            <li className="nav-item">
+              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/services" onClick={closeMobileMenu}>Services</NavLink>
             </li>
 
             {/* Community accordion */}
