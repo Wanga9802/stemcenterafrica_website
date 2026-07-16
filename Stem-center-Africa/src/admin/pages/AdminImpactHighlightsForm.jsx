@@ -5,23 +5,34 @@ import deleteIcon from '../../assets/delete.png'
 import uploadIcon from '../../assets/upload.png'
 import '../styles/AdminImpactHighlightForm.css'
 
+const MAX_IMAGES = 3
+
+function resolveDisplayUrl(path) {
+  if (!path) return ''
+  if (path.startsWith('http')) return path
+  if (path.startsWith('/assets')) return path
+  const { data } = supabase.storage.from('impact-highlights-images').getPublicUrl(path)
+  return data?.publicUrl || ''
+}
+
 export default function AdminImpactHighlightForm() {
   const navigate = useNavigate()
   const { id } = useParams()
   const isEdit = Boolean(id)
-  const fileInputRef = useRef(null)
+  const fileInputRefs = [useRef(null), useRef(null), useRef(null)]
 
   const [form, setForm] = useState({
     title: '',
     content: '',
-    image_path: '',
     summary: '',
     is_published: false,
     sort_order: 0,
   })
 
-  const [imageFile, setImageFile] = useState(null)
-  const [imagePreview, setImagePreview] = useState('')
+  // Each slot: null (empty) or { file: File|null, preview: string, path: string }
+  // `path` holds the already-saved storage path/URL; `file` is set when a new
+  // image is picked but not yet uploaded.
+  const [gallery, setGallery] = useState([null, null, null])
   const [uploading, setUploading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [toast, setToast] = useState(null)
@@ -43,94 +54,99 @@ export default function AdminImpactHighlightForm() {
     setForm({
       title: data.title || '',
       content: data.content || '',
-      image_path: data.image_path || '',
       summary: data.summary || '',
       is_published: data.is_published || false,
       sort_order: data.sort_order ?? 0,
     })
 
-    if (data.image_path) {
-      if (data.image_path.startsWith('http')) {
-        setImagePreview(data.image_path)
-      } else if (data.image_path.startsWith('/assets')) {
-        setImagePreview(data.image_path)
-      } else {
-        const { data: urlData } = supabase.storage
-          .from('impact-highlights-images')
-          .getPublicUrl(data.image_path)
-        setImagePreview(urlData?.publicUrl || '')
-      }
-    }
+    const existingPaths = Array.isArray(data.gallery_paths) && data.gallery_paths.length > 0
+      ? data.gallery_paths
+      : (data.image_path ? [data.image_path] : [])
+
+    const slots = [null, null, null]
+    existingPaths.slice(0, MAX_IMAGES).forEach((path, i) => {
+      slots[i] = { file: null, path, preview: resolveDisplayUrl(path) }
+    })
+    setGallery(slots)
   }
 
-  function handleImageSelect(e) {
-    const file = e.target.files?.[0]
-    if (!file) return
+  function validateFile(file) {
     if (!file.type.startsWith('image/')) {
       showToast('Please select an image file', 'error')
-      return
+      return false
     }
     if (file.size > 5 * 1024 * 1024) {
       showToast('Image must be under 5MB', 'error')
-      return
+      return false
     }
-    setImageFile(file)
-    setImagePreview(URL.createObjectURL(file))
+    return true
   }
 
-  function handleDrop(e) {
+  function setSlotFile(index, file) {
+    if (!validateFile(file)) return
+    setGallery(g => {
+      const next = [...g]
+      next[index] = { file, path: next[index]?.path || '', preview: URL.createObjectURL(file) }
+      return next
+    })
+  }
+
+  function handleSlotSelect(index, e) {
+    const file = e.target.files?.[0]
+    if (file) setSlotFile(index, file)
+    e.target.value = ''
+  }
+
+  function handleSlotDrop(index, e) {
     e.preventDefault()
     const file = e.dataTransfer.files?.[0]
-    if (!file) return
-    if (!file.type.startsWith('image/')) {
-      showToast('Please drop an image file', 'error')
-      return
-    }
-    if (file.size > 5 * 1024 * 1024) {
-      showToast('Image must be under 5MB', 'error')
-      return
-    }
-    setImageFile(file)
-    setImagePreview(URL.createObjectURL(file))
+    if (file) setSlotFile(index, file)
   }
 
-  async function uploadFile() {
-    if (!imageFile) return form.image_path
+  function removeSlot(index, e) {
+    e.stopPropagation()
+    setGallery(g => {
+      const next = [...g]
+      next[index] = null
+      return next
+    })
+  }
 
+  async function uploadGallery() {
     setUploading(true)
     try {
-      const ext = imageFile.name.split('.').pop() || 'jpg'
-      const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
+      const results = []
+      for (const slot of gallery) {
+        if (!slot) continue
+        if (slot.file) {
+          const ext = slot.file.name.split('.').pop() || 'jpg'
+          const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
+          const { error: uploadError } = await supabase.storage
+            .from('impact-highlights-images')
+            .upload(path, slot.file, { upsert: true })
+          if (uploadError) throw new Error(`Image upload failed: ${uploadError.message}`)
 
-      const { error: uploadError } = await supabase.storage
-        .from('impact-highlights-images')
-        .upload(path, imageFile, { upsert: true })
+          const { data: urlData, error: urlError } = supabase.storage
+            .from('impact-highlights-images')
+            .getPublicUrl(path)
+          if (urlError || !urlData?.publicUrl) throw new Error('Failed to generate image URL')
 
-      if (uploadError) throw new Error(`Image upload failed: ${uploadError.message}`)
-
-      const { data: urlData, error: urlError } = supabase.storage
-        .from('impact-highlights-images')
-        .getPublicUrl(path)
-
-      if (urlError || !urlData?.publicUrl) throw new Error('Failed to generate image URL')
-
-      return urlData.publicUrl
+          results.push(urlData.publicUrl)
+        } else {
+          results.push(slot.path)
+        }
+      }
+      return results
     } finally {
       setUploading(false)
     }
-  }
-
-  function removeImage(e) {
-    e.stopPropagation()
-    setImageFile(null)
-    setImagePreview('')
-    setForm(f => ({ ...f, image_path: '' }))
   }
 
   function validate() {
     const errs = {}
     if (!form.title.trim()) errs.title = 'Title is required'
     if (!form.content.trim()) errs.content = 'Content is required'
+    if (gallery.every(s => !s)) errs.gallery = 'Add at least one photo'
     return errs
   }
 
@@ -143,10 +159,11 @@ export default function AdminImpactHighlightForm() {
     }
     setSaving(true)
     try {
-      const uploadedImageUrl = await uploadFile()
+      const galleryPaths = await uploadGallery()
       const payload = {
         ...form,
-        image_path: uploadedImageUrl || form.image_path,
+        gallery_paths: galleryPaths,
+        image_path: galleryPaths[0] || '',
         updated_at: new Date().toISOString(),
       }
       if (!isEdit) payload.created_at = new Date().toISOString()
@@ -314,52 +331,62 @@ export default function AdminImpactHighlightForm() {
 
         </div>
 
-        {/* Right column: Image Upload + Footer actions */}
+        {/* Right column: Gallery Upload + Footer actions */}
         <div className="col-md-4 aihf-col-right">
 
           <div className="aihf-card shadow-lg">
             <div className="aihf-card-header">
               <ImageIcon />
-              <span className="aihf-card-label">Image</span>
+              <span className="aihf-card-label">Photos</span>
             </div>
 
             <div className="aihf-field aihf-field--last">
-              <label className="aihf-label">Highlight Image</label>
-              <div
-                className="aihf-dropzone"
-                onDragOver={e => e.preventDefault()}
-                onDrop={handleDrop}
-                onClick={() => fileInputRef.current?.click()}
-              >
-                <input
-                  type="file"
-                  accept="image/*"
-                  ref={fileInputRef}
-                  className="aihf-file-input"
-                  onChange={handleImageSelect}
-                />
-                {imagePreview ? (
-                  <div className="aihf-dropzone-preview">
-                    <img src={imagePreview} alt="Highlight preview" className="aihf-image-preview" />
-                    <button
-                      type="button"
-                      className="aihf-remove-image-btn"
-                      onClick={removeImage}
-                      aria-label="Remove image"
+              <label className="aihf-label">Evidence Photos (up to {MAX_IMAGES})</label>
+
+              <div className="aihf-gallery-grid">
+                {[0, 1, 2].map(index => {
+                  const slot = gallery[index]
+                  return (
+                    <div
+                      key={index}
+                      className="aihf-gallery-slot"
+                      onDragOver={e => e.preventDefault()}
+                      onDrop={e => handleSlotDrop(index, e)}
+                      onClick={() => fileInputRefs[index].current?.click()}
                     >
-                      ×
-                    </button>
-                  </div>
-                ) : (
-                  <div className="aihf-dropzone-content">
-                    <img src={uploadIcon} alt="Upload icon" className="aihf-dropzone-icon" />
-                    <p className="aihf-dropzone-title">Drop an image here or click to browse</p>
-                    <p className="aihf-dropzone-subtitle">PNG, JPG, WEBP up to 5MB</p>
-                  </div>
-                )}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        ref={fileInputRefs[index]}
+                        className="aihf-file-input"
+                        onChange={e => handleSlotSelect(index, e)}
+                      />
+                      {slot?.preview ? (
+                        <div className="aihf-gallery-slot-preview">
+                          <img src={slot.preview} alt={`Evidence ${index + 1}`} className="aihf-gallery-slot-img" />
+                          <button
+                            type="button"
+                            className="aihf-remove-image-btn"
+                            onClick={e => removeSlot(index, e)}
+                            aria-label="Remove image"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="aihf-gallery-slot-empty">
+                          <img src={uploadIcon} alt="Upload icon" className="aihf-gallery-slot-icon" />
+                          <p className="aihf-gallery-slot-label">Photo {index + 1}</p>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
-              {uploading && <span className="aihf-uploading">Uploading image…</span>}
-              <span className="aihf-help-text">Uploaded to the impact-highlights-images storage bucket.</span>
+
+              {errors.gallery && <span className="aihf-error-msg">{errors.gallery}</span>}
+              {uploading && <span className="aihf-uploading">Uploading photos…</span>}
+              <span className="aihf-help-text">PNG, JPG, WEBP up to 5MB each. Uploaded to the impact-highlights-images storage bucket.</span>
             </div>
           </div>
 

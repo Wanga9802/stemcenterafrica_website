@@ -55,8 +55,8 @@ electronics, and design thinking through innovation centers, mobile outreach, an
               <a href="#joinus" className="sc-btn-primary">
                 Enroll a student
               </a>
-              <a href="#donate" className="sc-btn-secondary">
-                 partner with us
+              <a href="#map-section" className="sc-btn-secondary">
+                Contact us
               </a>
             </div>
 

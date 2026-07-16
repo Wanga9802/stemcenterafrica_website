@@ -222,7 +222,9 @@
 
 .aihf-textarea::placeholder { color: #9aa1b1; }
 
-/* ── Image Upload ────────────────────────────────────────────────────────── */
+/* ── Image Upload (legacy single-image dropzone — kept in case other forms
+   in the admin reuse these classes; the highlight form now uses the
+   gallery grid below instead) ───────────────────────────────────────────── */
 .aihf-dropzone {
   position: relative;
   min-height: 190px;
@@ -308,6 +310,100 @@
   font-weight: 600;
   color: #E91E8C;
   font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Gallery Upload (3-photo evidence grid) ─────────────────────────────── */
+.aihf-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.aihf-gallery-slot {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 1px dashed #e2e5ec;
+  border-radius: 5px;
+  background: #f7f8fa;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.aihf-gallery-slot:hover {
+  border-color: #E91E8C;
+  transform: translateY(-1px);
+}
+
+.aihf-gallery-slot-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.aihf-gallery-slot-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.7;
+}
+
+.aihf-gallery-slot-label {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: #101F3C;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.aihf-gallery-slot-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.aihf-gallery-slot-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aihf-gallery-slot .aihf-remove-image-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(16, 31, 60, 0.75);
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .aihf-gallery-grid {
+    gap: 8px;
+  }
+  .aihf-gallery-slot-icon {
+    width: 18px;
+    height: 18px;
+  }
+  .aihf-gallery-slot-label {
+    font-size: 10px;
+  }
 }
 
 /* ── Toggle ──────────────────────────────────────────────────────────────── */
