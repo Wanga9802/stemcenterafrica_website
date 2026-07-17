@@ -4,7 +4,7 @@ import HeroSection from "../Components/Home/Herosection";
 import ExplorePrograms from "../Components/Home/Exploreprograms";
 import StatsBar from "../Components/Home/Statsbar";
 import Partners from "../Components/Home/Partners";
-import Joinus from "../Components/Home/Joinus";
+import JoinBanner from "../Components/Home/JoinBanner";
 import AlumniSuccessStories from "../Components/Home/Alumnisucces";
 import MapSection from "../Components/Home/Mapsection";
 
@@ -23,7 +23,7 @@ function Home() {
       <InnovationHub />
       <Partners />
       <AlumniSuccessStories />
-      <Joinus />
+      <JoinBanner />
       <MapSection />
     </>
   )
