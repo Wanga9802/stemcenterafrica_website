@@ -752,3 +752,39 @@
   margin-top: 0.2rem;
   font-family: "Gotham Rounded", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+
+/* ── Donate CTA ── */
+.donate-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8006a;
+  color: #ffffff !important;
+  font-family: "Gotham Rounded", sans-serif;
+  font-weight: 700 !important;
+  font-size: 0.88rem;
+  padding: 0.55rem 1.4rem !important;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(232, 0, 106, 0.25);
+}
+
+.donate-cta-btn::after {
+  display: none !important;
+}
+
+.donate-cta-btn:hover {
+  background: #c8005a;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(232, 0, 106, 0.35);
+}
+
+.donate-cta-btn-mobile {
+  width: 100%;
+  padding: 0.85rem !important;
+  font-size: 15px;
+  border-radius: 10px;
+  box-shadow: none;
+}

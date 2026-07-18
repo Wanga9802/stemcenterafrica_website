@@ -464,4 +464,59 @@
     width: 100% !important;
     max-width: 100% !important;
   }
+
+  /* Rounded, contained photo instead of hard edge-to-edge */
+  .sc-hero__photo-panel {
+    position: relative;
+    inset: auto;
+    width: calc(100% - 20px);
+    margin: 10px auto 1.25rem;
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .sc-hero__photo {
+    object-position: top center;
+  }
+
+  /* Bottom gradient fade so the photo blends into the section below */
+  .sc-hero__photo-panel::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 40%;
+    background: linear-gradient(180deg, transparent 0%, rgba(26, 0, 16, 0.55) 100%);
+    pointer-events: none;
+  }
+
+  /* Soften headline size + line count on small screens */
+  .sc-hero__headline {
+    font-size: 1.9rem;
+    line-height: 1.15;
+    text-align: left;
+  }
+
+  .sc-hero__headline em {
+    font-size: 1.9rem;
+  }
+
+  .sc-hero__sub {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  /* Give CTA buttons breathing room from the floating chat widget */
+  .sc-cta-group {
+    margin-bottom: 4.5rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .sc-hero__headline,
+  .sc-hero__headline em {
+    font-size: 1.6rem;
+  }
 }

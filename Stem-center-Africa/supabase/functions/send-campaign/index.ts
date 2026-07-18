@@ -1,14 +1,4 @@
-// supabase/functions/send-campaign/index.ts
-//
-// Called from the admin panel's Community page. Any of the 3 authenticated
-// admins can trigger this — Brevo never sees them individually, only the
-// one stored API key. Each send is logged to campaign_sends with sent_by
-// set to whichever admin triggered it.
-//
-// Required secrets (set with `supabase secrets set`):
-//   BREVO_API_KEY       - your Brevo account's API key
-//   BREVO_SENDER_EMAIL   - verified sender address in Brevo
-//   BREVO_SENDER_NAME    - display name, e.g. "STEM Center Africa"
+
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 

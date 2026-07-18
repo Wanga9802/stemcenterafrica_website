@@ -73,8 +73,6 @@ const COURSES = [
 
 function Navbar() {
   const [scrolled, setScrolled]               = useState(false);
-  const [searchOpen, setSearchOpen]           = useState(false);
-  const [searchQuery, setSearchQuery]         = useState('');
   const [activeDropdown, setActiveDropdown]   = useState(null); // 'about' | 'community' | 'courses' | null
   const [activeCourse, setActiveCourse]       = useState(COURSES[0].id);
 
@@ -82,11 +80,9 @@ function Navbar() {
   const [mobileExpanded, setMobileExpanded]   = useState(null); // 'about' | 'community' | null
   const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
 
-  const searchInputRef  = useRef(null);
   const aboutLinkRef    = useRef(null);
   const communityLinkRef = useRef(null);
   const programsLinkRef = useRef(null);
-  const searchWrapperRef = useRef(null);
   const navRef          = useRef(null);
   const hoverTimeoutRef = useRef(null);
   const navigate        = useNavigate();
@@ -99,10 +95,6 @@ function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    if (searchOpen && searchInputRef.current) searchInputRef.current.focus();
-  }, [searchOpen]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -165,19 +157,6 @@ function Navbar() {
   const isCoursesActive = location.pathname.startsWith('/courses');
   const isAboutActive = ['/about', '/faqs', '/impact-highlights'].includes(location.pathname);
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchOpen(false);
-      setSearchQuery('');
-    }
-  };
-
-  const handleSearchKeyDown = (e) => {
-    if (e.key === 'Escape') { setSearchOpen(false); setSearchQuery(''); }
-  };
-
   const toggleMobileSection = (section) => {
     setMobileExpanded(prev => prev === section ? null : section);
   };
@@ -223,37 +202,8 @@ function Navbar() {
             <span className="brand-name ms-2">STEM Center Africa</span>
           </Link>
 
-          {/* Mobile right controls: search + toggler */}
+          {/* Mobile right controls: hamburger only */}
           <div className="mobile-controls d-lg-none">
-            {/* Mobile inline search */}
-            <div className={`mobile-header-search${searchOpen ? ' open' : ''}`}>
-              <form onSubmit={handleSearchSubmit} className="mobile-header-search-form">
-                <input
-                  ref={searchInputRef}
-                  type="text"
-                  className="mobile-header-search-input"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyDown={handleSearchKeyDown}
-                />
-              </form>
-              <button
-                className="mobile-search-icon-btn"
-                onClick={() => {
-                  if (searchOpen && searchQuery.trim()) handleSearchSubmit({ preventDefault: () => {} });
-                  else setSearchOpen(!searchOpen);
-                }}
-                aria-label="Search"
-              >
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" strokeWidth="1.8"/>
-                  <path d="M12 12L16 16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-                </svg>
-              </button>
-            </div>
-
-            {/* Hamburger — no background */}
             <button
               className="navbar-toggler-clean"
               type="button"
@@ -340,34 +290,11 @@ function Navbar() {
                 </button>
               </li>
 
-              {/* Search */}
-              <li className="nav-item ms-lg-1">
-                <div ref={searchWrapperRef} className={`search-wrapper${searchOpen ? ' open' : ''}`}>
-                  <form onSubmit={handleSearchSubmit} className="search-form">
-                    <input
-                      ref={searchInputRef}
-                      type="text"
-                      className="search-input"
-                      placeholder="Search..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      onKeyDown={handleSearchKeyDown}
-                    />
-                  </form>
-                  <button
-                    className="search-btn"
-                    onClick={() => {
-                      if (searchOpen && searchQuery.trim()) handleSearchSubmit({ preventDefault: () => {} });
-                      else setSearchOpen(!searchOpen);
-                    }}
-                    aria-label="Search"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                      <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" strokeWidth="1.8"/>
-                      <path d="M12 12L16 16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-                    </svg>
-                  </button>
-                </div>
+              {/* Donate CTA */}
+              <li className="nav-item ms-lg-2">
+                <NavLink className="donate-cta-btn" to="/donate">
+                  Donate
+                </NavLink>
               </li>
 
             </ul>
@@ -519,16 +446,6 @@ function Navbar() {
               <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/services" onClick={closeMobileMenu}>Services</NavLink>
             </li>
 
-            {/* Innovation Hub */}
-            <li className="nav-item">
-              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/innovationhub" onClick={closeMobileMenu}>Innovation Hub</NavLink>
-            </li>
-
-            {/* Services */}
-            <li className="nav-item">
-              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/services" onClick={closeMobileMenu}>Services</NavLink>
-            </li>
-
             {/* Community accordion */}
             <li className="nav-item">
               <button
@@ -544,6 +461,17 @@ function Navbar() {
                 <NavLink className={({ isActive }) => `nav-link offcanvas-link offcanvas-sub-link${isActive ? ' active' : ''}`} to="/blog" onClick={closeMobileMenu}>Blog</NavLink>
                 <NavLink className={({ isActive }) => `nav-link offcanvas-link offcanvas-sub-link${isActive ? ' active' : ''}`} to="/events" onClick={closeMobileMenu}>Events</NavLink>
               </div>
+            </li>
+
+            {/* Donate CTA (mobile) */}
+            <li className="nav-item mt-2">
+              <NavLink
+                className="donate-cta-btn donate-cta-btn-mobile"
+                to="/donate"
+                onClick={closeMobileMenu}
+              >
+                Donate Now
+              </NavLink>
             </li>
 
           </ul>
