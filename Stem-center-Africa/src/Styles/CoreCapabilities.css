@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap');
+
+/* ── SECTION WRAPPER ── */
+.cc-section {
+  position: relative;
+  background: #ffffff;
+  padding: 25px 0;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+}
+
+/* ── HEADER ── */
+.cc-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+
+.cc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--sc-amber-soft);
+  border: 1px solid var(--sc-amber-border);
+  color: var(--sc-amber-text);
+  font-family: var(--sc-ff-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.cc-badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sc-amber-border);
+  box-shadow: 0 0 10px rgba(255, 77, 158, 0.55);
+}
+
+.cc-header__title {
+  font-family: var(--sc-ff-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--sc-dark);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.85rem;
+}
+
+.cc-header__title em {
+  font-style: normal;
+  color: var(--sc-green);
+}
+
+.cc-header__sub {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #5b5560;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── CARD ── */
+.cc-card {
+  height: 100%;
+  background: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 32px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-left: 1.5px solid transparent;
+}
+
+/* Card border-left colors for each of the 4 cards */
+.cc-card:nth-child(1) {
+  border-left-color: #FF9F1C;
+}
+
+.cc-card:nth-child(2) {
+  border-left-color: #E800A0;
+}
+
+.cc-card:nth-child(3) {
+  border-left-color: #00C9FF;
+}
+
+.cc-card:nth-child(4) {
+  border-left-color: #6B00C9;
+}
+
+.cc-card:hover {
+  transform: translateY(-6px);
+}
+
+.cc-card__icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sc-green), var(--sc-green-dark));
+  box-shadow: 0 10px 24px rgba(232, 0, 106, 0.28);
+}
+
+.cc-card__icon-wrap i {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.cc-card__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--sc-dark);
+  letter-spacing: -0.01em;
+}
+
+.cc-card__desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #101F3C;
+  flex-grow: 1;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── VIEW CAPABILITIES BUTTON ── */
+.cc-card__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 7px;
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(26, 0, 16, 0.08);
+  color: var(--sc-green);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.cc-card__toggle:hover {
+  color: var(--sc-green-dark);
+  gap: 12px;
+}
+
+.cc-card__toggle-icon {
+  font-size: 0.85rem;
+}
+
+/* ── MODAL OVERLAY ── */
+.cc-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(26, 0, 16, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: ccFadeIn 0.2s ease forwards;
+}
+
+@keyframes ccFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── MODAL BOX ── */
+.cc-modal {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 36px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  font-family: 'DM Sans', sans-serif;
+  animation: ccModalPop 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes ccModalPop {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cc-modal__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(26, 0, 16, 0.06);
+  color: var(--sc-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cc-modal__close:hover {
+  background: rgba(232, 0, 106, 0.12);
+  color: var(--sc-green);
+}
+
+.cc-modal__icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sc-green), var(--sc-green-dark));
+  box-shadow: 0 10px 24px rgba(232, 0, 106, 0.28);
+  margin-bottom: 18px;
+}
+
+.cc-modal__icon-wrap i {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.cc-modal__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--sc-dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.cc-modal__desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #6b6470;
+  margin-bottom: 22px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.cc-modal__list {
+  list-style: none;
+  margin: 0;
+  padding: 18px 0 0;
+  border-top: 1px solid rgba(26, 0, 16, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cc-modal__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.5;
+  color: #423d47;
+}
+
+.cc-modal__list li i {
+  color: var(--sc-green);
+  font-size: 1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ── ENTRY ANIMATION ── */
+.cc-anim {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: ccRevealUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.cc-anim--delay-1 { animation-delay: 0.05s; }
+.cc-anim--delay-2 { animation-delay: 0.15s; }
+.cc-anim--delay-3 { animation-delay: 0.25s; }
+.cc-anim--delay-4 { animation-delay: 0.35s; }
+
+@keyframes ccRevealUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 767px) {
+  .cc-section { padding: 56px 0; }
+  .cc-header { margin-bottom: 32px; }
+  .cc-header__title { font-size: 1.8rem; }
+  .cc-card { padding: 26px 20px; }
+  .cc-modal { padding: 32px 24px; }
+}
