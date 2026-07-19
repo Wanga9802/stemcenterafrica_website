@@ -1,13 +1,13 @@
 // src/components/innovation-hub/ActiveInnovations.jsx
-import { getActiveInnovations } from "../../data/InnovationsData";
+import { getOngoingOrActiveInnovations } from "../../data/innovationsData";
 import InnovationCard from "./InnovationCard";
 import "./ActiveInnovations.css";
 
 function ActiveInnovations() {
-  const active = getActiveInnovations();
+  const active = getOngoingOrActiveInnovations();
 
   return (
-    <section className="active-innovations">
+    <section id="innovation-projects" className="active-innovations">
       <div className="container">
         <div className="active-innovations__header">
           <span className="active-innovations__eyebrow">Active Innovations</span>

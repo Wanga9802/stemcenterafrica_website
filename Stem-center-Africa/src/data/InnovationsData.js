@@ -1,76 +1,107 @@
-import YayeImage from '../assets/yaye.png';
-import RoboAfricaImage from '../assets/roboafrica.jpg';
+// Replace these with the real asset files once you have them in ../assets/
+import GemlaImage from '../assets/yaye.png';
+import AmfImage from '../assets/gemla.png';
+import SolarbotImage from '../assets/mitchi.jpg';
 
 export const innovations = [
   {
     id: 1,
-    slug: "gemla-ai-agent",
-    title: "GEMLA AI Agent",
+    title: "GEMLA-Agent",
+    subtitle: "GenAI-Enhanced Multimodal Learning Analytics",
 
-    // Shown on the card
-    short_description:
-      ", an agentic AI system that enables real-time human-AI collaboration in complex educational environments by functioning as an autonomous co-agent that continuously perceives, interprets, plans,",
+ 
+    
+    description:
+      "An AI innovation initiative building an intelligent multimodal learning analytics system. GEMLA-Agent explores how generative and multimodal AI can integrate speech data, visual information, learner artifacts, interaction patterns, and educational context to surface intelligent insights and support decision-making in the classroom.",
 
-    // Shown on the detail page
-    full_description: `The Smart Classroom Heatmap uses low-cost sensors placed around a
-classroom to track movement, noise levels, and seating engagement, then
-renders it as a live heatmap teachers can glance at from the front of
-the room.
+    capability_area: "AI & Machine Learning",
+    status: "ongoing", // "ongoing" | "active" | "completed"
 
-It was built to answer a simple question we kept hearing from
-teachers: "how do I know who's actually engaged, in real time, without
-walking around the whole room?" The prototype has been piloted in two
-schools and is now being refined based on teacher feedback.`,
+    cover_image_url: GemlaImage,
 
-    capability_area: "AI & Machine Learning Training",
-    status: "active", // "active" | "completed"
+    tags: ["Generative AI", "Multimodal AI", "Learning Analytics", "AI Reasoning"],
+    timeline: "Ongoing",
 
-    cover_image_url: YayeImage,
-    gallery_urls: [
-      "/images/innovations/heatmap-1.jpg",
-      "/images/innovations/heatmap-2.jpg",
+    // Shown in the expandable "Technical details" section — not on the card face.
+    key_components: [
+      "Speech data integration",
+      "Visual information processing",
+      "Learner artifacts analysis",
+      "Interaction pattern tracking",
+      "Educational context modeling",
+      "AI reasoning systems",
+      "Data pipelines",
+      "Human-centered AI design",
     ],
-
-    // Quick-glance stats shown on the card AND detail page
-    impact_metrics: [
-      { label: "Schools piloted", value: "0" },
-      { label: "Students reached", value: "0+" },
+    capabilities_demonstrated: [
+      "Multimodal AI development",
+      "Data integration",
+      "AI model evaluation",
+      "Applied machine learning research",
     ],
-
-    partners: ["Nairobi Tech High", "XYZ Foundation"],
-    tags: ["AI", "IoT", "Education"],
-
-    // Optional — used for card teaser copy, e.g. "3 min read" style scannability
-    timeline: "Jan 2026 – Present",
   },
   {
     id: 2,
-    slug: "roboafrica",
-    title: "RoboAfrica",
-    short_description:
-      "A robotics innovation project developing hands-on embedded systems and AI-powered learning tools for African youth.",
-    full_description: `Replace with the full story: the problem, the approach, how it
-works, and what's next.`,
-    capability_area: "Robotics & Embedded Systems",
-    status: "active",
-    cover_image_url: RoboAfricaImage,
-    gallery_urls: [],
-    impact_metrics: [
-      { label: "Prototypes built", value: "1 " },
+    title: "Account-my-Fund (AMF)",
+    subtitle: "Smart Accountability Platform",
+
+    description:
+      "A technology solution built to improve accountability in public toilet revenue management. AMF combines digital data capture, automated reporting, data analytics, and transparency mechanisms to turn an operational challenge into a technology-enabled solution.",
+
+    capability_area: "Software Development & Automation",
+    status: "ongoing",
+
+    cover_image_url: AmfImage,
+
+    tags: ["Data Systems", "Automation", "Transparency", "Public Systems"],
+    timeline: "Ongoing",
+
+    key_components: [
+      "Digital data capture",
+      "Automated reporting",
+      "Data analytics",
+      "Software workflows",
+      "Transparency mechanisms",
     ],
-    partners: [],
-    tags: [],
-    timeline: "2026",
+    capabilities_demonstrated: [
+      "Translating operational challenges into technology-enabled solutions",
+    ],
+  },
+  {
+    id: 3,
+    title: "SOLARBOT AFRICA",
+    subtitle: "Embedded Systems and IoT Innovation",
+
+    description:
+      "A portable, solar-powered robotics and coding platform combining embedded systems, electronics, robotics, renewable energy, and software programming — demonstrating hardware-software integration for resource-constrained environments.",
+
+    capability_area: "Robotics & Embedded Systems",
+    status: "ongoing",
+
+    cover_image_url: SolarbotImage,
+
+    tags: ["Robotics", "IoT", "Renewable Energy", "Embedded Systems"],
+    timeline: "Ongoing",
+
+    key_components: [
+      "Embedded systems",
+      "Electronics",
+      "Robotics",
+      "Renewable energy",
+      "Software programming",
+      "Sensor data collection",
+    ],
+    capabilities_demonstrated: [
+      "Hardware-software integration",
+      "Technology solutions for resource-constrained environments",
+      "Real-world experimentation",
+    ],
   },
 ];
 
 // --- Helpers -----------------------------------------------------
 
-export const getInnovationBySlug = (slug) =>
-  innovations.find((item) => item.slug === slug);
+export const getOngoingOrActiveInnovations = () =>
+  innovations.filter((item) => item.status === "ongoing" || item.status === "active");
 
-export const getActiveInnovations = () =>
-  innovations.filter((item) => item.status === "active");
-
-export const getRelatedInnovations = (slug, limit = 2) =>
-  innovations.filter((item) => item.slug !== slug).slice(0, limit);
+export const getActiveInnovations = () => getOngoingOrActiveInnovations();

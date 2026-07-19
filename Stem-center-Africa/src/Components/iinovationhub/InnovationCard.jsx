@@ -1,44 +1,37 @@
-// src/components/innovation-hub/InnovationCard.jsx
-import { useNavigate } from "react-router-dom";
+
+import { useState } from "react";
 import "./InnovationCard.css";
 
 
-// same idea as the left-border color coding on the Home teaser grid.
 const ACCENT_BY_AREA = {
   "Robotics & Embedded Systems": "accent-teal",
-  "AI & Machine Learning Training": "accent-pink",
-  "Software & App Development": "accent-blue",
+  "AI & Machine Learning": "accent-pink",
+  "Software Development & Automation": "accent-blue",
   "Research & Prototyping": "accent-blue",
   "3D Printing & Fabrication": "accent-purple",
   "School & Community Partnerships": "accent-teal",
 };
 
+const STATUS_LABEL = {
+  active: "Active",
+  ongoing: "Ongoing",
+  completed: "Completed",
+};
+
 function InnovationCard({ innovation }) {
-  const navigate = useNavigate();
+  const [expanded, setExpanded] = useState(false);
   const accentClass = ACCENT_BY_AREA[innovation.capability_area] || "accent-pink";
 
-  const goToDetail = () => navigate(`/innovation-hub/${innovation.slug}`);
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      goToDetail();
-    }
-  };
+  const hasDetails =
+    innovation.key_components?.length > 0 ||
+    innovation.capabilities_demonstrated?.length > 0;
 
   return (
-    <div
-      className={`innovation-card ${accentClass}`}
-      role="button"
-      tabIndex={0}
-      onClick={goToDetail}
-      onKeyDown={handleKeyDown}
-      aria-label={`View details for ${innovation.title}`}
-    >
+    <div className={`innovation-card ${accentClass}`}>
       <div className="innovation-card__media">
         <img src={innovation.cover_image_url} alt={innovation.title} loading="lazy" />
         <span className={`innovation-card__status innovation-card__status--${innovation.status}`}>
-          {innovation.status === "active" ? "Active" : "Completed"}
+          {STATUS_LABEL[innovation.status] || innovation.status}
         </span>
       </div>
 
@@ -46,18 +39,10 @@ function InnovationCard({ innovation }) {
         <span className="innovation-card__tag">{innovation.capability_area}</span>
 
         <h3 className="innovation-card__title">{innovation.title}</h3>
-        <p className="innovation-card__description">{innovation.short_description}</p>
-
-        {innovation.impact_metrics?.length > 0 && (
-          <div className="innovation-card__metrics">
-            {innovation.impact_metrics.slice(0, 2).map((metric) => (
-              <div key={metric.label} className="innovation-card__metric">
-                <span className="innovation-card__metric-value">{metric.value}</span>
-                <span className="innovation-card__metric-label">{metric.label}</span>
-              </div>
-            ))}
-          </div>
+        {innovation.subtitle && (
+          <p className="innovation-card__subtitle">{innovation.subtitle}</p>
         )}
+        <p className="innovation-card__description">{innovation.description}</p>
 
         {innovation.tags?.length > 0 && (
           <div className="innovation-card__tags">
@@ -69,14 +54,53 @@ function InnovationCard({ innovation }) {
           </div>
         )}
 
-        <div className="innovation-card__footer">
-          {innovation.timeline && (
+        {hasDetails && (
+          <div className="innovation-card__details">
+            <button
+              type="button"
+              className="innovation-card__details-toggle"
+              onClick={() => setExpanded((prev) => !prev)}
+              aria-expanded={expanded}
+            >
+              {expanded ? "Hide technical details" : "View technical details"}
+              <span className={`innovation-card__chevron ${expanded ? "is-open" : ""}`} aria-hidden="true">
+                ▾
+              </span>
+            </button>
+
+            {expanded && (
+              <div className="innovation-card__details-panel">
+                {innovation.key_components?.length > 0 && (
+                  <div className="innovation-card__details-group">
+                    <h4>Key Components</h4>
+                    <ul>
+                      {innovation.key_components.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {innovation.capabilities_demonstrated?.length > 0 && (
+                  <div className="innovation-card__details-group">
+                    <h4>Capabilities Demonstrated</h4>
+                    <ul>
+                      {innovation.capabilities_demonstrated.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {innovation.timeline && (
+          <div className="innovation-card__footer">
             <span className="innovation-card__timeline">{innovation.timeline}</span>
-          )}
-          <span className="innovation-card__cta">
-            View Project <span aria-hidden="true">→</span>
-          </span>
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

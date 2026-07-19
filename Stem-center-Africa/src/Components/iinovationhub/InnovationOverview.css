@@ -1,0 +1,316 @@
+.innovation-overview {
+  background: #ffffff;
+  padding: 60px 0;
+  font-family: "DM Sans", sans-serif;
+}
+
+.innovation-overview__container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .innovation-overview__container {
+    padding: 0 28px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .innovation-overview__container {
+    padding: 0 56px;
+  }
+}
+
+.innovation-overview * {
+  font-family: inherit;
+}
+
+.io-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  padding: 28px 30px;
+  height: 100%;
+  color: #111827;
+  font-family: "DM Sans", sans-serif;
+}
+
+.io-card__title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 4px;
+}
+
+.io-card__subtitle {
+  font-size: 14px;
+  color: #101F3C;
+  margin: 0 0 20px;
+}
+
+.io-card__footnote {
+  font-size: 16px;
+  color: #101F3C;
+  margin: 18px 0 0;
+}
+
+.io-card__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  color: #ff4d9e;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: gap 0.2s ease, opacity 0.2s ease;
+}
+
+
+/* --- Pipeline card --------------------------------------------------- */
+
+.io-pipeline {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.io-pipeline__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 60px;
+}
+
+.io-pipeline__icon {
+  --stage-color: #ec4899;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.io-pipeline__icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.io-pipeline__label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #4b5563;
+  text-align: center;
+}
+
+.io-pipeline__track {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  gap: 6px;
+  margin: 18px 2px 0;
+  position: relative;
+}
+
+.io-pipeline__track::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: 0;
+}
+
+.io-pipeline__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: 1;
+  max-width: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Featured innovations card --------------------------------------- */
+
+.io-featured__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.io-featured__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.io-featured__media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 0;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.io-featured__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.io-featured__name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px;
+}
+
+.io-featured__desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6b7280;
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.io-featured__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #374151;
+  margin-top: auto;
+}
+
+.io-featured__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+/* --- Grand challenges card --------------------------------------- */
+
+.io-challenges__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 12px;
+}
+
+.io-challenges__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.io-challenges__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #e5e7eb;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.io-challenges__icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.io-challenges__label {
+  font-size: 0.7rem;
+  color: #4b5563;
+  line-height: 1.3;
+}
+
+/* --- Roadmap card --------------------------------------- */
+
+.io-roadmap__track {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.io-roadmap__phase {
+  flex: 1;
+  min-width: 140px;
+  position: relative;
+  padding: 14px 16px;
+  background: #f0f6fd;
+  border-radius: 6px;
+}
+
+.io-roadmap__range {
+  display: block;
+  font-family: "Syne", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.io-roadmap__desc {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #6b7280;
+  margin: 0;
+}
+
+.io-roadmap__connector {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .io-roadmap__connector {
+    display: block;
+    position: absolute;
+    top: 6px;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+}
+
+/* --- Responsive tweaks --------------------------------------- */
+
+@media (max-width: 767px) {
+  .io-featured__grid {
+    grid-template-columns: 1fr;
+  }
+  .io-challenges__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .io-pipeline {
+    justify-content: flex-start;
+  }
+}
