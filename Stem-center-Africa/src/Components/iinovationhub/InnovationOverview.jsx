@@ -1,4 +1,4 @@
-import { innovations } from "../../data/innovationsData"; 
+import { innovations } from "../../data/InnovationsData"; 
 import "./InnovationOverview.css";
 
 
@@ -214,7 +214,7 @@ function InnovationOverview() {
           </div>
         </div>
 
-        <div className="row g-4 mt-1">
+        <div className="row g-4 mt-0">
           <div className="col-md-6">
             <GrandChallengesCard />
           </div>

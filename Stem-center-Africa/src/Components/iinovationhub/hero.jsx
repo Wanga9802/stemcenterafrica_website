@@ -55,7 +55,7 @@ const InnovationHubHero = () => {
 
             {/* CTA buttons */}
             <div className="ihh-cta-group ihh-anim ihh-anim--delay-4">
-              <a href="#innovations" className="ihh-btn-primary">
+              <a href="#innovation-projects" className="ihh-btn-primary">
                 Explore Innovations <span className="ihh-btn-icon">→</span>
               </a>
               <a href="#roadmap" className="ihh-btn-secondary">

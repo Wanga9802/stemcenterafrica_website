@@ -1,5 +1,5 @@
 // src/components/innovation-hub/ActiveInnovations.jsx
-import { getOngoingOrActiveInnovations } from "../../data/innovationsData";
+import { getOngoingOrActiveInnovations } from "../../data/InnovationsData";
 import InnovationCard from "./InnovationCard";
 import "./ActiveInnovations.css";
 

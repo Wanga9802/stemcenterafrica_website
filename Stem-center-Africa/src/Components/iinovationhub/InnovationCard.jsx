@@ -36,8 +36,6 @@ function InnovationCard({ innovation }) {
       </div>
 
       <div className="innovation-card__body">
-        <span className="innovation-card__tag">{innovation.capability_area}</span>
-
         <h3 className="innovation-card__title">{innovation.title}</h3>
         {innovation.subtitle && (
           <p className="innovation-card__subtitle">{innovation.subtitle}</p>
