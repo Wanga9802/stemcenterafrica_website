@@ -56,7 +56,7 @@
   color: var(--sc-green);
 }
 
-..cc-header__sub {
+.cc-header__sub {
   font-size: 1.05rem;
   line-height: 1.7;
   color: #5b5560;
