@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
-import events from '../data/eventsData';
+import { useEffect, useState } from 'react';
+import { supabase } from '../lib/supabaseClient';
 import '../Styles/EventsDetails.css';
 
 /* ─── Date helpers ─────────────────────────────────────────── */
@@ -119,9 +120,56 @@ function QRCodeBlock({ qr }) {
 }
 
 /* ─── Main component ────────────────────────────────────────── */
+
 function EventDetail() {
   const { eventId } = useParams();
-  const event = events.find((item) => item.id === eventId);
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+    async function fetchEvent() {
+      try {
+        const { data, error } = await supabase
+          .from('events')
+          .select('*')
+          .eq('id', eventId)
+          .single();
+        if (error) throw error;
+        if (!mounted) return;
+        if (data) {
+          setEvent({
+            id: data.id || data.event_id,
+            title: data.title,
+            location: data.location,
+            startDate: data.start_date,
+            endDate: data.end_date,
+            time: data.time,
+            excerpt: data.excerpt,
+            descriptionBlocks: data.description_blocks,
+            imageUrl: data.image_url,
+            registerUrl: data.register_url,
+            requiresRegistration: data.requires_registration,
+            qrCodes: data.qr_codes,
+          });
+        }
+      } catch (err) {
+        // console.error('Failed to load event', err)
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    }
+    fetchEvent();
+    return () => { mounted = false; };
+  }, [eventId]);
+
+  if (loading) {
+    return (
+      <div className="event-detail-loading container">
+        <p>Loading event…</p>
+      </div>
+    );
+  }
 
   if (!event) {
     return (

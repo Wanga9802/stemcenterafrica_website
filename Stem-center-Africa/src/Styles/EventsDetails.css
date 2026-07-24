@@ -480,7 +480,7 @@
   letter-spacing: 0.02em;
 }
 
-/* Links */
+
 .ed-desc-links {
   display: flex;
   flex-direction: column;
@@ -488,18 +488,24 @@
   margin: 0.75rem 0;
 }
 
-.ed-desc-link {
+.ed-desc-links a.ed-desc-link,
+.ed-desc-links a.ed-desc-link:link,
+.ed-desc-links a.ed-desc-link:visited {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.93rem;
   font-weight: 600;
-  color: #ff2d78;
+  color: #ff2d78 !important;
   text-decoration: none;
   word-break: break-all;
+  opacity: 1 !important;
 }
 
-.ed-desc-link:hover {
+.ed-desc-links a.ed-desc-link:hover,
+.ed-desc-links a.ed-desc-link:focus {
+  color: #e0245e !important;
   text-decoration: underline;
 }
+
 
 /* Hashtags */
 .ed-desc-hashtags {

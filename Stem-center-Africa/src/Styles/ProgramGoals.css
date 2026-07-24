@@ -1,0 +1,188 @@
+.pg {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 72px 24px;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+.pg__header { margin-bottom: 40px; max-width: 60ch; }
+
+.pg__eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 14px;
+}
+
+.pg__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Goal cards ------------------------------------------------ */
+.pg__goals {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 56px;
+}
+
+.pg__goal-card {
+  background: #fff;
+  border-radius: 5px;
+  padding: 24px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.12);
+}
+
+.pg__goal-icon {
+  color: var(--amber);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+.pg__goal-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.pg__goal-card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+/* Objectives + Participants row ------------------------------ */
+.pg__lower {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.pg__lower-heading {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 18px;
+}
+
+.pg__obj-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.pg__obj-item {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 18px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.pg__obj-item + .pg__obj-item {
+  border-top: none;
+  position: relative;
+}
+
+.pg__obj-item + .pg__obj-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: var(--ink-muted);
+}
+
+.pg__obj-item:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.pg__obj-item.is-active .pg__obj-text {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.pg__obj-index {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.pg__obj-text {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+.pg__participants {
+  display: flex;
+  flex-direction: column;
+}
+
+.pg__participant-card {
+  display: flex;
+  gap: 14px;
+  padding: 18px;
+  background: #fff;
+  border-radius: 5px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.12);
+}
+
+.pg__participant-icon {
+  color: var(--amber);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pg__participant-card h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.pg__participant-card p {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .pg__goals { grid-template-columns: repeat(2, 1fr); }
+  .pg__lower { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 520px) {
+  .pg__goals { grid-template-columns: 1fr; }
+}

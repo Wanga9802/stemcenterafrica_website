@@ -1,0 +1,30 @@
+
+:root {
+  /* Color -------------------------------------------------- */
+  --ink: #16202A;          /* primary text / dark surfaces */
+  --ink-soft: #48566370;    /* not used directly, kept for reference */
+  --ink-muted: #101F3C;    /* secondary text on light bg */
+  --paper: #F3F5EF;        /* page background */
+  --paper-dim: #E9ECE3;    /* recessed panels / alt background */
+  --white: #FFFFFF;
+
+  --amber: #F0A93E;        /* primary accent — goals, highlights */
+  --amber-dim: #FCEBC9;    /* amber tint for chips/pills */
+  --teal: #E8006A;         /* secondary accent — structure, links */
+  --teal-dim: #DCEAE6;     /* teal tint */
+  --coral: #E4572E;        /* CTA / action accent, use sparingly */
+  --coral-dim: #FBDDD1;
+
+  --line: #D9DCD2;         /* hairline dividers */
+
+  /* Type ------------------------------------------------- */
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Layout ------------------------------------------------- */
+  --page-max: 1160px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}

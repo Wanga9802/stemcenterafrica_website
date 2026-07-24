@@ -15,6 +15,7 @@ import TeamPage from './pages/Team'
 import WoStem from './pages/WoStem'
 import InnovationHubPage from './pages/innovationhub'
 import ProgramDetail from './pages/ProgramDetail'
+import Educators from './pages/Educators'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
 import WhatsAppWidget from './Components/WhatsAppWidget'
@@ -39,6 +40,7 @@ import AdminImpactHighlightsForm from './admin/pages/AdminImpactHighlightsForm'
 import AdminSettings from './admin/pages/settings/SettingsPage'
 import AdminCommunity from './admin/pages/Admincommunity'
 import ImpactHighlights from './pages/ImpactHighlights'
+import Donate from './pages/Donate'
 import ResetPassword from './admin/pages/Resetpassword'
 import Joinus from './Components/Home/Joinus'
 import waIcon from './assets/whatsapp.png'
@@ -60,6 +62,7 @@ function App() {
         <Route path="/service-request" element={<ServiceForm />} />
         <Route path="/innovationhub" element={<InnovationHubPage />} />
         <Route path="/wostem" element={<WoStem />} />
+        <Route path="/educators" element={<Educators />} />
         <Route path="/programs/:slug" element={<ProgramDetail />} />
         <Route path="/corporate" element={<Services />} />
         <Route path="/blog" element={<Blog />} />
@@ -70,6 +73,7 @@ function App() {
         <Route path="/team/:slug" element={<TeamProfile />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/impact-highlights" element={<ImpactHighlights />} />
+        <Route path="/donate" element={<Donate />} />
         <Route path="/join" element={<Joinus />} />
 
         <Route path="/Admin" element={<Navigate to="/admin" replace />} />

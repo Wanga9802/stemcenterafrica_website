@@ -1,0 +1,215 @@
+.pi {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 88px 24px 96px;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+.pi__eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.pi__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(21px, 2.4vw, 26px);
+  margin: 0 0 22px;
+}
+
+/* Top: assessment + outcomes side by side --------------------- */
+.pi__top {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 56px;
+  margin-bottom: 64px;
+}
+
+.pi__checklist {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pi__checklist li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+
+.pi__check-icon {
+  color: var(--teal);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pi__cert-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--sc-dark);
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 5px;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.pi__outcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.pi__outcome-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+  padding: 18px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.12);
+}
+
+.pi__outcome-stat {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--coral);
+  margin-bottom: 10px;
+}
+
+.pi__outcome-card p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--ink);
+}
+
+/* Resources strip ---------------------------------------------- */
+.pi__resources {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+
+.pi__resources-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.pi__resource-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.pi__resource-list li {
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+/* Sustainability note -------------------------------------------- */
+.pi__sustain {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 56px;
+  max-width: 72ch;
+}
+
+.pi__sustain-icon { color: var(--teal); flex-shrink: 0; margin-top: 3px; }
+
+.pi__sustain p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+/* CTA -------------------------------------------------------- */
+.pi__cta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--ink);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+}
+
+.pi__cta-icon { color: var(--amber); flex-shrink: 0; }
+
+.pi__cta-copy { flex: 1; }
+
+.pi__cta-copy h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.pi__cta-copy p {
+  font-size: 14px;
+  color: #C7CDC3;
+  margin: 0;
+  max-width: 52ch;
+}
+
+.pi__cta-btn {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--amber);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 13px 20px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: transform 0.15s ease;
+}
+
+.pi__cta-btn:hover { transform: translateY(-1px); }
+
+@media (max-width: 860px) {
+  .pi__top { grid-template-columns: 1fr; gap: 40px; }
+  .pi__cta { flex-direction: column; align-items: flex-start; }
+  .pi__cta-btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 520px) {
+  .pi__outcome-grid { grid-template-columns: 1fr; }
+}

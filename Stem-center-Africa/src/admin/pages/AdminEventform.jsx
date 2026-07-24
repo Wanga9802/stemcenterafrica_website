@@ -13,6 +13,56 @@ function slugify(text) {
     .trim()
 }
 
+// ── Description block type definitions ──────────────────────────────────
+// Must stay in sync with the DescriptionBlock renderer in the public
+// EventDetail.jsx — each type maps to its own visual treatment there.
+const BLOCK_TYPES = [
+  { value: 'paragraph', label: 'Paragraph' },
+  { value: 'heading', label: 'Section Heading (e.g. "Event Highlights", "Activities")' },
+  { value: 'highlight', label: 'Highlight (label + text)' },
+  { value: 'stats', label: 'Stats (short number/fact chips)' },
+  { value: 'list', label: 'Bulleted List' },
+  { value: 'tags', label: 'Tags' },
+  { value: 'links', label: 'Links' },
+  { value: 'hashtags', label: 'Hashtags line' },
+]
+
+function blankBlockForType(type) {
+  switch (type) {
+    case 'heading':
+      return { type: 'heading', text: '' }
+    case 'highlight':
+      return { type: 'highlight', label: '', text: '', subtext: '' }
+    case 'stats':
+      return { type: 'stats', items: [''] }
+    case 'list':
+      return { type: 'list', items: [''] }
+    case 'tags':
+      return { type: 'tags', items: [''] }
+    case 'links':
+      return { type: 'links', items: [{ label: '', url: '' }] }
+    case 'hashtags':
+      return { type: 'hashtags', text: '' }
+    case 'paragraph':
+    default:
+      return { type: 'paragraph', text: '' }
+  }
+}
+
+// QR codes need: label (shown above the QR box), linkUrl (where it points),
+// linkLabel (the text shown next to the 🔗 icon on the public page), and
+// imageUrl (the actual QR graphic — auto-generated from linkUrl on save).
+function blankQr() {
+  return { label: '', linkUrl: '', linkLabel: '' }
+}
+
+// Auto-generates a scannable QR code image URL from a destination link.
+// Keeps QR generation out of Supabase storage — no file upload needed.
+function buildQrImageUrl(linkUrl) {
+  if (!linkUrl || !linkUrl.trim()) return ''
+  return `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(linkUrl.trim())}`
+}
+
 export default function AdminEventForm() {
   const navigate = useNavigate()
   const { id } = useParams()
@@ -30,8 +80,8 @@ export default function AdminEventForm() {
     image_url: '',
     register_url: '',
     requires_registration: false,
-    description_blocks: [{ text: '' }],
-    qr_codes: [{ label: '', linkUrl: '' }],
+    description_blocks: [blankBlockForType('paragraph')],
+    qr_codes: [blankQr()],
   })
 
   const [imageFile, setImageFile] = useState(null)
@@ -67,11 +117,15 @@ export default function AdminEventForm() {
       register_url: data.register_url || '',
       requires_registration: data.requires_registration || false,
       description_blocks: Array.isArray(data.description_blocks) && data.description_blocks.length > 0
-        ? data.description_blocks
-        : [{ text: '' }],
+        // Older rows saved before typed blocks existed only have { text }.
+        // Treat those as plain paragraphs so they're still editable/visible here.
+        ? data.description_blocks.map(b => (b && b.type ? b : { type: 'paragraph', text: b?.text || '' }))
+        : [blankBlockForType('paragraph')],
       qr_codes: Array.isArray(data.qr_codes) && data.qr_codes.length > 0
-        ? data.qr_codes
-        : [{ label: '', linkUrl: '' }],
+        // Older rows saved before linkLabel existed only have { label, linkUrl }.
+        // Fill in the missing field so it's still editable here.
+        ? data.qr_codes.map(q => ({ label: q.label || '', linkUrl: q.linkUrl || '', linkLabel: q.linkLabel || '' }))
+        : [blankQr()],
     })
     setImageFile(null)
     setImagePreview(data.image_url || '')
@@ -94,16 +148,38 @@ export default function AdminEventForm() {
   }
 
   // ── Description Blocks ──────────────────────────────────────────────────
-  function updateBlock(index, value) {
+  function updateBlockField(index, field, value) {
     setForm(f => {
       const blocks = [...f.description_blocks]
-      blocks[index] = { ...blocks[index], text: value }
+      blocks[index] = { ...blocks[index], [field]: value }
       return { ...f, description_blocks: blocks }
     })
   }
 
+  function updateBlockType(index, type) {
+    setForm(f => {
+      const blocks = [...f.description_blocks]
+      blocks[index] = blankBlockForType(type)
+      return { ...f, description_blocks: blocks }
+    })
+  }
+
+  // items-based blocks (stats / list / tags) are edited as one item per line
+  function updateBlockItemsText(index, text) {
+    updateBlockField(index, 'items', text.split('\n'))
+  }
+
+  // links block is edited as "Label | https://url" per line
+  function updateBlockLinksText(index, text) {
+    const items = text.split('\n').map(line => {
+      const [label, url] = line.split('|').map(s => (s || '').trim())
+      return { label: label || '', url: url || '' }
+    })
+    updateBlockField(index, 'items', items)
+  }
+
   function addBlock() {
-    setForm(f => ({ ...f, description_blocks: [...f.description_blocks, { text: '' }] }))
+    setForm(f => ({ ...f, description_blocks: [...f.description_blocks, blankBlockForType('paragraph')] }))
   }
 
   function removeBlock(index) {
@@ -123,7 +199,7 @@ export default function AdminEventForm() {
   }
 
   function addQr() {
-    setForm(f => ({ ...f, qr_codes: [...f.qr_codes, { label: '', linkUrl: '' }] }))
+    setForm(f => ({ ...f, qr_codes: [...f.qr_codes, blankQr()] }))
   }
 
   function removeQr(index) {
@@ -212,6 +288,50 @@ export default function AdminEventForm() {
     return errs
   }
 
+  function cleanDescriptionBlocks(blocks) {
+    return blocks
+      .map(b => {
+        if (b.type === 'stats' || b.type === 'list' || b.type === 'tags') {
+          return { ...b, items: (b.items || []).map(i => (i || '').trim()).filter(Boolean) }
+        }
+        if (b.type === 'links') {
+          return {
+            ...b,
+            items: (b.items || []).filter(l => (l.label && l.label.trim()) || (l.url && l.url.trim())),
+          }
+        }
+        return b
+      })
+      .filter(b => {
+        if (b.type === 'paragraph' || b.type === 'heading' || b.type === 'hashtags') {
+          return b.text && b.text.trim() !== ''
+        }
+        if (b.type === 'highlight') {
+          return (b.label && b.label.trim()) || (b.text && b.text.trim())
+        }
+        if (b.type === 'stats' || b.type === 'list' || b.type === 'tags') {
+          return b.items && b.items.length > 0
+        }
+        if (b.type === 'links') {
+          return b.items && b.items.length > 0
+        }
+        return false
+      })
+  }
+
+  // Cleans QR rows and stamps each with a freshly generated imageUrl so the
+  // public EventDetail page always has a working QR graphic + link text.
+  function cleanQrCodes(qrCodes) {
+    return qrCodes
+      .filter(q => q.label.trim() !== '' || q.linkUrl.trim() !== '' || (q.linkLabel || '').trim() !== '')
+      .map(q => ({
+        label: q.label.trim(),
+        linkUrl: q.linkUrl.trim(),
+        linkLabel: (q.linkLabel || '').trim(),
+        imageUrl: buildQrImageUrl(q.linkUrl),
+      }))
+  }
+
   // ── Save ─────────────────────────────────────────────────────────────────
   async function handleSave() {
     const errs = validate()
@@ -226,8 +346,8 @@ export default function AdminEventForm() {
       const payload = {
         ...form,
         image_url: uploadedImageUrl || form.image_url,
-        description_blocks: form.description_blocks.filter(b => b.text.trim() !== ''),
-        qr_codes: form.qr_codes.filter(q => q.label.trim() !== '' || q.linkUrl.trim() !== ''),
+        description_blocks: cleanDescriptionBlocks(form.description_blocks),
+        qr_codes: cleanQrCodes(form.qr_codes),
         updated_at: new Date().toISOString(),
       }
       if (!isEdit) payload.created_at = new Date().toISOString()
@@ -416,18 +536,104 @@ export default function AdminEventForm() {
               <BlockIcon />
               <span className="aef-card-label">Description Blocks (JSONB)</span>
             </div>
-            <p className="aef-section-desc">Each block represents a paragraph or section of the event detail page.</p>
+            <p className="aef-section-desc">
+              Build the "About the Event" page section by section. Add a "Section Heading" block
+              (e.g. "Event Highlights", "Activities") to start a new titled section — every block
+              after it will visually belong to that section until the next heading.
+            </p>
 
             {form.description_blocks.map((block, i) => (
               <div key={i} className="aef-block-row">
                 <span className="aef-drag-handle">⠿</span>
-                <textarea
-                  className="aef-textarea aef-block-textarea"
-                  rows={3}
-                  placeholder="Write a paragraph..."
-                  value={block.text}
-                  onChange={e => updateBlock(i, e.target.value)}
-                />
+
+                <div className="aef-block-content" style={{ flex: 1 }}>
+                  <div className="aef-field" style={{ marginBottom: 8 }}>
+                    <label className="aef-label">Block Type</label>
+                    <select
+                      className="aef-input"
+                      value={block.type}
+                      onChange={e => updateBlockType(i, e.target.value)}
+                    >
+                      {BLOCK_TYPES.map(t => (
+                        <option key={t.value} value={t.value}>{t.label}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* ── paragraph / heading / hashtags: single text field ── */}
+                  {(block.type === 'paragraph' || block.type === 'heading' || block.type === 'hashtags') && (
+                    <textarea
+                      className="aef-textarea aef-block-textarea"
+                      rows={block.type === 'paragraph' ? 3 : 1}
+                      placeholder={
+                        block.type === 'heading' ? 'e.g. Event Highlights'
+                          : block.type === 'hashtags' ? '#STEMExpo2026 #STEMCenterAfrica'
+                            : 'Write a paragraph...'
+                      }
+                      value={block.text}
+                      onChange={e => updateBlockField(i, 'text', e.target.value)}
+                    />
+                  )}
+
+                  {/* ── highlight: label + text + optional subtext ── */}
+                  {block.type === 'highlight' && (
+                    <>
+                      <input
+                        className="aef-input"
+                        placeholder="Label (e.g. Location)"
+                        value={block.label}
+                        onChange={e => updateBlockField(i, 'label', e.target.value)}
+                        style={{ marginBottom: 8 }}
+                      />
+                      <input
+                        className="aef-input"
+                        placeholder="Text (e.g. The Sarit Expo Centre)"
+                        value={block.text}
+                        onChange={e => updateBlockField(i, 'text', e.target.value)}
+                        style={{ marginBottom: 8 }}
+                      />
+                      <input
+                        className="aef-input"
+                        placeholder="Subtext (optional — shown under a 📍 icon)"
+                        value={block.subtext || ''}
+                        onChange={e => updateBlockField(i, 'subtext', e.target.value)}
+                      />
+                    </>
+                  )}
+
+                  {/* ── stats / list / tags: one item per line ── */}
+                  {(block.type === 'stats' || block.type === 'list' || block.type === 'tags') && (
+                    <>
+                      <textarea
+                        className="aef-textarea aef-block-textarea"
+                        rows={4}
+                        placeholder={
+                          block.type === 'stats' ? '500+ student participants\n500+ additional attendees'
+                            : block.type === 'list' ? 'Robotics, Drones, Space Science\nScratch Coding, Mathematics'
+                              : 'Robotics\nAI\nCoding'
+                        }
+                        value={(block.items || []).join('\n')}
+                        onChange={e => updateBlockItemsText(i, e.target.value)}
+                      />
+                      <span className="aef-help-text">One item per line.</span>
+                    </>
+                  )}
+
+                  {/* ── links: "Label | URL" per line ── */}
+                  {block.type === 'links' && (
+                    <>
+                      <textarea
+                        className="aef-textarea aef-block-textarea"
+                        rows={4}
+                        placeholder="Read about our impacts here | https://example.com/impact"
+                        value={(block.items || []).map(l => `${l.label} | ${l.url}`).join('\n')}
+                        onChange={e => updateBlockLinksText(i, e.target.value)}
+                      />
+                      <span className="aef-help-text">One link per line, formatted as: Label | https://url</span>
+                    </>
+                  )}
+                </div>
+
                 <button
                   className="aef-block-remove"
                   onClick={() => removeBlock(i)}
@@ -448,11 +654,14 @@ export default function AdminEventForm() {
               <QrIcon />
               <span className="aef-card-label">QR Codes (JSONB)</span>
             </div>
-            <p className="aef-section-desc">QR codes appear on the event detail page sidebar.</p>
+            <p className="aef-section-desc">
+              QR codes appear on the event detail page sidebar. The QR image is generated
+              automatically from the Link URL when you save — you don't need to upload one.
+            </p>
 
             {form.qr_codes.map((qr, i) => (
               <div key={i} className="aef-qr-row">
-                <div className="aef-qr-fields">
+                <div className="aef-qr-fields" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12 }}>
                   <input
                     className="aef-input"
                     placeholder="Label (e.g. Map Location)"
@@ -464,6 +673,12 @@ export default function AdminEventForm() {
                     placeholder="Link URL"
                     value={qr.linkUrl}
                     onChange={e => updateQr(i, 'linkUrl', e.target.value)}
+                  />
+                  <input
+                    className="aef-input"
+                    placeholder="Link Label (e.g. View on Google Maps)"
+                    value={qr.linkLabel || ''}
+                    onChange={e => updateQr(i, 'linkLabel', e.target.value)}
                   />
                 </div>
                 <button

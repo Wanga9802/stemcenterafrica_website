@@ -66,7 +66,6 @@ const COURSES = [
     description: 'Build the communication, creative-thinking, and mentorship skills that complement technical learning and prepare students and educators alike for real-world impact.',
     offerings: [
       { name: 'Creativity & Communication', meta: 'All Ages, All Levels', to: '/programs/creativity-and-communication' },
-      { name: 'Teacher Training', meta: 'Educators, All Levels', to: '/programs/teacher-training' },
     ],
   },
 ];
@@ -264,6 +263,11 @@ function Navbar() {
                 <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/wostem">WoSTEM</NavLink>
               </li>
 
+              {/* STEM Educators */}
+              <li className="nav-item">
+                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/educators">STEM Educators</NavLink>
+              </li>
+
               {/* Innovation Hub */}
               <li className="nav-item">
                 <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/innovationhub">Innovation Hub</NavLink>
@@ -434,6 +438,11 @@ function Navbar() {
             {/* WoSTEM */}
             <li className="nav-item">
               <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/wostem" onClick={closeMobileMenu}>WoSTEM</NavLink>
+            </li>
+
+            {/* STEM Educators */}
+            <li className="nav-item">
+              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/educators" onClick={closeMobileMenu}>STEM Educators</NavLink>
             </li>
 
             {/* Innovation Hub */}

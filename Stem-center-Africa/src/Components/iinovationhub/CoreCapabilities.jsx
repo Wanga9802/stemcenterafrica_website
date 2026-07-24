@@ -86,6 +86,19 @@ const CoreCapabilities = () => {
     <section className="cc-section" aria-label="Core capabilities">
       <div className="container">
 
+        {/* ── CEO message ── */}
+        <div className="cc-message cc-anim">
+          <h3 className="cc-message__text">
+            At our SCA STEM IHub, we are driven by a bold vision: to spark ideas and develop groundbreaking products that have the power to change the world.
+          </h3>
+          <p className="cc-message__text">
+            We cultivate a dynamic environment where thinkers, makers, and problem-solvers come together to experiment, collaborate, and turn bold concepts into real-world impact.
+          </p>
+          <p className="cc-message__text">
+            Through hands-on design, mentorship, and cutting-edge tools, we empower innovators—especially youth and early-stage entrepreneurs—to explore challenges in education, health, technology, and sustainability, and to reimagine solutions that are not only functional but transformative. At SCA STEM-Hub, innovation isn’t just an outcome—it’s our way of thinking, creating, and shaping the future.
+          </p>
+        </div>
+
         {/* ── Header ── */}
         <div className="cc-header cc-anim">
           <h2 className="cc-header__title">
