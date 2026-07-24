@@ -70,7 +70,7 @@ const InnovationHubHero = () => {
                   <img src={InnovationCenterIcon} alt="" className="ihh-stat__icon" />
                 </div>
                 <div className="ihh-stat__text">
-                  <span className="ihh-stat__value">5</span>
+                  <span className="ihh-stat__value">2</span>
                   <span className="ihh-stat__label">Innovation Centers</span>
                 </div>
               </div>
@@ -80,7 +80,7 @@ const InnovationHubHero = () => {
                   <img src={LifelongLearningIcon} alt="" className="ihh-stat__icon" />
                 </div>
                 <div className="ihh-stat__text">
-                  <span className="ihh-stat__value">19,183+</span>
+                  <span className="ihh-stat__value">18,712+</span>
                   <span className="ihh-stat__label">Learners Reached</span>
                 </div>
               </div>
