@@ -73,7 +73,7 @@
   text-align: center;
 }
 
-..cc-message__eyebrow {
+.cc-message__eyebrow {
   display: inline-block;
   margin-bottom: 14px;
   font-family: 'DM Sans', sans-serif;
