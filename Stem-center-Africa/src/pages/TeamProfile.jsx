@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import { findMemberBySlug } from '../data/teamData'
-import ProfileText from '../components/ProfileText'
+import ProfileText from '../Components/ProfileText'
 import '../Styles/Team.css'
 
 export default function TeamProfile() {
