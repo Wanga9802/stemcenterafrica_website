@@ -8,7 +8,9 @@ import droneIcon from '../assets/drone.png';
 import codeIcon from '../assets/code (1).png';
 import aiIcon from '../assets/atiwe.png';
 import roboHero from '../assets/mitchi.jpg';
-
+import TeacherHero from '../assets/problem.jpg'
+import MathsHero from '../assets/matho.JPG'
+import AiHero from '../assets/atie.JPG'
 
 const programs = [
   {
@@ -250,7 +252,7 @@ const programs = [
     icon: calculatorIcon,
     color: "#F39C12",
     group: "science-exploration",
-    heroImage: "/assets/program-heroes/mathematics.jpg",
+    heroImage: MathsHero,
     fullDescription: "A supportive program focused on strengthening core mathematical reasoning and problem-solving skills that underpin all STEM disciplines.",
     learningOutcomes: [
       "Core arithmetic and algebra",
@@ -271,7 +273,7 @@ const programs = [
     icon: teacherIcon,
     color: "#8E44AD",
     group: "creativity-life-skills",
-    heroImage: "/assets/program-heroes/teacher-training.jpg",
+    heroImage: TeacherHero,
     fullDescription: "Equips educators with the tools, confidence, and hands-on training needed to bring STEM concepts to life in their own classrooms.",
     learningOutcomes: [
       "STEM teaching methodologies",
@@ -292,7 +294,7 @@ const programs = [
     icon: aiIcon,
     color: "#6C5CE7",
     group: "data-ai",
-    heroImage: "/assets/program-heroes/ai.jpg",
+    heroImage: AiHero,
     fullDescription: "Students explore the fundamentals of artificial intelligence and machine learning, building simple models and understanding real-world AI applications.",
     learningOutcomes: [
       "AI and machine learning fundamentals",

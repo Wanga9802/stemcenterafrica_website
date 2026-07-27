@@ -80,7 +80,7 @@ export default function AlumniSuccessStories() {
       <div className="alumni-container">
         {/* Header */}
         <div className="text-center mb-5">
-          <h2 className="alumni-title">Alumni Success Stories</h2>
+          <h2 className="alumni-title">Stories of change</h2>
         </div>
 
         {/* ── Desktop grid ── */}

@@ -5,12 +5,8 @@ import programs from '../../data/Programs.js';
 const FEATURED_SLUGS = [
   "mathematics",
   "robotics",
-  "3d-designing",
-  "ai",
-  "electronics",
   "teacher-training",
-  "drone-technology",
-  "web-development",
+  "ai",
 ];
 
 export default function ExplorePrograms() {
@@ -44,6 +40,15 @@ export default function ExplorePrograms() {
                 </div>
                 <h3 className="ep-card-title">{program.title}</h3>
                 <p className="ep-card-desc">{program.description}</p>
+                {program.heroImage && (
+                  <div className="ep-card-hero">
+                    <img
+                      src={program.heroImage}
+                      alt={`${program.title} hero`}
+                      className="ep-card-hero-img"
+                    />
+                  </div>
+                )}
               </a>
             </div>
           ))}

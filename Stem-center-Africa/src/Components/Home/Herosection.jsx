@@ -52,11 +52,11 @@ electronics, and design thinking through innovation centers, mobile outreach, an
 
             {/* ── CTA Buttons ── */}
             <div className="sc-cta-group sc-anim sc-anim--delay-4 mb-2">
-              <a href="#joinus" className="sc-btn-primary">
-                Enroll a student
+              <a href="/donate" className="sc-btn-primary">
+                Donate Today
               </a>
-              <a href="#map-section" className="sc-btn-secondary">
-                Contact us
+              <a href="#partner" className="sc-btn-secondary">
+                Partner with us
               </a>
             </div>
 
