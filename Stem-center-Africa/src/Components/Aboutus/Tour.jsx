@@ -1,188 +1,82 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import '../../Styles/Tour.css';
-import tour from '../../assets/about.png';
 
-const alumni = [
-  {
-    id: 1,
-   
-    thumbnail: tour,
-    videoUrl: "https://youtu.be/FOb3VA2R7aU",
+const heroVideo = {
+  id: 1,
+  videoUrl: "https://youtu.be/FOb3VA2R7aU",
+};
 
-  },
-
-];
-
-function getYouTubeEmbedUrl(url) {
+function extractYouTubeId(url) {
   if (!url) return null;
-  try {
-    const shortMatch = url.match(/youtu\.be\/([\w-]{11})/);
-    if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}?autoplay=1`;
+  const shortMatch = url.match(/youtu\.be\/([\w-]{11})/);
+  if (shortMatch) return shortMatch[1];
 
-    const fullMatch = url.match(/[?&]v=([\w-]{11})/);
-    if (fullMatch) return `https://www.youtube.com/embed/${fullMatch[1]}?autoplay=1`;
+  const fullMatch = url.match(/[?&]v=([\w-]{11})/);
+  if (fullMatch) return fullMatch[1];
 
-    const embedMatch = url.match(/embed\/([\w-]{11})/);
-    if (embedMatch) return `https://www.youtube.com/embed/${embedMatch[1]}?autoplay=1`;
+  const embedMatch = url.match(/embed\/([\w-]{11})/);
+  if (embedMatch) return embedMatch[1];
 
-    return url;
-  } catch (e) {
-    return url;
-  }
+  return null;
 }
 
-function VideoCard({ person, isPlaying, onPlay, onClose }) {
-  const handlePlayClick = () => {
-    if (typeof onPlay === 'function') onPlay();
-  };
+function getYouTubeEmbedUrl(url, muted) {
+  const videoId = extractYouTubeId(url);
+  if (!videoId) return url;
 
-  const embedUrl = getYouTubeEmbedUrl(person.videoUrl);
+  const muteParam = muted ? 1 : 0;
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${muteParam}&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&playsinline=1`;
+}
 
+function MuteIcon() {
   return (
-    <div className="alumnii-video-card">
-      <div className="alumnii-card-thumbnail" style={{ backgroundImage: `url(${person.thumbnail})` }}>
-        {!isPlaying && (
-          <button
-            type="button"
-            className="alumnii-play-button"
-            onClick={handlePlayClick}
-            aria-label="Play video"
-          >
-            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="6,3 20,12 6,21" />
-            </svg>
-          </button>
-        )}
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+      <line x1="23" y1="9" x2="17" y2="15" />
+      <line x1="17" y1="9" x2="23" y2="15" />
+    </svg>
+  );
+}
 
-        {isPlaying && (
-          <>
-            <iframe
-              className="alumnii-card-iframe"
-              title={`video-${person.id}`}
-              src={embedUrl}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-            <button className="alumnii-video-close" onClick={onClose} aria-label="Close video">×</button>
-          </>
-        )}
-      </div>
-
-    </div>
+function UnmuteIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+    </svg>
   );
 }
 
 export default function Tour() {
-  const [playing, setPlaying] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const touchStartX = useRef(null);
-  const touchEndX = useRef(null);
- 
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
+  const [muted, setMuted] = useState(true);
 
-  function getYouTubeEmbedUrl(url) {
-    if (!url) return null;
-    try {
-      // handle youtu.be short links
-      const shortMatch = url.match(/youtu\.be\/([\w-]{11})/);
-      if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}?autoplay=1`;
+  if (!heroVideo.videoUrl) return null;
 
-      // handle full youtube URLs
-      const fullMatch = url.match(/[?&]v=([\w-]{11})/);
-      if (fullMatch) return `https://www.youtube.com/embed/${fullMatch[1]}?autoplay=1`;
-
-      // handle already-embed URLs or direct ids
-      const embedMatch = url.match(/embed\/([\w-]{11})/);
-      if (embedMatch) return `https://www.youtube.com/embed/${embedMatch[1]}?autoplay=1`;
-
-      // fallback: return the original URL (will likely fail to embed)
-      return url;
-    } catch (e) {
-      return url;
-    }
-  }
- 
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
- 
-  const handleTouchEnd = () => {
-    if (touchStartX.current === null || touchEndX.current === null) return;
-    const diff = touchStartX.current - touchEndX.current;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0 && activeIndex < alumni.length - 1) setActiveIndex((i) => i + 1);
-      if (diff < 0 && activeIndex > 0) setActiveIndex((i) => i - 1);
-    }
-    touchStartX.current = null;
-    touchEndX.current = null;
-  };
+  const embedUrl = getYouTubeEmbedUrl(heroVideo.videoUrl, muted);
 
   return (
-    <>
-  
+    <section className="tour-hero" aria-label="Impact highlights video">
+      <div className="tour-hero-media">
+        <iframe
+          key={muted ? 'muted' : 'unmuted'}
+          className="tour-hero-iframe"
+          title="STEM Center Africa impact video"
+          src={embedUrl}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
 
-     <section className="alumnii-section">
-        <div className="alumnii-container">
-          {/* Header */}
-        
- 
-          {/* ── Desktop grid ── */}
-          <div className="alumnii-desktop-grid">
-            {alumni.map((person) => (
-              <VideoCard
-                key={person.id}
-                person={person}
-                isPlaying={playing === person.id}
-                onPlay={() => setPlaying(person.id)}
-                onClose={() => setPlaying(null)}
-              />
-            ))}
-          </div>
- 
-          {/* ── Mobile carousel ── */}
-          <div
-            className="alumnii-carousel-track"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            <div
-              className="alumnii-carousel-inner"
-              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-            >
-              {alumni.map((person) => (
-                <div className="alumnii-carousel-slide" key={person.id}>
-                  <VideoCard
-                    person={person}
-                    isPlaying={playing === person.id}
-                    onPlay={() => setPlaying(person.id)}
-                    onClose={() => setPlaying(null)}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* inline iframe is rendered inside each VideoCard when playing */}
- 
-          {/* Pagination dots (mobile only) */}
-          <div className="alumnii-dots" role="tablist" aria-label="Alumni slides">
-            {alumni.map((_, i) => (
-              <button
-                key={i}
-                className={`alumnii-dot${activeIndex === i ? " active" : ""}`}
-                onClick={() => setActiveIndex(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                aria-selected={activeIndex === i}
-                role="tab"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+      <button
+        type="button"
+        className="tour-hero-mute-btn"
+        onClick={() => setMuted((m) => !m)}
+        aria-label={muted ? 'Unmute video' : 'Mute video'}
+      >
+        {muted ? <MuteIcon /> : <UnmuteIcon />}
+      </button>
+    </section>
   );
 }

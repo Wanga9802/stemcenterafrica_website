@@ -230,6 +230,68 @@
   flex: 1;
 }
 
+/* ── Profile Editor Toolbar & Preview ───────────────────────────────────── */
+.atf-editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.atf-toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: 1px solid #e2e5ec;
+  border-radius: 5px;
+  background: #f7f8fa;
+  color: #101F3C;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.atf-toolbar-btn:hover {
+  border-color: #E91E8C;
+  background: #fff;
+}
+
+.atf-toolbar-hint {
+  font-size: 11px;
+  color: #9aa1b1;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.atf-toolbar-hint code {
+  background: #f0f1f5;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.atf-profile-preview {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px dashed #e2e5ec;
+  border-radius: 5px;
+  background: #f7f8fa;
+}
+
+.atf-preview-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9aa1b1;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif;
+}
+
 /* ── Image Upload ────────────────────────────────────────────────────────── */
 .atf-dropzone {
   position: relative;

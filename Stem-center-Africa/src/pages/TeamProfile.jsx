@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import { findMemberBySlug } from '../data/teamData'
+import ProfileText from '../components/ProfileText'
 import '../Styles/Team.css'
 
 export default function TeamProfile() {
@@ -12,7 +13,7 @@ export default function TeamProfile() {
   useEffect(() => {
     async function fetchMember() {
       setLoading(true)
-      
+
       // First try to fetch by slug
       const { data, error } = await supabase
         .from('team_members')
@@ -21,10 +22,7 @@ export default function TeamProfile() {
         .single()
 
       if (data) {
-        setMember({
-          ...data,
-          bio: data.profile ? data.profile.split('\n\n') : [],
-        })
+        setMember(data)
         setLoading(false)
         return
       }
@@ -34,15 +32,16 @@ export default function TeamProfile() {
         console.warn('TeamProfile fetch by slug failed:', error)
         const fallback = findMemberBySlug(slug)
         if (fallback) {
-          setMember({
-            ...fallback,
-            bio: fallback.profile ? fallback.profile.split('\n\n') : [],
-          })
+          // Local teamData.js stores bios as a .bio array, not a .profile
+          // string — join them the same way the Supabase migration does.
+          const profileText = fallback.profile
+            || (Array.isArray(fallback.bio) ? fallback.bio.join('\n\n') : '')
+          setMember({ ...fallback, profile: profileText })
         } else {
           setMember(null)
         }
       }
-      
+
       setLoading(false)
     }
 
@@ -76,9 +75,7 @@ export default function TeamProfile() {
       <section className="team-profile-body">
         <div className="team-profile-card">
           <div className="team-profile-content">
-            {member.bio.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
+            <ProfileText text={member.profile} />
           </div>
         </div>
       </section>

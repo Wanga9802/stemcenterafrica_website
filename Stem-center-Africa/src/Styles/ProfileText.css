@@ -1,0 +1,38 @@
+.profile-text {
+  font-family: 'DM Sans', sans-serif;
+  color: #101F3C;
+}
+
+.profile-text__heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #101F3C;
+  margin: 18px 0 8px;
+}
+
+.profile-text__heading:first-child {
+  margin-top: 0;
+}
+
+.profile-text__paragraph {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #101F3C;
+  margin: 0 0 14px;
+}
+
+.profile-text__list {
+  font-family: 'DM Sans', sans-serif;
+  color: #101F3C;
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.profile-text__list li {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 4px;
+  color: #101F3C;
+}

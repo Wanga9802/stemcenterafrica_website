@@ -391,3 +391,44 @@
     font-size: 16px;
   }
 }
+
+/* ── ProfileText overrides inside the team profile card ────────────────── */
+.team-profile-content .profile-text__heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 19px;
+  line-height: 1.4;
+  color: #101F3C;
+  margin: 4px 0 0;
+}
+
+.team-profile-content .profile-text__paragraph {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.625;
+  color: #101F3C;
+  margin: 0;
+}
+
+.team-profile-content .profile-text__list {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.625;
+  color: #101F3C;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.team-profile-content .profile-text__list li {
+  font-size: 17px;
+  line-height: 1.625;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 575px) {
+  .team-profile-content .profile-text__heading,
+  .team-profile-content .profile-text__paragraph,
+  .team-profile-content .profile-text__list,
+  .team-profile-content .profile-text__list li {
+    font-size: 16px;
+  }
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../../Styles/CoreCapabilities.css';
+import HubPhoto from '../../assets/inov.jpeg';
 
 const capabilities = [
   {
@@ -86,17 +87,20 @@ const CoreCapabilities = () => {
     <section className="cc-section" aria-label="Core capabilities">
       <div className="container">
 
-        {/* ── CEO message ── */}
-        <div className="cc-message cc-anim">
-          <h3 className="cc-message__text">
-            At our SCA STEM IHub, we are driven by a bold vision: to spark ideas and develop groundbreaking products that have the power to change the world.
-          </h3>
-          <p className="cc-message__text">
-            We cultivate a dynamic environment where thinkers, makers, and problem-solvers come together to experiment, collaborate, and turn bold concepts into real-world impact.
-          </p>
-          <p className="cc-message__text">
-            Through hands-on design, mentorship, and cutting-edge tools, we empower innovators—especially youth and early-stage entrepreneurs—to explore challenges in education, health, technology, and sustainability, and to reimagine solutions that are not only functional but transformative. At SCA STEM-Hub, innovation isn’t just an outcome—it’s our way of thinking, creating, and shaping the future.
-          </p>
+        <div className="row align-items-stretch cc-message-row">
+<div className="col-lg-7">
+  <div className="cc-message cc-anim">
+    <p className="cc-message__text">
+      At our SCA STEM IHub, we are driven by a bold vision to spark ideas and develop groundbreaking products that have the power to change the world. We cultivate a dynamic environment where thinkers, makers, and problem-solvers come together to experiment, collaborate, and turn bold concepts into real-world impact. Through hands-on design, mentorship, and cutting-edge tools, we empower innovators—especially youth and early-stage entrepreneurs—to explore challenges in education, health, technology, and sustainability, and to reimagine solutions that are not only functional but transformative. At SCA STEM-Hub, innovation isn't just an outcome—it's our way of thinking, creating, and shaping the future.
+    </p>
+  </div>
+</div>
+
+          <div className="col-lg-5">
+            <div className="cc-message-image cc-anim">
+              <img src={HubPhoto} alt="SCA STEM Hub innovation" />
+            </div>
+          </div>
         </div>
 
         {/* ── Header ── */}

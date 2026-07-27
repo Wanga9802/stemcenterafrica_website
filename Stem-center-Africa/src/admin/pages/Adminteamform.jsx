@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { supabase } from '../../lib/supabaseClient'
 import { allTeamMembers } from '../../data/teamData'
+import ProfileText from '../../components/ProfileText'
 import deleteIcon from '../../assets/delete.png'
 import uploadIcon from '../../assets/upload.png'
 import '../styles/Adminteamform.css'
@@ -35,6 +36,7 @@ export default function Adminteamform() {
   const { id } = useParams()
   const isEdit = Boolean(id)
   const fileInputRef = useRef(null)
+  const profileRef = useRef(null)
 
   const [form, setForm] = useState({
     name: '',
@@ -97,6 +99,32 @@ export default function Adminteamform() {
     setSlugManuallyEdited(true)
     setForm(f => ({ ...f, slug: slugify(value) }))
     if (errors.slug) setErrors(e => ({ ...e, slug: '' }))
+  }
+
+  function insertProfileSyntax(type) {
+    const textarea = profileRef.current
+    if (!textarea) return
+    const { selectionStart, selectionEnd, value } = textarea
+    const selectedText = value.slice(selectionStart, selectionEnd)
+    const before = value.slice(0, selectionStart)
+    const after = value.slice(selectionEnd)
+    const needsNewlineBefore = before.length > 0 && !before.endsWith('\n')
+    const prefix = needsNewlineBefore ? '\n' : ''
+
+    const placeholder = type === 'h3' ? 'Heading' : 'List item'
+    const marker = type === 'h3' ? '### ' : '- '
+    const bodyText = selectedText || placeholder
+    const insertText = `${prefix}${marker}${bodyText}\n`
+    const newValue = before + insertText + after
+
+    setForm(f => ({ ...f, profile: newValue }))
+    if (errors.profile) setErrors(e => ({ ...e, profile: '' }))
+
+    requestAnimationFrame(() => {
+      textarea.focus()
+      const cursorPos = before.length + prefix.length + marker.length + bodyText.length
+      textarea.setSelectionRange(cursorPos, cursorPos)
+    })
   }
 
   function handleImageSelect(e) {
@@ -369,14 +397,35 @@ export default function Adminteamform() {
 
             <div className="atf-field atf-field--last">
               <label className="atf-label">Profile</label>
+
+              <div className="atf-editor-toolbar">
+                <button type="button" className="atf-toolbar-btn" onClick={() => insertProfileSyntax('h3')}>
+                  H3 Heading
+                </button>
+                <button type="button" className="atf-toolbar-btn" onClick={() => insertProfileSyntax('bullet')}>
+                  • Bullet
+                </button>
+                <span className="atf-toolbar-hint">
+                  Or type <code>###</code> for a heading and <code>-</code> for a bullet point.
+                </span>
+              </div>
+
               <textarea
+                ref={profileRef}
                 className={`atf-textarea${errors.profile ? ' atf-input--error' : ''}`}
                 value={form.profile}
                 rows={8}
                 onChange={e => { setForm(f => ({ ...f, profile: e.target.value })); if (errors.profile) setErrors(e => ({ ...e, profile: '' })) }}
-                placeholder="Write a short biography and impact statement."
+                placeholder="Write a short biography. Use the H3/Bullet buttons above to add structure."
               />
               {errors.profile && <span className="atf-error-msg">{errors.profile}</span>}
+
+              {form.profile && (
+                <div className="atf-profile-preview">
+                  <span className="atf-preview-label">Preview</span>
+                  <ProfileText text={form.profile} />
+                </div>
+              )}
             </div>
           </div>
 

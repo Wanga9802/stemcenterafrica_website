@@ -1,269 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap');
 
-/* ── Section wrapper ── */
-.alumnii-section {
-  background: #ffffff;
-  font-family: 'DM Sans', sans-serif;
-  overflow: hidden;
+.tour-hero {
   position: relative;
-}
-
-.alumnii-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 80px 24px 96px;
-}
-
-
-/* Decorative blobs */
-.alumnii-section::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  left: -80px;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(234,88,12,0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.alumnii-section::after {
-  content: '';
-  position: absolute;
-  bottom: -40px;
-  right: -60px;
-  width: 260px;
-  height: 260px;
-  background: radial-gradient(circle, rgba(234,88,12,0.06) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-/* ── Heading ── */
-.alumnii-title {
-    font-family: 'Montserrat', sans-serif;
-  font-size: 28px;
-  font-weight: 800;
-  color: #ea580c;
-  margin: 0;
-  letter-spacing: -0.01em;
-  text-align: center;
-}
-
-/* ── Desktop grid ── */
-.alumnii-desktop-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  justify-content: center;
-}
-
-/* ── Video Card ── */
-.alumnii-video-card {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: default;
-  box-shadow: none;
-  transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s ease;
-  background: transparent; /* allow thumbnail to show without a black band */
   width: 100%;
-  max-width: 650px; /* increased to allow larger card */
-  flex: 1 1 500px; /* larger flex-basis for wider cards */
-}
-
-.alumnii-video-card:hover {
-  transform: none;
-  box-shadow: none;
-}
-
-/* ── Thumbnail ── */
-.alumnii-card-thumbnail {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  transition: transform 0.5s ease;
-  border-radius: 16px 16px 0 0; /* match parent card rounding */
+  height: 70vh;
+  min-height: 420px;
+  max-height: 820px;
   overflow: hidden;
+  background: #000;
 }
 
-.alumnii-video-card:hover .alumnii-card-thumbnail {
-  transform: none;
-}
-
-/* Dark gradient over thumbnail */
-.alumnii-card-thumbnail::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(15,15,15,0.82) 0%, rgba(15,15,15,0.10) 55%, transparent 100%);
-  border-radius: inherit; /* keep overlay rounded */
-  z-index: 1;
-}
-
-/* iframe that replaces thumbnail when playing */
-.alumnii-card-iframe {
+.tour-hero-media {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+
+.tour-hero-iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 */
+  min-height: 100%;
+  min-width: 177.78vh; /* 16:9 */
+  transform: translate(-50%, -50%);
   border: 0;
-  z-index: 4;
+  pointer-events: none;
 }
 
-.alumnii-video-close {
+.tour-hero-mute-btn {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 6;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
+  bottom: 24px;
+  right: 24px;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   border: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 18px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* ── Play button overlay (centered on thumbnail) ── */
-.alumnii-play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  background: #ea580c;
-  border: none;
-  border-radius: 50%;
-  z-index: 2;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(234,88,12,0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 0;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.alumnii-play-button svg {
-  width: 22px;
-  height: 22px;
+.tour-hero-mute-btn:hover {
+  background: rgba(234, 88, 12, 0.85);
+  transform: scale(1.05);
 }
 
-.alumnii-play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 48px; /* reduced play button size */
-  height: 48px;
-  background: #ea580c;
-  border: none;
-  border-radius: 50%;
-  z-index: 2;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(234,88,12,0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.alumnii-play-button svg { width: 20px; height: 20px; }
-
-/* Hide the carousel on desktop by default (show only at mobile breakpoints) */
-.alumnii-carousel-track {
-  display: none;
-}
-
-/* Pagination dots */
-.alumnii-dots {
-  display: none;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 20px;
-}
-
-.alumnii-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #d1d5db;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.alumnii-dot.active {
-  background: #ea580c;
-  transform: scale(1.35);
-}
-
-/* ── Mobile breakpoint ── */
+/* ── Responsive ── */
 @media (max-width: 767px) {
-  .alumnii-desktop-grid {
-    display: none;
+  .tour-hero {
+    height: 46vh;
+    min-height: 300px;
   }
 
-  .alumnii-carousel-track {
-    display: block;
-    overflow: hidden;
-    width: 100%;
-    touch-action: pan-y;
-  }
-
-  .alumnii-carousel-inner {
-    display: flex;
-    transition: transform 0.38s cubic-bezier(.22,.68,0,1.1);
-  }
-
-  .alumnii-carousel-slide {
-    flex: 0 0 100%;
-    padding: 0 16px;
-    box-sizing: border-box;
-  }
-
-  .alumnii-carousel-slide .alumnii-video-card {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .alumnii-dots {
-    display: flex;
-  }
-
-  .alumnii-title {
-    font-size: 22px !important;
-  }
-
-  .alumnii-container {
-    padding: 56px 16px !important;
-  }
-}
-
-/* ── Small phones ── */
-@media (max-width: 400px) {
-  .alumnii-carousel-slide {
-    padding: 0 12px;
-  }
-
-  .alumnii-title {
-    font-size: 20px !important;
-  }
-}
-
-/* Increase thumbnail height on desktop without changing card width */
-@media (min-width: 768px) {
-  .alumnii-card-thumbnail {
-    height: 400px; /* taller thumbnail while width remains constrained by card */
-    aspect-ratio: auto; /* let explicit height take precedence */
+  .tour-hero-mute-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
   }
 }
