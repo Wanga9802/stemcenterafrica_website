@@ -6,7 +6,7 @@ import AlumniSuccessStories from "../Components/Home/Alumnisucces";
 import MapSection from "../Components/Home/Mapsection";
 import Projects from "../Components/Home/Projects";
 import InnovationHub from "../Components/Home/Innovationhub";
-import SupportSection from "../Components/Home/Supportsection";
+import SupportSection from "../Components/Home/SupportSection";
 
 function Home() {
   return (
