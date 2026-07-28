@@ -21,23 +21,18 @@ export default function InnovationHub({ compact = false }) {
     return (
       <div className="ih-compact">
         <span className="ih-eyebrow">SCA Innovation Hub</span>
-        <h2 className="ih-heading ih-heading--compact">
-          Research. Develop. Transform.
-        </h2>
         <p className="ih-text">
           Our Innovation Hub drives research, develops AI solutions,
           builds prototypes, and partners with schools and communities
           to solve real-world challenges across Africa.
         </p>
 
-        <div className="ih-grid ih-grid--compact">
+        <div className="ih-tags">
           {capabilities.map((item) => (
-            <div className={`ih-card ih-card--compact`} key={item.id}>
-              <div className="ih-icon-badge">
-                <img src={item.img} alt="" className="ih-badge-img" />
-              </div>
-              <span className="ih-card__label">{item.label}</span>
-            </div>
+            <span className="ih-tag" key={item.id}>
+              <img src={item.img} alt="" className="ih-tag__icon" />
+              {item.label}
+            </span>
           ))}
         </div>
 
@@ -48,7 +43,7 @@ export default function InnovationHub({ compact = false }) {
     );
   }
 
-  // original full-width layout stays untouched for standalone use elsewhere
+
   return (
     <section className="ih-section">
       <div className="container">

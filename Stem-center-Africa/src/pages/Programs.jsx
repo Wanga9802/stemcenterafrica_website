@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import programs from '../data/Programs';
 import '../Styles/Programs.css';
 import proHero from '../assets/wostemt.JPG';
-import BaHero from '../assets/wostemt.JPG';
+import BaHero from '../assets/atie.JPG';
 
 export default function Programs() {
   return (

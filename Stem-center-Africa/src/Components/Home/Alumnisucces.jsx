@@ -5,19 +5,13 @@ import VideoEmbed from "../WoStem/VideoEmbed";
 const alumniData = [
   {
     id: 1,
-    name: "Sarah Kipchoge",
-    title: "Software Engineer at Google",
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=700&q=80',
     videoUrl: "https://youtu.be/xGO2Ww54eYQ",
-    quote: "STEM Center Africa transformed my coding journey. The mentorship and resources helped me land my dream job."
   },
   {
     id: 2,
-    name: "Michael Ochieng",
-    title: "Data Scientist at Microsoft",
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80',
     videoUrl: "https://youtu.be/xGO2Ww54eYQ",
-    quote: "The AI/ML training at STEM Center Africa gave me the foundation I needed to excel in data science."
   }
 ];
 
@@ -41,11 +35,6 @@ function SpotlightCard({ person, onPlay }) {
             <polygon points="6,3 20,12 6,21" />
           </svg>
         </button>
-      </div>
-      <div className="alumni-spotlight-content">
-        <h3>{person.name}</h3>
-        <p className="alumni-card-title">{person.title}</p>
-        <p className="alumni-card-quote">"{person.quote}"</p>
       </div>
     </div>
   );
