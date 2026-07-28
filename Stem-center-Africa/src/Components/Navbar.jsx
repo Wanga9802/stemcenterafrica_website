@@ -267,7 +267,7 @@ function Navbar() {
 
               {/* WoStem */}
               <li className="nav-item">
-                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/wostem">Girls inSTEM</NavLink>
+                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/wostem">Girls in STEM</NavLink>
               </li>
 
               {/* STEM Educators */}
@@ -444,7 +444,7 @@ function Navbar() {
 
             {/* WoSTEM */}
             <li className="nav-item">
-              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/wostem" onClick={closeMobileMenu}>GirlsinSTEM</NavLink>
+              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/wostem" onClick={closeMobileMenu}>Girls in STEM</NavLink>
             </li>
 
             {/* STEM Educators */}
