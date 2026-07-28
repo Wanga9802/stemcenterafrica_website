@@ -8,9 +8,9 @@ import stemPhoto from '../../assets/wostemf.JPG'
 
 const partners = [
   { id: 1, image: snapsImage, alt: 'Snaps Logo', link: 'https://www.raspberrypi.org/', name: 'Snaps' },
-  { id: 2, image: MoringaImage, alt: 'Moringa School', link: 'https://moringaschool.com', name: 'Moringa School' },
+  { id: 2, image: MoringaImage, alt: 'Moringa School', link: 'https://www.deloitte.com/ke/en.html', name: 'Moringa School' },
   { id: 4, image: awsImage, alt: 'AWS', link: 'https://aws.amazon.com', name: 'AWS' },
-  { id: 5, image: montImage, alt: 'Mont', link: '#', name: 'Mont' },
+  { id: 5, image: montImage, alt: 'Mont', link: 'https://www.montclair.edu/', name: 'Mont' },
 ]
 
 function PartnersJoinBanner() {

@@ -4,7 +4,7 @@ const contactDetails = [
   {
     icon: "bi bi-geo-alt-fill",
     label: "Address",
-    value: "PO BOX 40222,Oyugis,kenya",
+    value: "PO BOX 559-40222,Oyugis,kenya",
     sub: null,
   },
   {

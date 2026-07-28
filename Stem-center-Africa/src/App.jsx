@@ -15,6 +15,7 @@ import TeamPage from './pages/Team'
 import WoStem from './pages/WoStem'
 import InnovationHubPage from './pages/innovationhub'
 import ProgramDetail from './pages/ProgramDetail'
+import Programs from './pages/Programs'
 import Educators from './pages/Educators'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
@@ -63,6 +64,7 @@ function App() {
         <Route path="/innovationhub" element={<InnovationHubPage />} />
         <Route path="/wostem" element={<WoStem />} />
         <Route path="/educators" element={<Educators />} />
+        <Route path="/programs" element={<Programs />} />
         <Route path="/programs/:slug" element={<ProgramDetail />} />
         <Route path="/corporate" element={<Services />} />
         <Route path="/blog" element={<Blog />} />

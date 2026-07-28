@@ -255,14 +255,14 @@ function Navbar() {
                 onMouseEnter={() => openDropdown('courses')}
                 onMouseLeave={closeDropdownDelayed}
               >
-                <button
+                <NavLink
                   ref={programsLinkRef}
-                  type="button"
-                  className={`nav-link dropdown-trigger${isCoursesActive ? ' active' : ''}${activeDropdown === 'courses' ? ' open' : ''}`}
+                  to="/programs"
+                  className={({ isActive }) => `nav-link dropdown-trigger${isActive ? ' active' : ''}${activeDropdown === 'courses' ? ' open' : ''}`}
                   onClick={() => openDropdown('courses')}
                 >
                   Programs
-                </button>
+                </NavLink>
               </li>
 
               {/* WoStem */}

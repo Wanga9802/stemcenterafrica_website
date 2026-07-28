@@ -1,4 +1,5 @@
 import '../../Styles/Explore.css';
+import { Link } from 'react-router-dom';
 import programs from '../../data/Programs.js';
 
 // Controls which 8 programs show on the homepage, and in what order
@@ -56,17 +57,9 @@ export default function ExplorePrograms() {
 
         {/* Explore All Programs Link */}
         <div className="ep-all-btn-wrap">
-          <button
-            type="button"
-            className="ep-all-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              const mobile = window.innerWidth < 992;
-              window.dispatchEvent(new CustomEvent('openProgramsDropdown', { detail: { mobile } }));
-            }}
-          >
+          <Link to="/programs" className="ep-all-btn">
             Explore All Programs
-          </button>
+          </Link>
         </div>
 
       </div>
