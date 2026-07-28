@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
 import "../Styles/Donate.css";
 import mpesaImg from "../assets/mpesa.jpg";
@@ -11,16 +12,17 @@ const PAYPAL_CLIENT_ID = import.meta.env.VITE_PAYPAL_CLIENT_ID;
 const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 const IMPACT_TIERS = [
-  { amount: 1000, label: "1 week of internet access", detail: "for a student in our coding club" },
-  { amount: 2500, label: "A month of robotics materials", detail: "for one student's project kit" },
-  { amount: 7000, label: "A full STEM starter kit", detail: "for one girl through WoSTEM" },
-  { amount: 15000, label: "A term of Innovation Hub mentorship", detail: "for one student-led project" },
+  { amount: 6500, label: "Provides STEM learning materials for hands on activities"},
+  { amount: 13000, label: "Supports coding and robotics experiences for students"},
+  { amount: 26000, label: "Helps establish STEM opportunities for in underserved schools" },
+  { amount: 130000, label: "Supports teachers training and sustainable STEM programs"},
 ];
-const USD_TIERS = [8, 20, 55, 116];
+const USD_TIERS = [50, 100, 200, 1000];
 
 export default function Donate() {
+  const [searchParams] = useSearchParams();
   const [provider, setProvider] = useState("mpesa");
-  const [selectedTier, setSelectedTier] = useState(1); // index into IMPACT_TIERS
+  const [selectedTier, setSelectedTier] = useState(0); // index into IMPACT_TIERS
   const [customAmount, setCustomAmount] = useState("");
   const [useCustom, setUseCustom] = useState(false);
   const [phone, setPhone] = useState("");
@@ -33,6 +35,21 @@ export default function Donate() {
   // (missing name) rather than a real PayPal SDK error, so onError doesn't
   // overwrite the validation message with a generic one.
   const validationRejectRef = useRef(false);
+
+  // Read amount from query parameter and set selected tier and provider to paypal
+  useEffect(() => {
+    const amount = searchParams.get("amount");
+    if (amount) {
+      // Extract number from string (e.g., "$50" or "$1,000" -> 50 or 1000)
+      const parsedAmount = Number(amount.replace(/[^\d]/g, ''));
+      const tierIndex = USD_TIERS.indexOf(parsedAmount);
+      if (tierIndex !== -1) {
+        setProvider("paypal");
+        setSelectedTier(tierIndex);
+        setUseCustom(false);
+      }
+    }
+  }, [searchParams]);
 
   const amount = useCustom
     ? Number(customAmount) || 0

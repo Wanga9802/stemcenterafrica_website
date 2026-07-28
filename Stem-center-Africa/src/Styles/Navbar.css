@@ -672,14 +672,14 @@
 
 .course-nav-item:hover {
   color: #e8006a;
-  background: rgba(232, 0, 106, 0.04);
+  background: none;
   border-top-left-radius: 10px;
 }
 
 .course-nav-item.active {
   color: #e8006a;
   border-left-color: #e8006a;
-  background: rgba(232, 0, 106, 0.06);
+  background: none;
   font-weight: 500;
   border-top-left-radius: 10px;
 }

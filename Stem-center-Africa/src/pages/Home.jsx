@@ -1,38 +1,37 @@
-
-
 import HeroSection from "../Components/Home/Herosection";
 import ExplorePrograms from "../Components/Home/Exploreprograms";
 import StatsBar from "../Components/Home/Statsbar";
-import Partners from "../Components/Home/Partners";
-import JoinBanner from "../Components/Home/JoinBanner";
+import PartnersJoinBanner from "../Components/Home/PartnersJoinBanner";
 import AlumniSuccessStories from "../Components/Home/Alumnisucces";
 import MapSection from "../Components/Home/Mapsection";
-
 import Projects from "../Components/Home/Projects";
 import InnovationHub from "../Components/Home/Innovationhub";
+import SupportSection from "../Components/Home/Supportsection";
 
 function Home() {
-
   return (
-
     <>
       <HeroSection />
       <StatsBar />
       <ExplorePrograms />
+
+      <section className="impact-section">
+        <div className="container">
+          <div className="row g-5 align-items-start">
+            <div className="col-lg-6">
+              <AlumniSuccessStories compact />
+            </div>
+            <div className="col-lg-6">
+              <InnovationHub compact />
+            </div>
+          </div>
+        </div>
+      </section>
       <Projects />
-      <InnovationHub />
-      <Partners />
-      <AlumniSuccessStories />
-      <JoinBanner />
+      <PartnersJoinBanner />
+      < SupportSection />
       <MapSection />
     </>
-  )
-
-
-
-
-
-
-
+  );
 }
 export default Home;

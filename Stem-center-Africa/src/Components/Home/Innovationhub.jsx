@@ -16,29 +16,53 @@ const capabilities = [
   { id: 6, img: groupImg, label: "School & Community Partnerships" },
 ];
 
-export default function InnovationHub() {
+export default function InnovationHub({ compact = false }) {
+  if (compact) {
+    return (
+      <div className="ih-compact">
+        <span className="ih-eyebrow">SCA Innovation Hub</span>
+        <h2 className="ih-heading ih-heading--compact">
+          Research. Develop. Transform.
+        </h2>
+        <p className="ih-text">
+          Our Innovation Hub drives research, develops AI solutions,
+          builds prototypes, and partners with schools and communities
+          to solve real-world challenges across Africa.
+        </p>
+
+        <div className="ih-grid ih-grid--compact">
+          {capabilities.map((item) => (
+            <div className={`ih-card ih-card--compact`} key={item.id}>
+              <div className="ih-icon-badge">
+                <img src={item.img} alt="" className="ih-badge-img" />
+              </div>
+              <span className="ih-card__label">{item.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <Link to="/innovationhub" className="ih-btn">
+          Learn More
+        </Link>
+      </div>
+    );
+  }
+
+  // original full-width layout stays untouched for standalone use elsewhere
   return (
     <section className="ih-section">
       <div className="container">
         <div className="row align-items-center g-4">
-
-          {/* ── LEFT: Text Column ── */}
           <div className="col-lg-5">
             <span className="ih-eyebrow">SCA Innovation Hub</span>
-            <h2 className="ih-heading">
-              Research. Develop.<br />Transform.
-            </h2>
+            <h2 className="ih-heading">Research. Develop.<br />Transform.</h2>
             <p className="ih-text">
               Our Innovation Hub drives research, develops AI solutions,
               builds prototypes, and partners with schools and communities
               to solve real-world challenges across Africa.
             </p>
-            <Link to="/innovationhub" className="ih-btn">
-              Learn More
-            </Link>
+            <Link to="/innovationhub" className="ih-btn">Learn More</Link>
           </div>
-
-          {/* ── RIGHT: Capability Grid ── */}
           <div className="col-lg-7">
             <div className="ih-grid">
               {capabilities.map((item) => (
@@ -51,7 +75,6 @@ export default function InnovationHub() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

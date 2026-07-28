@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
 
-/* ── SECTION WRAPPER ── */
+/* ══════════════════════════════════════════════
+   ORIGINAL STANDALONE SECTION (unchanged)
+   Used wherever InnovationHub renders full-width
+   ══════════════════════════════════════════════ */
 .ih-section {
   background: linear-gradient(160deg, #1a0010 0%, #2a0018 50%, #1f0015 100%);
   padding: 50px 24px;
@@ -8,7 +11,6 @@
   overflow: hidden;
 }
 
-/* subtle grid texture matching hero/stats sections */
 .ih-section::before {
   content: '';
   position: absolute;
@@ -25,7 +27,6 @@
   z-index: 1;
 }
 
-/* ── LEFT: TEXT COLUMN ── */
 .ih-section,
 .ih-section * {
   font-family: 'DM Sans', sans-serif;
@@ -43,7 +44,7 @@
 }
 
 .ih-heading {
-   font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 2.4rem;
   font-weight: 800;
   color: #ffffff;
@@ -87,7 +88,6 @@
   text-decoration: none;
 }
 
-/* ── RIGHT: CAPABILITY GRID ── */
 .ih-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -97,6 +97,7 @@
 .ih-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 77, 158, 0.18);
+  border-left: 2px solid transparent;
   border-radius: 0;
   padding: 24px 16px;
   display: flex;
@@ -105,11 +106,6 @@
   text-align: center;
   gap: 14px;
   transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
-}
-
-/* base left accent (transparent by default) */
-.ih-card {
-  border-left: 2px solid transparent;
 }
 
 .ih-card:hover {
@@ -121,9 +117,6 @@
 .ih-icon-badge {
   width: 52px;
   height: 52px;
-  border-radius: 0;
-  border: none;
-  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,58 +143,165 @@
   line-height: 1.4;
 }
 
-/* per-card accent colors to match icons */
-.ih-card--c1 { border-left-color: #00E6C2; } /* Robotics & Embedded (teal) */
-.ih-card--c2 { border-left-color: #FF4D9E; } /* AI & ML (pink) */
-.ih-card--c3 { border-left-color: #3EA1FF; } /* Software & App (blue) */
-.ih-card--c4 { border-left-color: #3EA1FF; } /* Research & Prototyping (blue) */
-.ih-card--c5 { border-left-color: #A66BFF; } /* 3D Printing (purple) */
-.ih-card--c6 { border-left-color: #00D1A9; } /* Community Partnerships (turquoise) */
+.ih-card--c1 { border-left-color: #00E6C2; }
+.ih-card--c2 { border-left-color: #FF4D9E; }
+.ih-card--c3 { border-left-color: #3EA1FF; }
+.ih-card--c4 { border-left-color: #3EA1FF; }
+.ih-card--c5 { border-left-color: #A66BFF; }
+.ih-card--c6 { border-left-color: #00D1A9; }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 991px) {
-  .ih-heading {
-    font-size: 2rem;
-  }
-
-  .ih-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-  }
+  .ih-heading { font-size: 2rem; }
+  .ih-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
 }
 
 @media (max-width: 767px) {
-  .ih-section {
-    padding: 56px 16px;
-  }
+  .ih-section { padding: 56px 16px; }
+  .ih-heading { font-size: 1.8rem; }
+  .ih-text { max-width: 100%; }
+  .ih-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .ih-card { padding: 18px 12px; }
+  .ih-icon-badge { width: 44px; height: 44px; }
+  .ih-icon-badge i { font-size: 1.2rem; }
+  .ih-card__label { font-size: 0.78rem; }
+}
 
-  .ih-heading {
-    font-size: 1.8rem;
-  }
 
-  .ih-text {
-    max-width: 100%;
-  }
+/* ══════════════════════════════════════════════
+   SHARED WRAPPER — used on Home page to hold
+   InnovationHub (compact) + AlumniSuccessStories
+   (compact) side by side on large screens
+   ══════════════════════════════════════════════ */
+.impact-section {
+  background: linear-gradient(160deg, #1a0010 0%, #2a0018 50%, #1f0015 100%);
+  padding: 72px 24px;
+  position: relative;
+  overflow: hidden;
+}
 
-  .ih-grid {
+.impact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+.impact-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* vertical divider between the two columns, lg+ only */
+@media (min-width: 992px) {
+  .impact-section .row > .col-lg-6:last-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    padding-left: 48px;
+  }
+  .impact-section .row > .col-lg-6:first-child {
+    padding-right: 24px;
+  }
+}
+
+
+/* ── Innovation Hub: compact variant (no own bg/padding, inherits impact-section) ── */
+.ih-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.ih-compact .ih-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ff4d9e;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.ih-heading--compact {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+
+.ih-compact .ih-text {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.65;
+  max-width: 100%;
+  margin: 0 0 8px;
+}
+
+.ih-grid--compact {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.ih-card--compact {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 77, 158, 0.18);
+  border-left: 2px solid #ff4d9e;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.ih-card--compact:hover {
+  border-color: #E91E8C;
+  background: rgba(233, 30, 140, 0.06);
+  transform: translateY(-3px);
+}
+
+.ih-card--compact .ih-icon-badge {
+  width: 40px;
+  height: 40px;
+}
+
+.ih-card--compact .ih-badge-img {
+  width: 32px;
+  height: 32px;
+}
+
+.ih-card--compact .ih-card__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.35;
+}
+
+.ih-compact .ih-btn {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* half-width column (lg+) is tighter — drop to 2 columns so labels don't wrap 3 lines */
+@media (min-width: 992px) {
+  .ih-grid--compact {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
+}
 
-  .ih-card {
-    padding: 18px 12px;
+/* small phones — keep 2 columns, not 3 */
+@media (max-width: 480px) {
+  .ih-grid--compact {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
-
-  .ih-icon-badge {
-    width: 44px;
-    height: 44px;
-  }
-
-  .ih-icon-badge i {
-    font-size: 1.2rem;
-  }
-
-  .ih-card__label {
-    font-size: 0.78rem;
-  }
+  .ih-heading--compact { font-size: 1.6rem; }
 }

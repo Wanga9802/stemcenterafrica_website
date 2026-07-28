@@ -1,0 +1,230 @@
+.pjcta-section {
+  background: linear-gradient(115deg, #1a0a14 0%, #2a0a1e 35%, #3d0f2e 65%, #57123f 100%);
+  padding: 64px 80px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.pjcta-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+
+/* ── Partners side ─────────────────────────────── */
+
+.pjcta-partners-col {
+  flex: 1 1 40%;
+  min-width: 0;
+}
+
+.pjcta-partners-heading {
+  color: #ffffff;
+  opacity: 0.85;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 24px;
+}
+
+.pjcta-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.pjcta-partner-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 16px;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.pjcta-partner-card:hover {
+  background: #f5f5f5;
+  transform: translateY(-2px);
+}
+
+.pjcta-partner-logo {
+  height: 34px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.25s ease;
+}
+
+.pjcta-partner-card:hover .pjcta-partner-logo {
+  opacity: 1;
+}
+
+/* ── Divider ───────────────────────────────────── */
+
+.pjcta-divider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Join side ─────────────────────────────────── */
+
+.pjcta-join-col {
+  flex: 1 1 55%;
+  min-width: 0;
+  position: relative;
+}
+
+.pjcta-join-photo,
+.pjcta-join-overlay {
+  display: none;
+}
+
+.pjcta-join-content {
+  position: relative;
+  z-index: 2;
+}
+
+.pjcta-join-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 0 0 12px;
+}
+
+.pjcta-join-subtitle {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0 0 28px;
+  max-width: 480px;
+}
+
+.pjcta-join-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pjcta-btn {
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 0;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.pjcta-btn-solid {
+  background: #E91E8C;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(233, 30, 140, 0.3);
+}
+
+.pjcta-btn-solid:hover {
+  background: #c91876;
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(233, 30, 140, 0.4);
+}
+
+.pjcta-btn-outline {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.pjcta-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Photo background (large screens only) ───────── */
+
+@media (min-width: 992px) {
+  .pjcta-container {
+    align-items: stretch;
+  }
+
+  .pjcta-partners-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .pjcta-join-col {
+    overflow: hidden;
+    margin: -64px -80px -64px 0;
+    padding: 64px 60px 64px 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  .pjcta-join-photo {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+.pjcta-join-overlay {
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #3d0f2e 0%,
+    rgba(61, 15, 46, 0.94) 35%,
+    rgba(61, 15, 46, 0.75) 50%,
+    rgba(61, 15, 46, 0.73) 62%,
+    transparent 90%
+  );
+  z-index: 1;
+}
+}
+
+/* ── Responsive ────────────────────────────────── */
+
+@media (max-width: 991px) {
+  .pjcta-section {
+    padding: 48px 32px;
+  }
+
+  .pjcta-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+
+  .pjcta-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .pjcta-section {
+    padding: 40px 20px;
+  }
+
+  .pjcta-partners-grid {
+    gap: 12px;
+  }
+
+  .pjcta-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

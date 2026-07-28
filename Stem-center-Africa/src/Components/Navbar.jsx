@@ -107,11 +107,18 @@ function Navbar() {
   useEffect(() => {
     const openProgramsHandler = (e) => {
       const mobile = e?.detail?.mobile;
+      const id = e?.detail?.id;
       if (mobile) {
         // open mobile menu and show programs
         setMobileMenuOpen(true);
         setMobileCoursesOpen(true);
+        if (id) setActiveCourse(id);
       } else {
+        if (id) {
+          setActiveCourse(id);
+          // navigate to the course slug so URL reflects selection
+          try { navigate(`/courses/${id}`); } catch (err) { /* ignore */ }
+        }
         openDropdown('courses');
       }
     };
@@ -260,7 +267,7 @@ function Navbar() {
 
               {/* WoStem */}
               <li className="nav-item">
-                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/wostem">WoSTEM</NavLink>
+                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/wostem">Girls inSTEM</NavLink>
               </li>
 
               {/* STEM Educators */}
@@ -437,7 +444,7 @@ function Navbar() {
 
             {/* WoSTEM */}
             <li className="nav-item">
-              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/wostem" onClick={closeMobileMenu}>WoSTEM</NavLink>
+              <NavLink className={({ isActive }) => `nav-link offcanvas-link${isActive ? ' active' : ''}`} to="/wostem" onClick={closeMobileMenu}>GirlsinSTEM</NavLink>
             </li>
 
             {/* STEM Educators */}

@@ -1,0 +1,166 @@
+.supp-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 56px; /* room for the overlapping detail card below */
+}
+
+/* ── Outer image card ──────────────────────────── */
+
+.supp-img-card {
+  position: relative;
+  height: 320px;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(26, 10, 20, 0.25);
+}
+
+.supp-img-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.supp-img-slide--active {
+  opacity: 1;
+}
+
+.supp-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26, 10, 20, 0.1) 0%, rgba(26, 10, 20, 0.55) 100%);
+}
+
+.supp-img-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  background: rgba(26, 10, 20, 0.75);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+/* ── Inner detail card (overlapping) ──────────── */
+
+.supp-detail-card {
+  position: absolute;
+  right: -24px;
+  bottom: -48px;
+  width: 78%;
+  background: rgba(26, 10, 20, 0.65);
+  backdrop-filter: blur(6px);
+  border-radius: 0;
+  padding: 24px 26px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  animation: supp-fade-in 0.4s ease;
+}
+
+@keyframes supp-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.supp-detail-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid;
+  margin-bottom: 12px;
+}
+
+.supp-detail-amount {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.supp-detail-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 18px;
+}
+
+.supp-detail-cta {
+  display: inline-flex;
+  background: #E91E8C;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 18px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.supp-detail-cta:hover {
+  background: #c91876;
+  transform: translateY(-2px);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.supp-detail-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.supp-detail-tab {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.supp-detail-tab--active {
+  color: #ffffff;
+}
+
+/* ── Reduced motion ────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .supp-img-slide,
+  .supp-detail-card {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* ── Responsive: stop overlapping on small screens ── */
+
+@media (max-width: 767px) {
+  .supp-carousel {
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .supp-img-card {
+    height: 240px;
+  }
+
+  .supp-detail-card {
+    position: static;
+    width: 100%;
+    margin-top: -32px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+  }
+}
