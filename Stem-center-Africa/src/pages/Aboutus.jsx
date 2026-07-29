@@ -12,8 +12,8 @@ function About(){
 
         <>
        <Heroisection />
-       <Difference />
        <Us />
+       <Difference />
        <WhyChooseUs />
        <Journey />
       

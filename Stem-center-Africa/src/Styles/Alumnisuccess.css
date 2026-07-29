@@ -6,7 +6,7 @@
    full-width, light background, 2-card grid
    ══════════════════════════════════════════════ */
 .alumni-section {
-  background: #faf9f7;
+  background: #E91E8C;
   font-family: 'DM Sans', sans-serif;
   overflow: hidden;
   position: relative;
@@ -46,7 +46,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 28px;
   font-weight: 800;
-  color: #ea580c;
+  color: #ffffff;
   margin: 0;
   letter-spacing: -0.01em;
   text-align: center;
@@ -67,7 +67,7 @@
   transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s ease;
   background: #111;
   width: 100%;
-  max-width: 480px;
+  max-width: 400px;
   flex: 1 1 340px;
 }
 
@@ -214,11 +214,6 @@
 }
 
 
-/* ══════════════════════════════════════════════
-   COMPACT / SPOTLIGHT variant — used inside
-   .impact-section next to InnovationHub (compact)
-   Runs on the DARK background, pink brand accent
-   ══════════════════════════════════════════════ */
 .alumni-compact {
   display: flex;
   flex-direction: column;

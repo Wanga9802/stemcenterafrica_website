@@ -12,8 +12,6 @@ const capabilities = [
   { id: 2, img: aiImg, label: "AI & Machine Learning Training" },
   { id: 3, img: codeImg, label: "Software & App Development" },
   { id: 4, img: researchImg, label: "Research & Prototyping" },
-  { id: 5, img: printingImg, label: "3D Printing & Fabrication" },
-  { id: 6, img: groupImg, label: "School & Community Partnerships" },
 ];
 
 export default function InnovationHub({ compact = false }) {

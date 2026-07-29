@@ -1,6 +1,6 @@
 import lineImg from "../assets/line.jpg";
 import roboafricaImg from "../assets/roboafrica.jpg";
-import gemlaImg from "../assets/gemla.png";
+import gemlaImg from "../assets/yaye.png";
 import scratchImg from "../assets/scra.png";
 
 const projects = [

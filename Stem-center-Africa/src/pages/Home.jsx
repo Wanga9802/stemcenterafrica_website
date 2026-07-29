@@ -18,10 +18,10 @@ function Home() {
       <section className="impact-section">
         <div className="container">
           <div className="row g-5 align-items-start">
-            <div className="col-lg-6">
+            <div className="col-lg-6 impact-left">
               <AlumniSuccessStories compact />
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 impact-right">
               <InnovationHub compact />
             </div>
           </div>

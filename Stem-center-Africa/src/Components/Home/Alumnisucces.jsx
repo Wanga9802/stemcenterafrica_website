@@ -1,18 +1,14 @@
 import { useRef, useState } from "react";
 import '../../Styles/Alumnisuccess.css';
 import VideoEmbed from "../WoStem/VideoEmbed";
+import ThumbHero from '../../assets/thambu.JPG'
 
 const alumniData = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=700&q=80',
+    image: ThumbHero,
     videoUrl: "https://youtu.be/xGO2Ww54eYQ",
   },
-  {
-    id: 2,
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80',
-    videoUrl: "https://youtu.be/xGO2Ww54eYQ",
-  }
 ];
 
 function SpotlightCard({ person, onPlay }) {
@@ -76,22 +72,24 @@ export default function AlumniSuccessStories({ compact = false }) {
           >
             <SpotlightCard person={person} onPlay={setOpenVideo} />
           </div>
-          <div className="alumni-spotlight-nav">
-            <button onClick={goPrev} aria-label="Previous story" className="alumni-nav-btn">‹</button>
-            <div className="alumni-dots" role="tablist" aria-label="Alumni slides">
-              {alumniData.map((_, i) => (
-                <button
-                  key={i}
-                  className={`alumni-dot${activeIndex === i ? " active" : ""}`}
-                  onClick={() => setActiveIndex(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                  aria-selected={activeIndex === i}
-                  role="tab"
-                />
-              ))}
+          {alumniData.length > 1 && (
+            <div className="alumni-spotlight-nav">
+              <button onClick={goPrev} aria-label="Previous story" className="alumni-nav-btn">‹</button>
+              <div className="alumni-dots" role="tablist" aria-label="Alumni slides">
+                {alumniData.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`alumni-dot${activeIndex === i ? " active" : ""}`}
+                    onClick={() => setActiveIndex(i)}
+                    aria-label={`Go to slide ${i + 1}`}
+                    aria-selected={activeIndex === i}
+                    role="tab"
+                  />
+                ))}
+              </div>
+              <button onClick={goNext} aria-label="Next story" className="alumni-nav-btn">›</button>
             </div>
-            <button onClick={goNext} aria-label="Next story" className="alumni-nav-btn">›</button>
-          </div>
+          )}
         </div>
 
         {openVideo && (
@@ -106,7 +104,7 @@ export default function AlumniSuccessStories({ compact = false }) {
     );
   }
 
-  // original grid/carousel layout unchanged for standalone use
+
   return (
     <section className="alumni-section">
       {/* ...unchanged original JSX from your file... */}

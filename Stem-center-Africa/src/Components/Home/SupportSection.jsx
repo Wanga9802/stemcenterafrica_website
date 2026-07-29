@@ -48,10 +48,6 @@ function SupportSection() {
       <div className="supp-container">
         <div className="supp-left">
           <h2 className="supp-title">Your Support Creates Opportunity</h2>
-          <p className="supp-subtitle">
-            Every contribution helps provide young people with access to technology, mentorship, and hands-on STEM experiences.
-          </p>
-
           <SupportCarousel tiers={tiers} />
         </div>
 
@@ -72,12 +68,6 @@ function SupportSection() {
           <div className="supp-right-glow" aria-hidden="true" />
 
           <div className="supp-right-content">
-            <span className="supp-connect-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M3 8l9 6 9-6M4 4h16a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1z"
-                  stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
 
             <h3 className="supp-connect-title">Stay Connected</h3>
             <p className="supp-connect-text">

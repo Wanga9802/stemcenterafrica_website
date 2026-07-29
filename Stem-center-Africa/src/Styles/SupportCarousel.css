@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   max-width: 480px;
-  margin-bottom: 56px; /* room for the overlapping detail card below */
+  margin-bottom: 24px;
 }
 
 /* ── Outer image card ──────────────────────────── */
@@ -34,32 +34,21 @@
   background: linear-gradient(180deg, rgba(26, 10, 20, 0.1) 0%, rgba(26, 10, 20, 0.55) 100%);
 }
 
-.supp-img-badge {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  z-index: 2;
-  background: rgba(26, 10, 20, 0.75);
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 999px;
-}
-
 /* ── Inner detail card (overlapping) ──────────── */
 
 .supp-detail-card {
   position: absolute;
-  right: -24px;
-  bottom: -48px;
-  width: 78%;
+  right: 24px;
+  bottom: 24px;
+  width: 58%;
+  max-width: 400px;
   background: rgba(26, 10, 20, 0.65);
   backdrop-filter: blur(6px);
   border-radius: 0;
-  padding: 24px 26px;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  padding: 20px 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
   animation: supp-fade-in 0.4s ease;
+  z-index: 3;
 }
 
 @keyframes supp-fade-in {

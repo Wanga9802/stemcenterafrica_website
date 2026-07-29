@@ -1,6 +1,6 @@
 .supp-section {
   background: #ffffff;
-  padding: 64px 80px;
+  padding: 24px 80px;
   font-family: 'DM Sans', sans-serif;
 }
 
@@ -41,19 +41,20 @@
     linear-gradient(135deg, #1a0a14 0%, #3d0f2e 100%);
   background-size: 18px 18px, 100% 100%;
   border-radius: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   overflow: hidden;
+  min-height: 320px;
+  max-height: 360px;
 }
 
 /* ── Top image with curved bulge-right bottom edge ── */
 
 .supp-right-image {
   width: 100%;
-  height: 220px;
+  height: 100%;
   clip-path: url(#suppWaveClip);
-  flex-shrink: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .supp-right-image img {
@@ -73,12 +74,14 @@
   filter: blur(10px);
   pointer-events: none;
   z-index: 1;
+  transform: translateY(-20px);
 }
 
 .supp-right-content {
   position: relative;
   z-index: 2;
-  padding: 24px 32px 40px;
+  padding: 120px 32px 40px;
+  min-height: calc(100% - 220px);
 }
 
 .supp-connect-icon {
@@ -105,6 +108,7 @@
   font-size: 14px;
   line-height: 1.6;
   margin: 0 0 24px;
+  font-weight: 600;
 }
 
 .supp-subscribe-btn {

@@ -31,11 +31,9 @@ function SupportCarousel({ tiers }) {
           />
         ))}
         <div className="supp-img-overlay" />
-        <span className="supp-img-badge">{tier.amount} · {tier.tag}</span>
-      </div>
 
-      {/* ── Inner card: amount + description + CTA ───── */}
-      <div className="supp-detail-card" key={idx}>
+        {/* ── Inner card: amount + description + CTA ───── */}
+        <div className="supp-detail-card" key={idx}>
         <span
           className="supp-detail-tag"
           style={{ background: `${tier.tagColor}22`, color: tier.tagColor, borderColor: `${tier.tagColor}55` }}
@@ -67,6 +65,7 @@ function SupportCarousel({ tiers }) {
         </div>
       </div>
     </div>
+  </div>
   )
 }
 
