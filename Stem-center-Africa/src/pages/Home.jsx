@@ -4,7 +4,6 @@ import StatsBar from "../Components/Home/Statsbar";
 import PartnersJoinBanner from "../Components/Home/PartnersJoinBanner";
 import AlumniSuccessStories from "../Components/Home/Alumnisucces";
 import MapSection from "../Components/Home/Mapsection";
-import Projects from "../Components/Home/Projects";
 import InnovationHub from "../Components/Home/Innovationhub";
 import SupportSection from "../Components/Home/SupportSection";
 
@@ -27,7 +26,6 @@ function Home() {
           </div>
         </div>
       </section>
-      <Projects />
       <PartnersJoinBanner />
       < SupportSection />
       <MapSection />

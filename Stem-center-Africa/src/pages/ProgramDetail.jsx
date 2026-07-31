@@ -1,7 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
-import ProgramHero from '../Components/programs/programHero';
-import ProgramOverview from '../Components/programs/ProgramOverview';
-import ProgramProjects from '../Components/programs/ProgramProjects';
+import ProgramHero from '../Components/programs/ProgramHero';
+import ProgramOutline from '../Components/programs/ProgramOutline';
+import ProgramEvidence from '../Components/programs/ProgramEvidence';
+import StudentProjects from '../Components/programs/StudentProjects';
 import programs from '../data/Programs';
 
 export default function ProgramDetail() {
@@ -21,8 +22,9 @@ export default function ProgramDetail() {
   return (
     <>
       <ProgramHero program={program} />
-      <ProgramOverview program={program} />
-      <ProgramProjects programSlug={program.slug} programTitle={program.title} />
+      <ProgramOutline program={program} />
+      <ProgramEvidence programSlug={program.slug} programTitle={program.title} />
+      <StudentProjects programSlug={program.slug} programTitle={program.title} />
     </>
   );
 }

@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+.pol-section {
+  background: #fbf7f9;
+  padding: 72px 24px;
+}
+
+.pol-header {
+  margin-bottom: 28px;
+}
+
+.pol-eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E91E8C;
+  margin-bottom: 8px;
+}
+
+.pol-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #1a0010;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.pol-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(26, 0, 16, 0.65);
+  line-height: 1.6;
+  margin: 14px 0 0;
+}
+
+/* ── OBJECTIVES ── */
+.pol-objectives {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pol-objectives__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  color: rgba(26, 0, 16, 0.8);
+  line-height: 1.5;
+}
+
+.pol-objectives__icon {
+  color: #E91E8C;
+  font-size: 1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ── TIMELINE / ROADMAP ── */
+.pol-timeline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  overflow-x: auto;
+  padding: 4px 4px 12px;
+  margin: 0 -4px;
+}
+
+.pol-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 140px;
+  min-width: 130px;
+  padding: 0 6px;
+}
+
+.pol-step__row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.pol-step__node {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fbeaf3;
+  border: 1.5px solid rgba(233, 30, 140, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0 auto;
+  color: #E91E8C;
+  font-size: 1.4rem;
+}
+
+.pol-step__node-number {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #E91E8C;
+}
+
+.pol-step__connector {
+  flex: 1 1 auto;
+  height: 0;
+  border-top: 2px dashed rgba(233, 30, 140, 0.35);
+  margin: 0 -4px;
+  min-width: 16px;
+}
+
+.pol-step__label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #E91E8C;
+  margin: 16px 0 6px;
+}
+
+.pol-step__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1a0010;
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.pol-step__desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(26, 0, 16, 0.6);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── EMPTY STATE (shared pattern) ── */
+.pol-empty-state {
+  text-align: center;
+  padding: 56px 24px;
+  border: 1.5px dashed rgba(233, 30, 140, 0.25);
+}
+
+.pol-empty-state__icon {
+  font-size: 2rem;
+  color: #E91E8C;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.pol-empty-state__text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: rgba(26, 0, 16, 0.55);
+  margin: 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 991px) {
+  .pol-step {
+    min-width: 110px;
+  }
+
+  .pol-step__node {
+    width: 50px;
+    height: 50px;
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .pol-section {
+    padding: 48px 16px;
+  }
+
+  /* Timeline drops to a vertical stack on mobile, node + text side by side */
+  .pol-timeline {
+    flex-direction: column;
+    overflow-x: visible;
+    padding: 0;
+    margin: 0;
+  }
+
+  .pol-step {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    gap: 16px;
+  }
+
+  .pol-step__row {
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    align-self: stretch;
+  }
+
+  .pol-step__connector {
+    width: 2px;
+    height: 100%;
+    min-height: 32px;
+    border-top: none;
+    border-left: 2px dashed rgba(233, 30, 140, 0.35);
+    margin: 4px 0;
+  }
+
+  .pol-step__label {
+    margin: 4px 0 4px;
+  }
+
+  .pol-step:last-child .pol-step__row {
+    padding-bottom: 0;
+  }
+}
