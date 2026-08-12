@@ -6,7 +6,7 @@ import AlumniSuccessStories from "../Components/Home/Alumnisucces";
 import MapSection from "../Components/Home/Mapsection";
 import InnovationHub from "../Components/Home/Innovationhub";
 import SupportSection from "../Components/Home/SupportSection";
-
+import ProjectsShowcase from "../Components/Home/Projects";
 
 function Home() {
   return (
@@ -27,7 +27,7 @@ function Home() {
           </div>
         </div>
       </section>
-     
+      <ProjectsShowcase />
       <PartnersJoinBanner />
       < SupportSection />
       <MapSection />

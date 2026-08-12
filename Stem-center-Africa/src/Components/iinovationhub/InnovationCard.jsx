@@ -27,7 +27,10 @@ function InnovationCard({ innovation }) {
     innovation.capabilities_demonstrated?.length > 0;
 
   return (
-    <div className={`innovation-card ${accentClass}`}>
+    <div
+      id={innovation.title === 'GEMLA-Agent' ? 'gemla-agent' : undefined}
+      className={`innovation-card ${accentClass}`}
+    >
       <div className="innovation-card__media">
         <img src={innovation.cover_image_url} alt={innovation.title} loading="lazy" />
         <span className={`innovation-card__status innovation-card__status--${innovation.status}`}>
