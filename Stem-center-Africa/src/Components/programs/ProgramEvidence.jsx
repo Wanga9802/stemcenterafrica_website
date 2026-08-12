@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../../Styles/ProgramEvidence.css';
-import programEvidence from '../../data/programEvidence';
+import programEvidence from '../../data/ProgramEvidence';
 
 const isMediaUrl = (src) => src && !src.startsWith('PLACEHOLDER_');
 
