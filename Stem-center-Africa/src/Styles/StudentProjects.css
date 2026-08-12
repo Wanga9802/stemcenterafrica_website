@@ -232,6 +232,16 @@
   padding: 18px;
 }
 
+.spj-compact-panel__title {
+  color: #ffffff;
+  font-family:'DM Sans', sans-serif;
+  font-size: 20px;
+  margin: 0 0 14px;
+  text-align: center;
+  text-transform: lowercase;
+  letter-spacing: .08em;
+}
+
 .spj-project--compact {
   background: transparent;
   border: 2px solid rgba(255,255,255,.9);

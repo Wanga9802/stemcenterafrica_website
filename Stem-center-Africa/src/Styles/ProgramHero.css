@@ -3,12 +3,13 @@
 /* ── HERO SHELL ── */
 .ph-hero {
   position: relative;
-  min-height: 560px;
+  min-height: 420px;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
+  justify-content: flex-start;
   overflow: hidden;
-  padding-top: 64px;
-  padding-bottom: 44px;
+  padding-top: 32px;
+  padding-bottom: 32px;
   background: #1a0010;
 }
 
@@ -249,45 +250,13 @@
 
 /* ── FLOATING BADGE STACK (over photo, right side) ── */
 .ph-hero__badges-float {
-  position: absolute;
-  z-index: 2;
-  right: 32px;
-  top: 90px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: none;
 }
 
-.ph-float-badge {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  background: rgba(26, 0, 16, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(6px);
-  width: 168px;
-}
-
-.ph-float-badge__icon {
-  width: 30px;
-  height: 30px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(233, 30, 140, 0.9);
-  color: #ffffff;
-  font-size: 0.85rem;
-  border-radius: 6px;
-}
-
+.ph-float-badge,
+.ph-float-badge__icon,
 .ph-float-badge__label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.25;
+  display: none;
 }
 
 /* ── BOTTOM STATS BAR ── */

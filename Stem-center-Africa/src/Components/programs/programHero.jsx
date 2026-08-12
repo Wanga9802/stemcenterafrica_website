@@ -47,25 +47,12 @@ const ProgramHero = ({ program }) => {
       </div>
       <div className="ph-hero__overlay" aria-hidden="true" />
       <div className="ph-hero__dots" aria-hidden="true" />
-      <div className="ph-hero__accent-bar" aria-hidden="true" />
-
-      {/* ── Floating badge stack (over the photo, right side) ── */}
-      {floatingBadges.length > 0 && (
-        <div className="ph-hero__badges-float" aria-hidden="true">
-          {floatingBadges.map((badge, i) => (
-            <div className="ph-float-badge" key={i}>
-              <i className={`bi ${badge.icon} ph-float-badge__icon`}></i>
-              <span className="ph-float-badge__label">{badge.label}</span>
-            </div>
-          ))}
-        </div>
-      )}
 
       {/* ── Main content ── */}
       <div className="container ph-hero__content">
 
         <div className="row">
-          <div className="col-lg-8">
+          <div className="col-lg-12">
 
             {/* Title */}
             <h1 className="ph-hero__title">{program.title}</h1>

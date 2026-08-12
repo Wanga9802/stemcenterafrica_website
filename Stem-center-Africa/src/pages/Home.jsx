@@ -7,6 +7,7 @@ import MapSection from "../Components/Home/Mapsection";
 import InnovationHub from "../Components/Home/Innovationhub";
 import SupportSection from "../Components/Home/SupportSection";
 
+
 function Home() {
   return (
     <>
@@ -26,6 +27,7 @@ function Home() {
           </div>
         </div>
       </section>
+     
       <PartnersJoinBanner />
       < SupportSection />
       <MapSection />

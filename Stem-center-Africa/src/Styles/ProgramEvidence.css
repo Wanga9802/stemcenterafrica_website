@@ -6,15 +6,14 @@
   background: radial-gradient(circle at 7% 8%, rgba(147, 12, 86, .23), transparent 29%), #15000d;
   color: #fff;
   overflow: hidden;
-  padding: clamp(64px, 8vw, 112px) 24px;
+  padding: 24px;
 }
 
 .pev-container { max-width: 1240px; }
 
-.pev-intro { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 42px; }
-.pev-intro__copy { max-width: 650px; }
-.pev-eyebrow { align-items: center; color: var(--pev-pink-light); display: inline-flex; font: 700 .75rem/1 'DM Sans', sans-serif; gap: 8px; letter-spacing: .14em; margin-bottom: 14px; text-transform: uppercase; }
-.pev-eyebrow i { font-size: 1rem; }
+.pev-intro { display: flex; align-items: center; justify-content: center; gap: 32px; margin-bottom: 42px; text-align: center; }
+.pev-intro__copy { max-width: 650px; width: 100%; }
+.pev-eyebrow { color: var(--pev-pink-light); display: inline-block; font: 700 20px/1 'DM Sans', sans-serif; letter-spacing: .14em; margin-bottom: 0; text-transform: lowercase; }
 .pev-heading { color: #fff; font: 800 clamp(2.15rem, 4vw, 4rem)/1.03 'DM Sans', sans-serif; letter-spacing: -.055em; margin: 0; max-width: 620px; }
 .pev-desc { color: rgba(255,255,255,.68); font: 400 1rem/1.7 'DM Sans', sans-serif; margin: 19px 0 0; max-width: 535px; }
 .pev-cta { align-items: center; border: 1px solid rgba(255,255,255,.26); border-radius: 999px; color: #fff; display: inline-flex; flex: none; font: 700 .88rem/1 'DM Sans', sans-serif; gap: 9px; padding: 14px 19px; text-decoration: none; transition: background .25s ease, border-color .25s ease, transform .25s ease; }

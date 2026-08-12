@@ -99,6 +99,7 @@ const StudentProjects = ({ programSlug, programTitle }) => {
             <div className="row mt-4">
               <div className="col-12">
                 <div className="spj-compact-panel">
+                  <h3 className="spj-compact-panel__title">view gallery</h3>
                   <div className="row g-3">
                     {supportingProjects.map((item, index) => (
                       <div className="col-12 col-sm-6 col-md-4" key={item.slot || `${item.title}-${index}`}>

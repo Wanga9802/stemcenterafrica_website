@@ -11,7 +11,16 @@ import roboHero from '../assets/mitchi.jpg';
 import TeacherHero from '../assets/problem.jpg'
 import MathsHero from '../assets/matho.JPG'
 import AiHero from '../assets/atie.JPG'
-import ComputerHero from '../assets/refresh.jpg'
+import ComputerHero from  '../assets/evidence/computerbasics/co3.jpg'
+import ScienceHero from '../assets/wostemt.JPG'
+import ArdHero from '../assets/evidence/arduino/ard1.jpg'
+import RobHero from '../assets/robhero.jpg'
+import EleHero from '../assets/evidence/electrical/ele5.jpg'
+import Dhero from '../assets/evidence/3ddesigning/3d2.jpg'
+import DiyHero from '../assets/evidence/3ddesigning/3d7.jpg'
+import SpaceHero from '../assets/evidence/space/s1.jpg'
+import WebHero from '../assets/evidence/webdevelopment/we3.jpg'
+import ScratchHero from '../assets/evidence/scratch/sc1.jpg'
 
 const programs = [
   {
@@ -51,7 +60,7 @@ const programs = [
     icon: design3dIcon,
     color: "#8E44AD",
     group: "design-fabrication",
-    heroImage: "/assets/program-heroes/3d-designing.jpg",
+    heroImage: Dhero,
     fullDescription: "Students learn to design digital 3D models and bring them to life using 3D printing, developing spatial reasoning and prototyping skills along the way.",
     outlineDescription: "Blends design thinking with hands-on fabrication, taking students from a first sketch to a finished 3D-printed model.",
     learningOutcomes: [
@@ -79,7 +88,7 @@ const programs = [
     icon: "bi bi-cpu-fill",
     color: "#E67E22",
     group: "robotics-embedded",
-    heroImage: "/assets/program-heroes/arduino.jpg",
+    heroImage: ArdHero,
     fullDescription: "A hands-on introduction to embedded systems using Arduino, where students build circuits and write code to bring physical projects to life.",
     outlineDescription: "Introduces embedded systems through hands-on circuit building and coding, turning abstract electronics concepts into working projects.",
     learningOutcomes: [
@@ -107,7 +116,7 @@ const programs = [
     icon: droneIcon,
     color: "#2980B9",
     group: "robotics-embedded",
-    heroImage: "/assets/program-heroes/drone-technology.jpg",
+    heroImage: RobHero,
     fullDescription: "Students explore the mechanics, programming, and real-world applications of drones — from assembly to flight control and mission planning.",
     outlineDescription: "Covers the full journey from drone mechanics to flight programming, preparing students to build, fly, and apply drones responsibly.",
     learningOutcomes: [
@@ -135,7 +144,7 @@ const programs = [
     icon: circuitIcon,
     color: "#E74C3C",
     group: "robotics-embedded",
-    heroImage: "/assets/program-heroes/electronics.jpg",
+    heroImage: EleHero,
     fullDescription: "Covers the fundamentals of electrical circuits and electronics, giving students a strong technical base for robotics and embedded systems work.",
     outlineDescription: "Builds a strong technical foundation in circuits and components, the groundwork for any future robotics or embedded systems work.",
     learningOutcomes: [
@@ -163,7 +172,7 @@ const programs = [
     icon: codeIcon,
     color: "#27AE60",
     group: "computing-software",
-    heroImage: "/assets/program-heroes/web-development.jpg",
+    heroImage: WebHero,
     fullDescription: "Students learn to design and build websites from the ground up, progressing from HTML/CSS fundamentals to interactive, full-stack applications.",
     outlineDescription: "Takes students from HTML fundamentals to deploying a real, working website, building both technical skill and a portfolio project.",
     learningOutcomes: [
@@ -191,7 +200,7 @@ const programs = [
     icon: "bi bi-puzzle-fill",
     color: "#F1C40F",
     group: "computing-software",
-    heroImage: "/assets/program-heroes/scratch.jpg",
+    heroImage: ScratchHero,
     fullDescription: "An entry point into coding for younger learners, using Scratch's visual block-based programming to teach core logic through games and animation.",
     outlineDescription: "A playful entry point into programming logic, using visual blocks to build games and animations before moving to text-based code.",
     learningOutcomes: [
@@ -219,7 +228,7 @@ const programs = [
     icon: "bi bi-rocket-takeoff-fill",
     color: "#34495E",
     group: "science-exploration",
-    heroImage: "/assets/program-heroes/space-science.jpg",
+    heroImage: SpaceHero,
     fullDescription: "An exploratory program covering astronomy, space exploration, and the science behind rockets and satellites, sparking curiosity about the universe.",
     outlineDescription: "Explores astronomy and space technology through hands-on model building, sparking curiosity about rockets, satellites, and the universe.",
     learningOutcomes: [
@@ -247,7 +256,7 @@ const programs = [
     icon: "bi bi-flask-fill",
     color: "#16A085",
     group: "science-exploration",
-    heroImage: "/assets/program-heroes/science-experiments.jpg",
+    heroImage: ScienceHero,
     fullDescription: "A hands-on lab-style program where students explore core scientific principles through guided experiments in physics, chemistry, and biology.",
     outlineDescription: "A lab-style program where students learn the scientific method through guided physics, chemistry, and biology experiments.",
     learningOutcomes: [
@@ -464,7 +473,7 @@ const programs = [
     icon: "bi bi-tools",
     color: "#C0392B",
     group: "design-fabrication",
-    heroImage: "/assets/program-heroes/diy.jpg",
+    heroImage: DiyHero,
     fullDescription: "A hands-on maker program where students design and build practical projects using everyday tools and materials, developing creativity and problem-solving.",
     outlineDescription: "A hands-on maker program that builds practical tool skills and creative problem-solving through real building projects.",
     learningOutcomes: [

@@ -40,11 +40,7 @@ const ProgramEvidence = ({ programSlug, programTitle, description, galleryHref }
       <div className="container pev-container">
         <div className="pev-intro">
           <div className="pev-intro__copy">
-            <span className="pev-eyebrow"><i className="bi bi-camera-reels" aria-hidden="true" /> Program in action</span>
-            <h2 className="pev-heading">Learning, captured in motion.</h2>
-            <p className="pev-desc">
-              {description || `A closer look at how ${programTitle || 'our students'} learn, build, collaborate, and grow.`}
-            </p>
+            <span className="pev-eyebrow">Program in action</span>
           </div>
 
           {hasGalleryLink && (
@@ -108,11 +104,6 @@ const ProgramEvidence = ({ programSlug, programTitle, description, galleryHref }
                         <span className="pev-tile__art" aria-hidden="true"><i className="bi bi-stars" /></span>
                       )}
                       <span className="pev-tile__shade" />
-                      <span className="pev-tile__content">
-                        <span className="pev-tile__tag">{item.tag || 'Learning moment'}</span>
-                        <strong>{item.title}</strong>
-                        <small>{item.caption}</small>
-                      </span>
                       {imageAvailable && <span className="pev-tile__expand"><i className="bi bi-arrows-angle-expand" aria-hidden="true" /></span>}
                     </button>
                   );
