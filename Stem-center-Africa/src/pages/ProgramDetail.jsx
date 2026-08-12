@@ -1,8 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
-import ProgramHero from '../Components/programs/ProgramHero';
-import ProgramOutline from '../Components/programs/ProgramOutline';
-import ProgramEvidence from '../Components/programs/ProgramEvidence';
-import StudentProjects from '../Components/programs/StudentProjects';
+import ProgramHero from '../Components/ProgramHero';
+import ProgramOutline from '../Components/ProgramOutline';
+import ProgramEvidence from '../Components/ProgramEvidence';
+import StudentProjects from '../Components/StudentProjects';
 import programs from '../data/Programs';
 
 export default function ProgramDetail() {
