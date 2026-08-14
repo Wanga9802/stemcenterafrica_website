@@ -1,0 +1,231 @@
+/* ==========================================================================
+   EnrollmentForm.css
+   Uses the site's existing CSS variables (--teal, --amber, --ink, --magenta,
+   --font-display, etc). If any of these aren't defined globally yet, the
+   fallback values below match the established palette:
+   navy #101F3C, magenta #E91E8C, ink maroon #0f060b / #1a0a14 / #220d1a.
+   ========================================================================== */
+
+.ef-wrapper {
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 100px 24px 80px;
+  background: var(--ink, #0f060b);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(233, 30, 140, 0.12), transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(16, 31, 60, 0.6), transparent 50%);
+}
+
+.ef-form {
+  width: 100%;
+  max-width: 620px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 48px 44px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.ef-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--magenta, #e91e8c), var(--amber, #ffb020));
+}
+
+.ef-title {
+  font-family: var(--font-display, "Syne", sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--navy, #101f3c);
+  margin: 0 0 8px;
+}
+
+.ef-subtitle {
+  font-family: var(--font-body, "DM Sans", sans-serif);
+  font-size: 0.95rem;
+  color: #5b6472;
+  margin: 0 0 32px;
+  line-height: 1.5;
+}
+
+.ef-field {
+  margin-bottom: 22px;
+  flex: 1;
+}
+
+.ef-row {
+  display: flex;
+  gap: 20px;
+}
+
+.ef-row .ef-field {
+  margin-bottom: 22px;
+}
+
+.ef-field label {
+  display: block;
+  font-family: var(--font-body, "DM Sans", sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy, #101f3c);
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+
+.ef-input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid #e2e5eb;
+  border-radius: 10px;
+  font-family: var(--font-body, "DM Sans", sans-serif);
+  font-size: 0.95rem;
+  color: var(--navy, #101f3c);
+  background: #fafbfc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.ef-input:focus {
+  outline: none;
+  border-color: var(--magenta, #e91e8c);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(233, 30, 140, 0.12);
+}
+
+.ef-input::placeholder {
+  color: #a3aab5;
+}
+
+.ef-input--readonly {
+  background: #f1f0f6;
+  color: #6b6f80;
+  font-weight: 600;
+  cursor: not-allowed;
+  border-color: #e2e5eb;
+}
+
+select.ef-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23101F3C' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+textarea.ef-input {
+  resize: vertical;
+  min-height: 100px;
+  font-family: var(--font-body, "DM Sans", sans-serif);
+}
+
+.ef-error {
+  background: #fdecef;
+  color: #c62148;
+  border: 1px solid #f6c3d0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  margin-bottom: 20px;
+  font-family: var(--font-body, "DM Sans", sans-serif);
+}
+
+.ef-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display, "Syne", sans-serif);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.ef-btn--solid {
+  background: var(--magenta, #e91e8c);
+  color: #ffffff;
+  padding: 15px 32px;
+}
+
+.ef-btn--solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -8px rgba(233, 30, 140, 0.55);
+  color: #ffffff;
+}
+
+.ef-btn--solid:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.ef-submit {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* ── Success state ── */
+.ef-success {
+  width: 100%;
+  max-width: 560px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 56px 44px;
+  text-align: center;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+}
+
+.ef-success__icon {
+  font-size: 3.5rem;
+  color: var(--teal, #16a085);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.ef-success h2 {
+  font-family: var(--font-display, "Syne", sans-serif);
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--navy, #101f3c);
+  margin: 0 0 14px;
+}
+
+.ef-success p {
+  font-family: var(--font-body, "DM Sans", sans-serif);
+  color: #5b6472;
+  line-height: 1.6;
+  margin: 0 0 28px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .ef-wrapper {
+    padding: 80px 16px 60px;
+  }
+
+  .ef-form,
+  .ef-success {
+    padding: 36px 26px;
+    border-radius: 16px;
+  }
+
+  .ef-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .ef-title {
+    font-size: 1.6rem;
+  }
+}

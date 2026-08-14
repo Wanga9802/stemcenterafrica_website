@@ -18,6 +18,7 @@ import InnovationHubPage from './pages/innovationhub'
 import ProgramDetail from './pages/ProgramDetail'
 import Programs from './pages/Programs'
 import Educators from './pages/Educators'
+import EnrollmentForm from './pages/EnrollmentForm'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
 import WhatsAppWidget from './Components/WhatsAppWidget'
@@ -79,6 +80,7 @@ function App() {
         <Route path="/educators" element={<Educators />} />
         <Route path="/programs" element={<Programs />} />
         <Route path="/programs/:slug" element={<ProgramDetail />} />
+        <Route path="/enroll" element={<EnrollmentForm />} />
         <Route path="/corporate" element={<Services />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />

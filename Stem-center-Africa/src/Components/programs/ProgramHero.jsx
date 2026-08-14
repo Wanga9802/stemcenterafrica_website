@@ -69,10 +69,13 @@ const ProgramHero = ({ program }) => {
             {(hasOutline || hasEvidence) && (
               <div className="ph-cta-row">
                 {hasOutline && (
-                  <a href="#outline" className="ph-cta ph-cta--solid">
+                  <Link
+                    to={`/enroll?program=${encodeURIComponent(program.title)}&format=${encodeURIComponent(program.format)}`}
+                    className="ph-cta ph-cta--solid"
+                  >
                     Enroll Now
                     <i className="bi bi-arrow-right ph-cta__icon"></i>
-                  </a>
+                  </Link>
                 )}
                 {hasEvidence && (
                   <a href="#evidence" className="ph-cta ph-cta--ghost">
