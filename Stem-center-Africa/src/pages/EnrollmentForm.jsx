@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
-import programs from '../data/programs'; // adjust path to match your project
-import '../../Styles/EnrollmentForm.css';
+import programs from '../data/Programs';
+import '../Styles/EnrollmentForm.css';
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const INTERNAL_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_INTERNAL;
