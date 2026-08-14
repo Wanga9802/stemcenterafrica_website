@@ -11,6 +11,7 @@ const featuredProjects = [
     tag: 'smart toilet',
     description: 'A hands-free toilet system that pairs an ultrasonic distance sensor with a microcontroller to detect when a user approaches, then automatically triggers the dispensing mechanism ',
     href: '/programs/arduino#projects',
+    extraLink: null,
   },
   {
     id: 'drone',
@@ -18,6 +19,7 @@ const featuredProjects = [
     tag: 'SolarBotAfrica',
     description: 'This time, we challenged our students to build our own robot, a project we call SolarBot Africa. Working together with our team, the students used Tinkercad to 3D-design the body',
     href: '/programs/3d-designing#projects',
+    extraLink: null,
   },
   {
     id: 'science',
@@ -25,6 +27,7 @@ const featuredProjects = [
     tag: 'Gemla-AI agent',
     description: 'An AI innovation initiative building an intelligent multimodal learning analytics system. GEMLA-Agent explores how',
     href: '/innovationhub#gemla-agent',
+    extraLink: 'https://gemla-agent.com/',
   },
   {
     id: 'three-d-design',
@@ -32,6 +35,7 @@ const featuredProjects = [
     tag: 'Sustainable Home',
     description: 'These young students imagined what a sustainable home could look like and brought their ideas to life through a model. From imagination to creation,',
     href: '/programs/diy#projects',
+    extraLink: null,
   },
 ];
 
@@ -61,14 +65,23 @@ export default function ProjectsShowcase() {
                 <div className="pj-card__image-wrap">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={project.tag}
                     className="pj-card__image"
                   />
                 </div>
                 <div className="pj-card__body">
                   <span className="pj-card__tag">{project.tag}</span>
-                  <h3 className="pj-card__title">{project.title}</h3>
                   <p className="pj-card__desc">{project.description}</p>
+                  {project.extraLink && (
+                    <a
+                      href={project.extraLink}
+                      className="pj-card__extra-link"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      {project.extraLink}
+                    </a>
+                  )}
                   <a href={project.href} className="pj-card__link">
                     view project
                   </a>

@@ -1,13 +1,14 @@
 import { useRef, useState } from "react";
 import '../../Styles/Alumnisuccess.css';
 import VideoEmbed from "../WoStem/VideoEmbed";
-import ThumbHero from '../../assets/thambu.JPG'
+import ThumbHero from '../../assets/thambu.png'
+import storyVideo from '../../assets/Stopro.mp4';
 
 const alumniData = [
   {
     id: 1,
     image: ThumbHero,
-    videoUrl: "https://youtu.be/xGO2Ww54eYQ",
+    videoUrl: storyVideo,
   },
 ];
 
@@ -21,6 +22,7 @@ function SpotlightCard({ person, onPlay }) {
   return (
     <div className="alumni-spotlight-card">
       <div className="alumni-spotlight-thumb" style={{ backgroundImage: `url(${person.image})` }}>
+        <span className="alumni-spotlight-tag">Stories of Change</span>
         <button
           type="button"
           className="alumni-play-button"
@@ -34,6 +36,10 @@ function SpotlightCard({ person, onPlay }) {
       </div>
     </div>
   );
+}
+
+function isLocalVideo(url) {
+  return typeof url === 'string' && /\.(mp4|webm|ogg)(\?.*)?$/i.test(url);
 }
 
 export default function AlumniSuccessStories({ compact = false }) {
@@ -58,12 +64,33 @@ export default function AlumniSuccessStories({ compact = false }) {
     touchEndX.current = null;
   };
 
+  const renderVideoModal = () => {
+    if (!openVideo) return null;
+    return (
+      <div className="alumni-video-modal-overlay" onClick={() => setOpenVideo(null)}>
+        <div className="alumni-video-modal" onClick={(e) => e.stopPropagation()}>
+          <button className="alumni-video-modal-close" onClick={() => setOpenVideo(null)} aria-label="Close video">✕</button>
+          {isLocalVideo(openVideo) ? (
+            <video
+              className="alumni-local-video"
+              src={openVideo}
+              controls
+              autoPlay
+              playsInline
+            />
+          ) : (
+            <VideoEmbed url={openVideo} title="Story of change video" />
+          )}
+        </div>
+      </div>
+    );
+  };
+
   if (compact) {
     const person = alumniData[activeIndex];
     return (
       <>
         <div className="alumni-compact">
-          <h2 className="alumni-title alumni-title--compact">Stories of change</h2>
           <div
             className="alumni-spotlight-track"
             onTouchStart={handleTouchStart}
@@ -92,31 +119,16 @@ export default function AlumniSuccessStories({ compact = false }) {
           )}
         </div>
 
-        {openVideo && (
-          <div className="alumni-video-modal-overlay" onClick={() => setOpenVideo(null)}>
-            <div className="alumni-video-modal" onClick={(e) => e.stopPropagation()}>
-              <button className="alumni-video-modal-close" onClick={() => setOpenVideo(null)} aria-label="Close video">✕</button>
-              <VideoEmbed url={openVideo} title="Story of change video" />
-            </div>
-          </div>
-        )}
+        {renderVideoModal()}
       </>
     );
   }
-
 
   return (
     <section className="alumni-section">
       {/* ...unchanged original JSX from your file... */}
 
-      {openVideo && (
-        <div className="alumni-video-modal-overlay" onClick={() => setOpenVideo(null)}>
-          <div className="alumni-video-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="alumni-video-modal-close" onClick={() => setOpenVideo(null)} aria-label="Close video">✕</button>
-            <VideoEmbed url={openVideo} title="Story of change video" />
-          </div>
-        </div>
-      )}
+      {renderVideoModal()}
     </section>
   );
 }
