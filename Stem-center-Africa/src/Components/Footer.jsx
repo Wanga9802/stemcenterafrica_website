@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../Styles/Footer.css'
-import Logopic from '../assets/stem_africa.jpg';
+const Logopic = '/stem_africa.jpg';
 
 
 function Footer() {

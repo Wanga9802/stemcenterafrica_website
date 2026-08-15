@@ -12,7 +12,7 @@ import storyIcon from '../../assets/book.png'
 import donationIcon from '../../assets/donation.png'
 import settingsIcon from '../../assets/settings.png'
 import exitIcon from '../../assets/exit.png'
-import logoImage from '../../assets/stem_africa.jpg'
+const logoImage = '/stem_africa.jpg'
 
 const NAV_ITEMS = [
   { iconSrc: dashboardIcon, label: 'Dashboard', to: '/admin', end: true },

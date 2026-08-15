@@ -107,7 +107,7 @@ const EnrollmentForm = () => {
               required
               value={formData.program}
               onChange={handleChange}
-              className="ef-input"
+              className="ef-input form-control rounded-0"
             >
               <option value="" disabled>Select a program</option>
               {programs.map((p) => (
@@ -127,7 +127,7 @@ const EnrollmentForm = () => {
               required
               value={formData.format}
               onChange={handleChange}
-              className="ef-input"
+              className="ef-input form-control rounded-0"
             >
               <option value="" disabled>Select a format</option>
               {formatOptions.map((f) => (
@@ -154,7 +154,7 @@ const EnrollmentForm = () => {
             required
             value={formData.fullName}
             onChange={handleChange}
-            className="ef-input"
+            className="ef-input form-control rounded-0"
             placeholder="Jane Wanjiru"
           />
         </div>
@@ -169,7 +169,7 @@ const EnrollmentForm = () => {
               required
               value={formData.email}
               onChange={handleChange}
-              className="ef-input"
+              className="ef-input form-control rounded-0"
               placeholder="you@example.com"
             />
           </div>
@@ -183,7 +183,7 @@ const EnrollmentForm = () => {
               required
               value={formData.phone}
               onChange={handleChange}
-              className="ef-input"
+              className="ef-input form-control rounded-0"
               placeholder="07XX XXX XXX"
             />
           </div>
@@ -200,7 +200,7 @@ const EnrollmentForm = () => {
             max="120"
             value={formData.age}
             onChange={handleChange}
-            className="ef-input"
+            className="ef-input form-control rounded-0"
           />
         </div>
 
@@ -212,7 +212,7 @@ const EnrollmentForm = () => {
             rows="4"
             value={formData.message}
             onChange={handleChange}
-            className="ef-input"
+            className="ef-input form-control rounded-0"
             placeholder="Anything you'd like us to know?"
           />
         </div>

@@ -22,7 +22,7 @@
   width: 100%;
   max-width: 620px;
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 0;
   padding: 48px 44px;
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -30,19 +30,13 @@
 }
 
 .ef-form::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: linear-gradient(90deg, var(--magenta, #e91e8c), var(--amber, #ffb020));
+  display: none;
 }
 
 .ef-title {
   font-family: var(--font-display, "Syne", sans-serif);
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--navy, #101f3c);
   margin: 0 0 8px;
 }
@@ -50,7 +44,7 @@
 .ef-subtitle {
   font-family: var(--font-body, "DM Sans", sans-serif);
   font-size: 0.95rem;
-  color: #5b6472;
+  color: #101F3C;
   margin: 0 0 32px;
   line-height: 1.5;
 }
@@ -83,7 +77,7 @@
   width: 100%;
   padding: 13px 16px;
   border: 1.5px solid #e2e5eb;
-  border-radius: 10px;
+  border-radius: 0;
   font-family: var(--font-body, "DM Sans", sans-serif);
   font-size: 0.95rem;
   color: var(--navy, #101f3c);
@@ -180,14 +174,14 @@ textarea.ef-input {
   width: 100%;
   max-width: 560px;
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 0;
   padding: 56px 44px;
   text-align: center;
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
 }
 
 .ef-success__icon {
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: var(--teal, #16a085);
   margin-bottom: 20px;
   display: block;
@@ -196,7 +190,7 @@ textarea.ef-input {
 .ef-success h2 {
   font-family: var(--font-display, "Syne", sans-serif);
   font-size: 1.7rem;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--navy, #101f3c);
   margin: 0 0 14px;
 }
@@ -217,7 +211,7 @@ textarea.ef-input {
   .ef-form,
   .ef-success {
     padding: 36px 26px;
-    border-radius: 16px;
+    border-radius: 0;
   }
 
   .ef-row {

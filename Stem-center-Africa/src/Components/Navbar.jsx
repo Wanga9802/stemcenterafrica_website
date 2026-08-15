@@ -1,7 +1,7 @@
 import '../Styles/Navbar.css'
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import Logopicc from '../assets/stem_africa.jpg';
+const Logopicc = '/stem_africa.jpg';
 
 const COURSES = [
   {
