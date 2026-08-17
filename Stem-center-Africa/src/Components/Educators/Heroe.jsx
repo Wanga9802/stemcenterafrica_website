@@ -52,7 +52,7 @@ const EducatorsHero = () => {
               <a href="#structure" className="eh-btn-primary">
                 Explore Training <i className="bi bi-arrow-right eh-btn-icon" aria-hidden="true"></i>
               </a>
-              <a href="#partner" className="eh-btn-secondary">
+              <a href="/partner-with-us" className="eh-btn-secondary">
                 Partner with Us <i className="bi bi-download eh-btn-icon" aria-hidden="true"></i>
               </a>
             </div>

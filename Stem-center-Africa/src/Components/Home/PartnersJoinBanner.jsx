@@ -49,7 +49,7 @@ function PartnersJoinBanner() {
             </p>
             <div className="pjcta-join-actions">
               <Link to="/donate" className="pjcta-btn pjcta-btn-solid">Donate Now</Link>
-              <Link to="/join" className="pjcta-btn pjcta-btn-outline">Become a Partner</Link>
+              <Link to="/partner-with-us" className="pjcta-btn pjcta-btn-outline">Become a Partner</Link>
             </div>
           </div>
         </div>
