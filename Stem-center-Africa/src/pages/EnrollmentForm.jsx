@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
-import programs from '../data/Programs';
+import programs from '../data/programs'; // adjust path to match your project
 import '../Styles/EnrollmentForm.css';
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -40,14 +40,41 @@ const EnrollmentForm = () => {
     e.preventDefault();
     setStatus('sending');
 
+    // Formatted block for the internal notification email
+    const messageBody = [
+      'A new enrollment application has been received.',
+      '',
+      `Program: ${formData.program}`,
+      `Format: ${formData.format}`,
+      '',
+      'Applicant Details:',
+      `Name: ${formData.fullName}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone}`,
+      `Age: ${formData.age}`,
+      '',
+      'Message:',
+      formData.message || 'No additional message provided.',
+    ].join('\n');
+
+    // Formatted block for the confirmation email
+    const emailBody = [
+      `Thank you for applying to our ${formData.program} program! We've received your application and our team will review it shortly.`,
+      '',
+      'What you submitted:',
+      `Format: ${formData.format}`,
+      `Phone: ${formData.phone}`,
+      '',
+      "We'll be in touch within a few business days. If you have any urgent questions, feel free to reply to this email or reach us on WhatsApp.",
+    ].join('\n');
+
     const templateParams = {
-      program_name: formData.program,
-      format: formData.format,
-      student_name: formData.fullName,
-      student_email: formData.email,
-      student_phone: formData.phone,
-      student_age: formData.age,
-      message: formData.message || 'No additional message provided.',
+      form_title: `New Enrollment: ${formData.program} — ${formData.fullName}`,
+      message_body: messageBody,
+      reply_to: formData.email,
+      recipient_name: formData.fullName,
+      email_subject: `We've received your application — ${formData.program}`,
+      email_body: emailBody,
     };
 
     try {
@@ -107,7 +134,7 @@ const EnrollmentForm = () => {
               required
               value={formData.program}
               onChange={handleChange}
-              className="ef-input form-control rounded-0"
+              className="ef-input"
             >
               <option value="" disabled>Select a program</option>
               {programs.map((p) => (
@@ -127,7 +154,7 @@ const EnrollmentForm = () => {
               required
               value={formData.format}
               onChange={handleChange}
-              className="ef-input form-control rounded-0"
+              className="ef-input"
             >
               <option value="" disabled>Select a format</option>
               {formatOptions.map((f) => (
@@ -154,7 +181,7 @@ const EnrollmentForm = () => {
             required
             value={formData.fullName}
             onChange={handleChange}
-            className="ef-input form-control rounded-0"
+            className="ef-input"
             placeholder="Jane Wanjiru"
           />
         </div>
@@ -169,7 +196,7 @@ const EnrollmentForm = () => {
               required
               value={formData.email}
               onChange={handleChange}
-              className="ef-input form-control rounded-0"
+              className="ef-input"
               placeholder="you@example.com"
             />
           </div>
@@ -183,7 +210,7 @@ const EnrollmentForm = () => {
               required
               value={formData.phone}
               onChange={handleChange}
-              className="ef-input form-control rounded-0"
+              className="ef-input"
               placeholder="07XX XXX XXX"
             />
           </div>
@@ -200,7 +227,7 @@ const EnrollmentForm = () => {
             max="120"
             value={formData.age}
             onChange={handleChange}
-            className="ef-input form-control rounded-0"
+            className="ef-input"
           />
         </div>
 
@@ -212,7 +239,7 @@ const EnrollmentForm = () => {
             rows="4"
             value={formData.message}
             onChange={handleChange}
-            className="ef-input form-control rounded-0"
+            className="ef-input"
             placeholder="Anything you'd like us to know?"
           />
         </div>

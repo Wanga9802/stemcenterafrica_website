@@ -1,5 +1,6 @@
 import '../../Styles/Herosection.css';
 import HeroPhoto from '../../assets/storyour.jpg'; 
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
 
@@ -55,9 +56,9 @@ electronics, and design thinking through innovation centers, mobile outreach, an
               <a href="/donate" className="sc-btn-primary">
                 Donate Today
               </a>
-              <a href="#partner" className="sc-btn-secondary">
+              <Link to="/partner-with-us" className="sc-btn-secondary">
                 Partner with us
-              </a>
+              </Link>
             </div>
 
 
