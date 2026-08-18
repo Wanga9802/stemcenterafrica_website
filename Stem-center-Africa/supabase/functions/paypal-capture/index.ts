@@ -10,7 +10,7 @@ const PAYPAL_CLIENT_ID = Deno.env.get("PAYPAL_CLIENT_ID")!;
 const PAYPAL_SECRET = Deno.env.get("PAYPAL_SECRET")!;
 
 // Sandbox base URL for now — switch to https://api-m.paypal.com when you go live
-const PAYPAL_API_BASE = "https://api-m.sandbox.paypal.com";
+const PAYPAL_API_BASE = "https://api-m.paypal.com";
 
 async function getPayPalAccessToken() {
   const auth = btoa(`${PAYPAL_CLIENT_ID}:${PAYPAL_SECRET}`);
