@@ -13,7 +13,7 @@ import EventDetail from './pages/EventDetail'
 import Faqs from './pages/Faqs'
 import TeamProfile from './pages/TeamProfile'
 import TeamPage from './pages/Team'
-import WoStem from './pages/WoStem'
+import WoStem from './pages/girlsinstem'
 import InnovationHubPage from './pages/innovationhub'
 import ProgramDetail from './pages/ProgramDetail'
 import Programs from './pages/Programs'
@@ -77,7 +77,7 @@ function App() {
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/service-request" element={<ServiceForm />} />
         <Route path="/innovationhub" element={<InnovationHubPage />} />
-        <Route path="/wostem" element={<WoStem />} />
+        <Route path="/girlsinstem" element={<WoStem />} />
         <Route path="/educators" element={<Educators />} />
         <Route path="/programs" element={<Programs />} />
         <Route path="/programs/:slug" element={<ProgramDetail />} />

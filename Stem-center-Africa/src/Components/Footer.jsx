@@ -47,7 +47,7 @@ const quickLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Programs", event: "openProgramsDropdown" },
-  { label: "Girls inSTEM", path: "/wostem" },
+  { label: "Girls inSTEM", path: "/girlsinstem" },
   { label: "STEM Educators", path: "/educators" },
   { label: "Innovation Hub", path: "/innovationhub" },
   { label: "Services", path: "/services" },
