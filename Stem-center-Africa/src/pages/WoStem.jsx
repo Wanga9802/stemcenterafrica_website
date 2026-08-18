@@ -1,15 +1,25 @@
-import WostemHero from "../Components/WoStem/WoHero";
-import WoSTEMIntro from "../Components/WoStem/WoSTEMINTRO";
-import WoSTEMGallery from "../Components/WoStem/WoSTEMGallery";
-import CompetitionShowcase from "../Components/WoStem/CompetitionShowcase";
+
+import WoStemIntro from "../Components/WoStem/WoSTEMINTRO"
+import GirlsInSTEMHero from "../Components/WoStem/GirlsInSTEMHero";
+import robotGirlPhoto from "../assets/wostemf.JPG";
+import WoStemPrograms from "../Components/WoStem/WoStemPrograms";
+import TestimonialsMoments from "../Components/WoStem/TestimonialsMoments";
 
 function WoStem() {
   return (
     <>
-      <WostemHero />
-      <WoSTEMIntro />
-      <WoSTEMGallery />
-      <CompetitionShowcase />
+<GirlsInSTEMHero
+  program={{
+    title: "Empowering Girls. Innovating the Future.",
+    description: "Girls in STEM is our commitment to inspiring and equipping girls with the skills, confidence, and opportunities to lead in Science, Technology, Engineering and Mathematics.",
+    heroImage: robotGirlPhoto,
+    duration: "69%",
+    ageGroup: "100,000",
+  }}
+/>
+      <WoStemIntro videoId="xGO2Ww54eYQ" />
+      <WoStemPrograms />
+      <TestimonialsMoments />
     </>
   );
 }

@@ -1,0 +1,222 @@
+/* ==========================================================================
+   TestimonialsMoments
+   Brand tokens — adjust to match your existing WO STEM palette if needed
+   ========================================================================== */
+
+.tm-section {
+  --tm-pink: #ec1e6f;
+  --tm-pink-soft: #fbe4ee;
+  --tm-ink: #1c1530;
+  --tm-gray: #6b7280;
+  --tm-border: #eee0e8;
+  --tm-radius: 5px;
+
+  padding: 64px 0;
+  background: #ffffff;
+  font-family: "DM Sans", sans-serif;
+}
+
+.tm-row {
+  --bs-gutter-x: 3rem;
+}
+
+.tm-eyebrow {
+  color: var(--tm-pink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.tm-heading {
+  color: var(--tm-ink);
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.25;
+}
+
+/* ---------------- Left column: testimonial carousel ---------------- */
+
+.tm-col-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.tm-carousel {
+  position: relative;
+  flex: 1;
+  min-height: 260px;
+}
+
+.tm-card {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #f6f1fc 0%, #f3edfb 100%);
+  border: 1px solid var(--tm-border);
+  border-radius: var(--tm-radius);
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(28, 21, 48, 0.06);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+}
+
+.tm-card.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  position: relative;
+}
+
+.tm-quote-mark {
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--tm-pink);
+  font-weight: 700;
+  margin-bottom: -0.5rem;
+}
+
+.tm-card-body {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.tm-avatar-wrap {
+  flex: 0 0 auto;
+}
+
+.tm-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--tm-pink-soft);
+}
+
+.tm-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.tm-quote {
+  color: var(--tm-ink);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+.tm-name {
+  color: var(--tm-pink);
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 2px;
+}
+
+.tm-role {
+  color: var(--tm-gray);
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.tm-dots {
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  display: flex;
+  gap: 8px;
+  transform: translateX(-50%);
+}
+
+.tm-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--tm-border);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.tm-dot.is-active {
+  background: var(--tm-pink);
+  transform: scale(1.2);
+}
+
+.tm-dot:focus-visible {
+  outline: 2px solid var(--tm-pink);
+  outline-offset: 2px;
+}
+
+/* ---------------- Right column: moments gallery ---------------- */
+
+.tm-col-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.tm-gallery {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+}
+
+.tm-gallery-item {
+  flex: 1;
+  border-radius: var(--tm-radius);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+}
+
+.tm-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.tm-gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 767.98px) {
+  .tm-col-left {
+    margin-bottom: 56px;
+  }
+
+  .tm-carousel {
+    min-height: 300px;
+  }
+
+  .tm-gallery {
+    flex-wrap: wrap;
+  }
+
+  .tm-gallery-item {
+    flex: 1 1 calc(50% - 8px);
+    aspect-ratio: 1 / 1;
+  }
+
+  .tm-gallery-item:first-child {
+    flex: 1 1 100%;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tm-card,
+  .tm-dot,
+  .tm-gallery-item img {
+    transition: none;
+  }
+}

@@ -1,55 +1,185 @@
-/* WoSTEMIntro.css */
-.wostem-intro {
-  padding: 3rem 2rem;
-  background-color: #ffffff;
-  color: #fff;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap');
+
+/* ── SECTION SHELL ── */
+.wsi-section {
+  padding: 24px 0;
+  background: #ffffff;
+  font-family: 'DM Sans', sans-serif;
 }
 
-.wostem-intro-title {
-  font-family: "Syne", sans-serif;
-  color: #FF4D9E;
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.wsi-row {
+  row-gap: 40px;
 }
 
-.wostem-intro-description {
-  font-family: "DM Sans", sans-serif;
-  color: #101F3C;
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  line-height: 1.7;
-}
-
-.wostem-intro-subheading {
-  font-family: DM Sans, sans-serif;
-   color: #FF4D9E;
-  font-size: 1.2rem;
-  margin-bottom: 1.25rem;
-}
-
-.wostem-focus-grid {
+.wsi-col {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
+  flex-direction: column;
 }
 
-.wostem-focus-pill {
-  background-color: #220d1a;
-  border: 1px solid #E91E8C;
-  color: #FF4D9E;
-  font-family: "DM Sans", sans-serif;
-  font-size: 0.9rem;
-  padding: 0.5rem 1.1rem;
-  border-radius: 999px;
+/* ── HEADER (eyebrow + title + description) ── */
+.wsi-header-row {
+  margin-bottom: 14px;
 }
 
-.wostem-intro-note {
-  font-family: "DM Sans", sans-serif;
+.wsi-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E91E8C;
+  margin-bottom: 10px;
+}
+
+.wsi-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #1a0010;
+  margin: 0 0 12px;
+}
+
+.wsi-title-accent {
+  color: #E91E8C;
+}
+
+.wsi-description {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.65;
   color: #101F3C;
-  max-width: 650px;
-  margin: 0 auto;
-  font-style: italic;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ── PILLARS ROW ── */
+.wsi-pillars-row {
+  row-gap: 24px;
+}
+
+.wsi-pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 10px;
+  position: relative;
+}
+
+.wsi-pillar:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  right: -2px;
+  width: 1px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767px) {
+  .wsi-pillar:not(:last-child)::after {
+    display: none;
+  }
+}
+
+.wsi-pillar__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.wsi-pillar__icon--pink {
+  background: linear-gradient(135deg, #E91E8C 0%, #ff6fb8 100%);
+}
+
+.wsi-pillar__icon--purple {
+  background: linear-gradient(135deg, #6a2fc9 0%, #9b6fe0 100%);
+}
+
+.wsi-pillar__title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1a0010;
+  margin: 0 0 6px;
+}
+
+.wsi-pillar__text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #101F3C;
+  margin: 0;
+}
+
+/* ── VIDEO CARD ── */
+.wsi-video-row {
+  flex: 1;
+}
+
+.wsi-video-card {
+  width: 100%;
+}
+
+.wsi-video-card__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+  overflow: hidden;
+  background: #1a0010;
+  box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.35);
+}
+
+.wsi-video-card__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.wsi-video-card__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 3rem;
+}
+
+.wsi-video-card__caption {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #1a0010;
+  margin: 12px 0 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 991px) {
+  .wsi-pillar:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .wsi-section {
+    padding: 48px 0;
+  }
+
+  .wsi-description {
+    max-width: none;
+  }
 }
