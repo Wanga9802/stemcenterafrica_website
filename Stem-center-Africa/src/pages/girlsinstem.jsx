@@ -4,6 +4,7 @@ import GirlsInSTEMHero from "../Components/WoStem/GirlsInSTEMHero";
 import robotGirlPhoto from "../assets/wostemf.JPG";
 import WoStemPrograms from "../Components/WoStem/WoStemPrograms";
 import TestimonialsMoments from "../Components/WoStem/TestimonialsMoments";
+import GenderGapCta from "../Components/WoStem/GenderGapCta";
 
 function WoStem() {
   return (
@@ -20,6 +21,7 @@ function WoStem() {
       <WoStemIntro videoId="xGO2Ww54eYQ" />
       <WoStemPrograms />
       <TestimonialsMoments />
+      <GenderGapCta />
     </>
   );
 }

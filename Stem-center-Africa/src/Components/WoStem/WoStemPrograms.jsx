@@ -44,7 +44,7 @@ const WOSTEM_PROGRAMS = [
 
 const WoStemPrograms = () => {
   return (
-    <section className="wsp-section">
+    <section className="wsp-section" id="wostem-programs">
       <div className="container">
         <h2 className="wsp-title">Opportunities Designed for Girls</h2>
 

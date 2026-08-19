@@ -46,19 +46,19 @@ const GirlsInSTEMHero = ({ program }) => {
             {(hasOutline || hasEvidence) && (
               <div className="ph-cta-row">
                 {hasOutline && (
-                  <Link
-                    to="/programs"
+                  <a
+                    href="#wostem-programs"
                     className="ph-cta ph-cta--solid"
                   >
                     Our Programs
                     <i className="bi bi-arrow-right ph-cta__icon"></i>
-                  </Link>
+                  </a>
                 )}
                 {hasEvidence && (
-                  <a href="#evidence" className="ph-cta ph-cta--ghost">
+                  <Link to="/partner-with-us" className="ph-cta ph-cta--ghost">
                     <i className="bi bi-heart ph-cta__icon ph-cta__icon--leading"></i>
                     Get Involved
-                  </a>
+                  </Link>
                 )}
               </div>
             )}
