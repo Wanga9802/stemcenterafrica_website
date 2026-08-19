@@ -75,7 +75,7 @@ return (
             <div className="row g-5">
 
               {/* Brand column —*/}
-              <div className="col-12 col-md-4 ">
+              <div className="col-12 col-lg-4 ">
                 {/* Logo */}
                 <div className="d-flex align-items-center gap-2 mb-3">
                   <img src={Logopic} alt="STEM Center Africa Logo" className="logo-box" />
@@ -112,7 +112,7 @@ return (
               </div>
 
               {/* Quick Links — half on xs (stacked), auto on md */}
-              <div className="col-5 col-md-2">
+              <div className="col-5 col-lg-2">
                 <h4 className="col-heading">Quick Links</h4>
                 <ul className="list-unstyled mb-0">
                   {quickLinks.map((link) => (
@@ -140,7 +140,7 @@ return (
               </div>
 
               {/* Programs — half on xs, auto on md */}
-              <div className="col-6 col-md-3">
+              <div className="col-6 col-lg-3">
                 <h4 className="col-heading">Our Programs</h4>
                 <ul className="list-unstyled mb-0">
                   {programs.map((prog) => (
@@ -165,7 +165,7 @@ return (
               
 
               {/* Contact — full on xs & md, auto on lg */}
-              <div className="col-12 col-md-3">
+              <div className="col-12 col-lg-3">
                 <h4 className="col-heading">Contact Us</h4>
 
                 <div className="contact-row ">

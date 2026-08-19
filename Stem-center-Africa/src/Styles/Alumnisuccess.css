@@ -71,56 +71,6 @@
   flex: 1 1 340px;
 }
 
-.alumni-card-thumbnail {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  transition: transform 0.5s ease;
-}
-
-.alumni-card-thumbnail::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(15,15,15,0.82) 0%, rgba(15,15,15,0.10) 55%, transparent 100%);
-}
-
-.alumni-play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  background: #101F3C;
-  border: none;
-  border-radius: 50%;
-  z-index: 2;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(16,31,60,0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 0;
-}
-
-.alumni-play-button svg {
-  width: 22px;
-  height: 22px;
-}
-
-.alumni-play-button:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-  box-shadow: 0 6px 16px rgba(16,31,60,0.5);
-}
-
-.alumni-play-button:active {
-  transform: translate(-50%, -50%) scale(0.95);
-}
-
 .alumni-card-content {
   display: none;
 }
@@ -168,76 +118,29 @@
   .alumni-title { font-size: 20px !important; }
 }
 
-/* Modal for embedded video */
-.alumni-video-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1200;
-  padding: 20px;
-}
-
-.alumni-video-modal {
-  width: 100%;
-  max-width: 980px;
-  background: transparent;
-  position: relative;
-}
-
-.alumni-video-modal-close {
-  position: absolute;
-  right: -8px;
-  top: -36px;
-  background: #ffffff;
-  color: #111;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-  font-weight: 700;
-}
-
-.alumni-video-modal .video-embed-wrapper {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000;
-}
-
-@media (max-width: 767px) {
-  .alumni-video-modal-close { right: 6px; top: 6px; }
-  .alumni-video-modal { max-width: 100%; }
-}
-
 /* ══════════════════════════════════════════════
-   COMPACT VARIANT — full-bleed video with a
-   floating "Stories of Change" tag on top.
-   Fills its parent (.impact-left) directly via
-   absolute positioning instead of a percentage-
-   height chain, so it can't silently collapse.
+   COMPACT VARIANT — video embeds directly inside
+   the card (native YouTube thumbnail + play
+   button), with a floating "Stories of Change"
+   tag on top. Fills its parent (.impact-left)
+   directly via absolute positioning instead of a
+   percentage-height chain, so it can't silently
+   collapse.
    ══════════════════════════════════════════════ */
 .alumni-compact {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 360px;
   display: flex;
   flex-direction: column;
+  justify-content: center; /* centers the video card if parent column is taller */
   font-family: 'DM Sans', sans-serif;
 }
 
 .alumni-spotlight-track {
-  flex: 1;
   width: 100%;
-  min-height: 0; /* lets this flex child size correctly instead of defaulting to content size */
 }
 
 .alumni-spotlight-card {
-  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -246,20 +149,18 @@
   overflow: hidden;
 }
 
-.alumni-spotlight-thumb {
+.alumni-spotlight-video-embed {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 360px; /* keep the compact media card visibly shorter */
-  background-size: cover;
-  background-position: center;
+  aspect-ratio: 16 / 9; /* sizes the card to match the video exactly — no letterboxing */
+  background: #000000;
 }
 
-.alumni-spotlight-thumb::after {
-  content: '';
+.alumni-spotlight-video-embed iframe {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15,15,15,0.75) 0%, rgba(15,15,15,0.05) 55%, transparent 100%);
+  width: 100%;
+  height: 100%;
 }
 
 /* ── the hanging title tag ── */
@@ -279,6 +180,7 @@
   border-radius: 0;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   transform: skewX(-15deg);
+  pointer-events: none; /* keeps the native YouTube play button clickable underneath */
 }
 
 .alumni-spotlight-nav {
@@ -329,11 +231,4 @@
     font-size: 0.7rem;
     padding: 8px 16px;
   }
-}
-
-.alumni-local-video {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000;
-  display: block;
 }

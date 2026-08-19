@@ -1,50 +1,48 @@
 import { useRef, useState } from "react";
 import '../../Styles/Alumnisuccess.css';
-import VideoEmbed from "../WoStem/VideoEmbed";
-import ThumbHero from '../../assets/thambu.png'
-import storyVideo from '../../assets/Stopro.mp4';
 
 const alumniData = [
   {
     id: 1,
-    image: ThumbHero,
-    videoUrl: storyVideo,
+    videoUrl: "https://youtu.be/W6g_gCKoDJI",
   },
 ];
 
-function SpotlightCard({ person, onPlay }) {
-  const handlePlayClick = () => {
-    if (person.videoUrl && person.videoUrl !== "#") {
-      if (typeof onPlay === 'function') onPlay(person.videoUrl);
-    }
-  };
+function getYouTubeVideoId(url) {
+  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
+
+function getYouTubeEmbedUrl(videoId) {
+  return `https://www.youtube.com/embed/${videoId}`;
+}
+
+function SpotlightCard({ person }) {
+  const videoId = getYouTubeVideoId(person.videoUrl);
+  const embedUrl = videoId ? getYouTubeEmbedUrl(videoId) : null;
 
   return (
     <div className="alumni-spotlight-card">
-      <div className="alumni-spotlight-thumb" style={{ backgroundImage: `url(${person.image})` }}>
+      <div className="alumni-spotlight-video-embed">
         <span className="alumni-spotlight-tag">Stories of Change</span>
-        <button
-          type="button"
-          className="alumni-play-button"
-          onClick={handlePlayClick}
-          aria-label="Play video"
-        >
-          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="6,3 20,12 6,21" />
-          </svg>
-        </button>
+        {embedUrl && (
+          <iframe
+            width="100%"
+            height="100%"
+            src={embedUrl}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="Story of Change"
+          ></iframe>
+        )}
       </div>
     </div>
   );
 }
 
-function isLocalVideo(url) {
-  return typeof url === 'string' && /\.(mp4|webm|ogg)(\?.*)?$/i.test(url);
-}
-
 export default function AlumniSuccessStories({ compact = false }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [openVideo, setOpenVideo] = useState(null);
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
 
@@ -64,71 +62,43 @@ export default function AlumniSuccessStories({ compact = false }) {
     touchEndX.current = null;
   };
 
-  const renderVideoModal = () => {
-    if (!openVideo) return null;
-    return (
-      <div className="alumni-video-modal-overlay" onClick={() => setOpenVideo(null)}>
-        <div className="alumni-video-modal" onClick={(e) => e.stopPropagation()}>
-          <button className="alumni-video-modal-close" onClick={() => setOpenVideo(null)} aria-label="Close video">✕</button>
-          {isLocalVideo(openVideo) ? (
-            <video
-              className="alumni-local-video"
-              src={openVideo}
-              controls
-              autoPlay
-              playsInline
-            />
-          ) : (
-            <VideoEmbed url={openVideo} title="Story of change video" />
-          )}
-        </div>
-      </div>
-    );
-  };
-
   if (compact) {
     const person = alumniData[activeIndex];
     return (
-      <>
-        <div className="alumni-compact">
-          <div
-            className="alumni-spotlight-track"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            <SpotlightCard person={person} onPlay={setOpenVideo} />
-          </div>
-          {alumniData.length > 1 && (
-            <div className="alumni-spotlight-nav">
-              <button onClick={goPrev} aria-label="Previous story" className="alumni-nav-btn">‹</button>
-              <div className="alumni-dots" role="tablist" aria-label="Alumni slides">
-                {alumniData.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`alumni-dot${activeIndex === i ? " active" : ""}`}
-                    onClick={() => setActiveIndex(i)}
-                    aria-label={`Go to slide ${i + 1}`}
-                    aria-selected={activeIndex === i}
-                    role="tab"
-                  />
-                ))}
-              </div>
-              <button onClick={goNext} aria-label="Next story" className="alumni-nav-btn">›</button>
-            </div>
-          )}
+      <div className="alumni-compact">
+        <div
+          className="alumni-spotlight-track"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <SpotlightCard person={person} />
         </div>
-
-        {renderVideoModal()}
-      </>
+        {alumniData.length > 1 && (
+          <div className="alumni-spotlight-nav">
+            <button onClick={goPrev} aria-label="Previous story" className="alumni-nav-btn">‹</button>
+            <div className="alumni-dots" role="tablist" aria-label="Alumni slides">
+              {alumniData.map((_, i) => (
+                <button
+                  key={i}
+                  className={`alumni-dot${activeIndex === i ? " active" : ""}`}
+                  onClick={() => setActiveIndex(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  aria-selected={activeIndex === i}
+                  role="tab"
+                />
+              ))}
+            </div>
+            <button onClick={goNext} aria-label="Next story" className="alumni-nav-btn">›</button>
+          </div>
+        )}
+      </div>
     );
   }
 
   return (
     <section className="alumni-section">
       {/* ...unchanged original JSX from your file... */}
-
-      {renderVideoModal()}
     </section>
   );
 }
