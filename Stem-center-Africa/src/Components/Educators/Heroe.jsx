@@ -43,7 +43,7 @@ const EducatorsHero = () => {
                 Become Educator partner
                 <i className="bi bi-arrow-right ph-cta__icon"></i>
               </a>
-              <a href="#cohort-section" className="ph-cta ph-cta--ghost">
+              <a href="/educator-application" className="ph-cta ph-cta--ghost">
                 <i className="bi bi-download ph-cta__icon ph-cta__icon--leading"></i>
                 Apply for next cohort
               </a>

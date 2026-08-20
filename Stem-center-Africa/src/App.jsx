@@ -20,6 +20,7 @@ import Programs from './pages/Programs'
 import Educators from './pages/Educators'
 import EnrollmentForm from './pages/EnrollmentForm'
 import PartnerForm from './pages/PartnerForm'
+import EducatorApplicationForm from './pages/EducatorApplicationForm'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
 import WhatsAppWidget from './Components/WhatsAppWidget'
@@ -83,6 +84,7 @@ function App() {
         <Route path="/programs/:slug" element={<ProgramDetail />} />
         <Route path="/enroll" element={<EnrollmentForm />} />
         <Route path="/partner-with-us" element={<PartnerForm />} />
+        <Route path="/educator-application" element={<EducatorApplicationForm />} />
         <Route path="/corporate" element={<Services />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />

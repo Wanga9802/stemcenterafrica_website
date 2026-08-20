@@ -20,10 +20,9 @@ export default function CohortBanner({
         </div>
       </div>
 
-      <button
-        type="button"
+      <a
+        href="/educator-application"
         className="cohort-banner__button"
-        onClick={onButtonClick}
       >
         <span>{buttonText}</span>
         <svg
@@ -41,7 +40,7 @@ export default function CohortBanner({
             strokeLinejoin="round"
           />
         </svg>
-      </button>
+      </a>
     </div>
   );
 }
