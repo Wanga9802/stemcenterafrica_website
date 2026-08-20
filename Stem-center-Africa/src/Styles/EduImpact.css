@@ -1,0 +1,203 @@
+/* ==========================================================================
+   EduImpact.css
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+.eim-section {
+  background: #ffffff;
+  padding: 24px 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.eim-row {
+  row-gap: 32px;
+}
+
+/* ── Testimonial card ── */
+.eim-testimonial {
+  position: relative;
+  background: linear-gradient(180deg, #f3edfc 0%, #ece1fa 100%);
+  border: 1px solid #eef0f3;
+  border-radius: 5px;
+  padding: 24px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  column-gap: 20px;
+  box-shadow: 0 14px 34px -20px rgba(16, 31, 60, 0.2);
+  overflow: hidden;
+}
+
+.eim-testimonial__dots {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, 6px);
+  gap: 5px;
+  z-index: 0;
+}
+
+.eim-testimonial__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F5820D;
+  opacity: 0.7;
+}
+
+.eim-testimonial__photo-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 30px 0 0;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.eim-testimonial__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.eim-testimonial__body {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1;
+  animation: eim-fade-in 0.5s ease;
+}
+
+@keyframes eim-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eim-testimonial__quote-mark {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #E91E8C;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.eim-testimonial__text {
+  font-family: var(--font-body, "DM Sans", sans-serif);
+  font-size: 0.95rem;
+  color: #3f4657;
+  line-height: 1.65;
+  margin: 0 0 18px;
+}
+
+.eim-testimonial__name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: var(--navy, #101f3c);
+  margin: 0 0 2px;
+}
+
+.eim-testimonial__location {
+  font-family: var(--font-body, "DM Sans", sans-serif);
+  font-size: 0.82rem;
+  color: #E91E8C;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.eim-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: 20px;
+}
+
+.eim-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: #f3d9ea;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.eim-dot--active {
+  background: var(--magenta, #e91e8c);
+  transform: scale(1.3);
+}
+
+/* ── Stats ── */
+.eim-stats__heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy, #101f3c);
+  text-align: center;
+  margin: 0 0 26px;
+}
+
+.eim-stats-row {
+  row-gap: 20px;
+}
+
+.eim-stats-row .col-md-3,
+.eim-stats-row .col-sm-6,
+.eim-stats-row .col-6 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.eim-stat-card {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 22px 12px 18px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 26px -18px rgba(16, 31, 60, 0.25);
+}
+
+.eim-stat-card__icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.eim-stat-card__value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.eim-stat-card__label {
+  font-family: var(--font-body, "DM Sans", sans-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #101F3C;
+  line-height: 1.4;
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+  .eim-section {
+    padding: 48px 0;
+  }
+
+  .eim-stat-card__value {
+    font-size: 1.2rem;
+  }
+}

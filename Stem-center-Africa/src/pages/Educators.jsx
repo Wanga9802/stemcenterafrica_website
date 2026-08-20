@@ -1,19 +1,19 @@
 import React from 'react';
 import EducatorsHero from '../Components/Educators/Heroe';
-import ProgramOverviews from '../Components/Educators/ProgramOverview';
-import ProgramGoals from '../Components/Educators/ProgramGoals';
-import ProgramStructure from '../Components/Educators/ProgramStructure';
-import ProgramImpact from '../Components/Educators/ProgramImpact'
+import EduIntro from '../Components/Educators/EduIntro';
+import EduImpact from '../Components/Educators/EduImpact';
+import CohortBanner from '../Components/Educators/CohortBanner';
 
 function Educators() {
   return (
       <>
       
       <EducatorsHero />
-      <ProgramOverviews />
-      <ProgramGoals />
-      <ProgramStructure />
-      <ProgramImpact />
+      <EduIntro />
+      <EduImpact />
+      <div className="container" style={{ marginTop: '24px', marginBottom: '24px' }}>
+        <CohortBanner />
+      </div>
       </>
   );
 }
