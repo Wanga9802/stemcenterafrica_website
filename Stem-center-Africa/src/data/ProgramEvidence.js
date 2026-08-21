@@ -104,7 +104,7 @@ import ele7 from '../assets/evidence/electrical/ele7.jpg';
 import ele8 from '../assets/evidence/electrical/ele8.jpg';
 import ele9 from '../assets/evidence/electrical/ele9.jpg';
 import electricalProgramActionVideo from '../assets/evidence/electrical/eleco.mp4';
-import elpro from '../assets/evidence/electrical/Elpro.mp4';
+import elpro from '../assets/evidence/electrical/elpro.mp4';
 import pythonProgramActionVideo from '../assets/evidence/pythonp/Pitoi.mp4';
 import pythonStudentProjectVideo from '../assets/evidence/pythonp/Pyto.mp4';
 import pythonActionImage1 from '../assets/evidence/pythonp/pi1.jpg';
