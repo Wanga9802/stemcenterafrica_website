@@ -21,6 +21,9 @@ import DiyHero from '../assets/evidence/3ddesigning/3d7.jpg'
 import SpaceHero from '../assets/evidence/space/s1.jpg'
 import WebHero from '../assets/evidence/webdevelopment/we3.jpg'
 import ScratchHero from '../assets/evidence/scratch/sc1.jpg'
+import Creativi from '../assets/evidence/creativitycomm/co1.jpg'
+import Pyhtoi from '../assets/evidence/pythonp/pi1.jpg'
+import Datoi from '../assets/evidence/datascience/da1.jpg'
 
 const programs = [
   {
@@ -333,7 +336,7 @@ const programs = [
     icon: "bi bi-bar-chart-fill",
     color: "#9B59B6",
     group: "data-ai",
-    heroImage: "/assets/program-heroes/data-science.jpg",
+    heroImage: Datoi,
     fullDescription: "An introduction to working with data — collecting, cleaning, analyzing, and visualizing it to uncover insights and support decision-making.",
     outlineDescription: "Introduces the data pipeline end to end — collecting, cleaning, visualizing, and analyzing data using Python.",
     learningOutcomes: [
@@ -445,7 +448,7 @@ const programs = [
     icon: "bi bi-filetype-py",
     color: "#3776AB",
     group: "computing-software",
-    heroImage: "/assets/program-heroes/python-programming.jpg",
+    heroImage: Pyhtoi,
     fullDescription: "A practical, project-based bootcamp teaching Python from the fundamentals through to building real, working applications.",
     outlineDescription: "A project-based bootcamp that takes students from Python syntax to building and shipping real, working applications.",
     learningOutcomes: [
@@ -501,7 +504,7 @@ const programs = [
     icon: "bi bi-chat-square-text-fill",
     color: "#00B894",
     group: "creativity-life-skills",
-    heroImage: "/assets/program-heroes/creativity-and-communication.jpg",
+    heroImage: Creativi,
     fullDescription: "Focuses on building the soft skills that complement technical learning — confident communication, creative thinking, and collaboration.",
     outlineDescription: "Builds the soft skills that complement technical learning — confident communication, creative thinking, and teamwork.",
     learningOutcomes: [

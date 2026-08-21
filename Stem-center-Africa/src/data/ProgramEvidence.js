@@ -103,7 +103,41 @@ import ele6 from '../assets/evidence/electrical/ele6.jpg';
 import ele7 from '../assets/evidence/electrical/ele7.jpg';
 import ele8 from '../assets/evidence/electrical/ele8.jpg';
 import ele9 from '../assets/evidence/electrical/ele9.jpg';
+import electricalProgramActionVideo from '../assets/evidence/electrical/eleco.mp4';
 import elpro from '../assets/evidence/electrical/elpro.mp4';
+import pythonProgramActionVideo from '../assets/evidence/pythonp/pitoi.mp4';
+import pythonStudentProjectVideo from '../assets/evidence/pythonp/pyto.mp4';
+import pythonActionImage1 from '../assets/evidence/pythonp/pi1.jpg';
+import pythonActionImage2 from '../assets/evidence/pythonp/pi2.jpg';
+import pythonActionImage3 from '../assets/evidence/pythonp/pi3.jpg';
+import pythonActionImage4 from '../assets/evidence/pythonp/pi4.jpg';
+import pythonActionImage5 from '../assets/evidence/pythonp/pi5.jpg';
+import pythonActionImage6 from '../assets/evidence/pythonp/pi6.jpg';
+import pythonProjectImage1 from '../assets/evidence/pythonp/pi7.jpg';
+import pythonProjectImage2 from '../assets/evidence/pythonp/pi8.jpg';
+import pythonProjectImage3 from '../assets/evidence/pythonp/pi9.jpg';
+import dataScienceStudentProjectVideo from '../assets/evidence/datascience/dato.mp4';
+import dataScienceProgramActionVideo from '../assets/evidence/datascience/deto.mp4';
+import dataScienceActionImage1 from '../assets/evidence/datascience/da1.jpg';
+import dataScienceActionImage2 from '../assets/evidence/datascience/da2.jpg';
+import dataScienceActionImage3 from '../assets/evidence/datascience/da3.jpg';
+import dataScienceActionImage4 from '../assets/evidence/datascience/da4.jpg';
+import dataScienceActionImage5 from '../assets/evidence/datascience/da5.jpg';
+import dataScienceActionImage6 from '../assets/evidence/datascience/da6.jpg';
+import dataScienceProjectImage1 from '../assets/evidence/datascience/da7.png';
+import dataScienceProjectImage2 from '../assets/evidence/datascience/da8.png';
+import artificialIntelligenceProgramActionVideo from '../assets/evidence/artificialintelligence/aito.mp4';
+import creativityCommunicationProgramActionVideo from '../assets/evidence/creativitycomm/creto.mp4';
+import creativityCommunicationStudentProjectVideo from '../assets/evidence/creativitycomm/cretu.mp4';
+import creativityCommunicationActionImage1 from '../assets/evidence/creativitycomm/co1.jpg';
+import creativityCommunicationActionImage2 from '../assets/evidence/creativitycomm/co2.jpg';
+import creativityCommunicationActionImage3 from '../assets/evidence/creativitycomm/co3.jpg';
+import creativityCommunicationActionImage4 from '../assets/evidence/creativitycomm/co4.jpg';
+import creativityCommunicationActionImage5 from '../assets/evidence/creativitycomm/co5.jpg';
+import creativityCommunicationActionImage6 from '../assets/evidence/creativitycomm/co6.jpg';
+import creativityCommunicationProjectImage1 from '../assets/evidence/creativitycomm/co7.jpg';
+import creativityCommunicationProjectImage2 from '../assets/evidence/creativitycomm/co8.jpg';
+import creativityCommunicationProjectImage3 from '../assets/evidence/creativitycomm/co9.jpg';
 import ard1 from '../assets/evidence/arduino/ard1.jpg';
 import ard2 from '../assets/evidence/arduino/ard2.jpg';
 import ard3 from '../assets/evidence/arduino/ard3.jpg';
@@ -751,7 +785,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "hero-video",
     type: "video",
-    src: 'PLACEHOLDER_VIDEO_URL',    // <-- replace with your video file/URL
+    src: electricalProgramActionVideo,
     poster: 'PLACEHOLDER_VIDEO_POSTER_URL',  // <-- replace with a thumbnail image for the video
     title: "Classroom Experience",
     caption: "Watch our students in action",
@@ -1669,7 +1703,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "hero-video",
     type: "video",
-    src: 'PLACEHOLDER_VIDEO_URL',    // <-- replace with your video file/URL
+    src: dataScienceProgramActionVideo,
     poster: 'PLACEHOLDER_VIDEO_POSTER_URL',  // <-- replace with a thumbnail image for the video
     title: "Classroom Experience",
     caption: "Watch our students in action",
@@ -1683,7 +1717,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-1",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: dataScienceActionImage1,
     title: "Skill Practice",
     caption: "Building core skills",
     description: "Write a short description of this image here — e.g. photo of students practicing a core skill.",
@@ -1696,7 +1730,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-2",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: dataScienceActionImage2,
     title: "Instructor Demonstration",
     caption: "Guided learning sessions",
     description: "Write a short description of this image here — e.g. photo of an instructor-led demonstration.",
@@ -1709,7 +1743,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-3",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: dataScienceActionImage3,
     title: "Group Activity",
     caption: "Collaboration & teamwork",
     description: "Write a short description of this image here — e.g. photo of a group/team activity.",
@@ -1722,7 +1756,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-4",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: dataScienceActionImage4,
     title: "Hands-On Session",
     caption: "Working with real tools",
     description: "Write a short description of this image here — e.g. photo of students using program-specific tools/equipment.",
@@ -1735,7 +1769,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-5",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: dataScienceActionImage5,
     title: "Project Showcase",
     caption: "Creative student projects",
     description: "Write a short description of this image here — e.g. photo showcasing a student project.",
@@ -1748,7 +1782,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-6",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: dataScienceActionImage6,
     title: "Milestone Moment",
     caption: "Celebrating achievements",
     description: "Write a short description of this image here — e.g. photo of a graduation/certificate/milestone moment.",
@@ -1763,7 +1797,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-1",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: dataScienceProjectImage1,
     title: "Student Project 1",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #1.",
@@ -1776,7 +1810,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-2",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: dataScienceProjectImage2,
     title: "Student Project 2",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #2.",
@@ -1789,7 +1823,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-3",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: dataScienceActionImage1,
     title: "Student Project 3",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #3.",
@@ -1802,11 +1836,17 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-video",
     type: "video",
-    src: 'PLACEHOLDER_VIDEO_URL',    // <-- replace with your video file/URL
+    src: dataScienceStudentProjectVideo,
     poster: 'PLACEHOLDER_VIDEO_POSTER_URL',  // <-- replace with a thumbnail image for the video
     title: "Presentation Demo",
     caption: "Student walkthrough of their final project",
-    description: "Write a short description of this video here — e.g. clip of a student presenting/demoing their project.",
+    description: `Today our students took a practical approach to learning data science. Pushing the boundaries further, we challenged our students with #Investigating Parachute Dynamics Using #CODAP.
+
+  They engaged deeply in #computational and #covariational_reasoning skills that are essential to success in STEM.
+
+  #graphical_representations
+  #simulations
+  #stem`,
     tag: "Showcase",
     order: 4,
   },
@@ -2128,7 +2168,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "hero-video",
     type: "video",
-    src: 'PLACEHOLDER_VIDEO_URL',    // <-- replace with your video file/URL
+    src: artificialIntelligenceProgramActionVideo,
     poster: 'PLACEHOLDER_VIDEO_POSTER_URL',  // <-- replace with a thumbnail image for the video
     title: "Classroom Experience",
     caption: "Watch our students in action",
@@ -2281,7 +2321,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "hero-video",
     type: "video",
-    src: 'PLACEHOLDER_VIDEO_URL',    // <-- replace with your video file/URL
+    src: pythonProgramActionVideo,
     poster: 'PLACEHOLDER_VIDEO_POSTER_URL',  // <-- replace with a thumbnail image for the video
     title: "Classroom Experience",
     caption: "Watch our students in action",
@@ -2295,7 +2335,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-1",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: pythonActionImage1,
     title: "Skill Practice",
     caption: "Building core skills",
     description: "Write a short description of this image here — e.g. photo of students practicing a core skill.",
@@ -2308,7 +2348,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-2",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: pythonActionImage2,
     title: "Instructor Demonstration",
     caption: "Guided learning sessions",
     description: "Write a short description of this image here — e.g. photo of an instructor-led demonstration.",
@@ -2321,7 +2361,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-3",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: pythonActionImage3,
     title: "Group Activity",
     caption: "Collaboration & teamwork",
     description: "Write a short description of this image here — e.g. photo of a group/team activity.",
@@ -2334,7 +2374,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-4",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: pythonActionImage4,
     title: "Hands-On Session",
     caption: "Working with real tools",
     description: "Write a short description of this image here — e.g. photo of students using program-specific tools/equipment.",
@@ -2347,7 +2387,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-5",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: pythonActionImage5,
     title: "Project Showcase",
     caption: "Creative student projects",
     description: "Write a short description of this image here — e.g. photo showcasing a student project.",
@@ -2360,7 +2400,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-6",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: pythonActionImage6,
     title: "Milestone Moment",
     caption: "Celebrating achievements",
     description: "Write a short description of this image here — e.g. photo of a graduation/certificate/milestone moment.",
@@ -2375,7 +2415,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-1",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: pythonProjectImage1,
     title: "Student Project 1",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #1.",
@@ -2388,7 +2428,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-2",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: pythonProjectImage2,
     title: "Student Project 2",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #2.",
@@ -2401,7 +2441,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-3",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: pythonProjectImage3,
     title: "Student Project 3",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #3.",
@@ -2414,11 +2454,25 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-video",
     type: "video",
-    src: 'PLACEHOLDER_VIDEO_URL',    // <-- replace with your video file/URL
+    src: pythonStudentProjectVideo,
     poster: 'PLACEHOLDER_VIDEO_POSTER_URL',  // <-- replace with a thumbnail image for the video
     title: "Presentation Demo",
     caption: "Student walkthrough of their final project",
-    description: "Write a short description of this video here — e.g. clip of a student presenting/demoing their project.",
+    description: `Our students used python to do this project.
+
+  #headline: To develop a real-time water quality monitoring system.
+
+  #Description: The system will continuously assess water quality, detect contamination, and provide immediate alerts to protect public health.
+
+  #STEM_Principles
+
+  #Science: Understanding water quality parameters (pH, turbidity, temperature, etc.) and sensor technology.
+
+  #Technology: Programming, data analysis, microcontroller usage, and IoT platform integration.
+
+  #Engineering: Designing the sensor network, hardware integration, and system calibration.
+
+  #Mathematics: Data processing, statistical analysis, and interpretation of water quality data.`,
     tag: "Showcase",
     order: 4,
   },
@@ -2587,7 +2641,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "hero-video",
     type: "video",
-    src: 'PLACEHOLDER_VIDEO_URL',    // <-- replace with your video file/URL
+    src: creativityCommunicationProgramActionVideo,
     poster: 'PLACEHOLDER_VIDEO_POSTER_URL',  // <-- replace with a thumbnail image for the video
     title: "Classroom Experience",
     caption: "Watch our students in action",
@@ -2601,7 +2655,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-1",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: creativityCommunicationActionImage1,
     title: "Skill Practice",
     caption: "Building core skills",
     description: "Write a short description of this image here — e.g. photo of students practicing a core skill.",
@@ -2614,7 +2668,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-2",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: creativityCommunicationActionImage2,
     title: "Instructor Demonstration",
     caption: "Guided learning sessions",
     description: "Write a short description of this image here — e.g. photo of an instructor-led demonstration.",
@@ -2627,7 +2681,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-3",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: creativityCommunicationActionImage3,
     title: "Group Activity",
     caption: "Collaboration & teamwork",
     description: "Write a short description of this image here — e.g. photo of a group/team activity.",
@@ -2640,7 +2694,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-4",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: creativityCommunicationActionImage4,
     title: "Hands-On Session",
     caption: "Working with real tools",
     description: "Write a short description of this image here — e.g. photo of students using program-specific tools/equipment.",
@@ -2653,7 +2707,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-5",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: creativityCommunicationActionImage5,
     title: "Project Showcase",
     caption: "Creative student projects",
     description: "Write a short description of this image here — e.g. photo showcasing a student project.",
@@ -2666,7 +2720,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-6",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: creativityCommunicationActionImage6,
     title: "Milestone Moment",
     caption: "Celebrating achievements",
     description: "Write a short description of this image here — e.g. photo of a graduation/certificate/milestone moment.",
@@ -2681,7 +2735,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-1",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: creativityCommunicationProjectImage1,
     title: "Student Project 1",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #1.",
@@ -2694,7 +2748,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-2",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: creativityCommunicationProjectImage2,
     title: "Student Project 2",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #2.",
@@ -2707,7 +2761,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-3",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: creativityCommunicationProjectImage3,
     title: "Student Project 3",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #3.",
@@ -2720,11 +2774,11 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-video",
     type: "video",
-    src: 'PLACEHOLDER_VIDEO_URL',    // <-- replace with your video file/URL
+    src: creativityCommunicationStudentProjectVideo,
     poster: 'PLACEHOLDER_VIDEO_POSTER_URL',  // <-- replace with a thumbnail image for the video
     title: "Presentation Demo",
     caption: "Student walkthrough of their final project",
-    description: "Write a short description of this video here — e.g. clip of a student presenting/demoing their project.",
+    description: `We are thrilled to have Susanne Cappendijk resume their #STEAM #EDsnaps_GYPL_Program 2025. This program focuses on team-building, skill development, and fostering an entrepreneurial mindset. Our students are fortunate to benefit from this incredible opportunity.`,
     tag: "Showcase",
     order: 4,
   },
