@@ -387,7 +387,8 @@ const programs = [
   {
     id: 13,
     slug: "teacher-training",
-    title: "Teacher Training",
+    title: "STEM Educators",
+    path: "/educators",
     description: "Empowering educators to inspire the next generation.",
     icon: teacherIcon,
     color: "#8E44AD",

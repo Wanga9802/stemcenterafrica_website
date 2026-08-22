@@ -59,7 +59,7 @@ export default function Programs() {
                     <span className="program-card__divider" />
                     <h3 className="program-card__title">{program.title}</h3>
                     <Link
-                      to={`/programs/${program.slug}`}
+                      to={program.path || `/programs/${program.slug}`}
                       className="program-card__button"
                     >
                       More
