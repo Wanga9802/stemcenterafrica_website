@@ -87,7 +87,7 @@ export default function Team() {
             <div className="col-12 text-center">Loading team members...</div>
           ) : (
             activeMembers.map((member, index) => (
-              <div key={index} className="col-12 col-sm-6 col-lg-3 team-card-col">
+              <div key={index} className="col-12 col-md-4 col-lg-3 team-card-col">
                 <div className="team-card">
                   <div className="team-card-img-wrap">
                     <img
@@ -99,8 +99,11 @@ export default function Team() {
                   <div className="team-card-body">
                     <p className="team-card-name">{member.name}</p>
                     <p className="team-card-role">{member.role}</p>
-                    <Link to={`/team/${member.slug}`} className="team-card-link">
-                      See full profile →
+                    {member.profile && (
+                      <p className="team-card-profile">{member.profile}</p>
+                    )}
+                    <Link to={`/team/${member.slug}`} className="team-card-link" aria-label={`View ${member.name}'s full profile`}>
+                      View full profile
                     </Link>
                   </div>
                 </div>

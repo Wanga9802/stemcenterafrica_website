@@ -4,8 +4,9 @@
 .team-section {
   position: relative;
   background: #0D1B2A;
-  padding: 80px 0 90px;
+  padding: 64px 0 76px;
   overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
 }
 
 /* ── Background decorative SVG ── */
@@ -31,18 +32,16 @@
 
 /* ── Heading ── */
 .team-heading {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 28px;
   font-weight: 700;
-  color: #ff2d78;
+  color: #ffffff;
   margin: 0 0 20px;
   letter-spacing: -0.01em;
 }
 
 .team-subtext {
-  font-family: Gotham Rounded, sans-serif;
   font-size: 16px;
-  font-weight: 400;
   color: #ffffff;
   line-height: 1.5;
   max-width: 750px;
@@ -66,7 +65,7 @@
   border: 1.5px solid rgba(255, 255, 255, 0.35);
   background: transparent;
   color: rgba(255, 255, 255, 0.75);
-  font-family: 'Sora', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -89,31 +88,40 @@
    CARDS
 ══════════════════════════════════════════ */
 .team-cards-row {
-  gap: 0;
+  gap: 14px 0;
 }
 
 .team-card-col {
-  padding: 8px;
+  padding: 7px;
 }
 
 .team-card {
   background: #ffffff;
-  border-radius: 0;
+  border-radius: 5px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   height: 100%;
+  align-items: center;
+  padding: 22px 16px 18px;
+  box-sizing: border-box;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
 
 /* ── Image area ── */
 .team-card-img-wrap {
-  width: 100%;
-  height: 220px;
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
   overflow: hidden;
   background: #EDF1F7;
+  border: 3px solid #f0eef7;
+  border-radius: 50%;
 }
 
 .team-card-img {
@@ -129,17 +137,19 @@
 
 /* ── Text area ── */
 .team-card-body {
-  padding: 18px 20px 20px;
-  border-top: 2px solid #f0f0f0;
+  width: 100%;
+  padding: 16px 2px 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
 }
 
 .team-card-name {
-  font-family: 'Gotham Rounded', sans-serif;
-  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
   font-weight: 700;
   color: #101F3C;
   margin: 0;
@@ -147,21 +157,35 @@
 }
 
 .team-card-role {
-  font-family: 'Gotham Rounded', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 14px;
-  font-weight: 300;
-  color: #101F3C;
+  font-weight: 600;
+  color: #E8006A;
   margin: 0;
   line-height: 1.4;
 }
 
+.team-card-profile {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #7b818c;
+  line-height: 1.45;
+  margin: 3px 0 0;
+}
+
 .team-card-link {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: #29ABE2;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #101F3C;
   text-decoration: none;
-  margin-top: 6px;
+  margin-top: auto;
+  padding-top: 8px;
   transition: color 0.2s ease;
   display: inline-block;
 }
@@ -176,7 +200,9 @@
 ══════════════════════════════════════════ */
 @media (max-width: 991px) {
   .team-card-img-wrap {
-    height: 200px;
+    width: 72px;
+    height: 72px;
+    flex-basis: 72px;
   }
 }
 
@@ -204,7 +230,9 @@
 
 @media (max-width: 575px) {
   .team-card-img-wrap {
-    height: 240px;
+    width: 78px;
+    height: 78px;
+    flex-basis: 78px;
   }
 
   .team-tab-btn {
