@@ -39,7 +39,11 @@ export default function ExplorePrograms() {
                     className="ep-icon-img"
                   />
                 </div>
-                <h3 className="ep-card-title">{program.title}</h3>
+                <h3 className="ep-card-title">
+                  {program.slug === "teacher-training"
+                    ? "Teacher Training & Professional Development"
+                    : program.title}
+                </h3>
                 <p className="ep-card-desc">{program.description}</p>
                 {program.heroImage && (
                   <div className="ep-card-hero">
