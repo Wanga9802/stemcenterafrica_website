@@ -31,7 +31,7 @@ export default function ExplorePrograms() {
         <div className="row g-4 ep-grid-row">
           {featuredPrograms.map((program) => (
             <div className="col-md-3 col-6" key={program.id}>
-              <a href={`/programs/${program.slug}`} className="ep-card">
+              <Link to={program.path || `/programs/${program.slug}`} className="ep-card">
                 <div className="ep-icon-circle">
                   <img
                     src={program.icon}
@@ -54,7 +54,7 @@ export default function ExplorePrograms() {
                     />
                   </div>
                 )}
-              </a>
+              </Link>
             </div>
           ))}
         </div>
