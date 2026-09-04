@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import '../../Styles/ServiceHero.css'
 
 /* ── DATA ─────────────────────────────────────────────────────────────── */
@@ -213,13 +214,12 @@ export function ServiceHero({
           </ul>
 
           <div className="sh-ctas">
-            <button
-              type="button"
+            <Link
+              to="/conversation"
               className="sh-cta sh-cta--primary"
-              onClick={onPrimaryClick}
             >
               {primaryCta}
-            </button>
+            </Link>
             <button
               type="button"
               className="sh-cta sh-cta--outline"
