@@ -1,0 +1,85 @@
+/* STEM Center Africa — CTA banner theme tokens
+   Adjust these to match your exact brand values if they differ. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+.cta {
+  --sca-navy-bg: #0b1a33;
+  --sca-blue: #1e5fd9;
+  --sca-blue-light: #6ea0ff;
+  --sca-white: #ffffff;
+  --sca-body-muted: #c3cde0;
+
+  background-color: var(--sca-navy-bg);
+  padding: 26px 24px 40px;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.cta__inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.cta__eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sca-blue-light);
+  margin-bottom: 16px;
+}
+
+.cta__heading {
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--sca-white);
+  margin: 0 0 24px;
+}
+
+.cta__body {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--sca-body-muted);
+  max-width: 620px;
+  margin: 0 auto 32px;
+}
+
+.cta__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--sca-blue);
+  color: var(--sca-white);
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0;
+  padding: 16px 28px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.cta__button:hover {
+  background-color: #174ab0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 95, 217, 0.35);
+}
+
+.cta__button:focus-visible {
+  outline: 2px solid var(--sca-blue-light);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .cta {
+    padding: 64px 20px;
+  }
+
+  .cta__button {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+}

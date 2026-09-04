@@ -3,9 +3,11 @@ import { useEffect } from 'react'
 import Home from './pages/Home'
 import About from './pages/Aboutus'
 import Courses from './pages/Courses'
+import Service from './pages/Servvice'
 import Services from './pages/Corporate'
 import ServiceDetail from './pages/ServiceDetail'
 import ServiceForm from './pages/ServiceForm'
+import ConversationForm from './pages/ConversationForm'
 import Blog from './pages/Blog'
 import BlogPostPage from './Components/Blog/BlogPostPage'
 import Events from './pages/Events'
@@ -74,9 +76,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/courses/*" element={<Courses />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/services" element={<Service />} />
+        <Route path="/services/all" element={<Services />} />
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/service-request" element={<ServiceForm />} />
+        <Route path="/conversation" element={<ConversationForm />} />
         <Route path="/innovationhub" element={<InnovationHubPage />} />
         <Route path="/girlsinstem" element={<WoStem />} />
         <Route path="/educators" element={<Educators />} />

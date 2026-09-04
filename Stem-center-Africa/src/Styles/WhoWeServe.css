@@ -1,0 +1,148 @@
+/* STEM Center Africa — theme tokens
+   Adjust these to match your exact brand values if they differ. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+.wws {
+  --sca-pink: #ec1179;
+  --sca-pink-dark: #c60e66;
+  --sca-navy: #0b1220;
+  --sca-gray: #64748b;
+  --sca-bg: #f5f7fc;
+  --sca-white: #ffffff;
+
+  background-color: var(--sca-bg);
+  padding:24px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.wws__inner {
+  height: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.wws__eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sca-pink);
+  margin-bottom: 16px;
+}
+
+.wws__heading {
+  font-size: 28px;
+  line-height: 0.5;
+  font-weight: 600;
+  color: var(--sca-navy);
+  margin: 0 0 24px;
+}
+
+.wws__body {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--sca-gray);
+  max-width: 620px;
+  margin: 0 0 32px;
+}
+
+.wws__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wws__pill {
+  background-color: var(--sca-white);
+  color: var(--sca-navy);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  border-radius: 999px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  cursor: default;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.wws__pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(11, 18, 32, 0.12);
+}
+
+.wws__custom-card {
+  height: 100%;
+  padding: 38px 36px;
+  background: var(--sca-white);
+  border: 1px solid rgba(11, 18, 32, 0.08);
+  border-radius: 5px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.wws__custom-icon {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 30px;
+  border-radius: 16px;
+  background: #eef4ff;
+  color: #1769d5;
+  font-size: 1.5rem;
+}
+
+.wws__custom-title {
+  margin: 0 0 16px;
+  color: var(--sca-navy);
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.wws__custom-body {
+  margin: 0 0 32px;
+  color: var(--sca-gray);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.wws__custom-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 14px 28px;
+  border-radius: 0;
+  background: #E8006A;
+  color: var(--sca-white);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.wws__custom-cta:hover {
+  background: #c40059;
+  color: var(--sca-white);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 520px) {
+  .wws {
+    padding: 48px 20px;
+  }
+
+  .wws__pill {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+
+  .wws__custom-card {
+    padding: 30px 24px;
+  }
+}
