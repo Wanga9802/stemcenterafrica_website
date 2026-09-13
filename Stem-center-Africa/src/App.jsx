@@ -24,6 +24,7 @@ import EnrollmentForm from './pages/EnrollmentForm'
 import PartnerForm from './pages/PartnerForm'
 import EducatorApplicationForm from './pages/EducatorApplicationForm'
 import Navbar from './Components/Navbar'
+import TopBanner from './Components/TopBanner'
 import Footer from './Components/Footer'
 import WhatsAppWidget from './Components/WhatsAppWidget'
 import ProtectedAdminRoute from './admin/components/ProtectedAdminRoute'
@@ -71,7 +72,12 @@ function App() {
 
   return (
     <>
-      {!isAdminRoute && <Navbar />}
+      {!isAdminRoute && (
+        <div className="site-header-group">
+          <TopBanner />
+          <Navbar />
+        </div>
+      )}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
