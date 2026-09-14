@@ -90,7 +90,7 @@ function TopBanner() {
         <div className="top-banner__actions">
           <a href="/book-outreach" className="top-banner__btn top-banner__btn--primary">
             <CalendarPlus size={14} />
-            Book a school visit
+            STEM mobile outreach
           </a>
           {showInstallButton && (
             <button

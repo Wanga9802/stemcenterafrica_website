@@ -23,6 +23,7 @@ import Educators from './pages/Educators'
 import EnrollmentForm from './pages/EnrollmentForm'
 import PartnerForm from './pages/PartnerForm'
 import EducatorApplicationForm from './pages/EducatorApplicationForm'
+import BookOutreach from './pages/BookOutreach'
 import Navbar from './Components/Navbar'
 import TopBanner from './Components/TopBanner'
 import Footer from './Components/Footer'
@@ -87,6 +88,7 @@ function App() {
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/service-request" element={<ServiceForm />} />
         <Route path="/conversation" element={<ConversationForm />} />
+        <Route path="/book-outreach" element={<BookOutreach />} />
         <Route path="/innovationhub" element={<InnovationHubPage />} />
         <Route path="/girlsinstem" element={<WoStem />} />
         <Route path="/educators" element={<Educators />} />
