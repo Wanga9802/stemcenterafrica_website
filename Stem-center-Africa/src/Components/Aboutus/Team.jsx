@@ -105,6 +105,17 @@ export default function Team() {
                     <Link to={`/team/${member.slug}`} className="team-card-link" aria-label={`View ${member.name}'s full profile`}>
                       View full profile
                     </Link>
+                    {member.name === 'Denish Akuom, PhD' && (
+                      <a
+                        href="https://denish-portfolio.vercel.app/"
+                        className="team-card-link"
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="View Denish Akuom's website"
+                      >
+                        View website
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

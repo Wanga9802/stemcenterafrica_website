@@ -127,6 +127,13 @@ import dataScienceActionImage6 from '../assets/evidence/datascience/da6.jpg';
 import dataScienceProjectImage1 from '../assets/evidence/datascience/da7.png';
 import dataScienceProjectImage2 from '../assets/evidence/datascience/da8.png';
 import artificialIntelligenceProgramActionVideo from '../assets/evidence/artificialintelligence/aito.mp4';
+import artificialIntelligenceActionImage1 from '../assets/evidence/artificialintelligence/A1.jpg';
+import artificialIntelligenceActionImage2 from '../assets/evidence/artificialintelligence/A2jpg.jpg';
+import artificialIntelligenceActionImage3 from '../assets/evidence/artificialintelligence/A3.jpg';
+import artificialIntelligenceActionImage4 from '../assets/evidence/artificialintelligence/A4.jpg';
+import artificialIntelligenceProjectImage1 from '../assets/evidence/artificialintelligence/A5.jpg';
+import artificialIntelligenceProjectImage2 from '../assets/evidence/artificialintelligence/A6.jpg';
+import artificialIntelligenceProjectImage3 from '../assets/evidence/artificialintelligence/A7.jpg';
 import creativityCommunicationProgramActionVideo from '../assets/evidence/creativitycomm/Creto.mp4';
 import creativityCommunicationStudentProjectVideo from '../assets/evidence/creativitycomm/Cretu.mp4';
 import creativityCommunicationActionImage1 from '../assets/evidence/creativitycomm/co1.jpg';
@@ -2182,7 +2189,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-1",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: artificialIntelligenceActionImage1,
     title: "Skill Practice",
     caption: "Building core skills",
     description: "Write a short description of this image here — e.g. photo of students practicing a core skill.",
@@ -2195,7 +2202,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-2",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: artificialIntelligenceActionImage2,
     title: "Instructor Demonstration",
     caption: "Guided learning sessions",
     description: "Write a short description of this image here — e.g. photo of an instructor-led demonstration.",
@@ -2208,7 +2215,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-3",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: artificialIntelligenceActionImage3,
     title: "Group Activity",
     caption: "Collaboration & teamwork",
     description: "Write a short description of this image here — e.g. photo of a group/team activity.",
@@ -2221,7 +2228,7 @@ const programEvidence = [
     section: "program-in-action",
     slot: "image-4",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: artificialIntelligenceActionImage4,
     title: "Hands-On Session",
     caption: "Working with real tools",
     description: "Write a short description of this image here — e.g. photo of students using program-specific tools/equipment.",
@@ -2262,7 +2269,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-1",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: artificialIntelligenceProjectImage1,
     title: "Student Project 1",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #1.",
@@ -2275,7 +2282,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-2",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: artificialIntelligenceProjectImage2,
     title: "Student Project 2",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #2.",
@@ -2288,7 +2295,7 @@ const programEvidence = [
     section: "student-projects",
     slot: "project-3",
     type: "image",
-    src: 'PLACEHOLDER_IMAGE_URL',    // <-- replace with your image file/URL
+    src: artificialIntelligenceProjectImage3,
     title: "Student Project 3",
     caption: "Student project",
     description: "Write a short description of this image here — e.g. screenshot/photo of student project #3.",
